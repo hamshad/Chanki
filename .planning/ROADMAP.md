@@ -34,10 +34,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. User can install app from iOS Safari Share → Add to Home Screen and Android Chrome install prompt
   2. User sees an update prompt when a new version is available (no silent stale shell)
   3. User opening app with empty/evicted cache sees offline fallback page with re-sync recovery, not a blank error
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
+- [ ] 01-01-PLAN.md — Scaffold + PWA foundation (VitePWA prompt config, manifest, offline fallback precache)
+- [ ] 01-02-PLAN.md — Install + update UX (update banner, iOS hint, Chromium install button)
+- [ ] 01-03-PLAN.md — Hosting + verification (firebase.json headers, Lighthouse gate, device matrix)
 
 ### Phase 2: Data Contract
 **Goal**: App has a versioned local source of truth with real starter content and anonymous device identity
