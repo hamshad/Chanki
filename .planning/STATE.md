@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-09-19)
 
 **Core value:** Retention via 4-prompt recall works offline on a phone.
-**Current focus:** Phase 1 PWA Shell (plan 1 of 3 done)
+**Current focus:** Phase 1 PWA Shell (plan 2 of 3 done)
 
 ## Current Position
 
-Phase: 1 of 11 (01-pwa-shell, 1/3 plans complete)
-Plan: 1 of 3 in current phase
-Status: 01-01 complete, ready for 01-02
-Last activity: 2026-09-19 — 01-01 PWA foundation complete (Vite 8 + generateSW shell, 6 min)
+Phase: 1 of 11 (01-pwa-shell, 2/3 plans complete)
+Plan: 2 of 3 in current phase
+Status: 01-02 complete, ready for 01-03
+Last activity: 2026-09-19 — 01-02 install UX + update flow complete (central register module + 4 components, 2 min)
 
 Progress: [█░░░░░░░░░] 3%
 
@@ -35,6 +35,7 @@ Progress: [█░░░░░░░░░] 3%
 
 *Updated after each plan completion*
 | Phase 01-pwa-shell P01 | 6min | 2 tasks | 24 files |
+| Phase 01-pwa-shell P02 | 2 min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -48,6 +49,9 @@ Recent decisions affecting current work:
 - [Roadmap]: OFFLINE-02 verified in Phase 9 after writing + audio exist (full-loop airplane test)
 - [01-01]: SW lifecycle reaches React via pwa:need-refresh / pwa:offline-ready CustomEvents (Plan 02 consumes)
 - [01-01]: OFFLINE-01/OFFLINE-03 stay open until 01-02 UX + 01-03 hosting verification land
+- [01-02]: Single registration path in src/pwa/register.ts; UpdateBanner via useRegisterSW, OfflineReady via CustomEvent
+- [01-02]: Plan verify regex for forced activation false-positives on Workbox on-demand SKIP_WAITING listener — refined check is source of truth
+- [01-02]: OFFLINE-01/OFFLINE-03 boxes left unchecked (consistent with 01-01): client UX done, hosting + device verification pending 01-03
 
 ### Pending Todos
 
@@ -62,5 +66,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-09-19
-Stopped at: Completed 01-pwa-shell-01-PLAN.md
+Stopped at: Completed 01-pwa-shell-02-PLAN.md
 Resume file: None
