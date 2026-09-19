@@ -99,42 +99,42 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REVIEW-01 | TBD | Pending |
-| REVIEW-02 | TBD | Pending |
-| REVIEW-03 | TBD | Pending |
-| REVIEW-04 | TBD | Pending |
-| REVIEW-05 | TBD | Pending |
-| REVIEW-06 | TBD | Pending |
-| SRS-01 | TBD | Pending |
-| SRS-02 | TBD | Pending |
-| SRS-03 | TBD | Pending |
-| OFFLINE-01 | TBD | Pending |
-| OFFLINE-02 | TBD | Pending |
-| OFFLINE-03 | TBD | Pending |
-| OFFLINE-04 | TBD | Pending |
-| SYNC-01 | TBD | Pending |
-| SYNC-02 | TBD | Pending |
-| SYNC-03 | TBD | Pending |
-| ADMIN-01 | TBD | Pending |
-| ADMIN-02 | TBD | Pending |
-| ADMIN-03 | TBD | Pending |
-| DECK-01 | TBD | Pending |
-| DECK-02 | TBD | Pending |
-| DECK-03 | TBD | Pending |
-| WRITE-01 | TBD | Pending |
-| WRITE-02 | TBD | Pending |
-| WRITE-03 | TBD | Pending |
-| AUDIO-01 | TBD | Pending |
-| AUDIO-02 | TBD | Pending |
-| AUDIO-03 | TBD | Pending |
-| TONE-01 | TBD | Pending |
-| TONE-02 | TBD | Pending |
-| TONE-03 | TBD | Pending |
+| REVIEW-01 | Phase 3 | Pending |
+| REVIEW-02 | Phase 3 | Pending |
+| REVIEW-03 | Phase 5 | Pending |
+| REVIEW-04 | Phase 5 | Pending |
+| REVIEW-05 | Phase 5 | Pending |
+| REVIEW-06 | Phase 3 | Pending |
+| SRS-01 | Phase 4 | Pending |
+| SRS-02 | Phase 4 | Pending |
+| SRS-03 | Phase 4 | Pending |
+| OFFLINE-01 | Phase 1 | Pending |
+| OFFLINE-02 | Phase 9 | Pending |
+| OFFLINE-03 | Phase 1 | Pending |
+| OFFLINE-04 | Phase 2 | Pending |
+| SYNC-01 | Phase 2 | Pending |
+| SYNC-02 | Phase 6 | Pending |
+| SYNC-03 | Phase 6 | Pending |
+| ADMIN-01 | Phase 7 | Pending |
+| ADMIN-02 | Phase 7 | Pending |
+| ADMIN-03 | Phase 6 | Pending |
+| DECK-01 | Phase 2 | Pending |
+| DECK-02 | Phase 7 | Pending |
+| DECK-03 | Phase 2 | Pending |
+| WRITE-01 | Phase 8 | Pending |
+| WRITE-02 | Phase 8 | Pending |
+| WRITE-03 | Phase 8 | Pending |
+| AUDIO-01 | Phase 9 | Pending |
+| AUDIO-02 | Phase 9 | Pending |
+| AUDIO-03 | Phase 9 | Pending |
+| TONE-01 | Phase 11 | Pending |
+| TONE-02 | Phase 10 | Pending |
+| TONE-03 | Phase 10 | Pending |
 
 **Coverage:**
 - v1 requirements: 31 total
-- Mapped to phases: 0
-- Unmapped: 31
+- Mapped to phases: 31
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-09-19*
