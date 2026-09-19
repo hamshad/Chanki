@@ -1,0 +1,1 @@
+{"commit_docs": true, "depth": "comprehensive", "mode": "yolo", "model_profile": "budget", "parallelization": true, "workflow": {"auto_advance": false, "plan_check": true, "research": true, "verifier": true}}
