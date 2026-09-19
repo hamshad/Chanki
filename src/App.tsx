@@ -2,6 +2,7 @@ import './App.css'
 import { InstallButton } from './components/InstallButton.tsx'
 import { IosInstallHint } from './components/IosInstallHint.tsx'
 import { OfflineReady } from './components/OfflineReady.tsx'
+import { OfflineStatus } from './components/OfflineStatus.tsx'
 import { UpdateBanner } from './components/UpdateBanner.tsx'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <>
       <header>
         <h1>Chanki</h1>
+        <OfflineStatus />
       </header>
       <main>
         <p>Review sessions will live here. Install the app to study offline.</p>
