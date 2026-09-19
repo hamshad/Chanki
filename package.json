@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pwa:audit": "sh -c 'npx --yes serve dist -l 4173 & SRV=$!; sleep 4; npx --yes lighthouse@11 http://localhost:4173/ --output=json --output-path=./lighthouse-report.json --chrome-flags=\"--no-sandbox --headless=new\" --only-categories=pwa; CODE=$?; kill $SRV; exit $CODE'"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -23,5 +24,10 @@
     "typescript": "~6.0.2",
     "vite": "^8.3.0",
     "vite-plugin-pwa": "^1.3.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
