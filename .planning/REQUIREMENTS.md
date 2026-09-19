@@ -108,9 +108,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SRS-01 | Phase 4 | Pending |
 | SRS-02 | Phase 4 | Pending |
 | SRS-03 | Phase 4 | Pending |
-| OFFLINE-01 | Phase 1 | Pending |
+| OFFLINE-01 | Phase 1 | Complete |
 | OFFLINE-02 | Phase 9 | Pending |
-| OFFLINE-03 | Phase 1 | Pending |
+| OFFLINE-03 | Phase 1 | Complete |
 | OFFLINE-04 | Phase 2 | Pending |
 | SYNC-01 | Phase 2 | Pending |
 | SYNC-02 | Phase 6 | Pending |
@@ -138,4 +138,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-09-19*
-*Last updated: 2026-09-19 after initial definition*
+*Last updated: 2026-09-19 after Phase 1 completion (OFFLINE-01, OFFLINE-03 complete)*
