@@ -50,10 +50,13 @@ Plans:
   2. User gets an anonymous device UUID on first launch with no login screen anywhere
   3. User sees a bundled HSK1-ish starter deck with native/recorded audio and HSK/tag metadata on first run
   4. Invalid card data (bad tone value, missing required field) is rejected by schema validation, and old schemaVersion data migrates additively
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 02-01: TBD
+- [ ] 02-01-PLAN.md — Database core + schema validation (Dexie v1, Zod Card/Deck/Progress/ReviewLog/AudioMeta/DeviceMeta, ToneEnum 1-5)
+- [ ] 02-02-PLAN.md — Device identity + starter deck seeding (crypto.randomUUID in meta, seedStarterDeckIfNeeded with Zod validation)
+- [ ] 02-03-PLAN.md — Vite PWA audio precaching + starter deck assets (includeAssets, globPatterns mp3/json, CacheFirst runtime, HSK1 JSON)
+- [ ] 02-04-PLAN.md — Migration infrastructure + app bootstrap (v1→v2 upgrade hook pattern, main.tsx bootstrap sequence)
 
 ### Phase 3: Review UI
 **Goal**: User can flip through all four sides of a card starting from a random prompt side
