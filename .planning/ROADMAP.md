@@ -37,7 +37,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold + PWA foundation (VitePWA prompt config, manifest, offline fallback precache)
+- [x] 01-01-PLAN.md — Scaffold + PWA foundation (VitePWA prompt config, manifest, offline fallback precache)
 - [ ] 01-02-PLAN.md — Install + update UX (update banner, iOS hint, Chromium install button)
 - [ ] 01-03-PLAN.md — Hosting + verification (firebase.json headers, Lighthouse gate, device matrix)
 
@@ -179,7 +179,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. PWA Shell | 0/1 | Not started | - |
+| 1. PWA Shell | 1/3 | In Progress | - |
 | 2. Data Contract | 0/1 | Not started | - |
 | 3. Review UI | 0/1 | Not started | - |
 | 4. SRS Engine | 0/1 | Not started | - |
