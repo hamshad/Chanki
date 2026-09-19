@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1a2e" />
+    <title>Chanki — You're offline</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: #1a1a2e;
+        color: #fff;
+        padding: 1.5rem;
+      }
+      .card {
+        max-width: 26rem;
+        text-align: center;
+        background: #23233f;
+        border-radius: 1rem;
+        padding: 2.5rem 2rem;
+      }
+      .glyph {
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1rem;
+        border-radius: 1rem;
+        background: #e94560;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      h1 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+      p { color: #c9c9d6; line-height: 1.5; }
+      .actions { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1.5rem; }
+      button, a.home {
+        font: inherit;
+        cursor: pointer;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        text-decoration: none;
+        display: inline-block;
+      }
+      button.retry { background: #e94560; color: #fff; }
+      button.sync { background: #3a3a5c; color: #8a8aa3; cursor: not-allowed; }
+      a.home { background: transparent; color: #c9c9d6; border: 1px solid #3a3a5c; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="glyph">Ch</div>
+      <h1>You're offline</h1>
+      <p>
+        Chanki can't reach the network, and this page isn't in the cache yet
+        (first launch, or the cache was cleared). Reconnect and retry —
+        your progress stays on this device.
+      </p>
+      <div class="actions">
+        <button class="retry" type="button" onclick="window.location.reload()">Retry</button>
+        <button class="sync" type="button" disabled title="Sync arrives Phase 6">Re-sync</button>
+      </div>
+      <p><a class="home" href="/">Back to Chanki</a></p>
+    </div>
+  </body>
+</html>
