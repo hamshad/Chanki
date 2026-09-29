@@ -59,7 +59,7 @@
 
 ### Tone trainer (mic contour)
 
-- [ ] **TONE-01**: User can record tone attempt via mic and see real-time pitch contour graph vs target tone shape (e.g. ni3 dip-rise)
+- [x] **TONE-01**: User can record tone attempt via mic and see real-time pitch contour graph vs target tone shape (e.g. ni3 dip-rise)
 - [x] **TONE-02**: User gets speaker-relative shape score (never absolute Hz), with calibration + test-mic screen and noise/silence states
 - [x] **TONE-03**: All mic audio is processed on-device; nothing uploads without consent
 
@@ -127,7 +127,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUDIO-01 | Phase 9 | Complete |
 | AUDIO-02 | Phase 9 | Complete |
 | AUDIO-03 | Phase 9 | Complete |
-| TONE-01 | Phase 11 | Pending |
+| TONE-01 | Phase 11 | Complete |
 | TONE-02 | Phase 10 | Complete |
 | TONE-03 | Phase 10 | Complete |
 
@@ -140,3 +140,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 *Requirements defined: 2026-09-19*
 *Last updated: 2026-09-24 — Phases 2 + 3 recovered from interrupted session (OFFLINE-04, SYNC-01, DECK-01, DECK-03, REVIEW-01, REVIEW-02, REVIEW-06 complete)*
 *Last updated: 2026-09-29 — Phase 10 complete (TONE-02, TONE-03)*
+*Last updated: 2026-09-29 — Phase 11 complete (TONE-01) — all v1 requirements mapped and done*

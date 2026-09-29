@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-09-24)
 
 **Core value:** Retention via 4-prompt recall works offline on a phone.
-**Current focus:** Phase 11 Tone Trainer UI
+**Current focus:** v1 code-complete — real-device verification pass
 
 ## Current Position
 
-Phase: 10 of 11 complete — Phase 11 (11-tone-trainer-ui) next
-Plan: 10-01-PLAN.md (done); 11-01-PLAN.md not yet written
-Status: Phases 1–10 done — Phase 11 (Tone Trainer UI) is next
-Last activity: 2026-09-29 — Phase 10 complete: speaker-relative scoring + calibration/test-mic states, /tone-spike harness, MPM-vs-YIN bench, spike report
+Phase: 11 of 11 complete — all planned phases done
+Plan: 11-01-PLAN.md (done)
+Status: Phases 1–11 complete — all 31 v1 requirements implemented; device-matrix sign-off outstanding
+Last activity: 2026-09-29 — Phase 11 complete: /tone trainer with live rAF canvas contour, divergence zone + hints, useToneCapture hook shared with spike
 
-Progress: [██████████░] 95%
+Progress: [████████████] 100% (code); device verification pending
 
 ## Performance Metrics
 
@@ -47,6 +47,7 @@ Progress: [██████████░] 95%
 | Phase 07-admin-deck | ~15 min | 4 tasks | 3 files |
 | Phase 08-writing-trainer | ~20 min | 3 tasks | 3 files |
 | Phase 10-tone-spike | ~45 min | 4 tasks | 6 files |
+| Phase 11-tone-trainer-ui | ~35 min | 5 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,10 @@ Recent decisions affecting current work:
 - [10]: `analyzeCapture` classifies frames voiced/noise/silence → `ok | noisy | silence | too-short` + median voiced base for calibration
 - [10]: ToneSpike harness lives at hidden route `/tone-spike`; stops MediaStream tracks + AudioContext on every teardown (no stuck mic indicator)
 - [10]: TONE-03 enforced by static test `tone-privacy.test.ts` (no fetch/XHR/beacon/WebSocket/localStorage in capture path) + manual DevTools network check
+- [11]: Contours compared time-normalized (64 steps) with onset-offset alignment — shape only, never absolute Hz; worst third (start/mid/end) drives the divergence hint
+- [11]: `useToneCapture` hook extracted from ToneSpike — single mic pipeline (getUserMedia → AnalyserNode → rAF → pitchy) shared by /tone-spike and /tone
+- [11]: ToneContour canvas redraws from the mutable framesRef every rAF (no React re-render per frame); latency = 46ms window + ~16ms rAF + 0.08ms MPM ≈ 63ms < 100ms budget
+- [11]: Target templates are semitone trajectories per tone (tone 3: 0 → −4 → +2), defined once in `targetTrajectory`
 
 ### Pending Todos
 
@@ -92,13 +97,13 @@ None.
 ### Blockers/Concerns
 
 - Tone pitch-estimator choice RESOLVED (Phase 10): pitchy MPM wins bench; YIN kept as documented fallback if real-phone Tone 3 creak breaks MPM
-- iOS/Android PWA mic matrix still pending manual run of `/tone-spike` (see device table in tone-spike-report.md) — TONE-02/TONE-03 signed off in code, device pass outstanding
-- Phase 11 contour graph must hold <100ms pitch latency; MPM at 0.08ms/frame leaves full budget for drawing
+- iOS/Android PWA mic matrix still pending manual run of `/tone-spike` and `/tone` (see device table in tone-spike-report.md) — TONE-01/02/03 signed off in code, device pass outstanding
+- Phase 11 latency budget met by design (≈63ms pipeline, 60fps rAF draw) but 60fps on low-end phones unmeasured — verify during device pass
 - HSK 3.0 tag mapping to validate against official lists during Phase 2/7 content work
 
 ## Session Continuity
 
 Last session: 2026-09-29
-Stopped at: Phase 10 complete
-Resume file: .planning/phases/11-tone-trainer-ui/11-01-PLAN.md (to be created)
-Next: Write Phase 11 plan (contour graph vs target tone shape), then execute
+Stopped at: Phase 11 complete — all v1 phases done
+Resume file: none pending (v1 roadmap closed)
+Next: manual device matrix for /tone + /tone-spike, then v2 requirements or release

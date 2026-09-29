@@ -22,7 +22,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 8: Writing Trainer** - Stroke-order handwriting quiz with offline bundle
 - [x] **Phase 9: Audio + Full Offline** - Tiered TTS chain and airplane-mode verification
 - [x] **Phase 10: Tone Spike + Scoring** - Pitch estimator spike and speaker-relative shape score
-- [ ] **Phase 11: Tone Trainer UI** - Mic contour graph vs target tone shape
+- [x] **Phase 11: Tone Trainer UI** - Mic contour graph vs target tone shape
 
 ## Phase Details
 
@@ -180,10 +180,12 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. User recording a tone attempt (e.g. nǐ third-tone dip-rise) sees a real-time pitch contour graph drawn against the target tone shape at ~60fps with <100ms pitch latency
   2. User sees their shape score and which part of the contour diverged after each attempt
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 11-01: TBD
+- [x] 11-01-PLAN.md — Contour graph + divergence feedback (toneContour math, useToneCapture hook, ToneContour canvas, /tone trainer page)
+
+**Completed:** 2026-09-29
 
 ## Progress
 
@@ -202,4 +204,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 8. Writing Trainer | 1/1 | Complete | 2026-09-24 |
 | 9. Audio + Full Offline | 1/1 | Complete | 2026-09-24 |
 | 10. Tone Spike + Scoring | 1/1 | Complete | 2026-09-29 |
-| 11. Tone Trainer UI | 0/TBD | Not started | - |
+| 11. Tone Trainer UI | 1/1 | Complete | 2026-09-29 |
