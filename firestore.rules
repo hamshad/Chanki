@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ─── ADMIN DATA (Decks, Cards, AudioMeta) ────────────────────────────────
+    // Deny by default for now (Phase 6). Phase 7 will add admin claim checks.
+    match /decks/{deckId} {
+      allow read, write: if false;
+    }
+    match /cards/{cardId} {
+      allow read, write: if false;
+    }
+
+    // ─── USER DATA (Progress) ────────────────────────────────────────────────
+    // Anonymous device identity (UUID) acts as the bearer token.
+    // Users can read/write to their own device path.
+    match /devices/{deviceId} {
+      allow read, write: if true;
+      
+      match /progress/{progressId} {
+        allow read, write: if true;
+      }
+    }
+  }
+}

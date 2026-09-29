@@ -8,22 +8,43 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "pwa:audit": "sh -c 'npx --yes serve dist -l 4173 & SRV=$!; sleep 4; npx --yes lighthouse@11 http://localhost:4173/ --output=json --output-path=./lighthouse-report.json --chrome-flags=\"--no-sandbox --headless=new\" --only-categories=pwa; CODE=$?; kill $SRV; exit $CODE'"
+    "pwa:audit": "sh -c 'npx --yes serve dist -l 4173 & SRV=$!; sleep 4; npx --yes lighthouse@11 http://localhost:4173/ --output=json --output-path=./lighthouse-report.json --chrome-flags=\"--no-sandbox --headless=new\" --only-categories=pwa; CODE=$?; kill $SRV; exit $CODE'",
+    "tone:bench": "node scripts/tone-bench.mjs",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "dexie": "^4.4.5",
+    "dexie-react-hooks": "^1.1.7",
+    "firebase": "^12.19.0",
+    "framer-motion": "^13.4.1",
+    "hanzi-writer": "^3.7.3",
+    "lucide-react": "^1.47.0",
+    "pitchy": "^4.1.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "ts-fsrs": "^5.4.2",
+    "wouter": "^3.11.0",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vite-pwa/assets-generator": "^1.0.4",
     "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/coverage-v8": "^2.1.9",
+    "fake-indexeddb": "^6.0.0",
+    "happy-dom": "^15.11.7",
     "oxlint": "^1.81.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0",
-    "vite-plugin-pwa": "^1.3.0"
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^2.1.9"
   },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.",
   "main": "index.js",
