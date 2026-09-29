@@ -1,0 +1,870 @@
+{
+  "lighthouseVersion": "11.7.1",
+  "requestedUrl": "http://localhost:4174/",
+  "mainDocumentUrl": "http://localhost:4174/",
+  "finalDisplayedUrl": "http://localhost:4174/",
+  "finalUrl": "http://localhost:4174/",
+  "fetchTime": "2026-09-19T07:36:26.986Z",
+  "gatherMode": "navigation",
+  "runWarnings": [],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "environment": {
+    "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
+    "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "benchmarkIndex": 4038,
+    "credits": {}
+  },
+  "audits": {
+    "viewport": {
+      "id": "viewport",
+      "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+      "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/).",
+      "score": 1,
+      "scoreDisplayMode": "metricSavings",
+      "warnings": [],
+      "metricSavings": {
+        "INP": 0
+      },
+      "details": {
+        "type": "debugdata",
+        "viewportContent": "width=device-width, initial-scale=1.0"
+      },
+      "guidanceLevel": 3
+    },
+    "installable-manifest": {
+      "id": "installable-manifest",
+      "title": "Web app manifest and service worker meet the installability requirements",
+      "description": "Service worker is the technology that enables your app to use many Progressive Web App features, such as offline, add to homescreen, and push notifications. With proper service worker and manifest implementations, browsers can proactively prompt users to add your app to their homescreen, which can lead to higher engagement. [Learn more about manifest installability requirements](https://developer.chrome.com/docs/lighthouse/pwa/installable-manifest/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "warnings": [],
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": [],
+        "debugData": {
+          "type": "debugdata",
+          "manifestUrl": "http://localhost:4174/manifest.webmanifest"
+        }
+      }
+    },
+    "splash-screen": {
+      "id": "splash-screen",
+      "title": "Configured for a custom splash screen",
+      "description": "A themed splash screen ensures a high-quality experience when users launch your app from their homescreens. [Learn more about splash screens](https://developer.chrome.com/docs/lighthouse/pwa/splash-screen/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "debugdata",
+        "items": [
+          {
+            "failures": [],
+            "isParseFailure": false,
+            "hasStartUrl": true,
+            "hasIconsAtLeast144px": true,
+            "hasIconsAtLeast512px": true,
+            "fetchesIcon": true,
+            "hasPWADisplayValue": true,
+            "hasBackgroundColor": true,
+            "hasThemeColor": true,
+            "hasShortName": true,
+            "shortNameLength": true,
+            "hasName": true,
+            "hasMaskableIcon": true
+          }
+        ]
+      }
+    },
+    "themed-omnibox": {
+      "id": "themed-omnibox",
+      "title": "Sets a theme color for the address bar.",
+      "description": "The browser address bar can be themed to match your site. [Learn more about theming the address bar](https://developer.chrome.com/docs/lighthouse/pwa/themed-omnibox/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "debugdata",
+        "items": [
+          {
+            "failures": [],
+            "themeColor": "#1a1a2e",
+            "isParseFailure": false,
+            "hasStartUrl": true,
+            "hasIconsAtLeast144px": true,
+            "hasIconsAtLeast512px": true,
+            "fetchesIcon": true,
+            "hasPWADisplayValue": true,
+            "hasBackgroundColor": true,
+            "hasThemeColor": true,
+            "hasShortName": true,
+            "shortNameLength": true,
+            "hasName": true,
+            "hasMaskableIcon": true
+          }
+        ]
+      }
+    },
+    "maskable-icon": {
+      "id": "maskable-icon",
+      "title": "Manifest has a maskable icon",
+      "description": "A maskable icon ensures that the image fills the entire shape without being letterboxed when installing the app on a device. [Learn about maskable manifest icons](https://developer.chrome.com/docs/lighthouse/pwa/maskable-icon-audit/).",
+      "score": 1,
+      "scoreDisplayMode": "binary"
+    },
+    "content-width": {
+      "id": "content-width",
+      "title": "Content is sized correctly for the viewport",
+      "description": "If the width of your app's content doesn't match the width of the viewport, your app might not be optimized for mobile screens. [Learn how to size content for the viewport](https://developer.chrome.com/docs/lighthouse/pwa/content-width/).",
+      "score": 1,
+      "scoreDisplayMode": "binary"
+    }
+  },
+  "configSettings": {
+    "output": [
+      "json"
+    ],
+    "maxWaitForFcp": 30000,
+    "maxWaitForLoad": 45000,
+    "pauseAfterFcpMs": 1000,
+    "pauseAfterLoadMs": 1000,
+    "networkQuietThresholdMs": 1000,
+    "cpuQuietThresholdMs": 1000,
+    "formFactor": "mobile",
+    "throttling": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    },
+    "throttlingMethod": "simulate",
+    "screenEmulation": {
+      "mobile": true,
+      "width": 412,
+      "height": 823,
+      "deviceScaleFactor": 1.75,
+      "disabled": false
+    },
+    "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
+    "auditMode": false,
+    "gatherMode": false,
+    "clearStorageTypes": [
+      "file_systems",
+      "shader_cache",
+      "service_workers",
+      "cache_storage"
+    ],
+    "disableStorageReset": false,
+    "debugNavigation": false,
+    "channel": "cli",
+    "usePassiveGathering": false,
+    "disableFullPageScreenshot": false,
+    "skipAboutBlank": false,
+    "blankPage": "about:blank",
+    "ignoreStatusCode": false,
+    "budgets": null,
+    "locale": "en-US",
+    "blockedUrlPatterns": null,
+    "additionalTraceCategories": null,
+    "extraHeaders": null,
+    "precomputedLanternData": null,
+    "onlyAudits": [
+      "viewport",
+      "installable-manifest",
+      "splash-screen",
+      "themed-omnibox",
+      "maskable-icon",
+      "content-width",
+      "service-worker",
+      "works-offline",
+      "offline-start-url",
+      "without-javascript"
+    ],
+    "onlyCategories": null,
+    "skipAudits": null
+  },
+  "categories": {
+    "performance": {
+      "title": "Performance",
+      "supportedModes": [
+        "navigation",
+        "timespan",
+        "snapshot"
+      ],
+      "auditRefs": [
+        {
+          "id": "viewport",
+          "weight": 0
+        }
+      ],
+      "id": "performance",
+      "score": 0
+    },
+    "seo": {
+      "title": "SEO",
+      "description": "These checks ensure that your page is following basic search engine optimization advice. There are many additional factors Lighthouse does not score here that may affect your search ranking, including performance on [Core Web Vitals](https://web.dev/explore/vitals). [Learn more about Google Search Essentials](https://support.google.com/webmasters/answer/35769).",
+      "manualDescription": "Run these additional validators on your site to check additional SEO best practices.",
+      "supportedModes": [
+        "navigation",
+        "snapshot"
+      ],
+      "auditRefs": [
+        {
+          "id": "viewport",
+          "weight": 1,
+          "group": "seo-mobile"
+        }
+      ],
+      "id": "seo",
+      "score": 1
+    },
+    "pwa": {
+      "title": "PWA",
+      "description": "These checks validate the aspects of a Progressive Web App. [Learn what makes a good Progressive Web App](https://web.dev/articles/pwa-checklist).",
+      "manualDescription": "These checks are required by the baseline [PWA Checklist](https://web.dev/articles/pwa-checklist) but are not automatically checked by Lighthouse. They do not affect your score but it's important that you verify them manually.",
+      "supportedModes": [
+        "navigation"
+      ],
+      "auditRefs": [
+        {
+          "id": "installable-manifest",
+          "weight": 2,
+          "group": "pwa-installable"
+        },
+        {
+          "id": "splash-screen",
+          "weight": 1,
+          "group": "pwa-optimized"
+        },
+        {
+          "id": "themed-omnibox",
+          "weight": 1,
+          "group": "pwa-optimized"
+        },
+        {
+          "id": "content-width",
+          "weight": 1,
+          "group": "pwa-optimized"
+        },
+        {
+          "id": "viewport",
+          "weight": 2,
+          "group": "pwa-optimized"
+        },
+        {
+          "id": "maskable-icon",
+          "weight": 1,
+          "group": "pwa-optimized"
+        }
+      ],
+      "id": "pwa",
+      "score": 1
+    }
+  },
+  "categoryGroups": {
+    "metrics": {
+      "title": "Metrics"
+    },
+    "load-opportunities": {
+      "title": "Opportunities",
+      "description": "These suggestions can help your page load faster. They don't [directly affect](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring/) the Performance score."
+    },
+    "budgets": {
+      "title": "Budgets",
+      "description": "Performance budgets set standards for the performance of your site."
+    },
+    "diagnostics": {
+      "title": "Diagnostics",
+      "description": "More information about the performance of your application. These numbers don't [directly affect](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring/) the Performance score."
+    },
+    "pwa-installable": {
+      "title": "Installable"
+    },
+    "pwa-optimized": {
+      "title": "PWA Optimized"
+    },
+    "a11y-best-practices": {
+      "title": "Best practices",
+      "description": "These items highlight common accessibility best practices."
+    },
+    "a11y-color-contrast": {
+      "title": "Contrast",
+      "description": "These are opportunities to improve the legibility of your content."
+    },
+    "a11y-names-labels": {
+      "title": "Names and labels",
+      "description": "These are opportunities to improve the semantics of the controls in your application. This may enhance the experience for users of assistive technology, like a screen reader."
+    },
+    "a11y-navigation": {
+      "title": "Navigation",
+      "description": "These are opportunities to improve keyboard navigation in your application."
+    },
+    "a11y-aria": {
+      "title": "ARIA",
+      "description": "These are opportunities to improve the usage of ARIA in your application which may enhance the experience for users of assistive technology, like a screen reader."
+    },
+    "a11y-language": {
+      "title": "Internationalization and localization",
+      "description": "These are opportunities to improve the interpretation of your content by users in different locales."
+    },
+    "a11y-audio-video": {
+      "title": "Audio and video",
+      "description": "These are opportunities to provide alternative content for audio and video. This may improve the experience for users with hearing or vision impairments."
+    },
+    "a11y-tables-lists": {
+      "title": "Tables and lists",
+      "description": "These are opportunities to improve the experience of reading tabular or list data using assistive technology, like a screen reader."
+    },
+    "seo-mobile": {
+      "title": "Mobile Friendly",
+      "description": "Make sure your pages are mobile friendly so users don’t have to pinch or zoom in order to read the content pages. [Learn how to make pages mobile-friendly](https://developers.google.com/search/mobile-sites/)."
+    },
+    "seo-content": {
+      "title": "Content Best Practices",
+      "description": "Format your HTML in a way that enables crawlers to better understand your app’s content."
+    },
+    "seo-crawl": {
+      "title": "Crawling and Indexing",
+      "description": "To appear in search results, crawlers need access to your app."
+    },
+    "best-practices-trust-safety": {
+      "title": "Trust and Safety"
+    },
+    "best-practices-ux": {
+      "title": "User Experience"
+    },
+    "best-practices-browser-compat": {
+      "title": "Browser Compatibility"
+    },
+    "best-practices-general": {
+      "title": "General"
+    },
+    "hidden": {
+      "title": ""
+    }
+  },
+  "stackPacks": [],
+  "fullPageScreenshot": {
+    "screenshot": {
+      "data": "data:image/webp;base64,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",
+      "width": 412,
+      "height": 823
+    },
+    "nodes": {
+      "1-0-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      },
+      "1-1-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      },
+      "1-2-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      },
+      "1-3-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      },
+      "1-4-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      },
+      "1-5-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      },
+      "1-6-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      },
+      "1-7-META": {
+        "id": "",
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "width": 0,
+        "height": 0
+      }
+    }
+  },
+  "timing": {
+    "entries": [
+      {
+        "startTime": 707.87,
+        "name": "lh:config",
+        "duration": 174.26,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 708.55,
+        "name": "lh:config:resolveArtifactsToDefns",
+        "duration": 40.43,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 882.21,
+        "name": "lh:runner:gather",
+        "duration": 4575.43,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 934.84,
+        "name": "lh:driver:connect",
+        "duration": 3.43,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 938.36,
+        "name": "lh:driver:navigate",
+        "duration": 8.91,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 947.42,
+        "name": "lh:gather:getBenchmarkIndex",
+        "duration": 1001.74,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 1949.31,
+        "name": "lh:gather:getVersion",
+        "duration": 0.41,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 1949.81,
+        "name": "lh:prepare:navigationMode",
+        "duration": 39.77,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 1958.14,
+        "name": "lh:storage:clearDataForOrigin",
+        "duration": 21.39,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 1979.61,
+        "name": "lh:storage:clearBrowserCaches",
+        "duration": 8.64,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 1988.96,
+        "name": "lh:gather:prepareThrottlingAndNetwork",
+        "duration": 0.6,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 1995.44,
+        "name": "lh:driver:navigate",
+        "duration": 2363.11,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4359.81,
+        "name": "lh:computed:NetworkRecords",
+        "duration": 0.62,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4360.6,
+        "name": "lh:gather:getArtifact:DevtoolsLog",
+        "duration": 0.04,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4360.65,
+        "name": "lh:gather:getArtifact:InstallabilityErrors",
+        "duration": 0.36,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4360.69,
+        "name": "lh:gather:getInstallabilityErrors",
+        "duration": 0.3,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4361.02,
+        "name": "lh:gather:getArtifact:MetaElements",
+        "duration": 3.45,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4364.52,
+        "name": "lh:gather:getArtifact:NetworkUserAgent",
+        "duration": 0.05,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4364.58,
+        "name": "lh:gather:getArtifact:Stacks",
+        "duration": 7.11,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4364.62,
+        "name": "lh:gather:collectStacks",
+        "duration": 7.05,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4371.7,
+        "name": "lh:gather:getArtifact:ViewportDimensions",
+        "duration": 0.75,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4372.46,
+        "name": "lh:gather:getArtifact:WebAppManifest",
+        "duration": 0.92,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4372.53,
+        "name": "lh:gather:getWebAppManifest",
+        "duration": 0.85,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 4373.39,
+        "name": "lh:gather:getArtifact:FullPageScreenshot",
+        "duration": 1077.62,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5457.9,
+        "name": "lh:runner:audit",
+        "duration": 5.57,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5458,
+        "name": "lh:runner:auditing",
+        "duration": 5.29,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5458.8,
+        "name": "lh:audit:viewport",
+        "duration": 1.04,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5459,
+        "name": "lh:computed:ViewportMeta",
+        "duration": 0.41,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5459.99,
+        "name": "lh:audit:installable-manifest",
+        "duration": 0.8,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5460.23,
+        "name": "lh:computed:ManifestValues",
+        "duration": 0.26,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5460.88,
+        "name": "lh:audit:splash-screen",
+        "duration": 0.74,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5461.73,
+        "name": "lh:audit:themed-omnibox",
+        "duration": 0.41,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5462.28,
+        "name": "lh:audit:maskable-icon",
+        "duration": 0.29,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5462.68,
+        "name": "lh:audit:content-width",
+        "duration": 0.59,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 5463.29,
+        "name": "lh:runner:generate",
+        "duration": 0.18,
+        "entryType": "measure"
+      }
+    ],
+    "total": 4581
+  },
+  "i18n": {
+    "rendererFormattedStrings": {
+      "calculatorLink": "See calculator.",
+      "collapseView": "Collapse view",
+      "crcInitialNavigation": "Initial Navigation",
+      "crcLongestDurationLabel": "Maximum critical path latency:",
+      "dropdownCopyJSON": "Copy JSON",
+      "dropdownDarkTheme": "Toggle Dark Theme",
+      "dropdownPrintExpanded": "Print Expanded",
+      "dropdownPrintSummary": "Print Summary",
+      "dropdownSaveGist": "Save as Gist",
+      "dropdownSaveHTML": "Save as HTML",
+      "dropdownSaveJSON": "Save as JSON",
+      "dropdownViewer": "Open in Viewer",
+      "dropdownViewUnthrottledTrace": "View Unthrottled Trace",
+      "errorLabel": "Error!",
+      "errorMissingAuditInfo": "Report error: no audit information",
+      "expandView": "Expand view",
+      "firstPartyChipLabel": "1st party",
+      "footerIssue": "File an issue",
+      "hide": "Hide",
+      "labDataTitle": "Lab Data",
+      "lsPerformanceCategoryDescription": "[Lighthouse](https://developers.google.com/web/tools/lighthouse/) analysis of the current page on an emulated mobile network. Values are estimated and may vary.",
+      "manualAuditsGroupTitle": "Additional items to manually check",
+      "notApplicableAuditsGroupTitle": "Not applicable",
+      "openInANewTabTooltip": "Open in a new tab",
+      "opportunityResourceColumnLabel": "Opportunity",
+      "opportunitySavingsColumnLabel": "Estimated Savings",
+      "passedAuditsGroupTitle": "Passed audits",
+      "pwaRemovalMessage": "As per [Chrome’s updated Installability Criteria](https://developer.chrome.com/blog/update-install-criteria), Lighthouse will be deprecating the PWA category in a future release. Please refer to the [updated PWA documentation](https://developer.chrome.com/docs/devtools/progressive-web-apps/) for future PWA testing.",
+      "runtimeAnalysisWindow": "Initial page load",
+      "runtimeAnalysisWindowSnapshot": "Point-in-time snapshot",
+      "runtimeAnalysisWindowTimespan": "User interactions timespan",
+      "runtimeCustom": "Custom throttling",
+      "runtimeDesktopEmulation": "Emulated Desktop",
+      "runtimeMobileEmulation": "Emulated Moto G Power",
+      "runtimeNoEmulation": "No emulation",
+      "runtimeSettingsAxeVersion": "Axe version",
+      "runtimeSettingsBenchmark": "Unthrottled CPU/Memory Power",
+      "runtimeSettingsCPUThrottling": "CPU throttling",
+      "runtimeSettingsDevice": "Device",
+      "runtimeSettingsNetworkThrottling": "Network throttling",
+      "runtimeSettingsScreenEmulation": "Screen emulation",
+      "runtimeSettingsUANetwork": "User agent (network)",
+      "runtimeSingleLoad": "Single page session",
+      "runtimeSingleLoadTooltip": "This data is taken from a single page session, as opposed to field data summarizing many sessions.",
+      "runtimeSlow4g": "Slow 4G throttling",
+      "runtimeUnknown": "Unknown",
+      "show": "Show",
+      "showRelevantAudits": "Show audits relevant to:",
+      "snippetCollapseButtonLabel": "Collapse snippet",
+      "snippetExpandButtonLabel": "Expand snippet",
+      "thirdPartyResourcesLabel": "Show 3rd-party resources",
+      "throttlingProvided": "Provided by environment",
+      "toplevelWarningsMessage": "There were issues affecting this run of Lighthouse:",
+      "unattributable": "Unattributable",
+      "varianceDisclaimer": "Values are estimated and may vary. The [performance score is calculated](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring/) directly from these metrics.",
+      "viewTraceLabel": "View Trace",
+      "viewTreemapLabel": "View Treemap",
+      "warningAuditsGroupTitle": "Passed audits but with warnings",
+      "warningHeader": "Warnings: "
+    },
+    "icuMessagePaths": {
+      "core/audits/viewport.js | title": [
+        "audits.viewport.title"
+      ],
+      "core/audits/viewport.js | description": [
+        "audits.viewport.description"
+      ],
+      "core/audits/installable-manifest.js | title": [
+        "audits[installable-manifest].title"
+      ],
+      "core/audits/installable-manifest.js | description": [
+        "audits[installable-manifest].description"
+      ],
+      "core/audits/splash-screen.js | title": [
+        "audits[splash-screen].title"
+      ],
+      "core/audits/splash-screen.js | description": [
+        "audits[splash-screen].description"
+      ],
+      "core/audits/themed-omnibox.js | title": [
+        "audits[themed-omnibox].title"
+      ],
+      "core/audits/themed-omnibox.js | description": [
+        "audits[themed-omnibox].description"
+      ],
+      "core/audits/maskable-icon.js | title": [
+        "audits[maskable-icon].title"
+      ],
+      "core/audits/maskable-icon.js | description": [
+        "audits[maskable-icon].description"
+      ],
+      "core/audits/content-width.js | title": [
+        "audits[content-width].title"
+      ],
+      "core/audits/content-width.js | description": [
+        "audits[content-width].description"
+      ],
+      "core/config/default-config.js | performanceCategoryTitle": [
+        "categories.performance.title"
+      ],
+      "core/config/default-config.js | seoCategoryTitle": [
+        "categories.seo.title"
+      ],
+      "core/config/default-config.js | seoCategoryDescription": [
+        "categories.seo.description"
+      ],
+      "core/config/default-config.js | seoCategoryManualDescription": [
+        "categories.seo.manualDescription"
+      ],
+      "core/config/default-config.js | pwaCategoryTitle": [
+        "categories.pwa.title"
+      ],
+      "core/config/default-config.js | pwaCategoryDescription": [
+        "categories.pwa.description"
+      ],
+      "core/config/default-config.js | pwaCategoryManualDescription": [
+        "categories.pwa.manualDescription"
+      ],
+      "core/config/default-config.js | metricGroupTitle": [
+        "categoryGroups.metrics.title"
+      ],
+      "core/config/default-config.js | loadOpportunitiesGroupTitle": [
+        "categoryGroups[load-opportunities].title"
+      ],
+      "core/config/default-config.js | loadOpportunitiesGroupDescription": [
+        "categoryGroups[load-opportunities].description"
+      ],
+      "core/config/default-config.js | budgetsGroupTitle": [
+        "categoryGroups.budgets.title"
+      ],
+      "core/config/default-config.js | budgetsGroupDescription": [
+        "categoryGroups.budgets.description"
+      ],
+      "core/config/default-config.js | diagnosticsGroupTitle": [
+        "categoryGroups.diagnostics.title"
+      ],
+      "core/config/default-config.js | diagnosticsGroupDescription": [
+        "categoryGroups.diagnostics.description"
+      ],
+      "core/config/default-config.js | pwaInstallableGroupTitle": [
+        "categoryGroups[pwa-installable].title"
+      ],
+      "core/config/default-config.js | pwaOptimizedGroupTitle": [
+        "categoryGroups[pwa-optimized].title"
+      ],
+      "core/config/default-config.js | a11yBestPracticesGroupTitle": [
+        "categoryGroups[a11y-best-practices].title"
+      ],
+      "core/config/default-config.js | a11yBestPracticesGroupDescription": [
+        "categoryGroups[a11y-best-practices].description"
+      ],
+      "core/config/default-config.js | a11yColorContrastGroupTitle": [
+        "categoryGroups[a11y-color-contrast].title"
+      ],
+      "core/config/default-config.js | a11yColorContrastGroupDescription": [
+        "categoryGroups[a11y-color-contrast].description"
+      ],
+      "core/config/default-config.js | a11yNamesLabelsGroupTitle": [
+        "categoryGroups[a11y-names-labels].title"
+      ],
+      "core/config/default-config.js | a11yNamesLabelsGroupDescription": [
+        "categoryGroups[a11y-names-labels].description"
+      ],
+      "core/config/default-config.js | a11yNavigationGroupTitle": [
+        "categoryGroups[a11y-navigation].title"
+      ],
+      "core/config/default-config.js | a11yNavigationGroupDescription": [
+        "categoryGroups[a11y-navigation].description"
+      ],
+      "core/config/default-config.js | a11yAriaGroupTitle": [
+        "categoryGroups[a11y-aria].title"
+      ],
+      "core/config/default-config.js | a11yAriaGroupDescription": [
+        "categoryGroups[a11y-aria].description"
+      ],
+      "core/config/default-config.js | a11yLanguageGroupTitle": [
+        "categoryGroups[a11y-language].title"
+      ],
+      "core/config/default-config.js | a11yLanguageGroupDescription": [
+        "categoryGroups[a11y-language].description"
+      ],
+      "core/config/default-config.js | a11yAudioVideoGroupTitle": [
+        "categoryGroups[a11y-audio-video].title"
+      ],
+      "core/config/default-config.js | a11yAudioVideoGroupDescription": [
+        "categoryGroups[a11y-audio-video].description"
+      ],
+      "core/config/default-config.js | a11yTablesListsVideoGroupTitle": [
+        "categoryGroups[a11y-tables-lists].title"
+      ],
+      "core/config/default-config.js | a11yTablesListsVideoGroupDescription": [
+        "categoryGroups[a11y-tables-lists].description"
+      ],
+      "core/config/default-config.js | seoMobileGroupTitle": [
+        "categoryGroups[seo-mobile].title"
+      ],
+      "core/config/default-config.js | seoMobileGroupDescription": [
+        "categoryGroups[seo-mobile].description"
+      ],
+      "core/config/default-config.js | seoContentGroupTitle": [
+        "categoryGroups[seo-content].title"
+      ],
+      "core/config/default-config.js | seoContentGroupDescription": [
+        "categoryGroups[seo-content].description"
+      ],
+      "core/config/default-config.js | seoCrawlingGroupTitle": [
+        "categoryGroups[seo-crawl].title"
+      ],
+      "core/config/default-config.js | seoCrawlingGroupDescription": [
+        "categoryGroups[seo-crawl].description"
+      ],
+      "core/config/default-config.js | bestPracticesTrustSafetyGroupTitle": [
+        "categoryGroups[best-practices-trust-safety].title"
+      ],
+      "core/config/default-config.js | bestPracticesUXGroupTitle": [
+        "categoryGroups[best-practices-ux].title"
+      ],
+      "core/config/default-config.js | bestPracticesBrowserCompatGroupTitle": [
+        "categoryGroups[best-practices-browser-compat].title"
+      ],
+      "core/config/default-config.js | bestPracticesGeneralGroupTitle": [
+        "categoryGroups[best-practices-general].title"
+      ]
+    }
+  }
+}

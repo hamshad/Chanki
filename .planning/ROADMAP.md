@@ -12,16 +12,16 @@ From empty repo to offline-first 4-sided Chinese flashcard PWA: installable shel
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: PWA Shell** - Installable app shell with update prompt and offline fallback
-- [ ] **Phase 2: Data Contract** - Local Dexie store, card schema, device identity, starter deck
-- [ ] **Phase 3: Review UI** - 4-sided flip flow with random prompt and tone styling
-- [ ] **Phase 4: SRS Engine** - ts-fsrs scheduler, per-card state, immutable review log
-- [ ] **Phase 5: Grading + Session** - 4-button grading, in-session retry, 20-card summary
-- [ ] **Phase 6: Sync + Rules** - Background push-then-pull sync with locked Firestore rules
-- [ ] **Phase 7: Admin + Deck Pipeline** - Hidden admin CRUD and versioned JSON import/export
-- [ ] **Phase 8: Writing Trainer** - Stroke-order handwriting quiz with offline bundle
-- [ ] **Phase 9: Audio + Full Offline** - Tiered TTS chain and airplane-mode verification
-- [ ] **Phase 10: Tone Spike + Scoring** - Pitch estimator spike and speaker-relative shape score
+- [x] **Phase 1: PWA Shell** - Installable app shell with update prompt and offline fallback
+- [x] **Phase 2: Data Contract** - Local Dexie store, card schema, device identity, starter deck
+- [x] **Phase 3: Review UI** - 4-sided flip flow with random prompt and tone styling
+- [x] **Phase 4: SRS Engine** - ts-fsrs scheduler, per-card state, immutable review log
+- [x] **Phase 5: Grading + Session** - 4-button grading, in-session retry, 20-card summary
+- [x] **Phase 6: Sync + Rules** - Background push-then-pull sync with locked Firestore rules
+- [x] **Phase 7: Admin + Deck Pipeline** - Hidden admin CRUD and versioned JSON import/export
+- [x] **Phase 8: Writing Trainer** - Stroke-order handwriting quiz with offline bundle
+- [x] **Phase 9: Audio + Full Offline** - Tiered TTS chain and airplane-mode verification
+- [x] **Phase 10: Tone Spike + Scoring** - Pitch estimator spike and speaker-relative shape score
 - [ ] **Phase 11: Tone Trainer UI** - Mic contour graph vs target tone shape
 
 ## Phase Details
@@ -41,6 +41,8 @@ Plans:
 - [x] 01-02-PLAN.md — Install + update UX (update banner, iOS hint, Chromium install button)
 - [x] 01-03-PLAN.md — Hosting + verification (firebase.json headers, Lighthouse gate, device matrix)
 
+**Completed:** 2026-09-19
+
 ### Phase 2: Data Contract
 **Goal**: App has a versioned local source of truth with real starter content and anonymous device identity
 **Depends on**: Phase 1
@@ -53,10 +55,12 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Database core + schema validation (Dexie v1, Zod Card/Deck/Progress/ReviewLog/AudioMeta/DeviceMeta, ToneEnum 1-5)
-- [ ] 02-02-PLAN.md — Device identity + starter deck seeding (crypto.randomUUID in meta, seedStarterDeckIfNeeded with Zod validation)
-- [ ] 02-03-PLAN.md — Vite PWA audio precaching + starter deck assets (includeAssets, globPatterns mp3/json, CacheFirst runtime, HSK1 JSON)
-- [ ] 02-04-PLAN.md — Migration infrastructure + app bootstrap (v1→v2 upgrade hook pattern, main.tsx bootstrap sequence)
+- [x] 02-01-PLAN.md — Database core + schema validation (Dexie v1, Zod Card/Deck/Progress/ReviewLog/AudioMeta/DeviceMeta, ToneEnum 1-5)
+- [x] 02-02-PLAN.md — Device identity + starter deck seeding (crypto.randomUUID in meta, seedStarterDeckIfNeeded with Zod validation)
+- [x] 02-03-PLAN.md — Vite PWA audio precaching + starter deck assets (includeAssets, globPatterns mp3/json, CacheFirst runtime, HSK1 JSON)
+- [x] 02-04-PLAN.md — Migration infrastructure + app bootstrap (v1→v2 upgrade hook pattern, main.tsx bootstrap sequence)
+
+**Completed:** 2026-09-24 (recovered from interrupted session)
 
 ### Phase 3: Review UI
 **Goal**: User can flip through all four sides of a card starting from a random prompt side
@@ -66,10 +70,14 @@ Plans:
   1. User starting a session sees a random prompt side (character/pinyin/meaning/tone) per card, not always the same side
   2. User can flip through all 4 sides of a card before any grading control appears
   3. User sees pinyin with correct tone marks and consistent tone colors on every side, every card
-**Plans**: TBD
+**Plans**: 3 plans (implemented in interrupted session, recovered 2026-09-24)
 
 Plans:
-- [ ] 03-01: TBD
+- [x] 03-01-PLAN.md — useCardFlip hook (random prompt side, REVEAL_SEQUENCES state machine, isFullyRevealed gate)
+- [x] 03-02-PLAN.md — CardView + CardSide components (AnimatePresence reveals, ToneText color, hanzi-text class)
+- [x] 03-03-PLAN.md — ReviewSession page + ToneText utility (fetch 20 cards, framer-motion transitions, tone CSS vars)
+
+**Completed:** 2026-09-24 (recovered from interrupted session)
 
 ### Phase 4: SRS Engine
 **Goal**: Every grade durably reschedules the card via a real spaced-repetition scheduler with full audit trail
@@ -148,7 +156,7 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 09-01: TBD
+- [x] 09-01-PLAN.md — Tiered Audio & Offline Verification
 
 ### Phase 10: Tone Spike + Scoring
 **Goal**: Pitch estimation approach is proven on real phones with a speaker-relative scoring function, before any trainer UI is built
@@ -158,10 +166,12 @@ Plans:
   1. Spike report documents measured pitchy-MPM vs YIN comparison on target phones (ni3 dip-rise and ma1 samples) with a chosen winner
   2. Shape score for the same tone sung at different absolute pitches returns the same result (speaker-relative, never absolute Hz), with calibration and test-mic flow handling noise/silence states
   3. No mic audio leaves the device — network inspection during a tone attempt shows zero audio upload without explicit consent
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 10-01: TBD
+- [x] 10-01-PLAN.md — Pitch estimation & shape scoring (pitchy MPM, speaker-relative scoring, /tone-spike harness, MPM-vs-YIN bench)
+
+**Completed:** 2026-09-29
 
 ### Phase 11: Tone Trainer UI
 **Goal**: User can record a tone attempt and see their live pitch contour against the target tone shape
@@ -183,13 +193,13 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. PWA Shell | 3/3 | Complete | 2026-09-19 |
-| 2. Data Contract | 0/1 | Not started | - |
-| 3. Review UI | 0/1 | Not started | - |
-| 4. SRS Engine | 0/1 | Not started | - |
-| 5. Grading + Session | 0/1 | Not started | - |
-| 6. Sync + Rules | 0/1 | Not started | - |
-| 7. Admin + Deck Pipeline | 0/1 | Not started | - |
-| 8. Writing Trainer | 0/1 | Not started | - |
-| 9. Audio + Full Offline | 0/1 | Not started | - |
-| 10. Tone Spike + Scoring | 0/1 | Not started | - |
-| 11. Tone Trainer UI | 0/1 | Not started | - |
+| 2. Data Contract | 4/4 | Complete | 2026-09-24 |
+| 3. Review UI | 3/3 | Complete | 2026-09-24 |
+| 4. SRS Engine | 1/1 | Complete | 2026-09-24 |
+| 5. Grading + Session | 1/1 | Complete | 2026-09-24 |
+| 6. Sync + Rules | 1/1 | Complete | 2026-09-24 |
+| 7. Admin + Deck Pipeline | 1/1 | Complete | 2026-09-24 |
+| 8. Writing Trainer | 1/1 | Complete | 2026-09-24 |
+| 9. Audio + Full Offline | 1/1 | Complete | 2026-09-24 |
+| 10. Tone Spike + Scoring | 1/1 | Complete | 2026-09-29 |
+| 11. Tone Trainer UI | 0/TBD | Not started | - |

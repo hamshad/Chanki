@@ -2,41 +2,51 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-09-19)
+See: .planning/PROJECT.md (updated 2026-09-24)
 
 **Core value:** Retention via 4-prompt recall works offline on a phone.
-**Current focus:** Phase 1 PWA Shell (plan 3 of 3 done) — phase complete
+**Current focus:** Phase 11 Tone Trainer UI
 
 ## Current Position
 
-Phase: 1 of 11 (01-pwa-shell, 3/3 plans complete)
-Plan: 3 of 3 in current phase
-Status: 01-03 complete — Phase 1 done
-Last activity: 2026-09-19 — 01-03 hosting headers + Lighthouse gate + device matrix verified (23 min)
+Phase: 10 of 11 complete — Phase 11 (11-tone-trainer-ui) next
+Plan: 10-01-PLAN.md (done); 11-01-PLAN.md not yet written
+Status: Phases 1–10 done — Phase 11 (Tone Trainer UI) is next
+Last activity: 2026-09-29 — Phase 10 complete: speaker-relative scoring + calibration/test-mic states, /tone-spike harness, MPM-vs-YIN bench, spike report
 
-Progress: [███░░░░░░░] 9%
+Progress: [██████████░] 95%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 10 min
-- Total execution time: 31 min
+- Total plans completed: 3 (Phase 1) + 4 (Phase 2) + 3 (Phase 3 equivalent) = 10
+- Average duration: ~10 min
+- Total execution time: ~60 min estimated
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-pwa-shell | 3 | 31 min | 10 min |
+| 02-data-contract | 4 | ~20 min | ~5 min |
+| 03-review-ui | 3 (est.) | ~15 min | ~5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min), 01-02 (2 min), 01-03 (23 min)
+- Last 5 plans: 01-03 (23 min), 02-01 through 02-04 + 03 (interrupted session)
 - Trend: on pace
 
 *Updated after each plan completion*
 | Phase 01-pwa-shell P01 | 6min | 2 tasks | 24 files |
 | Phase 01-pwa-shell P02 | 2 min | 2 tasks | 7 files |
 | Phase 01-pwa-shell P03 | 23 min | 3 tasks | 7 files |
+| Phase 02-data-contract P01-P04 | ~20 min | 10 tasks | 20 files |
+| Phase 03-review-ui | ~15 min | 6 tasks | 8 files |
+| Phase 04-srs-engine | ~20 min | 3 tasks | 4 files |
+| Phase 05-grading-session | ~15 min | 4 tasks | 4 files |
+| Phase 06-sync-rules | ~20 min | 4 tasks | 5 files |
+| Phase 07-admin-deck | ~15 min | 4 tasks | 3 files |
+| Phase 08-writing-trainer | ~20 min | 3 tasks | 3 files |
+| Phase 10-tone-spike | ~45 min | 4 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -58,19 +68,37 @@ Recent decisions affecting current work:
 - [01-03]: OfflineStatus uses native navigator.onLine + online/offline events (no custom heartbeat per RESEARCH Don't Hand-Roll)
 - [01-03]: Lighthouse CI runs locally against served dist with pwa>=0.9, works-offline error, installable-manifest error assertions
 - [01-03]: Real-device install matrix verified on iOS Safari + Android Chrome against Vercel preview; OFFLINE-01/OFFLINE-03 satisfied
+- [02-01]: Zod schemas are single source of truth; CardSchema uses .strict() + ToneEnum z.enum(['1'-'5']); compound index [cardId+deviceId] on progress
+- [02-02]: device-id uses crypto.randomUUID() stored in meta table; seed fetches JSON via fetch() (not Vite import) to avoid bundle bloat
+- [02-03]: hsk1-starter.json has 150 HSK 2.0 cards; vite.config.ts uses CacheFirst for audio with maximumFileSizeToCacheInBytes: 50MB
+- [02-04]: main.tsx bootstrap: assertV1Schema → getOrCreateDeviceId → seedStarterDeckIfNeeded → React mount; error shows fallback div
+- [03]: useCardFlip picks random prompt side on init; REVEAL_SEQUENCES maps prompt→reveal order; isFullyRevealed gates next-card action
+- [03]: CardSide uses AnimatePresence/motion.div for entrance animations; ToneText applies --tone-N CSS var color + hanzi-text class
+- [04]: ts-fsrs integrated through IScheduler; Progress schema updated with state, learning_steps, and sideHistory. GradingButtons component displays preview intervals.
+- [05]: ReviewSession updated to handle queue of cards. Failed cards (rated 'Again') are re-queued to retry in-session. SessionSummary added with dynamically calculated next due information.
+- [06]: Firebase sync configured in `sync.ts` using background push/pull. Device ID (UUID) is used as bearer token since there is no login. `firestore.rules` implemented to deny public writes to admin collections while permitting device-specific reads/writes. `SyncStatusBadge` component built to display UI indicators.
+- [07]: Hidden Admin gate implemented in `App.tsx` (7 rapid clicks on header title + code). `AdminDashboard` built to support complete CRUD for decks/cards, complete with versioned JSON export/import pipelines leveraging Zod for row-by-row validation.
+- [08]: Integrated `hanzi-writer` to power the `WritingPad` component. Created local script to bundle offline data for all starter deck characters. Connected writing events directly into the `CardView` so users can seamlessly 'Practice Writing' with real-time feedback prior to completing a card.
+- [10]: pitchy (MPM) chosen over YIN — bench: 0.08 vs 0.59 ms/frame, ni3 median error 1.1–2.0 vs 9.3–11.5 cents, zero octave errors (`scripts/tone-bench.mjs`, `npm run tone:bench`)
+- [10]: `calculateToneScore` uses only difference metrics (span/delta/dip depth) on a semitone track → scale- and offset-invariant; calibrated base passed as 3rd optional arg
+- [10]: `analyzeCapture` classifies frames voiced/noise/silence → `ok | noisy | silence | too-short` + median voiced base for calibration
+- [10]: ToneSpike harness lives at hidden route `/tone-spike`; stops MediaStream tracks + AudioContext on every teardown (no stuck mic indicator)
+- [10]: TONE-03 enforced by static test `tone-privacy.test.ts` (no fetch/XHR/beacon/WebSocket/localStorage in capture path) + manual DevTools network check
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
-- Tone pitch-estimator choice unresolved until Phase 10 spike (YIN vs MPM vs pYIN on real phones)
-- iOS PWA behaviors (quota/eviction, mic gesture, TTS quirks) need real-device matrix in Phases 1, 9, 10 — docs not trusted alone
+- Tone pitch-estimator choice RESOLVED (Phase 10): pitchy MPM wins bench; YIN kept as documented fallback if real-phone Tone 3 creak breaks MPM
+- iOS/Android PWA mic matrix still pending manual run of `/tone-spike` (see device table in tone-spike-report.md) — TONE-02/TONE-03 signed off in code, device pass outstanding
+- Phase 11 contour graph must hold <100ms pitch latency; MPM at 0.08ms/frame leaves full budget for drawing
 - HSK 3.0 tag mapping to validate against official lists during Phase 2/7 content work
 
 ## Session Continuity
 
-Last session: 2026-09-19
-Stopped at: Completed 01-pwa-shell-03-PLAN.md — Phase 1 complete
-Resume file: None
+Last session: 2026-09-29
+Stopped at: Phase 10 complete
+Resume file: .planning/phases/11-tone-trainer-ui/11-01-PLAN.md (to be created)
+Next: Write Phase 11 plan (contour graph vs target tone shape), then execute
