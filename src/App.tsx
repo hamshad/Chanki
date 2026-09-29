@@ -10,6 +10,7 @@ import { Home } from './pages/Home'
 import { ReviewSession } from './pages/ReviewSession'
 import { AdminDashboard } from './pages/AdminDashboard'
 import { ToneSpike } from './components/ToneSpike'
+import { ToneTrainer } from './pages/ToneTrainer'
 
 import { useState, useRef } from 'react'
 
@@ -59,6 +60,7 @@ function App() {
           <Route path="/" component={Home} />
           <Route path="/review" component={ReviewSession} />
           <Route path="/admin" component={AdminDashboard} />
+          <Route path="/tone" component={ToneTrainer} />
           {/* Phase 10 spike harness — dev-only pitch capture, no audio leaves the device */}
           <Route path="/tone-spike" component={ToneSpike} />
           {/* Default fallback */}

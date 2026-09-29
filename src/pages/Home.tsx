@@ -1,6 +1,6 @@
 import { useLocation } from 'wouter'
 import { motion } from 'framer-motion'
-import { BookOpen } from 'lucide-react'
+import { BookOpen, AudioLines } from 'lucide-react'
 
 export function Home() {
   const [, setLocation] = useLocation()
@@ -34,6 +34,14 @@ export function Home() {
             style={{ width: '100%', marginTop: '1rem' }}
           >
             Start Session
+          </button>
+
+          <button
+            className="secondary"
+            onClick={() => setLocation('/tone')}
+            style={{ width: '100%' }}
+          >
+            <AudioLines size={16} /> Tone Trainer
           </button>
         </div>
       </div>

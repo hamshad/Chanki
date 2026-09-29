@@ -78,6 +78,27 @@ button.primary:active {
   transform: translateY(0);
 }
 
+button.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+button.secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
 /* Specific typography */
 .hanzi-text {
   font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;

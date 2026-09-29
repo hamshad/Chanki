@@ -4,6 +4,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    // Cloudflare quick tunnels hand out a random *.trycloudflare.com host
+    // per tunnel, so match the suffix instead of pinning one hostname.
+    allowedHosts: ['.trycloudflare.com'],
+  },
   plugins: [
     react(),
     VitePWA({

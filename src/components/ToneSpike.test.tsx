@@ -5,6 +5,7 @@ import { ToneSpike } from './ToneSpike'
 afterEach(() => {
   cleanup()
   vi.restoreAllMocks()
+  vi.unstubAllGlobals()
 })
 
 describe('ToneSpike (Phase 10 harness)', () => {

@@ -1,154 +1,38 @@
-import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
-import { PitchDetector } from 'pitchy'
+import { useState, useMemo } from 'react'
 import {
   analyzeCapture,
   calculateToneScore,
   toSemitones,
+  CAPTURE_STATE_LABEL,
   MAX_VOICED_HZ,
   MIN_VOICED_HZ,
-  type CaptureAnalysis,
   type CaptureState,
-  type Frame,
 } from '../utils/scoring'
+import { useToneCapture } from '../hooks/useToneCapture'
 import type { Tone } from '../types'
 
-const CALIBRATE_FRAMES = 45
-const LIVE_UPDATE_EVERY = 10
-
-type Mode = 'idle' | 'calibrating' | 'recording'
-
-const STATE_LABEL: Record<CaptureState, string> = {
-  'too-short': 'Too short',
-  silence: 'No voice detected',
-  noisy: 'Noisy background',
-  ok: 'Clear',
-}
-
 export function ToneSpike() {
-  const [mode, setMode] = useState<Mode>('idle')
   const [targetTone, setTargetTone] = useState<Tone>('1')
-  const [baseFreq, setBaseFreq] = useState<number | null>(null)
-  const [calibrationMsg, setCalibrationMsg] = useState<string | null>(null)
-  const [analysis, setAnalysis] = useState<CaptureAnalysis | null>(null)
-  const [score, setScore] = useState<number | null>(null)
-  const [lastPitches, setLastPitches] = useState<number[]>([])
-  const [live, setLive] = useState<CaptureAnalysis | null>(null)
-  const [error, setError] = useState<string | null>(null)
-
-  const modeRef = useRef<Mode>('idle')
-  const streamRef = useRef<MediaStream | null>(null)
-  const audioContextRef = useRef<AudioContext | null>(null)
-  const rafRef = useRef(0)
-  const framesRef = useRef<Frame[]>([])
-
-  const teardown = useCallback(() => {
-    cancelAnimationFrame(rafRef.current)
-    audioContextRef.current?.close().catch(() => {})
-    audioContextRef.current = null
-    streamRef.current?.getTracks().forEach(track => track.stop())
-    streamRef.current = null
-    modeRef.current = 'idle'
-    setMode('idle')
-    setLive(null)
-  }, [])
-
-  const finishCapture = useCallback(() => {
-    const frames = [...framesRef.current]
-    const result = analyzeCapture(frames)
-    const wasCalibrating = modeRef.current === 'calibrating'
-    teardown()
-
-    if (wasCalibrating) {
-      if (result.state === 'ok' && result.baseFreq) {
-        setBaseFreq(result.baseFreq)
-        setCalibrationMsg(`Calibrated at ${result.baseFreq.toFixed(0)} Hz`)
-      } else {
-        setCalibrationMsg(`Calibration failed: ${STATE_LABEL[result.state]}. Retry closer to the mic.`)
-      }
-      return
-    }
-
-    setAnalysis(result)
-    setLastPitches(frames.map(f => f.freq))
-    setScore(calculateToneScore(frames.map(f => f.freq), targetTone, baseFreq ?? undefined))
-  }, [teardown, targetTone, baseFreq])
-
-  const startCapture = useCallback(
-    async (kind: Exclude<Mode, 'idle'>) => {
-      setError(null)
-      if (kind === 'calibrating') setCalibrationMsg(null)
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: { echoCancellation: true, noiseSuppression: false, autoGainControl: false },
-        })
-        streamRef.current = stream
-
-        const audioContext = new window.AudioContext()
-        await audioContext.resume()
-        audioContextRef.current = audioContext
-
-        const analyser = audioContext.createAnalyser()
-        analyser.fftSize = 2048
-        const source = audioContext.createMediaStreamSource(stream)
-        source.connect(analyser)
-
-        const detector = PitchDetector.forFloat32Array(analyser.fftSize)
-        const timeDomain = new Float32Array(analyser.fftSize)
-
-        framesRef.current = []
-        setAnalysis(null)
-        setScore(null)
-        setLastPitches([])
-        setLive(null)
-
-        modeRef.current = kind
-        setMode(kind)
-
-        const tick = () => {
-          analyser.getFloatTimeDomainData(timeDomain)
-          let sum = 0
-          for (let i = 0; i < timeDomain.length; i++) sum += timeDomain[i] * timeDomain[i]
-          const rms = Math.sqrt(sum / timeDomain.length)
-
-          const [pitch, clarity] = detector.findPitch(timeDomain, audioContext.sampleRate)
-          framesRef.current.push({ freq: pitch, clarity, rms })
-
-          if (framesRef.current.length % LIVE_UPDATE_EVERY === 0) {
-            setLive(analyzeCapture(framesRef.current))
-          }
-
-          if (kind === 'calibrating' && framesRef.current.length >= CALIBRATE_FRAMES) {
-            finishCapture()
-            return
-          }
-
-          rafRef.current = requestAnimationFrame(tick)
-        }
-
-        rafRef.current = requestAnimationFrame(tick)
-      } catch (err) {
-        teardown()
-        setError(
-          err instanceof DOMException && err.name === 'NotAllowedError'
-            ? 'Microphone permission denied. Allow mic access in browser settings.'
-            : 'Microphone unavailable on this device.',
-        )
-      }
-    },
-    [finishCapture, teardown],
-  )
-
-  useEffect(() => teardown, [teardown])
+  const { mode, live, lastFrames, baseFreq, calibrationMsg, error, start, stop } = useToneCapture()
 
   const busy = mode !== 'idle'
-  const displayState = live ?? analysis
+  const analysis = useMemo(() => (lastFrames ? analyzeCapture(lastFrames) : null), [lastFrames])
+  const score = useMemo(() => {
+    if (!lastFrames) return null
+    return calculateToneScore(
+      lastFrames.map(f => f.freq),
+      targetTone,
+      baseFreq ?? undefined,
+    )
+  }, [lastFrames, targetTone, baseFreq])
 
-  // toSemitones drops unvoiced frames, so zip against the filtered Hz list to keep indices aligned.
+  const displayState = live ?? analysis
   const shape = useMemo(() => {
-    const voiced = lastPitches.filter(p => p >= MIN_VOICED_HZ && p <= MAX_VOICED_HZ)
-    const semis = toSemitones(lastPitches, baseFreq ?? undefined)
+    const freqs = lastFrames?.map(f => f.freq) ?? []
+    const voiced = freqs.filter(p => p >= MIN_VOICED_HZ && p <= MAX_VOICED_HZ)
+    const semis = toSemitones(freqs, baseFreq ?? undefined)
     return voiced.map((hz, i) => ({ hz, semi: semis[i] }))
-  }, [lastPitches, baseFreq])
+  }, [lastFrames, baseFreq])
 
   return (
     <div className="p-8 text-white" data-testid="tone-spike">
@@ -185,7 +69,7 @@ export function ToneSpike() {
           {calibrationMsg && <div className="text-xs text-amber-400 mt-1">{calibrationMsg}</div>}
         </div>
         <button
-          onClick={() => startCapture('calibrating')}
+          onClick={() => start('calibrating')}
           disabled={busy}
           className="bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 px-4 py-2 rounded font-bold"
         >
@@ -196,13 +80,13 @@ export function ToneSpike() {
       <div className="mb-8">
         {!busy ? (
           <button
-            onClick={() => startCapture('recording')}
+            onClick={() => start('recording')}
             className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded font-bold"
           >
             Start Recording
           </button>
         ) : (
-          <button onClick={finishCapture} className="bg-red-600 hover:bg-red-500 px-4 py-2 rounded font-bold animate-pulse">
+          <button onClick={stop} className="bg-red-600 hover:bg-red-500 px-4 py-2 rounded font-bold animate-pulse">
             {mode === 'calibrating' ? 'Stop calibration' : 'Stop Recording'}
           </button>
         )}
@@ -244,13 +128,14 @@ export function ToneSpike() {
           </div>
           {analysis.state !== 'ok' && (
             <p className="mt-2 text-xs text-amber-400">
-              Result unreliable — {STATE_LABEL[analysis.state].toLowerCase()}. Recalibrate and try again.
+              Result unreliable — {CAPTURE_STATE_LABEL[analysis.state].toLowerCase()}. Recalibrate
+              and try again.
             </p>
           )}
         </div>
       )}
 
-      {lastPitches.length > 0 && (
+      {shape.length > 0 && (
         <div className="bg-gray-900 p-4 rounded text-xs text-gray-500 h-64 overflow-y-auto font-mono">
           <div className="text-gray-400 mb-2">frame · Hz · semitones vs base</div>
           {shape.map((row, i) => (
@@ -275,7 +160,7 @@ function StateBadge({ state }: { state: CaptureState }) {
         : 'bg-amber-700 text-amber-50'
   return (
     <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold uppercase ${tone}`}>
-      {STATE_LABEL[state]}
+      {CAPTURE_STATE_LABEL[state]}
     </span>
   )
 }

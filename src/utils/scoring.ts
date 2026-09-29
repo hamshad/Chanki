@@ -21,6 +21,13 @@ const NOISY_RATIO = 0.3
 
 export type CaptureState = 'too-short' | 'silence' | 'noisy' | 'ok'
 
+export const CAPTURE_STATE_LABEL: Record<CaptureState, string> = {
+  'too-short': 'Too short',
+  silence: 'No voice detected',
+  noisy: 'Noisy background',
+  ok: 'Clear',
+}
+
 export type FrameClass = 'voiced' | 'noise' | 'silence'
 
 export interface Frame {
