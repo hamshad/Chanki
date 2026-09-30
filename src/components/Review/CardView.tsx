@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { ToneText } from '../ui/ToneText'
 import { GradingButtons } from './GradingButtons'
-import { WritingPad } from './WritingPad'
+import { WritingDialog } from './WritingDialog'
 import { InfoSheet } from './InfoSheet'
 import { playAudio } from '../../utils/audio'
 import { searchExamples, type ExampleSentence } from '../../data/api/tatoeba'
@@ -179,8 +179,8 @@ export function CardView({ card, onNext }: CardViewProps) {
   }
 
   const handleWriteComplete = () => {
+    // Keep the dialog open — its success screen closes itself
     setHasWritten(true)
-    setIsWriting(false)
   }
 
   const handlePlayAudio = (e: React.MouseEvent) => {
@@ -227,49 +227,41 @@ export function CardView({ card, onNext }: CardViewProps) {
             {/* Face 0 — character */}
             <div className="cube-face">
               <span className="face-label">Character</span>
-              {isWriting ? (
-                <WritingPad
+              <div className="face-stack">
+                <ToneText
                   text={card.hanzi}
                   tone={tone}
-                  onComplete={handleWriteComplete}
+                  isHanzi
+                  className="hanzi-display"
                 />
-              ) : (
-                <div className="face-stack">
-                  <ToneText
-                    text={card.hanzi}
-                    tone={tone}
-                    isHanzi
-                    className="hanzi-display"
-                  />
-                  {(card.traditional || card.chars?.some((c) => c.radical || c.strokes)) && (
-                    <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
-                      {card.traditional && (
-                        <span className="chip">繁體 {card.traditional}</span>
-                      )}
-                      {card.chars?.map((c) => (
-                        <span key={c.char} className="chip">
-                          {c.char}
-                          {c.radical && ` · ${c.radical}`}
-                          {c.strokes != null && ` · ${c.strokes} strokes`}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  {!hasWritten && (
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        setIsWriting(true)
-                      }}
-                      className="btn-quiet"
-                    >
-                      Practice writing
-                    </button>
-                  )}
-                  {hasWritten && <span className="chip chip--live">✓ Written</span>}
-                </div>
-              )}
+                {(card.traditional || card.chars?.some((c) => c.radical || c.strokes)) && (
+                  <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
+                    {card.traditional && (
+                      <span className="chip">繁體 {card.traditional}</span>
+                    )}
+                    {card.chars?.map((c) => (
+                      <span key={c.char} className="chip">
+                        {c.char}
+                        {c.radical && ` · ${c.radical}`}
+                        {c.strokes != null && ` · ${c.strokes} strokes`}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {!hasWritten && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setIsWriting(true)
+                    }}
+                    className="btn-quiet"
+                  >
+                    Practice writing
+                  </button>
+                )}
+                {hasWritten && <span className="chip chip--live">✓ Written</span>}
+              </div>
             </div>
 
             {/* Face 1 — pinyin */}
@@ -367,6 +359,16 @@ export function CardView({ card, onNext }: CardViewProps) {
             </div>
           )}
         </InfoSheet>
+      )}
+
+      {isWriting && (
+        <WritingDialog
+          text={card.hanzi}
+          tone={tone}
+          hint={card.pinyin}
+          onClose={() => setIsWriting(false)}
+          onComplete={handleWriteComplete}
+        />
       )}
     </div>
   )

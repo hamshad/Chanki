@@ -1252,24 +1252,123 @@ label {
 
 /* Writing pad */
 
-.writing-pad {
+/* Writing dialog (full-screen practice) */
+.writing-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(6px);
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+  animation: sheet-fade 0.18s ease;
+}
+
+.writing-dialog {
+  width: min(440px, 100%);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
-  padding: 0.5rem 0 0.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+  padding: 1.1rem 1.2rem calc(1.2rem + env(safe-area-inset-bottom, 0px));
+  animation: sheet-up 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.writing-dialog .info-sheet-head {
+  margin-bottom: 0;
+}
+
+.writing-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.writing-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 2.5rem;
+  padding: 0.35rem 0.55rem;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-3);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.writing-chip.is-current {
+  border-color: rgb(var(--accent-rgb) / 0.6);
+  color: var(--accent);
+}
+
+/* completed characters light up */
+.writing-chip.is-done {
+  border-color: rgb(var(--accent-rgb) / 0.35);
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: 0 0 12px -4px rgb(var(--accent-rgb) / 0.55);
+}
+
+.writing-stage {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem 0;
+}
+
+/* border lives here, not on the traced canvas — keeps HanziWriter's
+   coordinate box exactly the drawn size (touch lands where the finger is) */
+.writing-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  outline: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 .writing-canvas {
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: crosshair;
+}
+
+.writing-hint {
+  margin: 0;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 0.85rem;
+}
+
+.writing-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.25rem 0 0.5rem;
+  color: var(--accent);
+}
+
+.writing-success p {
+  margin: 0;
+  color: var(--text-2);
 }
 
 /* Tone trainer */
