@@ -10,6 +10,9 @@
     "preview": "vite preview",
     "pwa:audit": "sh -c 'npx --yes serve dist -l 4173 & SRV=$!; sleep 4; npx --yes lighthouse@11 http://localhost:4173/ --output=json --output-path=./lighthouse-report.json --chrome-flags=\"--no-sandbox --headless=new\" --only-categories=pwa; CODE=$?; kill $SRV; exit $CODE'",
     "tone:bench": "node scripts/tone-bench.mjs",
+    "data:build": "node scripts/data/build-deck.mjs",
+    "data:build:refresh": "node scripts/data/build-deck.mjs --refresh",
+    "data:hanzi": "node scripts/download-hanzi.js",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage"

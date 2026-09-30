@@ -41,13 +41,15 @@ export default defineConfig({
       manifest: {
         name: 'Chanki',
         short_name: 'Chanki',
+        description:
+          'Four-sided Chinese flashcards with spaced repetition — character, pinyin, meaning and tone on every card. Works offline.',
         start_url: '/',
         scope: '/',
         id: '/',
         display: 'standalone',
         orientation: 'portrait-primary',
-        background_color: '#ffffff',
-        theme_color: '#1a1a2e',
+        background_color: '#131110',
+        theme_color: '#131110',
         categories: ['education'],
         icons: [
           {
@@ -63,7 +65,7 @@ export default defineConfig({
             purpose: 'any',
           },
           {
-            src: '/icons/maskable-512x512.png',
+            src: '/icons/maskable-icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',

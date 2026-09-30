@@ -52,33 +52,31 @@ export function SessionSummary({ stats }: SessionSummaryProps) {
 
   return (
     <div className="card-container flex flex-col items-center justify-center min-h-[60vh] text-center w-full">
-      <h2 className="text-3xl font-bold mb-8">Session Complete!</h2>
-      
-      <div className="grid grid-cols-2 gap-4 w-full max-w-sm mb-12">
-        <div className="glass-panel p-4 flex flex-col">
-          <span className="text-sm text-gray-400 mb-1">Cards</span>
-          <span className="text-3xl font-bold text-blue-400">{stats.totalStudied}</span>
+      <p className="eyebrow">summary</p>
+      <h2 className="display text-4xl" style={{ margin: '0.35rem 0 2rem' }}>
+        Session complete
+      </h2>
+
+      <div className="stat-grid mb-8">
+        <div className="stat">
+          <span className="stat-label">cards</span>
+          <span className="stat-value">{stats.totalStudied}</span>
         </div>
-        
-        <div className="glass-panel p-4 flex flex-col">
-          <span className="text-sm text-gray-400 mb-1">Accuracy</span>
-          <span className="text-3xl font-bold text-green-400">{accuracy}%</span>
+
+        <div className="stat">
+          <span className="stat-label">accuracy</span>
+          <span className="stat-value">{accuracy}%</span>
         </div>
-        
-        <div className="glass-panel p-4 flex flex-col col-span-2">
-          <span className="text-sm text-gray-400 mb-1">Retries</span>
-          <span className="text-xl font-medium text-orange-400">{stats.retries}</span>
+
+        <div className="stat stat--wide">
+          <span className="stat-label">retries</span>
+          <span className="stat-value">{stats.retries}</span>
         </div>
-      </div>
-      
-      <div className="mb-12 text-gray-400 text-sm">
-        Next review due: {nextDue}
       </div>
 
-      <button 
-        className="primary px-12 py-3 rounded-full font-bold text-lg"
-        onClick={() => setLocation('/')}
-      >
+      <p className="faint text-sm mb-8 tnum">Next review due {nextDue}</p>
+
+      <button className="primary" onClick={() => setLocation('/')}>
         Finish
       </button>
     </div>

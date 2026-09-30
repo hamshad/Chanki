@@ -105,6 +105,76 @@ describe('CardSchema', () => {
   })
 })
 
+describe('CardSchema — sourced metadata (ETL)', () => {
+  const fullCard = {
+    ...validCard,
+    frequency: 130,
+    chars: [
+      {
+        char: '你',
+        radical: '亻',
+        strokes: 7,
+        decomposition: '⿰亻尔',
+        etymology: {
+          type: 'pictophonetic' as const,
+          phonetic: '尔',
+          semantic: '亻',
+          hint: 'person',
+        },
+      },
+    ],
+    examples: [
+      { zh: '你好。', en: 'Hello.', sourceId: 12345 },
+      { zh: '你好吗？', audioUrl: '/assets/deck/audio/ex-99.mp3' },
+    ],
+  }
+
+  it('accepts card with frequency, char metadata and examples', () => {
+    const card = CardSchema.parse(fullCard)
+    expect(card.frequency).toBe(130)
+    expect(card.chars?.[0].strokes).toBe(7)
+    expect(card.examples?.[0].en).toBe('Hello.')
+  })
+
+  it('accepts etymology without phonetic/semantic (ideographic)', () => {
+    const card = {
+      ...fullCard,
+      chars: [{ char: '上', radical: '一', etymology: { type: 'ideographic' as const, hint: 'One stroke above another' } }],
+    }
+    expect(() => CardSchema.parse(card)).not.toThrow()
+  })
+
+  it('accepts null phonetic/semantic from source data', () => {
+    const card = {
+      ...fullCard,
+      chars: [{ char: '你', etymology: { type: 'pictophonetic' as const, phonetic: null, semantic: null } }],
+    }
+    expect(() => CardSchema.parse(card)).not.toThrow()
+  })
+
+  it('rejects unknown etymology type', () => {
+    const card = {
+      ...fullCard,
+      chars: [{ char: '你', etymology: { type: 'mystery' } }],
+    }
+    expect(() => CardSchema.parse(card)).toThrow()
+  })
+
+  it('rejects unknown keys inside char metadata (strict)', () => {
+    const card = { ...fullCard, chars: [{ char: '你', fortune: 'lucky' }] }
+    expect(() => CardSchema.parse(card)).toThrow()
+  })
+
+  it('rejects example without zh', () => {
+    const card = { ...fullCard, examples: [{ en: 'no chinese' }] }
+    expect(() => CardSchema.parse(card)).toThrow()
+  })
+
+  it('rejects negative frequency', () => {
+    expect(() => CardSchema.parse({ ...fullCard, frequency: -1 })).toThrow()
+  })
+})
+
 describe('DeckSchema', () => {
   const validDeck = {
     id: DECK_ID,

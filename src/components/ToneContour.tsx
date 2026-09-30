@@ -20,10 +20,10 @@ interface ToneContourProps {
   height?: number
 }
 
-const GRID = '#334155'
-const USER_LINE = '#F8FAFC'
-const LIVE_LINE = '#06D6A0'
-const ZONE_FILL = 'rgba(252, 163, 17, 0.14)'
+const GRID = '#3a332e'
+const USER_LINE = '#f4efe9'
+const LIVE_LINE = '#4fc9a3'
+const ZONE_FILL = 'rgba(217, 164, 65, 0.16)'
 
 /**
  * Live pitch-contour canvas: target template (dashed, tone color) vs the
@@ -149,7 +149,7 @@ export function ToneContour({
       // Marker at the single largest error once scored.
       if (divergence && divergence.errors.length > 0) {
         const idx = divergence.worstIndex
-        ctx.fillStyle = '#FCA311'
+        ctx.fillStyle = '#e5a63c'
         ctx.beginPath()
         ctx.arc(x(idx), y(user[idx]), 4, 0, Math.PI * 2)
         ctx.fill()
@@ -173,12 +173,12 @@ export function ToneContour({
 
   return (
     <div
-      className="relative bg-gray-900 rounded p-2"
+      className="contour-plot"
       data-testid="tone-contour"
       style={{ height: `${height}px` }}
     >
       <canvas ref={canvasRef} data-testid="tone-contour-canvas" />
-      <span className="absolute top-2 left-3 text-[10px] uppercase tracking-wide text-gray-500">
+      <span className="contour-caption">
         semitones · target (dashed) vs you (solid)
       </span>
     </div>

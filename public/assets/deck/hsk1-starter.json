@@ -1,162 +1,6693 @@
 {
-  "deck": {
-    "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-    "name": "HSK 1 Starter",
-    "slug": "hsk1-starter",
-    "schemaVersion": 1,
-    "createdAt": 1726700000000,
-    "updatedAt": 1726700000000
+ "deck": {
+  "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+  "name": "HSK 1 Starter",
+  "slug": "hsk1-starter",
+  "schemaVersion": 1,
+  "createdAt": 1726700000000,
+  "updatedAt": 1790763374830
+ },
+ "cards": [
+  {
+   "id": "10000000-0000-4000-8000-000000000001",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "爱",
+   "pinyin": "ài",
+   "meaning": "to love; to be fond of; to like; affection; to be inclined (to do sth); to tend to (happen)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "愛",
+   "frequency": 130,
+   "chars": [
+    {
+     "char": "爱",
+     "radical": "爫",
+     "strokes": 10,
+     "decomposition": "⿱⿱爫冖友",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "To bring a friend 友 into one's house 冖"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "爱听？",
+     "en": "Love listening?",
+     "sourceId": 10961051
+    },
+    {
+     "zh": "可爱~",
+     "en": "That's so cute.",
+     "sourceId": 10890920
+    }
+   ],
+   "example": "爱听？"
   },
-  "cards": [
-    { "id": "10000000-0000-4000-8000-000000000001", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "爱", "pinyin": "ài", "meaning": "love; to love", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ai4.mp3", "example": "我爱你。", "traditional": "愛" },
-    { "id": "10000000-0000-4000-8000-000000000002", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "八", "pinyin": "bā", "meaning": "eight (8)", "tone": "1", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ba1.mp3", "example": "八个苹果。", "traditional": "八" },
-    { "id": "10000000-0000-4000-8000-000000000003", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "爸爸", "pinyin": "bàba", "meaning": "dad; father", "tone": "4", "tags": ["hsk1", "family"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/baba4.mp3", "example": "我爸爸很高。", "traditional": "爸爸" },
-    { "id": "10000000-0000-4000-8000-000000000004", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "杯子", "pinyin": "bēizi", "meaning": "cup; glass", "tone": "1", "tags": ["hsk1", "objects"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/beizi1.mp3", "example": "这个杯子是我的。", "traditional": "杯子" },
-    { "id": "10000000-0000-4000-8000-000000000005", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "北京", "pinyin": "Běijīng", "meaning": "Beijing", "tone": "3", "tags": ["hsk1", "place"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/beijing3.mp3", "example": "我住在北京。", "traditional": "北京" },
-    { "id": "10000000-0000-4000-8000-000000000006", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "本", "pinyin": "běn", "meaning": "volume; classifier for books", "tone": "3", "tags": ["hsk1", "measure-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ben3.mp3", "example": "一本书。", "traditional": "本" },
-    { "id": "10000000-0000-4000-8000-000000000007", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "不客气", "pinyin": "bù kèqi", "meaning": "you're welcome; don't mention it", "tone": "4", "tags": ["hsk1", "expression"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/bukeqi4.mp3", "example": "谢谢你！—不客气！", "traditional": "不客氣" },
-    { "id": "10000000-0000-4000-8000-000000000008", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "不", "pinyin": "bù", "meaning": "not; no (negation)", "tone": "4", "tags": ["hsk1", "negation"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/bu4.mp3", "example": "我不去。", "traditional": "不" },
-    { "id": "10000000-0000-4000-8000-000000000009", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "菜", "pinyin": "cài", "meaning": "dish; vegetable; food", "tone": "4", "tags": ["hsk1", "food"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/cai4.mp3", "example": "这道菜很好吃。", "traditional": "菜" },
-    { "id": "10000000-0000-4000-8000-000000000010", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "茶", "pinyin": "chá", "meaning": "tea", "tone": "2", "tags": ["hsk1", "food", "drink"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/cha2.mp3", "example": "我喜欢喝茶。", "traditional": "茶" },
-    { "id": "10000000-0000-4000-8000-000000000011", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "吃", "pinyin": "chī", "meaning": "to eat", "tone": "1", "tags": ["hsk1", "verb", "food"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/chi1.mp3", "example": "你吃了吗？", "traditional": "吃" },
-    { "id": "10000000-0000-4000-8000-000000000012", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "出租车", "pinyin": "chūzūchē", "meaning": "taxi; cab", "tone": "1", "tags": ["hsk1", "transport"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/chuzuche1.mp3", "example": "我坐出租车去。", "traditional": "出租車" },
-    { "id": "10000000-0000-4000-8000-000000000013", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "打电话", "pinyin": "dǎ diànhuà", "meaning": "to make a phone call", "tone": "3", "tags": ["hsk1", "verb", "communication"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/dadianhua3.mp3", "example": "我给你打电话。", "traditional": "打電話" },
-    { "id": "10000000-0000-4000-8000-000000000014", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "大", "pinyin": "dà", "meaning": "big; large; great", "tone": "4", "tags": ["hsk1", "adjective"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/da4.mp3", "example": "那个苹果很大。", "traditional": "大" },
-    { "id": "10000000-0000-4000-8000-000000000015", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "的", "pinyin": "de", "meaning": "structural particle (possessive / modifier)", "tone": "5", "tags": ["hsk1", "particle"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/de5.mp3", "example": "我的书。", "traditional": "的" },
-    { "id": "10000000-0000-4000-8000-000000000016", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "点", "pinyin": "diǎn", "meaning": "o'clock; point; a little", "tone": "3", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/dian3.mp3", "example": "现在几点？", "traditional": "點" },
-    { "id": "10000000-0000-4000-8000-000000000017", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "电脑", "pinyin": "diànnǎo", "meaning": "computer", "tone": "4", "tags": ["hsk1", "technology"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/diannao4.mp3", "example": "我的电脑很快。", "traditional": "電腦" },
-    { "id": "10000000-0000-4000-8000-000000000018", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "电视", "pinyin": "diànshì", "meaning": "television; TV", "tone": "4", "tags": ["hsk1", "technology"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/dianshi4.mp3", "example": "我在看电视。", "traditional": "電視" },
-    { "id": "10000000-0000-4000-8000-000000000019", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "电影", "pinyin": "diànyǐng", "meaning": "movie; film", "tone": "4", "tags": ["hsk1", "entertainment"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/dianying4.mp3", "example": "我喜欢看电影。", "traditional": "電影" },
-    { "id": "10000000-0000-4000-8000-000000000020", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "东西", "pinyin": "dōngxi", "meaning": "thing; stuff; object", "tone": "1", "tags": ["hsk1", "noun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/dongxi1.mp3", "example": "你买了什么东西？", "traditional": "東西" },
-    { "id": "10000000-0000-4000-8000-000000000021", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "都", "pinyin": "dōu", "meaning": "all; both; already", "tone": "1", "tags": ["hsk1", "adverb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/dou1.mp3", "example": "我们都去。", "traditional": "都" },
-    { "id": "10000000-0000-4000-8000-000000000022", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "读", "pinyin": "dú", "meaning": "to read; to study", "tone": "2", "tags": ["hsk1", "verb", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/du2.mp3", "example": "他在读书。", "traditional": "讀" },
-    { "id": "10000000-0000-4000-8000-000000000023", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "对不起", "pinyin": "duìbuqǐ", "meaning": "sorry; excuse me", "tone": "4", "tags": ["hsk1", "expression"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/duibuqi4.mp3", "example": "对不起，我来晚了。", "traditional": "對不起" },
-    { "id": "10000000-0000-4000-8000-000000000024", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "多", "pinyin": "duō", "meaning": "many; much; a lot", "tone": "1", "tags": ["hsk1", "adjective"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/duo1.mp3", "example": "这里人很多。", "traditional": "多" },
-    { "id": "10000000-0000-4000-8000-000000000025", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "多少", "pinyin": "duōshao", "meaning": "how many; how much", "tone": "1", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/duoshao1.mp3", "example": "多少钱？", "traditional": "多少" },
-    { "id": "10000000-0000-4000-8000-000000000026", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "儿子", "pinyin": "érzi", "meaning": "son", "tone": "2", "tags": ["hsk1", "family"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/erzi2.mp3", "example": "我的儿子很聪明。", "traditional": "兒子" },
-    { "id": "10000000-0000-4000-8000-000000000027", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "二", "pinyin": "èr", "meaning": "two (2)", "tone": "4", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/er4.mp3", "example": "二十个学生。", "traditional": "二" },
-    { "id": "10000000-0000-4000-8000-000000000028", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "饭店", "pinyin": "fàndiàn", "meaning": "hotel; restaurant", "tone": "4", "tags": ["hsk1", "place"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/fandian4.mp3", "example": "我们去饭店吃饭。", "traditional": "飯店" },
-    { "id": "10000000-0000-4000-8000-000000000029", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "飞机", "pinyin": "fēijī", "meaning": "airplane", "tone": "1", "tags": ["hsk1", "transport"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/feiji1.mp3", "example": "我坐飞机去上海。", "traditional": "飛機" },
-    { "id": "10000000-0000-4000-8000-000000000030", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "分钟", "pinyin": "fēnzhōng", "meaning": "minute (unit of time)", "tone": "1", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/fenzhong1.mp3", "example": "等我五分钟。", "traditional": "分鐘" },
-    { "id": "10000000-0000-4000-8000-000000000031", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "高兴", "pinyin": "gāoxìng", "meaning": "happy; glad; pleased", "tone": "1", "tags": ["hsk1", "emotion"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/gaoxing1.mp3", "example": "我很高兴认识你。", "traditional": "高興" },
-    { "id": "10000000-0000-4000-8000-000000000032", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "个", "pinyin": "gè", "meaning": "general measure word (classifier)", "tone": "4", "tags": ["hsk1", "measure-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ge4.mp3", "example": "三个人。", "traditional": "個" },
-    { "id": "10000000-0000-4000-8000-000000000033", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "工作", "pinyin": "gōngzuò", "meaning": "work; job; to work", "tone": "1", "tags": ["hsk1", "noun", "verb", "work"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/gongzuo1.mp3", "example": "你在哪里工作？", "traditional": "工作" },
-    { "id": "10000000-0000-4000-8000-000000000034", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "狗", "pinyin": "gǒu", "meaning": "dog", "tone": "3", "tags": ["hsk1", "animal"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/gou3.mp3", "example": "那只狗很可爱。", "traditional": "狗" },
-    { "id": "10000000-0000-4000-8000-000000000035", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "汉语", "pinyin": "Hànyǔ", "meaning": "Chinese language (Mandarin)", "tone": "4", "tags": ["hsk1", "language", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/hanyu4.mp3", "example": "我在学汉语。", "traditional": "漢語" },
-    { "id": "10000000-0000-4000-8000-000000000036", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "好", "pinyin": "hǎo", "meaning": "good; well; fine", "tone": "3", "tags": ["hsk1", "adjective"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/hao3.mp3", "example": "你好！", "traditional": "好" },
-    { "id": "10000000-0000-4000-8000-000000000037", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "号", "pinyin": "hào", "meaning": "number; date (day of month)", "tone": "4", "tags": ["hsk1", "time", "noun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/hao4.mp3", "example": "今天几号？", "traditional": "號" },
-    { "id": "10000000-0000-4000-8000-000000000038", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "喝", "pinyin": "hē", "meaning": "to drink", "tone": "1", "tags": ["hsk1", "verb", "drink"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/he1.mp3", "example": "你想喝什么？", "traditional": "喝" },
-    { "id": "10000000-0000-4000-8000-000000000039", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "和", "pinyin": "hé", "meaning": "and; together with", "tone": "2", "tags": ["hsk1", "conjunction"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/he2.mp3", "example": "我和你一起去。", "traditional": "和" },
-    { "id": "10000000-0000-4000-8000-000000000040", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "很", "pinyin": "hěn", "meaning": "very; quite", "tone": "3", "tags": ["hsk1", "adverb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/hen3.mp3", "example": "她很漂亮。", "traditional": "很" },
-    { "id": "10000000-0000-4000-8000-000000000041", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "后面", "pinyin": "hòumiàn", "meaning": "behind; at the back", "tone": "4", "tags": ["hsk1", "direction"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/houmian4.mp3", "example": "我在你后面。", "traditional": "後面" },
-    { "id": "10000000-0000-4000-8000-000000000042", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "回", "pinyin": "huí", "meaning": "to return; to go back", "tone": "2", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/hui2.mp3", "example": "我要回家了。", "traditional": "回" },
-    { "id": "10000000-0000-4000-8000-000000000043", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "会", "pinyin": "huì", "meaning": "can; to be able to; to know how to", "tone": "4", "tags": ["hsk1", "modal-verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/hui4.mp3", "example": "我会说中文。", "traditional": "會" },
-    { "id": "10000000-0000-4000-8000-000000000044", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "几", "pinyin": "jǐ", "meaning": "how many; several (small number)", "tone": "3", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ji3.mp3", "example": "你有几个朋友？", "traditional": "幾" },
-    { "id": "10000000-0000-4000-8000-000000000045", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "家", "pinyin": "jiā", "meaning": "home; family; household", "tone": "1", "tags": ["hsk1", "place", "family"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/jia1.mp3", "example": "我回家了。", "traditional": "家" },
-    { "id": "10000000-0000-4000-8000-000000000046", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "叫", "pinyin": "jiào", "meaning": "to be called; to call; to shout", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/jiao4.mp3", "example": "我叫小明。", "traditional": "叫" },
-    { "id": "10000000-0000-4000-8000-000000000047", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "今天", "pinyin": "jīntiān", "meaning": "today", "tone": "1", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/jintian1.mp3", "example": "今天天气很好。", "traditional": "今天" },
-    { "id": "10000000-0000-4000-8000-000000000048", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "九", "pinyin": "jiǔ", "meaning": "nine (9)", "tone": "3", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/jiu3.mp3", "example": "九月份。", "traditional": "九" },
-    { "id": "10000000-0000-4000-8000-000000000049", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "开", "pinyin": "kāi", "meaning": "to open; to drive; to start", "tone": "1", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/kai1.mp3", "example": "请开门。", "traditional": "開" },
-    { "id": "10000000-0000-4000-8000-000000000050", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "看", "pinyin": "kàn", "meaning": "to look; to see; to watch; to read", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/kan4.mp3", "example": "我看书。", "traditional": "看" },
-    { "id": "10000000-0000-4000-8000-000000000051", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "看见", "pinyin": "kànjiàn", "meaning": "to see; to catch sight of", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/kanjian4.mp3", "example": "我看见你了。", "traditional": "看見" },
-    { "id": "10000000-0000-4000-8000-000000000052", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "块", "pinyin": "kuài", "meaning": "yuan (colloquial); piece; lump", "tone": "4", "tags": ["hsk1", "money", "measure-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/kuai4.mp3", "example": "五块钱。", "traditional": "塊" },
-    { "id": "10000000-0000-4000-8000-000000000053", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "来", "pinyin": "lái", "meaning": "to come", "tone": "2", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/lai2.mp3", "example": "你什么时候来？", "traditional": "來" },
-    { "id": "10000000-0000-4000-8000-000000000054", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "老师", "pinyin": "lǎoshī", "meaning": "teacher", "tone": "3", "tags": ["hsk1", "occupation", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/laoshi3.mp3", "example": "她是我的老师。", "traditional": "老師" },
-    { "id": "10000000-0000-4000-8000-000000000055", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "了", "pinyin": "le", "meaning": "particle: completed action / changed state", "tone": "5", "tags": ["hsk1", "particle"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/le5.mp3", "example": "我吃了。", "traditional": "了" },
-    { "id": "10000000-0000-4000-8000-000000000056", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "冷", "pinyin": "lěng", "meaning": "cold", "tone": "3", "tags": ["hsk1", "adjective", "weather"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/leng3.mp3", "example": "今天很冷。", "traditional": "冷" },
-    { "id": "10000000-0000-4000-8000-000000000057", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "里", "pinyin": "lǐ", "meaning": "inside; in; within", "tone": "3", "tags": ["hsk1", "direction"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/li3.mp3", "example": "箱子里有什么？", "traditional": "裡" },
-    { "id": "10000000-0000-4000-8000-000000000058", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "六", "pinyin": "liù", "meaning": "six (6)", "tone": "4", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/liu4.mp3", "example": "六个月。", "traditional": "六" },
-    { "id": "10000000-0000-4000-8000-000000000059", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "妈妈", "pinyin": "māma", "meaning": "mom; mother", "tone": "1", "tags": ["hsk1", "family"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/mama1.mp3", "example": "我妈妈很漂亮。", "traditional": "媽媽" },
-    { "id": "10000000-0000-4000-8000-000000000060", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "吗", "pinyin": "ma", "meaning": "question particle (yes/no questions)", "tone": "5", "tags": ["hsk1", "particle"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ma5.mp3", "example": "你好吗？", "traditional": "嗎" },
-    { "id": "10000000-0000-4000-8000-000000000061", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "买", "pinyin": "mǎi", "meaning": "to buy; to purchase", "tone": "3", "tags": ["hsk1", "verb", "shopping"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/mai3.mp3", "example": "我想买这个。", "traditional": "買" },
-    { "id": "10000000-0000-4000-8000-000000000062", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "猫", "pinyin": "māo", "meaning": "cat", "tone": "1", "tags": ["hsk1", "animal"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/mao1.mp3", "example": "那只猫很可爱。", "traditional": "貓" },
-    { "id": "10000000-0000-4000-8000-000000000063", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "没关系", "pinyin": "méi guānxi", "meaning": "it doesn't matter; that's OK; never mind", "tone": "2", "tags": ["hsk1", "expression"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/meiguanxi2.mp3", "example": "没关系，没问题。", "traditional": "沒關係" },
-    { "id": "10000000-0000-4000-8000-000000000064", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "没有", "pinyin": "méiyǒu", "meaning": "don't have; there isn't; not yet (negates 有)", "tone": "2", "tags": ["hsk1", "verb", "negation"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/meiyou2.mp3", "example": "我没有钱。", "traditional": "沒有" },
-    { "id": "10000000-0000-4000-8000-000000000065", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "米饭", "pinyin": "mǐfàn", "meaning": "cooked rice", "tone": "3", "tags": ["hsk1", "food"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/mifan3.mp3", "example": "我想吃米饭。", "traditional": "米飯" },
-    { "id": "10000000-0000-4000-8000-000000000066", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "明天", "pinyin": "míngtiān", "meaning": "tomorrow", "tone": "2", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/mingtian2.mp3", "example": "明天见！", "traditional": "明天" },
-    { "id": "10000000-0000-4000-8000-000000000067", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "名字", "pinyin": "míngzi", "meaning": "name", "tone": "2", "tags": ["hsk1", "noun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/mingzi2.mp3", "example": "你叫什么名字？", "traditional": "名字" },
-    { "id": "10000000-0000-4000-8000-000000000068", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "哪", "pinyin": "nǎ", "meaning": "which; where", "tone": "3", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/na3.mp3", "example": "你是哪国人？", "traditional": "哪" },
-    { "id": "10000000-0000-4000-8000-000000000069", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "哪儿", "pinyin": "nǎr", "meaning": "where (spoken)", "tone": "3", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/nar3.mp3", "example": "你去哪儿？", "traditional": "哪兒" },
-    { "id": "10000000-0000-4000-8000-000000000070", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "那", "pinyin": "nà", "meaning": "that; those", "tone": "4", "tags": ["hsk1", "pronoun", "determiner"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/na4.mp3", "example": "那个人是谁？", "traditional": "那" },
-    { "id": "10000000-0000-4000-8000-000000000071", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "呢", "pinyin": "ne", "meaning": "particle: used in questions (and you?)", "tone": "5", "tags": ["hsk1", "particle"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ne5.mp3", "example": "你好，你呢？", "traditional": "呢" },
-    { "id": "10000000-0000-4000-8000-000000000072", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "能", "pinyin": "néng", "meaning": "can; to be capable of (physical ability)", "tone": "2", "tags": ["hsk1", "modal-verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/neng2.mp3", "example": "我能帮你吗？", "traditional": "能" },
-    { "id": "10000000-0000-4000-8000-000000000073", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "你", "pinyin": "nǐ", "meaning": "you (singular)", "tone": "3", "tags": ["hsk1", "pronoun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ni3.mp3", "example": "你好！", "traditional": "你" },
-    { "id": "10000000-0000-4000-8000-000000000074", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "您", "pinyin": "nín", "meaning": "you (polite / formal)", "tone": "2", "tags": ["hsk1", "pronoun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/nin2.mp3", "example": "您好！", "traditional": "您" },
-    { "id": "10000000-0000-4000-8000-000000000075", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "女儿", "pinyin": "nǚér", "meaning": "daughter", "tone": "3", "tags": ["hsk1", "family"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/nver3.mp3", "example": "她是我的女儿。", "traditional": "女兒" },
-    { "id": "10000000-0000-4000-8000-000000000076", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "朋友", "pinyin": "péngyou", "meaning": "friend", "tone": "2", "tags": ["hsk1", "noun", "social"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/pengyou2.mp3", "example": "他是我的好朋友。", "traditional": "朋友" },
-    { "id": "10000000-0000-4000-8000-000000000077", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "漂亮", "pinyin": "piàoliang", "meaning": "beautiful; pretty", "tone": "4", "tags": ["hsk1", "adjective"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/piaoliang4.mp3", "example": "你很漂亮。", "traditional": "漂亮" },
-    { "id": "10000000-0000-4000-8000-000000000078", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "苹果", "pinyin": "píngguǒ", "meaning": "apple", "tone": "2", "tags": ["hsk1", "food", "fruit"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/pingguo2.mp3", "example": "我喜欢吃苹果。", "traditional": "蘋果" },
-    { "id": "10000000-0000-4000-8000-000000000079", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "七", "pinyin": "qī", "meaning": "seven (7)", "tone": "1", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/qi1.mp3", "example": "七点钟。", "traditional": "七" },
-    { "id": "10000000-0000-4000-8000-000000000080", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "前面", "pinyin": "qiánmiàn", "meaning": "in front; ahead", "tone": "2", "tags": ["hsk1", "direction"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/qianmian2.mp3", "example": "学校在前面。", "traditional": "前面" },
-    { "id": "10000000-0000-4000-8000-000000000081", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "钱", "pinyin": "qián", "meaning": "money; cash", "tone": "2", "tags": ["hsk1", "noun", "money"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/qian2.mp3", "example": "多少钱？", "traditional": "錢" },
-    { "id": "10000000-0000-4000-8000-000000000082", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "请", "pinyin": "qǐng", "meaning": "please; to invite; to request", "tone": "3", "tags": ["hsk1", "verb", "polite"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/qing3.mp3", "example": "请坐！", "traditional": "請" },
-    { "id": "10000000-0000-4000-8000-000000000083", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "去", "pinyin": "qù", "meaning": "to go", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/qu4.mp3", "example": "我去学校。", "traditional": "去" },
-    { "id": "10000000-0000-4000-8000-000000000084", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "热", "pinyin": "rè", "meaning": "hot; heat", "tone": "4", "tags": ["hsk1", "adjective", "weather"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/re4.mp3", "example": "今天很热。", "traditional": "熱" },
-    { "id": "10000000-0000-4000-8000-000000000085", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "人", "pinyin": "rén", "meaning": "person; people", "tone": "2", "tags": ["hsk1", "noun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ren2.mp3", "example": "这里有很多人。", "traditional": "人" },
-    { "id": "10000000-0000-4000-8000-000000000086", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "认识", "pinyin": "rènshi", "meaning": "to know (a person); to recognize", "tone": "4", "tags": ["hsk1", "verb", "social"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/renshi4.mp3", "example": "很高兴认识你！", "traditional": "認識" },
-    { "id": "10000000-0000-4000-8000-000000000087", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "日", "pinyin": "rì", "meaning": "sun; day; date", "tone": "4", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ri4.mp3", "example": "今天是几月几日？", "traditional": "日" },
-    { "id": "10000000-0000-4000-8000-000000000088", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "三", "pinyin": "sān", "meaning": "three (3)", "tone": "1", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/san1.mp3", "example": "三个朋友。", "traditional": "三" },
-    { "id": "10000000-0000-4000-8000-000000000089", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "商店", "pinyin": "shāngdiàn", "meaning": "shop; store", "tone": "1", "tags": ["hsk1", "place", "shopping"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shangdian1.mp3", "example": "这家商店很大。", "traditional": "商店" },
-    { "id": "10000000-0000-4000-8000-000000000090", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "上", "pinyin": "shàng", "meaning": "up; above; on top; to go up", "tone": "4", "tags": ["hsk1", "direction"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shang4.mp3", "example": "书在桌子上。", "traditional": "上" },
-    { "id": "10000000-0000-4000-8000-000000000091", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "上午", "pinyin": "shàngwǔ", "meaning": "morning; forenoon (before noon)", "tone": "4", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shangwu4.mp3", "example": "上午我有课。", "traditional": "上午" },
-    { "id": "10000000-0000-4000-8000-000000000092", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "少", "pinyin": "shǎo", "meaning": "few; little; less", "tone": "3", "tags": ["hsk1", "adjective"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shao3.mp3", "example": "这里人很少。", "traditional": "少" },
-    { "id": "10000000-0000-4000-8000-000000000093", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "谁", "pinyin": "shéi", "meaning": "who; whom", "tone": "2", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shei2.mp3", "example": "那是谁？", "traditional": "誰" },
-    { "id": "10000000-0000-4000-8000-000000000094", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "什么", "pinyin": "shénme", "meaning": "what", "tone": "2", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shenme2.mp3", "example": "这是什么？", "traditional": "什麼" },
-    { "id": "10000000-0000-4000-8000-000000000095", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "时候", "pinyin": "shíhou", "meaning": "time; moment; when", "tone": "2", "tags": ["hsk1", "time", "noun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shihou2.mp3", "example": "什么时候走？", "traditional": "時候" },
-    { "id": "10000000-0000-4000-8000-000000000096", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "是", "pinyin": "shì", "meaning": "to be (am/is/are)", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shi4.mp3", "example": "我是学生。", "traditional": "是" },
-    { "id": "10000000-0000-4000-8000-000000000097", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "书", "pinyin": "shū", "meaning": "book", "tone": "1", "tags": ["hsk1", "noun", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shu1.mp3", "example": "这本书很有意思。", "traditional": "書" },
-    { "id": "10000000-0000-4000-8000-000000000098", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "水", "pinyin": "shuǐ", "meaning": "water", "tone": "3", "tags": ["hsk1", "drink", "noun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shui3.mp3", "example": "我喝水。", "traditional": "水" },
-    { "id": "10000000-0000-4000-8000-000000000099", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "水果", "pinyin": "shuǐguǒ", "meaning": "fruit", "tone": "3", "tags": ["hsk1", "food", "fruit"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shuiguo3.mp3", "example": "你喜欢吃什么水果？", "traditional": "水果" },
-    { "id": "10000000-0000-4000-8000-000000000100", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "睡觉", "pinyin": "shuì jiào", "meaning": "to sleep; to go to bed", "tone": "4", "tags": ["hsk1", "verb", "daily-life"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shuijiao4.mp3", "example": "我想睡觉了。", "traditional": "睡覺" },
-    { "id": "10000000-0000-4000-8000-000000000101", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "说", "pinyin": "shuō", "meaning": "to say; to speak; to talk", "tone": "1", "tags": ["hsk1", "verb", "communication"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/shuo1.mp3", "example": "你说什么？", "traditional": "說" },
-    { "id": "10000000-0000-4000-8000-000000000102", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "四", "pinyin": "sì", "meaning": "four (4)", "tone": "4", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/si4.mp3", "example": "四月。", "traditional": "四" },
-    { "id": "10000000-0000-4000-8000-000000000103", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "岁", "pinyin": "suì", "meaning": "year (of age)", "tone": "4", "tags": ["hsk1", "noun", "age"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/sui4.mp3", "example": "你几岁了？", "traditional": "歲" },
-    { "id": "10000000-0000-4000-8000-000000000104", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "他", "pinyin": "tā", "meaning": "he; him", "tone": "1", "tags": ["hsk1", "pronoun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ta1.mp3", "example": "他是我朋友。", "traditional": "他" },
-    { "id": "10000000-0000-4000-8000-000000000105", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "她", "pinyin": "tā", "meaning": "she; her", "tone": "1", "tags": ["hsk1", "pronoun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ta_she1.mp3", "example": "她是老师。", "traditional": "她" },
-    { "id": "10000000-0000-4000-8000-000000000106", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "太", "pinyin": "tài", "meaning": "too; excessively; extremely", "tone": "4", "tags": ["hsk1", "adverb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/tai4.mp3", "example": "太好了！", "traditional": "太" },
-    { "id": "10000000-0000-4000-8000-000000000107", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "天气", "pinyin": "tiānqì", "meaning": "weather", "tone": "1", "tags": ["hsk1", "noun", "weather"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/tianqi1.mp3", "example": "今天天气怎么样？", "traditional": "天氣" },
-    { "id": "10000000-0000-4000-8000-000000000108", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "听", "pinyin": "tīng", "meaning": "to listen; to hear", "tone": "1", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/ting1.mp3", "example": "我喜欢听音乐。", "traditional": "聽" },
-    { "id": "10000000-0000-4000-8000-000000000109", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "同学", "pinyin": "tóngxué", "meaning": "classmate; fellow student", "tone": "2", "tags": ["hsk1", "noun", "education", "social"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/tongxue2.mp3", "example": "他是我的同学。", "traditional": "同學" },
-    { "id": "10000000-0000-4000-8000-000000000110", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "喂", "pinyin": "wèi", "meaning": "hello (on the phone); hey", "tone": "4", "tags": ["hsk1", "expression", "communication"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/wei4.mp3", "example": "喂，你好！", "traditional": "喂" },
-    { "id": "10000000-0000-4000-8000-000000000111", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "我", "pinyin": "wǒ", "meaning": "I; me", "tone": "3", "tags": ["hsk1", "pronoun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/wo3.mp3", "example": "我是学生。", "traditional": "我" },
-    { "id": "10000000-0000-4000-8000-000000000112", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "我们", "pinyin": "wǒmen", "meaning": "we; us", "tone": "3", "tags": ["hsk1", "pronoun"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/women3.mp3", "example": "我们去吃饭吧。", "traditional": "我們" },
-    { "id": "10000000-0000-4000-8000-000000000113", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "五", "pinyin": "wǔ", "meaning": "five (5)", "tone": "3", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/wu3.mp3", "example": "五月。", "traditional": "五" },
-    { "id": "10000000-0000-4000-8000-000000000114", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "西瓜", "pinyin": "xīguā", "meaning": "watermelon", "tone": "1", "tags": ["hsk1", "food", "fruit"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xigua1.mp3", "example": "夏天我喜欢吃西瓜。", "traditional": "西瓜" },
-    { "id": "10000000-0000-4000-8000-000000000115", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "喜欢", "pinyin": "xǐhuān", "meaning": "to like; to be fond of", "tone": "3", "tags": ["hsk1", "verb", "emotion"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xihuan3.mp3", "example": "我喜欢中国。", "traditional": "喜歡" },
-    { "id": "10000000-0000-4000-8000-000000000116", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "下", "pinyin": "xià", "meaning": "down; below; under; next", "tone": "4", "tags": ["hsk1", "direction"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xia4.mp3", "example": "下面是什么？", "traditional": "下" },
-    { "id": "10000000-0000-4000-8000-000000000117", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "下午", "pinyin": "xiàwǔ", "meaning": "afternoon (noon to evening)", "tone": "4", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xiawu4.mp3", "example": "下午见。", "traditional": "下午" },
-    { "id": "10000000-0000-4000-8000-000000000118", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "下雨", "pinyin": "xià yǔ", "meaning": "to rain; raining", "tone": "4", "tags": ["hsk1", "weather", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xiayu4.mp3", "example": "今天下雨了。", "traditional": "下雨" },
-    { "id": "10000000-0000-4000-8000-000000000119", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "先生", "pinyin": "xiānsheng", "meaning": "Mr.; husband; sir; teacher", "tone": "1", "tags": ["hsk1", "noun", "title"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xiansheng1.mp3", "example": "王先生，你好！", "traditional": "先生" },
-    { "id": "10000000-0000-4000-8000-000000000120", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "现在", "pinyin": "xiànzài", "meaning": "now; at present; currently", "tone": "4", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xianzai4.mp3", "example": "现在几点了？", "traditional": "現在" },
-    { "id": "10000000-0000-4000-8000-000000000121", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "想", "pinyin": "xiǎng", "meaning": "to want; to think; to miss", "tone": "3", "tags": ["hsk1", "verb", "modal-verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xiang3.mp3", "example": "我想去北京。", "traditional": "想" },
-    { "id": "10000000-0000-4000-8000-000000000122", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "小", "pinyin": "xiǎo", "meaning": "small; little; young", "tone": "3", "tags": ["hsk1", "adjective"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xiao3.mp3", "example": "那只猫很小。", "traditional": "小" },
-    { "id": "10000000-0000-4000-8000-000000000123", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "小姐", "pinyin": "xiǎojiě", "meaning": "Miss; young woman", "tone": "3", "tags": ["hsk1", "noun", "title"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xiaojie3.mp3", "example": "李小姐，你好！", "traditional": "小姐" },
-    { "id": "10000000-0000-4000-8000-000000000124", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "些", "pinyin": "xiē", "meaning": "some; a few; a little", "tone": "1", "tags": ["hsk1", "measure-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xie1.mp3", "example": "我想买一些苹果。", "traditional": "些" },
-    { "id": "10000000-0000-4000-8000-000000000125", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "写", "pinyin": "xiě", "meaning": "to write", "tone": "3", "tags": ["hsk1", "verb", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xie3.mp3", "example": "请写下你的名字。", "traditional": "寫" },
-    { "id": "10000000-0000-4000-8000-000000000126", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "谢谢", "pinyin": "xièxie", "meaning": "thank you", "tone": "4", "tags": ["hsk1", "expression"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xiexie4.mp3", "example": "谢谢你！", "traditional": "謝謝" },
-    { "id": "10000000-0000-4000-8000-000000000127", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "星期", "pinyin": "xīngqī", "meaning": "week; day of the week", "tone": "1", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xingqi1.mp3", "example": "今天星期几？", "traditional": "星期" },
-    { "id": "10000000-0000-4000-8000-000000000128", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "学生", "pinyin": "xuésheng", "meaning": "student", "tone": "2", "tags": ["hsk1", "noun", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xuesheng2.mp3", "example": "我是学生。", "traditional": "學生" },
-    { "id": "10000000-0000-4000-8000-000000000129", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "学习", "pinyin": "xuéxí", "meaning": "to study; to learn", "tone": "2", "tags": ["hsk1", "verb", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xuexi2.mp3", "example": "我在学习汉语。", "traditional": "學習" },
-    { "id": "10000000-0000-4000-8000-000000000130", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "学校", "pinyin": "xuéxiào", "meaning": "school", "tone": "2", "tags": ["hsk1", "place", "education"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/xuexiao2.mp3", "example": "我的学校很大。", "traditional": "學校" },
-    { "id": "10000000-0000-4000-8000-000000000131", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "一", "pinyin": "yī", "meaning": "one (1)", "tone": "1", "tags": ["hsk1", "number"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/yi1.mp3", "example": "一个人。", "traditional": "一" },
-    { "id": "10000000-0000-4000-8000-000000000132", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "一点儿", "pinyin": "yīdiǎnr", "meaning": "a little (bit); a bit", "tone": "1", "tags": ["hsk1", "adverb", "measure-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/yidianr1.mp3", "example": "我会说一点儿中文。", "traditional": "一點兒" },
-    { "id": "10000000-0000-4000-8000-000000000133", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "医生", "pinyin": "yīshēng", "meaning": "doctor; physician", "tone": "1", "tags": ["hsk1", "occupation"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/yisheng1.mp3", "example": "我去看医生。", "traditional": "醫生" },
-    { "id": "10000000-0000-4000-8000-000000000134", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "医院", "pinyin": "yīyuàn", "meaning": "hospital", "tone": "1", "tags": ["hsk1", "place", "health"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/yiyuan1.mp3", "example": "我要去医院。", "traditional": "醫院" },
-    { "id": "10000000-0000-4000-8000-000000000135", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "椅子", "pinyin": "yǐzi", "meaning": "chair", "tone": "3", "tags": ["hsk1", "furniture", "objects"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/yizi3.mp3", "example": "请坐在椅子上。", "traditional": "椅子" },
-    { "id": "10000000-0000-4000-8000-000000000136", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "有", "pinyin": "yǒu", "meaning": "to have; there is/are", "tone": "3", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/you3.mp3", "example": "我有一本书。", "traditional": "有" },
-    { "id": "10000000-0000-4000-8000-000000000137", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "月", "pinyin": "yuè", "meaning": "month; moon", "tone": "4", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/yue4.mp3", "example": "一月、二月、三月。", "traditional": "月" },
-    { "id": "10000000-0000-4000-8000-000000000138", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "再见", "pinyin": "zàijiàn", "meaning": "goodbye; see you again", "tone": "4", "tags": ["hsk1", "expression"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zaijian4.mp3", "example": "明天再见！", "traditional": "再見" },
-    { "id": "10000000-0000-4000-8000-000000000139", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "在", "pinyin": "zài", "meaning": "to be at/in; in the process of (doing)", "tone": "4", "tags": ["hsk1", "verb", "preposition"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zai4.mp3", "example": "我在家。", "traditional": "在" },
-    { "id": "10000000-0000-4000-8000-000000000140", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "怎么", "pinyin": "zěnme", "meaning": "how; why; in what way", "tone": "3", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zenme3.mp3", "example": "你怎么去？", "traditional": "怎麼" },
-    { "id": "10000000-0000-4000-8000-000000000141", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "怎么样", "pinyin": "zěnmeyàng", "meaning": "how is it?; what do you think?; how about?", "tone": "3", "tags": ["hsk1", "question-word"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zenmeyang3.mp3", "example": "你最近怎么样？", "traditional": "怎麼樣" },
-    { "id": "10000000-0000-4000-8000-000000000142", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "这", "pinyin": "zhè", "meaning": "this; these", "tone": "4", "tags": ["hsk1", "pronoun", "determiner"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zhe4.mp3", "example": "这是什么？", "traditional": "這" },
-    { "id": "10000000-0000-4000-8000-000000000143", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "中国", "pinyin": "Zhōngguó", "meaning": "China", "tone": "1", "tags": ["hsk1", "place"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zhongguo1.mp3", "example": "我来自中国。", "traditional": "中國" },
-    { "id": "10000000-0000-4000-8000-000000000144", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "中午", "pinyin": "zhōngwǔ", "meaning": "noon; midday", "tone": "1", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zhongwu1.mp3", "example": "中午我们去吃饭。", "traditional": "中午" },
-    { "id": "10000000-0000-4000-8000-000000000145", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "住", "pinyin": "zhù", "meaning": "to live; to reside; to stay", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zhu4.mp3", "example": "你住在哪里？", "traditional": "住" },
-    { "id": "10000000-0000-4000-8000-000000000146", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "桌子", "pinyin": "zhuōzi", "meaning": "table; desk", "tone": "1", "tags": ["hsk1", "furniture", "objects"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zhuozi1.mp3", "example": "书在桌子上。", "traditional": "桌子" },
-    { "id": "10000000-0000-4000-8000-000000000147", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "字", "pinyin": "zì", "meaning": "character; written word", "tone": "4", "tags": ["hsk1", "noun", "language"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zi4.mp3", "example": "这个字怎么写？", "traditional": "字" },
-    { "id": "10000000-0000-4000-8000-000000000148", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "昨天", "pinyin": "zuótiān", "meaning": "yesterday", "tone": "2", "tags": ["hsk1", "time"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zuotian2.mp3", "example": "昨天我去了公园。", "traditional": "昨天" },
-    { "id": "10000000-0000-4000-8000-000000000149", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "坐", "pinyin": "zuò", "meaning": "to sit; to travel by (vehicle)", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zuo4.mp3", "example": "请坐！", "traditional": "坐" },
-    { "id": "10000000-0000-4000-8000-000000000150", "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d", "hanzi": "做", "pinyin": "zuò", "meaning": "to do; to make; to be (a role)", "tone": "4", "tags": ["hsk1", "verb"], "hskLevel": 1, "audioUrl": "/assets/deck/audio/zuo_do4.mp3", "example": "你在做什么？", "traditional": "做" }
-  ]
+  {
+   "id": "10000000-0000-4000-8000-000000000002",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "八",
+   "pinyin": "bā",
+   "meaning": "eight",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 1362,
+   "chars": [
+    {
+     "char": "八",
+     "radical": "八",
+     "strokes": 2,
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Two bent lines meaning \"to divide\""
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "八十了。",
+     "en": "He is eighty years old.",
+     "sourceId": 13519716
+    },
+    {
+     "zh": "八点多了。",
+     "en": "It's past eight.",
+     "sourceId": 11077429
+    }
+   ],
+   "example": "八十了。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000003",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "爸爸",
+   "pinyin": "bàba",
+   "meaning": "(coll.) father; dad; CL:位[wei4]",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 908,
+   "chars": [
+    {
+     "char": "爸",
+     "radical": "父",
+     "strokes": 8,
+     "decomposition": "⿱父巴",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "巴",
+      "semantic": "父",
+      "hint": "father"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "爸爸在哪？",
+     "en": "Where's Daddy?",
+     "sourceId": 13119020
+    },
+    {
+     "zh": "你爸爸在哪？",
+     "en": "Where is your dad?",
+     "sourceId": 13189733
+    }
+   ],
+   "example": "爸爸在哪？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000004",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "杯子",
+   "pinyin": "bēizi",
+   "meaning": "cup; glass; CL:個|个[ge4],隻|只[zhi1]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 6162,
+   "chars": [
+    {
+     "char": "杯",
+     "radical": "木",
+     "strokes": 8,
+     "decomposition": "⿰木不",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "不",
+      "semantic": "木",
+      "hint": "tree"
+     }
+    },
+    {
+     "char": "子",
+     "radical": "子",
+     "strokes": 3,
+     "decomposition": "⿻了一",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A child in a wrap, with outstretched arms but bundled legs"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "杯子易碎。",
+     "en": "Glass breaks easily.",
+     "sourceId": 353647
+    },
+    {
+     "zh": "杯子里有水。",
+     "en": "There is water in the glass.",
+     "sourceId": 10961067
+    }
+   ],
+   "example": "杯子易碎。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000005",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "北京",
+   "pinyin": "Běijīng",
+   "meaning": "Beijing municipality, capital of the People's Republic of China (short name 京[Jing1])",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 4799,
+   "chars": [
+    {
+     "char": "北",
+     "radical": "匕",
+     "strokes": 5,
+     "decomposition": "⿰？匕",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Two people 匕 sitting back-to-back; phonetic loan for \"north\""
+     }
+    },
+    {
+     "char": "京",
+     "radical": "亠",
+     "strokes": 8,
+     "decomposition": "⿳亠口小",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A capital building on a hill"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我住北京。",
+     "en": "I live in Beijing.",
+     "sourceId": 9314682
+    },
+    {
+     "zh": "我住在北京",
+     "en": "I live in Beijing.",
+     "sourceId": 4713358
+    }
+   ],
+   "example": "我住北京。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000006",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "本",
+   "pinyin": "běn",
+   "meaning": "(bound form) root; stem; (bound form) origin; source; (bound form) one's own; this; (bound form) this; the current (year etc); (bound form) original; (bound form) inherent; originally; initially; capital; principal; classifier for books, periodicals, files etc",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "measure-word"
+   ],
+   "hskLevel": 1,
+   "frequency": 222,
+   "chars": [
+    {
+     "char": "本",
+     "radical": "木",
+     "strokes": 5,
+     "decomposition": "⿻木一",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A tree 木 with its roots highlighted"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "本来嘛!",
+     "en": "Of course!",
+     "sourceId": 3349290
+    },
+    {
+     "zh": "拿本书读！",
+     "en": "Take a book and read it.",
+     "sourceId": 389789
+    }
+   ],
+   "example": "本来嘛!"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000007",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "不客气",
+   "pinyin": "bù kèqì",
+   "meaning": "you're welcome; don't mention it; impolite; rude; blunt",
+   "tone": "4",
+   "tags": [
+    "hsk1"
+   ],
+   "hskLevel": 1,
+   "traditional": "不客氣",
+   "frequency": 16723,
+   "chars": [
+    {
+     "char": "不",
+     "radical": "一",
+     "strokes": 4,
+     "decomposition": "⿱一？",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A bird flying toward the sky 一"
+     }
+    },
+    {
+     "char": "客",
+     "radical": "宀",
+     "strokes": 9,
+     "decomposition": "⿱宀各",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A person 各 welcomed under one's roof 宀; 各 also provides the pronunciation"
+     }
+    },
+    {
+     "char": "气",
+     "radical": "气",
+     "strokes": 4,
+     "decomposition": "⿱亻？",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A person 亻 breathing air"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "不客气",
+     "en": "It was nothing.",
+     "sourceId": 1513716
+    },
+    {
+     "zh": "不客气。",
+     "en": "You go first.",
+     "sourceId": 700670
+    }
+   ],
+   "example": "不客气"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000008",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "不",
+   "pinyin": "bù",
+   "meaning": "no; not so; (bound form) not; un-",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "adverb"
+   ],
+   "hskLevel": 1,
+   "frequency": 9,
+   "chars": [
+    {
+     "char": "不",
+     "radical": "一",
+     "strokes": 4,
+     "decomposition": "⿱一？",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A bird flying toward the sky 一"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "不！",
+     "en": "No.",
+     "sourceId": 4970078
+    },
+    {
+     "zh": "不。",
+     "en": "Wrong.",
+     "sourceId": 5094867
+    }
+   ],
+   "example": "不！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000009",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "菜",
+   "pinyin": "cài",
+   "meaning": "vegetable; greens (CL:棵[ke1]); dish (of food) (CL:樣|样[yang4],道[dao4],盤|盘[pan2]); (of one's skills etc) weak; poor; (coll.) (one's) type",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 1448,
+   "chars": [
+    {
+     "char": "菜",
+     "radical": "艹",
+     "strokes": 11,
+     "decomposition": "⿱艹采",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "采",
+      "semantic": "艹",
+      "hint": "plant"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "吃菜。",
+     "en": "Eat vegetables.",
+     "sourceId": 6092438
+    },
+    {
+     "zh": "上菜。",
+     "en": "Help yourself.",
+     "sourceId": 769661
+    }
+   ],
+   "example": "吃菜。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000010",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "茶",
+   "pinyin": "chá",
+   "meaning": "tea; tea plant; CL:杯[bei1],壺|壶[hu2]",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 1910,
+   "chars": [
+    {
+     "char": "茶",
+     "radical": "艹",
+     "strokes": 9,
+     "decomposition": "⿱艹⿱人木",
+     "etymology": {
+      "type": "pictophonetic",
+      "semantic": "艹",
+      "hint": "plant"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "奉茶。",
+     "en": "Serve tea.",
+     "sourceId": 13112087
+    },
+    {
+     "zh": "喝茶。",
+     "en": "Drink tea.",
+     "sourceId": 6092434
+    }
+   ],
+   "example": "奉茶。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000011",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "吃",
+   "pinyin": "chī",
+   "meaning": "to eat; to consume; to eat at (a cafeteria etc); to eradicate; to destroy; to absorb; to suffer (shock, injury, defeat etc)",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 142,
+   "chars": [
+    {
+     "char": "吃",
+     "radical": "口",
+     "strokes": 6,
+     "decomposition": "⿰口乞",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "乞",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "吃。",
+     "en": "Eat!",
+     "sourceId": 14023870
+    },
+    {
+     "zh": "好吃！",
+     "en": "Yummy!",
+     "sourceId": 13274611
+    }
+   ],
+   "example": "吃。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000012",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "出租车",
+   "pinyin": "chūzūchē",
+   "meaning": "taxi; (Tw) rental car",
+   "tone": "1",
+   "tags": [
+    "hsk2",
+    "noun"
+   ],
+   "hskLevel": 2,
+   "traditional": "出租車",
+   "frequency": 2677,
+   "chars": [
+    {
+     "char": "出",
+     "radical": "凵",
+     "strokes": 5,
+     "decomposition": "⿱屮凵",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A sprout 屮 growing out of a container 凵"
+     }
+    },
+    {
+     "char": "租",
+     "radical": "禾",
+     "strokes": 10,
+     "decomposition": "⿰禾且",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Regularly paid 且 tribute in grain 禾"
+     }
+    },
+    {
+     "char": "车",
+     "radical": "车",
+     "strokes": 4,
+     "decomposition": "⿻七十",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Simplified form of 車, a cart with two wheels, seen from above"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "坐出租车吧。",
+     "en": "Let's take a taxi.",
+     "sourceId": 9501478
+    },
+    {
+     "zh": "出租车到了。",
+     "en": "The taxi has arrived.",
+     "sourceId": 346457
+    }
+   ],
+   "example": "坐出租车吧。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000013",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "打电话",
+   "pinyin": "dǎ diànhuà",
+   "meaning": "to make a telephone call",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "打電話",
+   "frequency": 1218,
+   "chars": [
+    {
+     "char": "打",
+     "radical": "扌",
+     "strokes": 5,
+     "decomposition": "⿰扌丁",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "丁",
+      "semantic": "扌",
+      "hint": "hand"
+     }
+    },
+    {
+     "char": "电",
+     "radical": "曰",
+     "strokes": 5,
+     "decomposition": "⿻曰乚",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 電; lightning 申 from a storm cloud 雨"
+     }
+    },
+    {
+     "char": "话",
+     "radical": "讠",
+     "strokes": 8,
+     "decomposition": "⿰讠舌",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A spoken 讠 tongue 舌; 舌 also provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "打电话。",
+     "en": "Make a call.",
+     "sourceId": 10961146
+    },
+    {
+     "zh": "打电话给我！",
+     "en": "Call me!",
+     "sourceId": 12615456
+    }
+   ],
+   "example": "打电话。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000014",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "大",
+   "pinyin": "dà",
+   "meaning": "big; large; great; older (than another person); eldest (as in 大姐[da4 jie3]); greatly; freely; fully; (dialect) father; (dialect) uncle (father's brother)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "adjective"
+   ],
+   "hskLevel": 1,
+   "frequency": 66,
+   "chars": [
+    {
+     "char": "大",
+     "radical": "大",
+     "strokes": 3,
+     "decomposition": "⿻一人",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A man 人 with outstretched arms"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "好大！",
+     "en": "God, this place is huge!",
+     "sourceId": 13276179
+    },
+    {
+     "zh": "大约。",
+     "en": "Probably.",
+     "sourceId": 4372509
+    }
+   ],
+   "example": "好大！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000015",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "的",
+   "pinyin": "de",
+   "meaning": "of; ~'s (possessive particle); (used after an attribute when it modifies a noun); (used at the end of a declarative sentence for emphasis); (used after a noun, verb or adjective to form a nominal expression, as in 皮革的[pi2 ge2 de5] \"one made of leather\" or 跑堂兒的|跑堂儿的[pao3 tang2 r5 de5] \"a waiter (literally, one who runs back and forth in a restaurant)\" or 新的[xin1 de5] \"new one\"); also pr. [di4] or [di5] in poetry and songs",
+   "tone": "5",
+   "tags": [
+    "hsk1",
+    "auxiliary"
+   ],
+   "hskLevel": 1,
+   "frequency": 1,
+   "chars": [
+    {
+     "char": "的",
+     "radical": "白",
+     "strokes": 8,
+     "decomposition": "⿰白勺"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "好的？",
+     "en": "OK?",
+     "sourceId": 13174627
+    },
+    {
+     "zh": "你的？",
+     "en": "Yours?",
+     "sourceId": 13111561
+    }
+   ],
+   "example": "好的？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000016",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "点",
+   "pinyin": "diǎn",
+   "meaning": "to touch briefly; to tap; to mark with a dot; to check off (on a list); to order (food etc); to select; to mention; to bring up (a topic or person); to hint at; to imply; to administer (eye medicine etc) in drops; to light (a fire, a lamp etc); to ignite; to nod (one's head) in agreement; to beckon by moving (one's hand) up and down; point; dot; spot; speck; dot stroke in Chinese characters; (math.) decimal point; point in time or space; (after a number) o'clock; a small amount; a bit; (after a verb or adjective) a bit more; classifier for small amounts",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "measure-word",
+    "verb",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "點",
+   "frequency": 58,
+   "chars": [
+    {
+     "char": "点",
+     "radical": "灬",
+     "strokes": 9,
+     "decomposition": "⿱占灬",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "占",
+      "semantic": "灬",
+      "hint": "fire"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "快点！",
+     "en": "Hurry up.",
+     "sourceId": 512039
+    },
+    {
+     "zh": "慢点吃！",
+     "en": "Eat more slowly.",
+     "sourceId": 10260718
+    }
+   ],
+   "example": "快点！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000017",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "电脑",
+   "pinyin": "diànnǎo",
+   "meaning": "computer; CL:臺|台[tai2]",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "電腦",
+   "frequency": 946,
+   "chars": [
+    {
+     "char": "电",
+     "radical": "曰",
+     "strokes": 5,
+     "decomposition": "⿻曰乚",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 電; lightning 申 from a storm cloud 雨"
+     }
+    },
+    {
+     "char": "脑",
+     "radical": "⺼",
+     "strokes": 10,
+     "decomposition": "⿰⺼⿱亠凶",
+     "etymology": {
+      "type": "pictophonetic",
+      "semantic": "⺼",
+      "hint": "flesh"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "电脑坏了。",
+     "en": "The computer broke down.",
+     "sourceId": 693742
+    },
+    {
+     "zh": "电脑蓝屏了。",
+     "en": "The computer crashed.",
+     "sourceId": 13914972
+    }
+   ],
+   "example": "电脑坏了。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000018",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "电视",
+   "pinyin": "diànshì",
+   "meaning": "television; TV; CL:臺|台[tai2],部[bu4]",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "電視",
+   "frequency": 779,
+   "chars": [
+    {
+     "char": "电",
+     "radical": "曰",
+     "strokes": 5,
+     "decomposition": "⿻曰乚",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 電; lightning 申 from a storm cloud 雨"
+     }
+    },
+    {
+     "char": "视",
+     "radical": "见",
+     "strokes": 8,
+     "decomposition": "⿰礻见",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "礻",
+      "semantic": "见",
+      "hint": "see"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "开电视。",
+     "en": "Turn on the TV.",
+     "sourceId": 472986
+    },
+    {
+     "zh": "看电视吧。",
+     "en": "Let's watch TV.",
+     "sourceId": 1050439
+    }
+   ],
+   "example": "开电视。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000019",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "电影",
+   "pinyin": "diànyǐng",
+   "meaning": "movie; film; CL:部[bu4]",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "電影",
+   "frequency": 546,
+   "chars": [
+    {
+     "char": "电",
+     "radical": "曰",
+     "strokes": 5,
+     "decomposition": "⿻曰乚",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 電; lightning 申 from a storm cloud 雨"
+     }
+    },
+    {
+     "char": "影",
+     "radical": "彡",
+     "strokes": 15,
+     "decomposition": "⿰景彡",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "景",
+      "semantic": "彡",
+      "hint": "sunlight"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你看电影吗？",
+     "en": "Do you watch movies?",
+     "sourceId": 11845629
+    },
+    {
+     "zh": "我去看电影。",
+     "en": "I'm going to the cinema.",
+     "sourceId": 7771886
+    }
+   ],
+   "example": "你看电影吗？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000020",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "东西",
+   "pinyin": "dōngxi",
+   "meaning": "east and west",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "東西",
+   "frequency": 226,
+   "chars": [
+    {
+     "char": "东",
+     "radical": "一",
+     "strokes": 5,
+     "decomposition": "⿻七小",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Simplified form of 東, the sun 日 rising behind a tree 木"
+     }
+    },
+    {
+     "char": "西",
+     "radical": "西",
+     "strokes": 6,
+     "decomposition": "⿻兀囗",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A bird settling into its nest, representing sunset; compare 東"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "吃东西。",
+     "en": "Have something to eat.",
+     "sourceId": 10961142
+    },
+    {
+     "zh": "在找东西吗？",
+     "en": "Are you looking for something?",
+     "sourceId": 4881583
+    }
+   ],
+   "example": "吃东西。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000021",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "都",
+   "pinyin": "dōu",
+   "meaning": "surname Du",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "adverb"
+   ],
+   "hskLevel": 1,
+   "frequency": 25,
+   "chars": [
+    {
+     "char": "都",
+     "radical": "阝",
+     "strokes": 10,
+     "decomposition": "⿰者阝",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "者",
+      "semantic": "阝",
+      "hint": "city"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "都是。",
+     "en": "Both are.",
+     "sourceId": 13111513
+    },
+    {
+     "zh": "全都是？",
+     "en": "All that?",
+     "sourceId": 13138891
+    }
+   ],
+   "example": "都是。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000022",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "读",
+   "pinyin": "dú",
+   "meaning": "to read out; to read aloud; to read; to attend (school); to study (a subject in school); to pronounce",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "讀",
+   "frequency": 1013,
+   "chars": [
+    {
+     "char": "读",
+     "radical": "讠",
+     "strokes": 10,
+     "decomposition": "⿰讠卖",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "To show off 卖 one's literacy 讠"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "读书。",
+     "en": "Read!",
+     "sourceId": 10961153
+    },
+    {
+     "zh": "读好书。",
+     "en": "Read good books.",
+     "sourceId": 10713325
+    }
+   ],
+   "example": "读书。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000023",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "对不起",
+   "pinyin": "duìbuqǐ",
+   "meaning": "I'm sorry; excuse me; I beg your pardon; to let (sb) down; to disappoint",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "對不起",
+   "frequency": 1577,
+   "chars": [
+    {
+     "char": "对",
+     "radical": "寸",
+     "strokes": 5,
+     "decomposition": "⿰又寸",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A pair 又 of hands 寸"
+     }
+    },
+    {
+     "char": "不",
+     "radical": "一",
+     "strokes": 4,
+     "decomposition": "⿱一？",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A bird flying toward the sky 一"
+     }
+    },
+    {
+     "char": "起",
+     "radical": "走",
+     "strokes": 10,
+     "decomposition": "⿺走己",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "己",
+      "semantic": "走",
+      "hint": "walk"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "对不起！",
+     "en": "I'm sorry.",
+     "sourceId": 4977439
+    },
+    {
+     "zh": "对不起。",
+     "en": "I'm sorry.",
+     "sourceId": 472304
+    }
+   ],
+   "example": "对不起！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000024",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "多",
+   "pinyin": "duō",
+   "meaning": "many; much; more; a lot of; too many; in excess; (after a numeral) ... odd; how (to what extent) (Taiwan pr. [duo2]); (bound form) multi-; poly-",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "adjective",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 80,
+   "chars": [
+    {
+     "char": "多",
+     "radical": "夕",
+     "strokes": 6,
+     "decomposition": "⿱夕夕",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Two nights 夕, suggesting many"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "多!",
+     "en": "Very!",
+     "sourceId": 5064977
+    },
+    {
+     "zh": "多久？",
+     "en": "How long?",
+     "sourceId": 5113393
+    }
+   ],
+   "example": "多!"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000025",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "多少",
+   "pinyin": "duōshao",
+   "meaning": "number; amount; somewhat",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 526,
+   "chars": [
+    {
+     "char": "多",
+     "radical": "夕",
+     "strokes": 6,
+     "decomposition": "⿱夕夕",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Two nights 夕, suggesting many"
+     }
+    },
+    {
+     "char": "少",
+     "radical": "小",
+     "strokes": 4,
+     "decomposition": "⿱小丿",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Grains of sand; 小 provides the pronunciation and meaning"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "多少人？",
+     "en": "How many people?",
+     "sourceId": 10267391
+    },
+    {
+     "zh": "多少钱？",
+     "en": "How much?",
+     "sourceId": 3697906
+    }
+   ],
+   "example": "多少人？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000026",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "儿子",
+   "pinyin": "érzi",
+   "meaning": "son",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "兒子",
+   "frequency": 665,
+   "chars": [
+    {
+     "char": "儿",
+     "radical": "儿",
+     "strokes": 2,
+     "decomposition": "⿰丿乚",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Simplified form of 兒, a picture of a child; compare 人"
+     }
+    },
+    {
+     "char": "子",
+     "radical": "子",
+     "strokes": 3,
+     "decomposition": "⿻了一",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A child in a wrap, with outstretched arms but bundled legs"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你也是，儿子！",
+     "en": "You too, my son.",
+     "sourceId": 651219
+    },
+    {
+     "zh": "你有几个儿子？",
+     "en": "How many sons do you have?",
+     "sourceId": 6055154
+    }
+   ],
+   "example": "你也是，儿子！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000027",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "二",
+   "pinyin": "èr",
+   "meaning": "two; 2; (Beijing dialect) stupid",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 664,
+   "chars": [
+    {
+     "char": "二",
+     "radical": "二",
+     "strokes": 2,
+     "decomposition": "⿱一一",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Two  parallel lines; compare 一 (one) and 三 (three)"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "二百五！",
+     "en": "You idiot!",
+     "sourceId": 735332
+    },
+    {
+     "zh": "你二了。",
+     "en": "You are stupid.",
+     "sourceId": 1750497
+    }
+   ],
+   "example": "二百五！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000028",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "饭店",
+   "pinyin": "fàndiàn",
+   "meaning": "restaurant; hotel; CL:家[jia1]",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "飯店",
+   "chars": [
+    {
+     "char": "饭",
+     "radical": "饣",
+     "strokes": 7,
+     "decomposition": "⿰饣反",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "反",
+      "semantic": "饣",
+      "hint": "food"
+     }
+    },
+    {
+     "char": "店",
+     "radical": "广",
+     "strokes": 8,
+     "decomposition": "⿸广占",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "占",
+      "semantic": "广",
+      "hint": "building"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "他不在饭店",
+     "en": "He is not at the restaurant.",
+     "sourceId": 4713324
+    },
+    {
+     "zh": "我要去饭店。",
+     "en": "I'm going to the restaurant.",
+     "sourceId": 1120765
+    }
+   ],
+   "example": "他不在饭店"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000029",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "飞机",
+   "pinyin": "fēijī",
+   "meaning": "airplane; CL:架[jia4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "飛機",
+   "frequency": 1067,
+   "chars": [
+    {
+     "char": "飞",
+     "radical": "飞",
+     "strokes": 3,
+     "decomposition": "⿻？？",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A bird flapping its wings"
+     }
+    },
+    {
+     "char": "机",
+     "radical": "木",
+     "strokes": 6,
+     "decomposition": "⿰木几",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A table 几 made of wood 木; 几 also provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "那飞机真大！",
+     "en": "How huge that airship is!",
+     "sourceId": 1399602
+    },
+    {
+     "zh": "飞机8点到。",
+     "en": "The plane gets in at eight o'clock.",
+     "sourceId": 10926516
+    }
+   ],
+   "example": "那飞机真大！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000030",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "分钟",
+   "pinyin": "fēnzhōng",
+   "meaning": "minute",
+   "tone": "1",
+   "tags": [
+    "hsk2",
+    "measure-word"
+   ],
+   "hskLevel": 2,
+   "traditional": "分鐘",
+   "frequency": 465,
+   "chars": [
+    {
+     "char": "分",
+     "radical": "刀",
+     "strokes": 4,
+     "decomposition": "⿱八刀",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Pieces 八 being further subdivided with a knife 刀 "
+     }
+    },
+    {
+     "char": "钟",
+     "radical": "钅",
+     "strokes": 9,
+     "decomposition": "⿰钅中",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "中",
+      "semantic": "钅",
+      "hint": "metal"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "再等十分钟！",
+     "en": "Wait ten more minutes!",
+     "sourceId": 9992081
+    },
+    {
+     "zh": "休息10分钟",
+     "en": "Let's take a 10-minute break.",
+     "sourceId": 1948456
+    }
+   ],
+   "example": "再等十分钟！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000031",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "高兴",
+   "pinyin": "gāoxìng",
+   "meaning": "happy; glad; willing (to do sth); in a cheerful mood",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "adjective"
+   ],
+   "hskLevel": 1,
+   "traditional": "高興",
+   "frequency": 920,
+   "chars": [
+    {
+     "char": "高",
+     "radical": "高",
+     "strokes": 10,
+     "decomposition": "⿳亠口冋",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A tall palace"
+     }
+    },
+    {
+     "char": "兴",
+     "radical": "八",
+     "strokes": 6,
+     "decomposition": "⿳⺍一八"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "她很高兴",
+     "en": "She is very happy.",
+     "sourceId": 4713298
+    },
+    {
+     "zh": "我不高兴。",
+     "en": "I'm not happy.",
+     "sourceId": 3378133
+    }
+   ],
+   "example": "她很高兴"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000032",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "个",
+   "pinyin": "gè",
+   "meaning": "(classifier used before a noun that has no specific classifier); (bound form) individual",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "measure-word"
+   ],
+   "hskLevel": 1,
+   "traditional": "個",
+   "frequency": 19,
+   "chars": [
+    {
+     "char": "个",
+     "radical": "丨",
+     "strokes": 3,
+     "decomposition": "⿱人丨",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A tally 丨 of people 人"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "听这个！",
+     "en": "Listen to this!",
+     "sourceId": 9932534
+    },
+    {
+     "zh": "下个QQ。",
+     "en": "Download QQ.",
+     "sourceId": 13949972
+    }
+   ],
+   "example": "听这个！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000033",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "工作",
+   "pinyin": "gōngzuò",
+   "meaning": "to work; (of a machine) to operate; job; work; task; CL:個|个[ge4],份[fen4],項|项[xiang4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "verb",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 111,
+   "chars": [
+    {
+     "char": "工",
+     "radical": "工",
+     "strokes": 3,
+     "decomposition": "⿱一丄",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A spade or other workman's tool"
+     }
+    },
+    {
+     "char": "作",
+     "radical": "亻",
+     "strokes": 7,
+     "decomposition": "⿰亻乍",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A person 亻 making something for the first time 乍; 乍 also provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "工作！",
+     "en": "Action!",
+     "sourceId": 13150942
+    },
+    {
+     "zh": "工作。",
+     "en": "Work.",
+     "sourceId": 13150943
+    }
+   ],
+   "example": "工作！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000034",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "狗",
+   "pinyin": "gǒu",
+   "meaning": "dog; CL:隻|只[zhi1],條|条[tiao2]",
+   "tone": "3",
+   "tags": [
+    "hsk2",
+    "noun"
+   ],
+   "hskLevel": 2,
+   "frequency": 620,
+   "chars": [
+    {
+     "char": "狗",
+     "radical": "犭",
+     "strokes": 8,
+     "decomposition": "⿰犭句",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "句",
+      "semantic": "犭",
+      "hint": "dog"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "狗屁！",
+     "en": "Darn!",
+     "sourceId": 849658
+    },
+    {
+     "zh": "小心狗！",
+     "en": "Beware of the dog!",
+     "sourceId": 772362
+    }
+   ],
+   "example": "狗屁！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000035",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "汉语",
+   "pinyin": "Hànyǔ",
+   "meaning": "Chinese language",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "漢語",
+   "frequency": 13422,
+   "chars": [
+    {
+     "char": "汉",
+     "radical": "氵",
+     "strokes": 5,
+     "decomposition": "⿰氵又",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 漢; the Han 𦰩 river 氵"
+     }
+    },
+    {
+     "char": "语",
+     "radical": "讠",
+     "strokes": 9,
+     "decomposition": "⿰讠吾",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "吾",
+      "semantic": "讠",
+      "hint": "words"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我学过汉语。",
+     "en": "I studied Chinese before.",
+     "sourceId": 11837758
+    },
+    {
+     "zh": "我学习汉语。",
+     "en": "I am learning Chinese.",
+     "sourceId": 2321655
+    }
+   ],
+   "example": "我学过汉语。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000036",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "好",
+   "pinyin": "hǎo",
+   "meaning": "good; appropriate; proper; all right!; (before a verb) easy to; (before a verb) good to; (before an adjective for exclamatory effect) so; (verb complement indicating completion); (of two people) close; on intimate terms; (after a form of address) hello",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "adjective"
+   ],
+   "hskLevel": 1,
+   "frequency": 20,
+   "chars": [
+    {
+     "char": "好",
+     "radical": "女",
+     "strokes": 6,
+     "decomposition": "⿰女子",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A woman 女 with a son 子"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "好！",
+     "en": "Good!",
+     "sourceId": 13111592
+    },
+    {
+     "zh": "走好！",
+     "en": "See you again.",
+     "sourceId": 13504449
+    }
+   ],
+   "example": "好！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000037",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "号",
+   "pinyin": "hào",
+   "meaning": "(literary) to call out; to command; (bound form) bugle; trumpet; (bound form) signal; bugle call (e.g. 起床號|起床号[qi3 chuang2 hao4]); (bound form) mark; sign; to mark; to label; to assign a number; (bound form) name; appellation (e.g. 國號|国号[guo2 hao4], 年號|年号[nian2 hao4], 遼寧號|辽宁号[Liao2 ning2 Hao4]); (after a numeral) number designation (e.g. 237號房間|237号房间[er4 san1 qi1 hao4 fang2 jian1] \"Room 237\"); day of the month (e.g. 七號|七号[qi1 hao4] \"the 7th\"); (bound form) size; type; category (e.g. 五號電池|五号电池[wu3 hao4 dian4 chi2]); (TCM) to feel (the pulse) (used in 號脈|号脉[hao4 mai4]); classifier for numbered people or items",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun",
+    "measure-word"
+   ],
+   "hskLevel": 1,
+   "traditional": "號",
+   "frequency": 278,
+   "chars": [
+    {
+     "char": "号",
+     "radical": "口",
+     "strokes": 5,
+     "decomposition": "⿱口丂",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "丂",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "今天是几号？",
+     "en": "What is the date today?",
+     "sourceId": 408909
+    },
+    {
+     "zh": "星期天几号?",
+     "en": "What is the date on Sunday?",
+     "sourceId": 9272998
+    }
+   ],
+   "example": "今天是几号？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000038",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "喝",
+   "pinyin": "hē",
+   "meaning": "to drink; variant of 嗬[he1]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 428,
+   "chars": [
+    {
+     "char": "喝",
+     "radical": "口",
+     "strokes": 12,
+     "decomposition": "⿰口曷",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "曷",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "喝吧。",
+     "en": "Drink.",
+     "sourceId": 8857231
+    },
+    {
+     "zh": "喝茶。",
+     "en": "Drink tea.",
+     "sourceId": 6092434
+    }
+   ],
+   "example": "喝吧。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000039",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "和",
+   "pinyin": "hé",
+   "meaning": "old variant of 和[he2]",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "preposition",
+    "conjunction"
+   ],
+   "hskLevel": 1,
+   "frequency": 19,
+   "chars": [
+    {
+     "char": "和",
+     "radical": "口",
+     "strokes": 8,
+     "decomposition": "⿰禾口",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "禾",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "和气点。",
+     "en": "Be nice.",
+     "sourceId": 5092659
+    },
+    {
+     "zh": "和你无关。",
+     "en": "That has nothing to do with you.",
+     "sourceId": 10649048
+    }
+   ],
+   "example": "和气点。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000040",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "很",
+   "pinyin": "hěn",
+   "meaning": "very; quite; (also, often used before an adjective without intensifying its meaning, i.e. as a meaningless syntactic element)",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "adverb"
+   ],
+   "hskLevel": 1,
+   "frequency": 35,
+   "chars": [
+    {
+     "char": "很",
+     "radical": "彳",
+     "strokes": 9,
+     "decomposition": "⿰彳艮",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "艮",
+      "semantic": "彳",
+      "hint": "step"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "很棒！",
+     "en": "Terrific!",
+     "sourceId": 5092136
+    },
+    {
+     "zh": "很多!",
+     "en": "That's a lot!",
+     "sourceId": 5064976
+    }
+   ],
+   "example": "很棒！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000041",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "后面",
+   "pinyin": "hòumiàn",
+   "meaning": "the back; the rear; the last bit; behind; near the end; at the back; later; afterwards",
+   "tone": "4",
+   "tags": [
+    "hsk3",
+    "noun"
+   ],
+   "hskLevel": 3,
+   "traditional": "後面",
+   "frequency": 1300,
+   "chars": [
+    {
+     "char": "后",
+     "radical": "口",
+     "strokes": 6,
+     "decomposition": "⿸？口"
+    },
+    {
+     "char": "面",
+     "radical": "面",
+     "strokes": 9,
+     "decomposition": "⿱？？",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A person's face"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我就在你后面。",
+     "en": "I was right behind you.",
+     "sourceId": 8860204
+    },
+    {
+     "zh": "谁躲在窗帘后面？",
+     "en": "Who is hiding behind the curtain?",
+     "sourceId": 9496150
+    }
+   ],
+   "example": "我就在你后面。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000042",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "回",
+   "pinyin": "huí",
+   "meaning": "Hui ethnic group (Chinese Muslims)",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 225,
+   "chars": [
+    {
+     "char": "回",
+     "radical": "囗",
+     "strokes": 6,
+     "decomposition": "⿴囗口",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Originally, a spiral signifying return"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "回家！",
+     "en": "Go home.",
+     "sourceId": 5151658
+    },
+    {
+     "zh": "回首。",
+     "en": "He looked back.",
+     "sourceId": 13111714
+    }
+   ],
+   "example": "回家！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000043",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "会",
+   "pinyin": "huì",
+   "meaning": "can; to have the skill; to know how to; to be likely to; to be sure to; to meet; to get together; meeting; gathering; (suffix) union; group; association; (bound form) a moment (Taiwan pr. [hui3])",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "會",
+   "frequency": 23,
+   "chars": [
+    {
+     "char": "会",
+     "radical": "人",
+     "strokes": 6,
+     "decomposition": "⿱人云",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "People 人 speaking 云"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "幸会。",
+     "en": "It is a privilege to meet you.",
+     "sourceId": 9541552
+    },
+    {
+     "zh": "等会见！",
+     "en": "Talk to you later.",
+     "sourceId": 10696089
+    }
+   ],
+   "example": "幸会。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000044",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "几",
+   "pinyin": "jǐ",
+   "meaning": "how many; how much; several; a few",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "number",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "traditional": "幾",
+   "frequency": 178,
+   "chars": [
+    {
+     "char": "几",
+     "radical": "几",
+     "strokes": 2,
+     "decomposition": "⿰丿乙",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A small table; compare 丌"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "几乎。",
+     "en": "Almost.",
+     "sourceId": 6401429
+    },
+    {
+     "zh": "几点了？",
+     "en": "What time?",
+     "sourceId": 501536
+    }
+   ],
+   "example": "几乎。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000045",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "家",
+   "pinyin": "jiā",
+   "meaning": "used in 傢伙|家伙[jia1 huo5] and 傢俱|家俱[jia1 ju4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun",
+    "measure-word"
+   ],
+   "hskLevel": 1,
+   "frequency": 124,
+   "chars": [
+    {
+     "char": "家",
+     "radical": "宀",
+     "strokes": 10,
+     "decomposition": "⿱宀豕",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "豕",
+      "semantic": "宀",
+      "hint": "roof"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "家！",
+     "en": "Home!",
+     "sourceId": 13138833
+    },
+    {
+     "zh": "回家！",
+     "en": "Go home.",
+     "sourceId": 5151658
+    }
+   ],
+   "example": "家！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000046",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "叫",
+   "pinyin": "jiào",
+   "meaning": "to shout; to call; to order; to ask; to be called; by (indicates agent in the passive mood)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 200,
+   "chars": [
+    {
+     "char": "叫",
+     "radical": "口",
+     "strokes": 5,
+     "decomposition": "⿰口丩",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "丩",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "尖叫。",
+     "en": "Scream.",
+     "sourceId": 10695941
+    },
+    {
+     "zh": "叫警察！",
+     "en": "Call the police!",
+     "sourceId": 1205903
+    }
+   ],
+   "example": "尖叫。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000047",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "今天",
+   "pinyin": "jīntiān",
+   "meaning": "today; the present time; now",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 155,
+   "chars": [
+    {
+     "char": "今",
+     "radical": "人",
+     "strokes": 4,
+     "decomposition": "⿱人？",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A mouth 亼 talking about things"
+     }
+    },
+    {
+     "char": "天",
+     "radical": "大",
+     "strokes": 4,
+     "decomposition": "⿱一大",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "The heavens 一 above a man 大"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "今天热吗？",
+     "en": "Is it hot today?",
+     "sourceId": 10961174
+    },
+    {
+     "zh": "今天不热。",
+     "en": "It isn't hot today.",
+     "sourceId": 10961172
+    }
+   ],
+   "example": "今天热吗？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000048",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "九",
+   "pinyin": "jiǔ",
+   "meaning": "nine; 9",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 2040,
+   "chars": [
+    {
+     "char": "九",
+     "radical": "乙",
+     "strokes": 2,
+     "decomposition": "⿻丿乙",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "An elbow"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "猫有九命。",
+     "en": "A cat has nine lives.",
+     "sourceId": 340498
+    },
+    {
+     "zh": "你九点上班。",
+     "en": "You work at nine o'clock.",
+     "sourceId": 5575448
+    }
+   ],
+   "example": "猫有九命。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000049",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "开",
+   "pinyin": "kāi",
+   "meaning": "to open (transitive or intransitive); (of ships, vehicles, troops etc) to start; to turn on; to put in operation; to operate; to run; to boil; to write out (a prescription, check, invoice etc); (directional complement) away; off; carat (gold); abbr. for Kelvin, 開爾文|开尔文[Kai1 er3 wen2]; abbr. for 開本|开本[kai1 ben3], book format",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "開",
+   "frequency": 195,
+   "chars": [
+    {
+     "char": "开",
+     "radical": "廾",
+     "strokes": 4,
+     "decomposition": "⿱一廾",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 開; hands 廾 lifting the latch 一 of a door"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "开始！",
+     "en": "Action!",
+     "sourceId": 5094852
+    },
+    {
+     "zh": "开火！",
+     "en": "Open fire!",
+     "sourceId": 5092433
+    }
+   ],
+   "example": "开始！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000050",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "看",
+   "pinyin": "kàn",
+   "meaning": "to see; to look at; to read; to watch; to visit; to call on; to consider; to regard as; to look after; to treat (a patient or illness); to depend on; to feel (that); (after a verb) to give it a try; to watch out for",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 52,
+   "chars": [
+    {
+     "char": "看",
+     "radical": "目",
+     "strokes": 9,
+     "decomposition": "⿱手目",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Shielding one's eyes 目 with a hand 手 to look to the distance"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "看！",
+     "en": "Read!",
+     "sourceId": 13274588
+    },
+    {
+     "zh": "你看！",
+     "en": "Look!",
+     "sourceId": 12278379
+    }
+   ],
+   "example": "看！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000051",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "看见",
+   "pinyin": "kànjiàn",
+   "meaning": "to see; to catch sight of",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "看見",
+   "frequency": 870,
+   "chars": [
+    {
+     "char": "看",
+     "radical": "目",
+     "strokes": 9,
+     "decomposition": "⿱手目",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Shielding one's eyes 目 with a hand 手 to look to the distance"
+     }
+    },
+    {
+     "char": "见",
+     "radical": "见",
+     "strokes": 4,
+     "decomposition": "⿵冂儿",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 見; a man 儿 with the eye 目 emphasized"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你看见了吗？",
+     "en": "Did you see it?",
+     "sourceId": 1324003
+    },
+    {
+     "zh": "我们没看见。",
+     "en": "We didn't see it.",
+     "sourceId": 11502931
+    }
+   ],
+   "example": "你看见了吗？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000052",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "块",
+   "pinyin": "kuài",
+   "meaning": "lump; chunk; piece; classifier for pieces of cloth, cake, soap etc; (coll.) classifier for money and currency units",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun",
+    "measure-word"
+   ],
+   "hskLevel": 1,
+   "traditional": "塊",
+   "frequency": 483,
+   "chars": [
+    {
+     "char": "块",
+     "radical": "土",
+     "strokes": 7,
+     "decomposition": "⿰土夬",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "夬",
+      "semantic": "土",
+      "hint": "earth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这个几块？",
+     "en": "How much is it?",
+     "sourceId": 10052320
+    },
+    {
+     "zh": "谁想来一块派？",
+     "en": "Who wants a slice of pie?",
+     "sourceId": 8511067
+    }
+   ],
+   "example": "这个几块？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000053",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "来",
+   "pinyin": "lái",
+   "meaning": "to come; (used as a substitute for a more specific verb); hither (directional complement for motion toward the speaker, as in 回來|回来[hui2 lai5]); ever since (as in 自古以來|自古以来[zi4 gu3 yi3 lai2]); for the past (amount of time); (prefix) the coming ...; the next ... (as in 來世|来世[lai2 shi4]); (between two verbs) in order to; (after a round number) approximately; (used after 得[de2] to indicate possibility, as in 談得來|谈得来[tan2 de5 lai2], or after 不[bu4] to indicate impossibility, as in 吃不來|吃不来[chi1 bu5 lai2])",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "來",
+   "frequency": 31,
+   "chars": [
+    {
+     "char": "来",
+     "radical": "木",
+     "strokes": 7,
+     "decomposition": "⿻未丷",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A wheat plant that has not yet borne fruit; compare 來"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "进来",
+     "en": "Come on in!",
+     "sourceId": 13410532
+    },
+    {
+     "zh": "来了!",
+     "en": "I'm coming!",
+     "sourceId": 11508919
+    }
+   ],
+   "example": "进来"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000054",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "老师",
+   "pinyin": "lǎoshī",
+   "meaning": "teacher",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "老師",
+   "frequency": 799,
+   "chars": [
+    {
+     "char": "老",
+     "radical": "老",
+     "strokes": 6,
+     "decomposition": "⿱耂匕",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A person bent over with long hair 匕 and a crutch; compare 耂"
+     }
+    },
+    {
+     "char": "师",
+     "radical": "巾",
+     "strokes": 6,
+     "decomposition": "⿰刂帀",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "To skillfully wield 帀 a knife 刂"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "关老师！",
+     "en": "Teacher Guan!",
+     "sourceId": 13111438
+    },
+    {
+     "zh": "他是老师。",
+     "en": "He is a teacher.",
+     "sourceId": 7768345
+    }
+   ],
+   "example": "关老师！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000055",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "了",
+   "pinyin": "le",
+   "meaning": "(completed action marker); (modal particle indicating change of state, situation now); (modal particle intensifying preceding clause)",
+   "tone": "5",
+   "tags": [
+    "hsk1",
+    "auxiliary"
+   ],
+   "hskLevel": 1,
+   "frequency": 3,
+   "chars": [
+    {
+     "char": "了",
+     "radical": "亅",
+     "strokes": 2,
+     "decomposition": "⿱乛亅",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A child swaddled in blanklets; compare 子"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "来了!",
+     "en": "I'm coming!",
+     "sourceId": 11508919
+    },
+    {
+     "zh": "够了！",
+     "en": "Cut it out!",
+     "sourceId": 1415895
+    }
+   ],
+   "example": "来了!"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000056",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "冷",
+   "pinyin": "lěng",
+   "meaning": "surname Leng",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "adjective"
+   ],
+   "hskLevel": 1,
+   "frequency": 1027,
+   "chars": [
+    {
+     "char": "冷",
+     "radical": "冫",
+     "strokes": 7,
+     "decomposition": "⿰冫令",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "令",
+      "semantic": "冫",
+      "hint": "ice"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "好冷！",
+     "en": "How cold it is!",
+     "sourceId": 10478496
+    },
+    {
+     "zh": "很冷。",
+     "en": "It's cold.",
+     "sourceId": 12278472
+    }
+   ],
+   "example": "好冷！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000057",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "里",
+   "pinyin": "lǐ",
+   "meaning": "variant of 裡|里[li3]",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "裡",
+   "frequency": 75,
+   "chars": [
+    {
+     "char": "里",
+     "radical": "里",
+     "strokes": 7,
+     "decomposition": "⿱田土",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Unit of measure for farm 田 land 土"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "哪里？",
+     "en": "Where?",
+     "sourceId": 5214237
+    },
+    {
+     "zh": "去店里！",
+     "en": "Go to the store!",
+     "sourceId": 6183617
+    }
+   ],
+   "example": "哪里？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000058",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "六",
+   "pinyin": "liù",
+   "meaning": "six; 6",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 802,
+   "chars": [
+    {
+     "char": "六",
+     "radical": "八",
+     "strokes": 4,
+     "decomposition": "⿱亠八"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "是星期六。",
+     "en": "It is Saturday.",
+     "sourceId": 3715251
+    },
+    {
+     "zh": "我住六楼。",
+     "en": "I live on the fifth floor.",
+     "sourceId": 1444139
+    }
+   ],
+   "example": "是星期六。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000059",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "妈妈",
+   "pinyin": "māma",
+   "meaning": "mama; mommy; mother; CL:個|个[ge4],位[wei4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "媽媽",
+   "frequency": 527,
+   "chars": [
+    {
+     "char": "妈",
+     "radical": "女",
+     "strokes": 6,
+     "decomposition": "⿰女马",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "马",
+      "semantic": "女",
+      "hint": "woman"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你妈妈呢？",
+     "en": "Where's your mom?",
+     "sourceId": 10966817
+    },
+    {
+     "zh": "妈妈哭了。",
+     "en": "Mummy cried.",
+     "sourceId": 349505
+    }
+   ],
+   "example": "你妈妈呢？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000060",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "吗",
+   "pinyin": "ma",
+   "meaning": "(question particle for \"yes-no\" questions)",
+   "tone": "5",
+   "tags": [
+    "hsk1",
+    "auxiliary"
+   ],
+   "hskLevel": 1,
+   "traditional": "嗎",
+   "frequency": 83,
+   "chars": [
+    {
+     "char": "吗",
+     "radical": "口",
+     "strokes": 6,
+     "decomposition": "⿰口马",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "马",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "对吗？",
+     "en": "Is that right?",
+     "sourceId": 10981494
+    }
+   ],
+   "example": "对吗？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000061",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "买",
+   "pinyin": "mǎi",
+   "meaning": "to buy; to purchase",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "買",
+   "frequency": 240,
+   "chars": [
+    {
+     "char": "买",
+     "radical": "大",
+     "strokes": 6,
+     "decomposition": "⿱乛头"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "买单！",
+     "en": "May I have the check, please?",
+     "sourceId": 1170550
+    },
+    {
+     "zh": "买单。",
+     "en": "The check, please.",
+     "sourceId": 338786
+    }
+   ],
+   "example": "买单！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000062",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "猫",
+   "pinyin": "māo",
+   "meaning": "cat (CL:隻|只[zhi1]); (dialect) to hide oneself; (loanword) (coll.) modem",
+   "tone": "1",
+   "tags": [
+    "hsk2",
+    "noun"
+   ],
+   "hskLevel": 2,
+   "traditional": "貓",
+   "frequency": 1150,
+   "chars": [
+    {
+     "char": "猫",
+     "radical": "犭",
+     "strokes": 11,
+     "decomposition": "⿰犭苗",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "苗",
+      "semantic": "犭",
+      "hint": "animal"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "是猫！",
+     "en": "Cats!",
+     "sourceId": 13904606
+    },
+    {
+     "zh": "猫老了。",
+     "en": "The cat is old.",
+     "sourceId": 2508849
+    }
+   ],
+   "example": "是猫！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000063",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "没关系",
+   "pinyin": "méi guānxi",
+   "meaning": "it doesn't matter",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "沒關係",
+   "frequency": 3541,
+   "chars": [
+    {
+     "char": "没",
+     "radical": "氵",
+     "strokes": 7,
+     "decomposition": "⿰氵殳",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "殳",
+      "semantic": "氵",
+      "hint": "water"
+     }
+    },
+    {
+     "char": "关",
+     "radical": "丷",
+     "strokes": 6,
+     "decomposition": "⿱丷天"
+    },
+    {
+     "char": "系",
+     "radical": "糸",
+     "strokes": 7,
+     "decomposition": "⿱丿糸",
+     "etymology": {
+      "type": "pictophonetic",
+      "semantic": "糸",
+      "hint": "thread"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "没关系！",
+     "en": "Never mind!",
+     "sourceId": 374844
+    },
+    {
+     "zh": "没关系。",
+     "en": "It's not important.",
+     "sourceId": 333730
+    }
+   ],
+   "example": "没关系！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000064",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "没有",
+   "pinyin": "méiyǒu",
+   "meaning": "haven't; hasn't; doesn't exist; to not have; to not be",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "verb",
+    "adverb"
+   ],
+   "hskLevel": 1,
+   "traditional": "沒有",
+   "chars": [
+    {
+     "char": "没",
+     "radical": "氵",
+     "strokes": 7,
+     "decomposition": "⿰氵殳",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "殳",
+      "semantic": "氵",
+      "hint": "water"
+     }
+    },
+    {
+     "char": "有",
+     "radical": "月",
+     "strokes": 6,
+     "decomposition": "⿸？月",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "月"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "没有糖。",
+     "en": "There is no sugar here.",
+     "sourceId": 6020855
+    },
+    {
+     "zh": "还没有。",
+     "en": "Not yet.",
+     "sourceId": 945672
+    }
+   ],
+   "example": "没有糖。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000065",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "米饭",
+   "pinyin": "mǐfàn",
+   "meaning": "(cooked) rice",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "米飯",
+   "frequency": 10194,
+   "chars": [
+    {
+     "char": "米",
+     "radical": "米",
+     "strokes": 6,
+     "decomposition": "⿻丷木",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Grains of rice"
+     }
+    },
+    {
+     "char": "饭",
+     "radical": "饣",
+     "strokes": 7,
+     "decomposition": "⿰饣反",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "反",
+      "semantic": "饣",
+      "hint": "food"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "吃米饭。",
+     "en": "Eat rice.",
+     "sourceId": 10961144
+    },
+    {
+     "zh": "我在吃米饭。",
+     "en": "I am eating rice.",
+     "sourceId": 334506
+    }
+   ],
+   "example": "吃米饭。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000066",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "明天",
+   "pinyin": "míngtiān",
+   "meaning": "tomorrow",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 469,
+   "chars": [
+    {
+     "char": "明",
+     "radical": "日",
+     "strokes": 8,
+     "decomposition": "⿰日月",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "The light of the sun 日 and moon 月"
+     }
+    },
+    {
+     "char": "天",
+     "radical": "大",
+     "strokes": 4,
+     "decomposition": "⿱一大",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "The heavens 一 above a man 大"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "明天见！",
+     "en": "See you again tomorrow.",
+     "sourceId": 10966735
+    },
+    {
+     "zh": "明天见。",
+     "en": "See you again tomorrow.",
+     "sourceId": 4879134
+    }
+   ],
+   "example": "明天见！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000067",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "名字",
+   "pinyin": "míngzi",
+   "meaning": "name (of a person or thing)",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 829,
+   "chars": [
+    {
+     "char": "名",
+     "radical": "口",
+     "strokes": 6,
+     "decomposition": "⿸夕口",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A name called out 口 to hail someone at night 夕"
+     }
+    },
+    {
+     "char": "字",
+     "radical": "子",
+     "strokes": 6,
+     "decomposition": "⿱宀子",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A child 子 in a house 宀; 子 also provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我没有名字。",
+     "en": "I have no name.",
+     "sourceId": 11046616
+    },
+    {
+     "zh": "那名字是肯。",
+     "en": "That name is Ken.",
+     "sourceId": 5555549
+    }
+   ],
+   "example": "我没有名字。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000068",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "哪",
+   "pinyin": "nǎ",
+   "meaning": "how; which",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 547,
+   "chars": [
+    {
+     "char": "哪",
+     "radical": "口",
+     "strokes": 9,
+     "decomposition": "⿰口那",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "那",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "哪位？",
+     "en": "Who is it?",
+     "sourceId": 13276169
+    },
+    {
+     "zh": "天哪！",
+     "en": "Gosh!",
+     "sourceId": 10981492
+    }
+   ],
+   "example": "哪位？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000069",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "哪儿",
+   "pinyin": "nǎr",
+   "meaning": "where?; wherever; anywhere; somewhere; (used in rhetorical questions) how can ...?; how could ...?",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "traditional": "哪兒",
+   "chars": [
+    {
+     "char": "哪",
+     "radical": "口",
+     "strokes": 9,
+     "decomposition": "⿰口那",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "那",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    },
+    {
+     "char": "儿",
+     "radical": "儿",
+     "strokes": 2,
+     "decomposition": "⿰丿乚",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Simplified form of 兒, a picture of a child; compare 人"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "住哪儿？",
+     "en": "Where are you staying?",
+     "sourceId": 1875213
+    },
+    {
+     "zh": "书在哪儿？",
+     "en": "Where is the book?",
+     "sourceId": 5403285
+    }
+   ],
+   "example": "住哪儿？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000070",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "那",
+   "pinyin": "nà",
+   "meaning": "(specifier) that; the; those (colloquial pr. [nei4]); (pronoun) that (referring to persons, things or situations); then (in that case)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 48,
+   "chars": [
+    {
+     "char": "那",
+     "radical": "阝",
+     "strokes": 6,
+     "decomposition": "⿰⿹？？阝"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "那……",
+     "en": "Err...",
+     "sourceId": 13185332
+    },
+    {
+     "zh": "那是谁？",
+     "en": "Who's there?",
+     "sourceId": 4789686
+    }
+   ],
+   "example": "那……"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000071",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "呢",
+   "pinyin": "ne",
+   "meaning": "(sentence-final particle) used in questions to link back to prior discourse or context (\"what about...?\", \"and...?\"); (sentence-final particle) indicating that a state or situation still holds; (discourse particle) used to mark a slight pause or emphasis in speech",
+   "tone": "5",
+   "tags": [
+    "hsk1",
+    "auxiliary"
+   ],
+   "hskLevel": 1,
+   "frequency": 96,
+   "chars": [
+    {
+     "char": "呢",
+     "radical": "口",
+     "strokes": 8,
+     "decomposition": "⿰口尼",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "尼",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "人呢？",
+     "en": "Where did he go?",
+     "sourceId": 2321307
+    },
+    {
+     "zh": "您呢？",
+     "en": "How about you?",
+     "sourceId": 1623188
+    }
+   ],
+   "example": "人呢？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000072",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "能",
+   "pinyin": "néng",
+   "meaning": "surname Neng",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 46,
+   "chars": [
+    {
+     "char": "能",
+     "radical": "⺼",
+     "strokes": 10,
+     "decomposition": "⿰⿱厶⺼⿱匕匕",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A bear's head 厶, body ⺼, and claws 匕"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "能理解？",
+     "en": "Understand?",
+     "sourceId": 13138818
+    },
+    {
+     "zh": "我能吗？",
+     "en": "May I?",
+     "sourceId": 10194943
+    }
+   ],
+   "example": "能理解？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000073",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "你",
+   "pinyin": "nǐ",
+   "meaning": "you (informal, as opposed to courteous 您[nin2])",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 5,
+   "chars": [
+    {
+     "char": "你",
+     "radical": "亻",
+     "strokes": 7,
+     "decomposition": "⿰亻尔",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Pronoun 尔 for a person 亻"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你的？",
+     "en": "Yours?",
+     "sourceId": 13111561
+    },
+    {
+     "zh": "你看！",
+     "en": "Look!",
+     "sourceId": 12278379
+    }
+   ],
+   "example": "你的？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000074",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "您",
+   "pinyin": "nín",
+   "meaning": "you (courteous, as opposed to informal 你[ni3])",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 357,
+   "chars": [
+    {
+     "char": "您",
+     "radical": "心",
+     "strokes": 11,
+     "decomposition": "⿱你心",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "You 你 said with affection 心"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "您好！",
+     "en": "Hello!",
+     "sourceId": 13174770
+    },
+    {
+     "zh": "您赢！",
+     "en": "You've won!",
+     "sourceId": 2884098
+    }
+   ],
+   "example": "您好！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000075",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "女儿",
+   "pinyin": "nǚ'ér",
+   "meaning": "daughter",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "女兒",
+   "frequency": 879,
+   "chars": [
+    {
+     "char": "女",
+     "radical": "女",
+     "strokes": 3,
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A woman turned to the side"
+     }
+    },
+    {
+     "char": "儿",
+     "radical": "儿",
+     "strokes": 2,
+     "decomposition": "⿰丿乚",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Simplified form of 兒, a picture of a child; compare 人"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "她是我女儿。",
+     "en": "She's my daughter.",
+     "sourceId": 1428124
+    },
+    {
+     "zh": "你女儿怎么了？",
+     "en": "How is your daughter?",
+     "sourceId": 10966848
+    }
+   ],
+   "example": "她是我女儿。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000076",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "朋友",
+   "pinyin": "péngyou",
+   "meaning": "friend; CL:個|个[ge4],位[wei4]",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 280,
+   "chars": [
+    {
+     "char": "朋",
+     "radical": "月",
+     "strokes": 8,
+     "decomposition": "⿰月月",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Two people 月 walking together"
+     }
+    },
+    {
+     "char": "友",
+     "radical": "又",
+     "strokes": 4,
+     "decomposition": "⿸？又",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Two hands 又 joined, representing friendship; 又 also provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我是朋友。",
+     "en": "I'm a friend.",
+     "sourceId": 13825930
+    },
+    {
+     "zh": "你好，朋友。",
+     "en": "Hail, friend.",
+     "sourceId": 13117790
+    }
+   ],
+   "example": "我是朋友。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000077",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "漂亮",
+   "pinyin": "piàoliang",
+   "meaning": "pretty; beautiful",
+   "tone": "4",
+   "tags": [
+    "hsk2",
+    "adjective"
+   ],
+   "hskLevel": 2,
+   "frequency": 915,
+   "chars": [
+    {
+     "char": "漂",
+     "radical": "氵",
+     "strokes": 14,
+     "decomposition": "⿰氵票",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "票",
+      "semantic": "氵",
+      "hint": "water"
+     }
+    },
+    {
+     "char": "亮",
+     "radical": "亠",
+     "strokes": 9,
+     "decomposition": "⿳亠口⿱冖几",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A lit oil lamp"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你很漂亮.",
+     "en": "You are beautiful.",
+     "sourceId": 1928569
+    },
+    {
+     "zh": "你真漂亮！",
+     "en": "How beautiful you are!",
+     "sourceId": 1891626
+    }
+   ],
+   "example": "你很漂亮."
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000078",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "苹果",
+   "pinyin": "píngguǒ",
+   "meaning": "Apple (American tech company)",
+   "tone": "2",
+   "tags": [
+    "hsk3",
+    "noun"
+   ],
+   "hskLevel": 3,
+   "traditional": "蘋果",
+   "frequency": 2562,
+   "chars": [
+    {
+     "char": "苹",
+     "radical": "艹",
+     "strokes": 8,
+     "decomposition": "⿱艹平",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "平",
+      "semantic": "艹",
+      "hint": "plant"
+     }
+    },
+    {
+     "char": "果",
+     "radical": "木",
+     "strokes": 8,
+     "decomposition": "⿱田木",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Fruit 田 growing on a tree 木"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "多少苹果？",
+     "en": "How many apples are there?",
+     "sourceId": 755840
+    },
+    {
+     "zh": "几只苹果？",
+     "en": "How many apples are there?",
+     "sourceId": 755839
+    }
+   ],
+   "example": "多少苹果？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000079",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "七",
+   "pinyin": "qī",
+   "meaning": "seven; 7",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 1419,
+   "chars": [
+    {
+     "char": "七",
+     "radical": "一",
+     "strokes": 2,
+     "decomposition": "⿻一乚"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "七夕节快乐！",
+     "en": "Happy Qixi Festival!",
+     "sourceId": 4462612
+    },
+    {
+     "zh": "七减二是五。",
+     "en": "Seven minus two is five.",
+     "sourceId": 10002489
+    }
+   ],
+   "example": "七夕节快乐！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000080",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "前面",
+   "pinyin": "qiánmiàn",
+   "meaning": "ahead; in front; preceding; above; also pr. [qian2 mian5]",
+   "tone": "2",
+   "tags": [
+    "hsk3",
+    "noun"
+   ],
+   "hskLevel": 3,
+   "frequency": 1789,
+   "chars": [
+    {
+     "char": "前",
+     "radical": "刂",
+     "strokes": 9,
+     "decomposition": "⿱⿱丷一刖"
+    },
+    {
+     "char": "面",
+     "radical": "面",
+     "strokes": 9,
+     "decomposition": "⿱？？",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A person's face"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "零在一前面。",
+     "en": "Zero comes before one.",
+     "sourceId": 816566
+    },
+    {
+     "zh": "在我前面走。",
+     "en": "Walk ahead of me.",
+     "sourceId": 517553
+    }
+   ],
+   "example": "零在一前面。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000081",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "钱",
+   "pinyin": "qián",
+   "meaning": "surname Qian",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "錢",
+   "frequency": 218,
+   "chars": [
+    {
+     "char": "钱",
+     "radical": "钅",
+     "strokes": 10,
+     "decomposition": "⿰钅戋",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "戋",
+      "semantic": "钅",
+      "hint": "money"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "偷钱。",
+     "en": "Steal the money.",
+     "sourceId": 512070
+    },
+    {
+     "zh": "多少钱？",
+     "en": "How much?",
+     "sourceId": 3697906
+    }
+   ],
+   "example": "偷钱。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000082",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "请",
+   "pinyin": "qǐng",
+   "meaning": "to ask; to invite; please (do sth); to treat (to a meal etc); to request",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "請",
+   "frequency": 216,
+   "chars": [
+    {
+     "char": "请",
+     "radical": "讠",
+     "strokes": 10,
+     "decomposition": "⿰讠青",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "青",
+      "semantic": "讠",
+      "hint": "speech"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "请！",
+     "en": "Come in.",
+     "sourceId": 4970110
+    },
+    {
+     "zh": "请听！",
+     "en": "Hark!",
+     "sourceId": 7781469
+    }
+   ],
+   "example": "请！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000083",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "去",
+   "pinyin": "qù",
+   "meaning": "to go; to go to (a place); (of a time etc) last; just passed; to send; to remove; to get rid of; to reduce; to be apart from in space or time; to die (euphemism); to play (a part); (when used either before or after a verb) to go in order to do sth; (after a verb of motion indicates movement away from the speaker); (used after certain verbs to indicate detachment or separation)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 38,
+   "chars": [
+    {
+     "char": "去",
+     "radical": "厶",
+     "strokes": 5,
+     "decomposition": "⿱土厶"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "出去！",
+     "en": "Get out.",
+     "sourceId": 7768017
+    },
+    {
+     "zh": "去找它",
+     "en": "Find it.",
+     "sourceId": 13361692
+    }
+   ],
+   "example": "出去！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000084",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "热",
+   "pinyin": "rè",
+   "meaning": "to warm up; to heat up; hot (of weather); heat; fervent",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "adjective",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "熱",
+   "frequency": 938,
+   "chars": [
+    {
+     "char": "热",
+     "radical": "灬",
+     "strokes": 10,
+     "decomposition": "⿱执灬",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "执",
+      "semantic": "灬",
+      "hint": "fire"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "热死了！",
+     "en": "How hot it is!",
+     "sourceId": 4515027
+    },
+    {
+     "zh": "今天热吗？",
+     "en": "Is it hot today?",
+     "sourceId": 10961174
+    }
+   ],
+   "example": "热死了！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000085",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "人",
+   "pinyin": "rén",
+   "meaning": "person; people; CL:個|个[ge4],位[wei4],名[ming2]",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 19,
+   "chars": [
+    {
+     "char": "人",
+     "radical": "人",
+     "strokes": 2,
+     "etymology": {
+      "type": "pictographic",
+      "hint": "The legs of a human being"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "敝人",
+     "en": "Yours truly.",
+     "sourceId": 884673
+    },
+    {
+     "zh": "怪人！",
+     "en": "What a strange guy!",
+     "sourceId": 13274663
+    }
+   ],
+   "example": "敝人"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000086",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "认识",
+   "pinyin": "rènshi",
+   "meaning": "to know; to recognize; to be familiar with; to get acquainted with sb; knowledge; understanding; awareness; cognition",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "認識",
+   "frequency": 463,
+   "chars": [
+    {
+     "char": "认",
+     "radical": "讠",
+     "strokes": 4,
+     "decomposition": "⿰讠人",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "人",
+      "semantic": "讠",
+      "hint": "speech"
+     }
+    },
+    {
+     "char": "识",
+     "radical": "讠",
+     "strokes": 7,
+     "decomposition": "⿰讠只",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "只",
+      "semantic": "讠",
+      "hint": "speech"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我认识他。",
+     "en": "I know him.",
+     "sourceId": 11837643
+    },
+    {
+     "zh": "她认识我。",
+     "en": "She knows me.",
+     "sourceId": 4970146
+    }
+   ],
+   "example": "我认识他。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000087",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "日",
+   "pinyin": "rì",
+   "meaning": "(bound form) sun; day; day of the month; (bound form) Japan (abbr. for 日本[Ri4 ben3]); (vulgar) to fuck; to have sex with",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 395,
+   "chars": [
+    {
+     "char": "日",
+     "radical": "日",
+     "strokes": 4,
+     "decomposition": "⿴口一",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "The sun"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "谁的生日？",
+     "en": "Whose birthday is it?",
+     "sourceId": 12686968
+    },
+    {
+     "zh": "生日同乐！",
+     "en": "Let's have a good birthday celebration!",
+     "sourceId": 2384335
+    }
+   ],
+   "example": "谁的生日？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000088",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "三",
+   "pinyin": "sān",
+   "meaning": "surname San",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 233,
+   "chars": [
+    {
+     "char": "三",
+     "radical": "一",
+     "strokes": 3,
+     "decomposition": "⿱一二",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Three  parallel lines; compare 一 (one) and 二 (two)"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "三振出局！",
+     "en": "Strike three!",
+     "sourceId": 13181799
+    },
+    {
+     "zh": "他三岁了。",
+     "en": "He's three years old.",
+     "sourceId": 10895471
+    }
+   ],
+   "example": "三振出局！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000089",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "商店",
+   "pinyin": "shāngdiàn",
+   "meaning": "store; shop; CL:家[jia1]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 3479,
+   "chars": [
+    {
+     "char": "商",
+     "radical": "口",
+     "strokes": 11,
+     "decomposition": "⿱⿱亠丷冏",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "章",
+      "semantic": "冏",
+      "hint": "bright"
+     }
+    },
+    {
+     "char": "店",
+     "radical": "广",
+     "strokes": 8,
+     "decomposition": "⿸广占",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "占",
+      "semantic": "广",
+      "hint": "building"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我去商店。",
+     "en": "I am going to the shop.",
+     "sourceId": 1504028
+    },
+    {
+     "zh": "我要去商店。",
+     "en": "I'm going to the shop.",
+     "sourceId": 13519659
+    }
+   ],
+   "example": "我去商店。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000090",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "上",
+   "pinyin": "shàng",
+   "meaning": "(bound form) up; upper; above; previous; first (of multiple parts); to climb; to get onto; to go up; to attend (class or university); (directional complement) up; (noun suffix) on; above",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 29,
+   "chars": [
+    {
+     "char": "上",
+     "radical": "一",
+     "strokes": 3,
+     "decomposition": "⿱⺊一",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "One stroke on top of another; compare 下 (below)"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "加上！",
+     "en": "Add!",
+     "sourceId": 13112126
+    },
+    {
+     "zh": "向上！",
+     "en": "Ascend!",
+     "sourceId": 13112124
+    }
+   ],
+   "example": "加上！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000091",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "上午",
+   "pinyin": "shàngwǔ",
+   "meaning": "morning",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 2188,
+   "chars": [
+    {
+     "char": "上",
+     "radical": "一",
+     "strokes": 3,
+     "decomposition": "⿱⺊一",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "One stroke on top of another; compare 下 (below)"
+     }
+    },
+    {
+     "char": "午",
+     "radical": "十",
+     "strokes": 4,
+     "decomposition": "⿻丿干"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我上午慢跑。",
+     "en": "I jog in the morning.",
+     "sourceId": 3695646
+    },
+    {
+     "zh": "今天上午下雨。",
+     "en": "It will rain this morning.",
+     "sourceId": 6092453
+    }
+   ],
+   "example": "我上午慢跑。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000092",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "少",
+   "pinyin": "shǎo",
+   "meaning": "few; less; to lack; to be missing; to stop (doing sth); seldom",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "adjective",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 538,
+   "chars": [
+    {
+     "char": "少",
+     "radical": "小",
+     "strokes": 4,
+     "decomposition": "⿱小丿",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Grains of sand; 小 provides the pronunciation and meaning"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "多少人？",
+     "en": "How many people?",
+     "sourceId": 10267391
+    },
+    {
+     "zh": "多少钱？",
+     "en": "How much?",
+     "sourceId": 3697906
+    }
+   ],
+   "example": "多少人？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000093",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "谁",
+   "pinyin": "shéi/shuí",
+   "meaning": "who; also pr. [shui2]",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "traditional": "誰",
+   "frequency": 142,
+   "chars": [
+    {
+     "char": "谁",
+     "radical": "讠",
+     "strokes": 10,
+     "decomposition": "⿰讠隹",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "隹",
+      "semantic": "讠",
+      "hint": "speech"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "谁！",
+     "en": "Who!",
+     "sourceId": 13142068
+    },
+    {
+     "zh": "谁？",
+     "en": "Who?",
+     "sourceId": 5214214
+    }
+   ],
+   "example": "谁！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000094",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "什么",
+   "pinyin": "shénme",
+   "meaning": "what?; something; anything",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "traditional": "什麼",
+   "frequency": 55,
+   "chars": [
+    {
+     "char": "什",
+     "radical": "亻",
+     "strokes": 4,
+     "decomposition": "⿰亻十",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A file of ten 十 people 亻"
+     }
+    },
+    {
+     "char": "么",
+     "radical": "丿",
+     "strokes": 3,
+     "decomposition": "⿱丿厶"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "什么？",
+     "en": "What do you mean?",
+     "sourceId": 338275
+    },
+    {
+     "zh": "搞什么",
+     "en": "What's up?",
+     "sourceId": 1067336
+    }
+   ],
+   "example": "什么？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000095",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "时候",
+   "pinyin": "shíhou",
+   "meaning": "time; length of time; moment; period",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "時候",
+   "frequency": 107,
+   "chars": [
+    {
+     "char": "时",
+     "radical": "日",
+     "strokes": 7,
+     "decomposition": "⿰日寸",
+     "etymology": {
+      "type": "pictophonetic",
+      "semantic": "日",
+      "hint": "day"
+     }
+    },
+    {
+     "char": "候",
+     "radical": "亻",
+     "strokes": 10,
+     "decomposition": "⿰亻矦",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "矦",
+      "semantic": "亻",
+      "hint": "person"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "什么时候？",
+     "en": "When?",
+     "sourceId": 5214215
+    },
+    {
+     "zh": "你什么时候来？",
+     "en": "When will you come?",
+     "sourceId": 11502926
+    }
+   ],
+   "example": "什么时候？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000096",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "是",
+   "pinyin": "shì",
+   "meaning": "to be (followed by substantives only); correct; right; true; (respectful acknowledgement of a command) very well; (adverb for emphatic assertion)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 4,
+   "chars": [
+    {
+     "char": "是",
+     "radical": "日",
+     "strokes": 9,
+     "decomposition": "⿱日疋",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "To speak 日 directly 疋"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "是？",
+     "en": "Come again?",
+     "sourceId": 13274583
+    },
+    {
+     "zh": "是！",
+     "en": "Yes.",
+     "sourceId": 13111625
+    }
+   ],
+   "example": "是？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000097",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "书",
+   "pinyin": "shū",
+   "meaning": "abbr. for 書經|书经[Shu1 jing1]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "書",
+   "frequency": 560,
+   "chars": [
+    {
+     "char": "书",
+     "radical": "丨",
+     "strokes": 4,
+     "decomposition": "⿻？丨",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A mark made by a pen ⺺"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "读书。",
+     "en": "Read!",
+     "sourceId": 10961153
+    },
+    {
+     "zh": "用脸书。",
+     "en": "Use Facebook.",
+     "sourceId": 13949071
+    }
+   ],
+   "example": "读书。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000098",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "水",
+   "pinyin": "shuǐ",
+   "meaning": "surname Shui; Shui ethnic group",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 335,
+   "chars": [
+    {
+     "char": "水",
+     "radical": "水",
+     "strokes": 4,
+     "decomposition": "⿻亅？",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A river running between two banks; compare 川"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "喝水。",
+     "en": "Drink water.",
+     "sourceId": 6092433
+    },
+    {
+     "zh": "要喝水",
+     "en": "I drink water.",
+     "sourceId": 5464704
+    }
+   ],
+   "example": "喝水。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000099",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "水果",
+   "pinyin": "shuǐguǒ",
+   "meaning": "fruit",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 3271,
+   "chars": [
+    {
+     "char": "水",
+     "radical": "水",
+     "strokes": 4,
+     "decomposition": "⿻亅？",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A river running between two banks; compare 川"
+     }
+    },
+    {
+     "char": "果",
+     "radical": "木",
+     "strokes": 8,
+     "decomposition": "⿱田木",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Fruit 田 growing on a tree 木"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "吃水果。",
+     "en": "Eat fruit.",
+     "sourceId": 6092436
+    },
+    {
+     "zh": "他卖水果。",
+     "en": "He sells fruit.",
+     "sourceId": 7768273
+    }
+   ],
+   "example": "吃水果。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000100",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "睡觉",
+   "pinyin": "shuìjiào",
+   "meaning": "to go to bed; to sleep",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "睡覺",
+   "frequency": 944,
+   "chars": [
+    {
+     "char": "睡",
+     "radical": "目",
+     "strokes": 13,
+     "decomposition": "⿰目垂",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "垂",
+      "semantic": "目",
+      "hint": "eye"
+     }
+    },
+    {
+     "char": "觉",
+     "radical": "见",
+     "strokes": 9,
+     "decomposition": "⿳⺍冖见",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "⺍",
+      "semantic": "见",
+      "hint": "see"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "快去睡觉！",
+     "en": "Hurry up and go to bed!",
+     "sourceId": 9991960
+    },
+    {
+     "zh": "你睡觉吗？",
+     "en": "Are you asleep?",
+     "sourceId": 2357582
+    }
+   ],
+   "example": "快去睡觉！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000101",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "说",
+   "pinyin": "shuō",
+   "meaning": "to speak; to talk; to say; to explain; to comment; to scold; to tell off; (bound form) theory; doctrine",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "說",
+   "chars": [
+    {
+     "char": "说",
+     "radical": "讠",
+     "strokes": 9,
+     "decomposition": "⿰讠兑",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "兑",
+      "semantic": "讠",
+      "hint": "speech"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "说！",
+     "en": "Say it.",
+     "sourceId": 4267407
+    },
+    {
+     "zh": "说啊！",
+     "en": "Talk to me!",
+     "sourceId": 7767996
+    }
+   ],
+   "example": "说！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000102",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "四",
+   "pinyin": "sì",
+   "meaning": "four; 4",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 481,
+   "chars": [
+    {
+     "char": "四",
+     "radical": "囗",
+     "strokes": 5,
+     "decomposition": "⿴囗儿",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A child 儿 in a room with four walls 囗"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "四月到了。",
+     "en": "It's April.",
+     "sourceId": 13175390
+    },
+    {
+     "zh": "爆四瓣蒜。",
+     "en": "Fry four cloves of garlic.",
+     "sourceId": 6959616
+    }
+   ],
+   "example": "四月到了。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000103",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "岁",
+   "pinyin": "suì",
+   "meaning": "variant of 歲|岁[sui4], year; years old",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "measure-word"
+   ],
+   "hskLevel": 1,
+   "traditional": "歲",
+   "frequency": 266,
+   "chars": [
+    {
+     "char": "岁",
+     "radical": "山",
+     "strokes": 6,
+     "decomposition": "⿱山夕"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "他几岁了？",
+     "en": "How old is he?",
+     "sourceId": 13882474
+    }
+   ],
+   "example": "他几岁了？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000104",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "他",
+   "pinyin": "tā",
+   "meaning": "(third-person singular) (since the early 20th century, usu. male) he; him; his; (bound form) other; another; some other (as in 他日[ta1 ri4] and 他人[ta1 ren2])",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 10,
+   "chars": [
+    {
+     "char": "他",
+     "radical": "亻",
+     "strokes": 5,
+     "decomposition": "⿰亻也",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "An additional, \"also\" 也  person 亻"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "他走。",
+     "en": "He leaves.",
+     "sourceId": 13150961
+    },
+    {
+     "zh": "看他。",
+     "en": "Just look at him.",
+     "sourceId": 10350401
+    }
+   ],
+   "example": "他走。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000105",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "她",
+   "pinyin": "tā",
+   "meaning": "she",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 38,
+   "chars": [
+    {
+     "char": "她",
+     "radical": "女",
+     "strokes": 6,
+     "decomposition": "⿰女也",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A woman 女 beside you 也"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "她走。",
+     "en": "She leaves.",
+     "sourceId": 13150959
+    },
+    {
+     "zh": "吻她。",
+     "en": "Kiss her.",
+     "sourceId": 10362507
+    }
+   ],
+   "example": "她走。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000106",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "太",
+   "pinyin": "tài",
+   "meaning": "highest; greatest; too (much); very; extremely",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "adverb"
+   ],
+   "hskLevel": 1,
+   "frequency": 87,
+   "chars": [
+    {
+     "char": "太",
+     "radical": "大",
+     "strokes": 4,
+     "decomposition": "⿵大丶",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A giant 大 with a normal-sized man 丶 for scale"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "太忙！",
+     "en": "Busy!",
+     "sourceId": 13111707
+    },
+    {
+     "zh": "太棒了",
+     "en": "Awesome.",
+     "sourceId": 13142057
+    }
+   ],
+   "example": "太忙！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000107",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "天气",
+   "pinyin": "tiānqì",
+   "meaning": "weather",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "天氣",
+   "frequency": 1675,
+   "chars": [
+    {
+     "char": "天",
+     "radical": "大",
+     "strokes": 4,
+     "decomposition": "⿱一大",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "The heavens 一 above a man 大"
+     }
+    },
+    {
+     "char": "气",
+     "radical": "气",
+     "strokes": 4,
+     "decomposition": "⿱亻？",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A person 亻 breathing air"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "天气如何？",
+     "en": "How's the weather?",
+     "sourceId": 1783778
+    },
+    {
+     "zh": "天气很好。",
+     "en": "The weather is nice.",
+     "sourceId": 11837650
+    }
+   ],
+   "example": "天气如何？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000108",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "听",
+   "pinyin": "tīng",
+   "meaning": "to listen to; to hear; to heed; to obey; a can (loanword from English \"tin\"); classifier for canned beverages; to let be; to allow (Taiwan pr. [ting4]); (literary) to administer; to deal with (Taiwan pr. [ting4])",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "聽",
+   "frequency": 190,
+   "chars": [
+    {
+     "char": "听",
+     "radical": "口",
+     "strokes": 7,
+     "decomposition": "⿰口斤",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Words 口 reaching an ear 斤"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "听！",
+     "en": "Hark!",
+     "sourceId": 5095002
+    },
+    {
+     "zh": "爱听？",
+     "en": "Love listening?",
+     "sourceId": 10961051
+    }
+   ],
+   "example": "听！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000109",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "同学",
+   "pinyin": "tóngxué",
+   "meaning": "to study at the same school; fellow student; classmate; CL:位[wei4],個|个[ge4]",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "同學",
+   "frequency": 1828,
+   "chars": [
+    {
+     "char": "同",
+     "radical": "口",
+     "strokes": 6,
+     "decomposition": "⿵凡口",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Sharing a common 凡 tongue 口"
+     }
+    },
+    {
+     "char": "学",
+     "radical": "子",
+     "strokes": 8,
+     "decomposition": "⿱⿱⺍冖子",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A building 冖 where children 子 study; ⺍ provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我们是同学。",
+     "en": "We're classmates.",
+     "sourceId": 333784
+    },
+    {
+     "zh": "他是我的同学。",
+     "en": "He is my classmate.",
+     "sourceId": 11837695
+    }
+   ],
+   "example": "我们是同学。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000110",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "喂",
+   "pinyin": "wèi",
+   "meaning": "hey; to feed (an animal, baby, invalid etc)",
+   "tone": "4",
+   "tags": [
+    "hsk2",
+    "interjection"
+   ],
+   "hskLevel": 2,
+   "frequency": 1301,
+   "chars": [
+    {
+     "char": "喂",
+     "radical": "口",
+     "strokes": 12,
+     "decomposition": "⿰口畏",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "畏",
+      "semantic": "口",
+      "hint": "mouth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "喂！",
+     "en": "Speaking.",
+     "sourceId": 13175461
+    },
+    {
+     "zh": "喂。",
+     "en": "Speaking.",
+     "sourceId": 6401432
+    }
+   ],
+   "example": "喂！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000111",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "我",
+   "pinyin": "wǒ",
+   "meaning": "I; me; my",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "frequency": 3,
+   "chars": [
+    {
+     "char": "我",
+     "radical": "戈",
+     "strokes": 7,
+     "decomposition": "⿰扌戈",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A hand 扌 holding a weapon 戈"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我！",
+     "en": "It's me!",
+     "sourceId": 10194940
+    },
+    {
+     "zh": "我是",
+     "en": "I am.",
+     "sourceId": 9222719
+    }
+   ],
+   "example": "我！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000112",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "我们",
+   "pinyin": "wǒmen",
+   "meaning": "we; us; ourselves; our",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "traditional": "我們",
+   "frequency": 19,
+   "chars": [
+    {
+     "char": "我",
+     "radical": "戈",
+     "strokes": 7,
+     "decomposition": "⿰扌戈",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A hand 扌 holding a weapon 戈"
+     }
+    },
+    {
+     "char": "们",
+     "radical": "亻",
+     "strokes": 5,
+     "decomposition": "⿰亻门",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "门",
+      "semantic": "亻",
+      "hint": "people"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "帮我们做.",
+     "en": "Help us do it.",
+     "sourceId": 6850364
+    },
+    {
+     "zh": "给我们买.",
+     "en": "Buy us it.",
+     "sourceId": 6850358
+    }
+   ],
+   "example": "帮我们做."
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000113",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "五",
+   "pinyin": "wǔ",
+   "meaning": "five; 5",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 563,
+   "chars": [
+    {
+     "char": "五",
+     "radical": "二",
+     "strokes": 4,
+     "decomposition": "⿴二？",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Five elements (the cross with the extra stroke) between heaven 一 and earth 一 "
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "星期五！",
+     "en": "Thank God it's Friday!",
+     "sourceId": 13274650
+    },
+    {
+     "zh": "二百五！",
+     "en": "You idiot!",
+     "sourceId": 735332
+    }
+   ],
+   "example": "星期五！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000114",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "西瓜",
+   "pinyin": "xīguā",
+   "meaning": "watermelon; CL:顆|颗[ke1]",
+   "tone": "1",
+   "tags": [
+    "hsk4",
+    "noun"
+   ],
+   "hskLevel": 4,
+   "frequency": 9098,
+   "chars": [
+    {
+     "char": "西",
+     "radical": "西",
+     "strokes": 6,
+     "decomposition": "⿻兀囗",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A bird settling into its nest, representing sunset; compare 東"
+     }
+    },
+    {
+     "char": "瓜",
+     "radical": "瓜",
+     "strokes": 5,
+     "decomposition": "⿵？厶",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Vines growing with a melon at their base"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我在吃西瓜。",
+     "en": "I am eating a watermelon.",
+     "sourceId": 10613902
+    },
+    {
+     "zh": "我吃一片西瓜。",
+     "en": "I am eating a slice of watermelon.",
+     "sourceId": 2521504
+    }
+   ],
+   "example": "我在吃西瓜。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000115",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "喜欢",
+   "pinyin": "xǐhuan",
+   "meaning": "to like; to be fond of; to be happy; to be pleased; to tend to",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "喜歡",
+   "frequency": 139,
+   "chars": [
+    {
+     "char": "喜",
+     "radical": "口",
+     "strokes": 12,
+     "decomposition": "⿱壴口",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Singing 口 and beating drums 壴"
+     }
+    },
+    {
+     "char": "欢",
+     "radical": "欠",
+     "strokes": 6,
+     "decomposition": "⿰又欠"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我喜欢你",
+     "en": "I like you.",
+     "sourceId": 5403272
+    },
+    {
+     "zh": "我喜欢你！",
+     "en": "I love you.",
+     "sourceId": 9992041
+    }
+   ],
+   "example": "我喜欢你"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000116",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "下",
+   "pinyin": "xià",
+   "meaning": "down; downwards; below; lower; later; next (week etc); second (of two parts); to decline; to go down; to arrive at (a decision, conclusion etc); measure word to show the frequency of an action",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 70,
+   "chars": [
+    {
+     "char": "下",
+     "radical": "一",
+     "strokes": 3,
+     "decomposition": "⿱一卜",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "One stroke under another; compare 上 (above)"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "放下！",
+     "en": "Leave it!",
+     "sourceId": 8962851
+    },
+    {
+     "zh": "趴下！",
+     "en": "Get down!",
+     "sourceId": 5102178
+    }
+   ],
+   "example": "放下！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000117",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "下午",
+   "pinyin": "xiàwǔ",
+   "meaning": "afternoon; CL:個|个[ge4]; p.m.",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 782,
+   "chars": [
+    {
+     "char": "下",
+     "radical": "一",
+     "strokes": 3,
+     "decomposition": "⿱一卜",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "One stroke under another; compare 上 (above)"
+     }
+    },
+    {
+     "char": "午",
+     "radical": "十",
+     "strokes": 4,
+     "decomposition": "⿻丿干"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "下午好。",
+     "en": "Hello!",
+     "sourceId": 812493
+    },
+    {
+     "zh": "您下午做啥呢？",
+     "en": "What are you doing this evening?",
+     "sourceId": 2254408
+    }
+   ],
+   "example": "下午好。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000118",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "下雨",
+   "pinyin": "xià yǔ",
+   "meaning": "to rain",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 5648,
+   "chars": [
+    {
+     "char": "下",
+     "radical": "一",
+     "strokes": 3,
+     "decomposition": "⿱一卜",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "One stroke under another; compare 上 (above)"
+     }
+    },
+    {
+     "char": "雨",
+     "radical": "雨",
+     "strokes": 8,
+     "decomposition": "⿻帀？",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Rain drops falling from a cloud 帀"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "下雨吗？",
+     "en": "Is it raining?",
+     "sourceId": 1289086
+    },
+    {
+     "zh": "在下雨。",
+     "en": "It is raining.",
+     "sourceId": 409681
+    }
+   ],
+   "example": "下雨吗？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000119",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "先生",
+   "pinyin": "xiānsheng",
+   "meaning": "teacher; gentleman; sir; mister (Mr.); husband; (dialect) doctor; CL:位[wei4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 586,
+   "chars": [
+    {
+     "char": "先",
+     "radical": "儿",
+     "strokes": 6,
+     "decomposition": "⿱⿰？土儿",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Someone stepping 止 in front of another person 儿"
+     }
+    },
+    {
+     "char": "生",
+     "radical": "生",
+     "strokes": 5,
+     "decomposition": "⿻一土",
+     "etymology": {
+      "type": "ideographic",
+      "hint": " A shoot 屮 growing in the soil 土"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "谢谢您，先生。",
+     "en": "Thank you, sir.",
+     "sourceId": 710691
+    },
+    {
+     "zh": "你认识钱先生吗？",
+     "en": "Do you know Mr Qian?",
+     "sourceId": 10966854
+    }
+   ],
+   "example": "谢谢您，先生。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000120",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "现在",
+   "pinyin": "xiànzài",
+   "meaning": "now; at present; currently",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "現在",
+   "frequency": 77,
+   "chars": [
+    {
+     "char": "现",
+     "radical": "王",
+     "strokes": 8,
+     "decomposition": "⿰王见",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "To see 见 jade 王; 见 also provides the pronunciation"
+     }
+    },
+    {
+     "char": "在",
+     "radical": "土",
+     "strokes": 6,
+     "decomposition": "⿸才土",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "才",
+      "semantic": "土",
+      "hint": "earth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "现在忙",
+     "en": "Busy right now.",
+     "sourceId": 5321365
+    },
+    {
+     "zh": "现在呢？",
+     "en": "And now?",
+     "sourceId": 397575
+    }
+   ],
+   "example": "现在忙"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000121",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "想",
+   "pinyin": "xiǎng",
+   "meaning": "to think (about); to think of; to devise; to think (that); to believe (that); to desire; to want (to); to miss (feel wistful about the absence of)",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 44,
+   "chars": [
+    {
+     "char": "想",
+     "radical": "心",
+     "strokes": 13,
+     "decomposition": "⿱相心",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "相",
+      "semantic": "心",
+      "hint": "mind"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "快想！",
+     "en": "Think!",
+     "sourceId": 13111602
+    },
+    {
+     "zh": "我想死",
+     "en": "I want to die.",
+     "sourceId": 6388809
+    }
+   ],
+   "example": "快想！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000122",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "小",
+   "pinyin": "xiǎo",
+   "meaning": "small; tiny; few; young",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "adjective"
+   ],
+   "hskLevel": 1,
+   "frequency": 100,
+   "chars": [
+    {
+     "char": "小",
+     "radical": "小",
+     "strokes": 3,
+     "decomposition": "⿻亅八",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Dividing 八 by a line 亅"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "好小！",
+     "en": "So small!",
+     "sourceId": 13275130
+    },
+    {
+     "zh": "小偷！",
+     "en": "Stop thief!",
+     "sourceId": 13185326
+    }
+   ],
+   "example": "好小！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000123",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "小姐",
+   "pinyin": "xiǎojiě",
+   "meaning": "young lady; miss; (slang) prostitute; CL:個|个[ge4],位[wei4]",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 1575,
+   "chars": [
+    {
+     "char": "小",
+     "radical": "小",
+     "strokes": 3,
+     "decomposition": "⿻亅八",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Dividing 八 by a line 亅"
+     }
+    },
+    {
+     "char": "姐",
+     "radical": "女",
+     "strokes": 8,
+     "decomposition": "⿰女且",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "且",
+      "semantic": "女",
+      "hint": "woman"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "请问小姐芳龄？",
+     "en": "May I ask how old you are?",
+     "sourceId": 4887651
+    },
+    {
+     "zh": "小姐！我觉得不舒服。",
+     "en": "Miss! I feel sick.",
+     "sourceId": 472315
+    }
+   ],
+   "example": "请问小姐芳龄？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000124",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "些",
+   "pinyin": "xiē",
+   "meaning": "classifier indicating a small amount or small number greater than 1: some, a few, several",
+   "tone": "1",
+   "tags": [
+    "hsk4",
+    "measure-word"
+   ],
+   "hskLevel": 4,
+   "frequency": 611,
+   "chars": [
+    {
+     "char": "些",
+     "radical": "二",
+     "strokes": 8,
+     "decomposition": "⿱此二",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "此",
+      "semantic": "二",
+      "hint": "two"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "大声些。",
+     "en": "Louder.",
+     "sourceId": 7768007
+    },
+    {
+     "zh": "多学些。",
+     "en": "Learn a bit more.",
+     "sourceId": 4757712
+    }
+   ],
+   "example": "大声些。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000125",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "写",
+   "pinyin": "xiě",
+   "meaning": "to write",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "寫",
+   "frequency": 352,
+   "chars": [
+    {
+     "char": "写",
+     "radical": "冖",
+     "strokes": 5,
+     "decomposition": "⿱冖与"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "写吧。",
+     "en": "Write.",
+     "sourceId": 13904602
+    },
+    {
+     "zh": "我写诗。",
+     "en": "I write poems.",
+     "sourceId": 8928648
+    }
+   ],
+   "example": "写吧。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000126",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "谢谢",
+   "pinyin": "xièxie",
+   "meaning": "to thank; thanks; thank you",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "謝謝",
+   "frequency": 520,
+   "chars": [
+    {
+     "char": "谢",
+     "radical": "讠",
+     "strokes": 12,
+     "decomposition": "⿰讠射",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "射",
+      "semantic": "讠",
+      "hint": "speech"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "谢谢？",
+     "en": "Thanks?",
+     "sourceId": 13142066
+    },
+    {
+     "zh": "谢谢！",
+     "en": "I thank you.",
+     "sourceId": 4878949
+    }
+   ],
+   "example": "谢谢？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000127",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "星期",
+   "pinyin": "xīngqī",
+   "meaning": "week; CL:個|个[ge4]; day of the week; Sunday",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 1956,
+   "chars": [
+    {
+     "char": "星",
+     "radical": "日",
+     "strokes": 9,
+     "decomposition": "⿱日生",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "生",
+      "semantic": "日",
+      "hint": "sun"
+     }
+    },
+    {
+     "char": "期",
+     "radical": "月",
+     "strokes": 12,
+     "decomposition": "⿰其月",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "其",
+      "semantic": "月",
+      "hint": "moon"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "星期五！",
+     "en": "Thank God it's Friday!",
+     "sourceId": 13274650
+    },
+    {
+     "zh": "下星期见.",
+     "en": "See you next week!",
+     "sourceId": 1476736
+    }
+   ],
+   "example": "星期五！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000128",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "学生",
+   "pinyin": "xuéshēng",
+   "meaning": "student; schoolchild",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "學生",
+   "frequency": 651,
+   "chars": [
+    {
+     "char": "学",
+     "radical": "子",
+     "strokes": 8,
+     "decomposition": "⿱⿱⺍冖子",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A building 冖 where children 子 study; ⺍ provides the pronunciation"
+     }
+    },
+    {
+     "char": "生",
+     "radical": "生",
+     "strokes": 5,
+     "decomposition": "⿻一土",
+     "etymology": {
+      "type": "ideographic",
+      "hint": " A shoot 屮 growing in the soil 土"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我不是学生",
+     "en": "I'm not a student.",
+     "sourceId": 4713362
+    },
+    {
+     "zh": "你是学生。",
+     "en": "You are a student.",
+     "sourceId": 1163561
+    }
+   ],
+   "example": "我不是学生"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000129",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "学习",
+   "pinyin": "xuéxí",
+   "meaning": "to learn; to study",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "學習",
+   "frequency": 789,
+   "chars": [
+    {
+     "char": "学",
+     "radical": "子",
+     "strokes": 8,
+     "decomposition": "⿱⿱⺍冖子",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A building 冖 where children 子 study; ⺍ provides the pronunciation"
+     }
+    },
+    {
+     "char": "习",
+     "radical": "冫",
+     "strokes": 3,
+     "decomposition": "⿹？冫"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "学习吧。",
+     "en": "Learn.",
+     "sourceId": 13904096
+    },
+    {
+     "zh": "我学习。",
+     "en": "I am a student.",
+     "sourceId": 750344
+    }
+   ],
+   "example": "学习吧。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000130",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "学校",
+   "pinyin": "xuéxiào",
+   "meaning": "school; CL:所[suo3]",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "學校",
+   "frequency": 430,
+   "chars": [
+    {
+     "char": "学",
+     "radical": "子",
+     "strokes": 8,
+     "decomposition": "⿱⿱⺍冖子",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A building 冖 where children 子 study; ⺍ provides the pronunciation"
+     }
+    },
+    {
+     "char": "校",
+     "radical": "木",
+     "strokes": 10,
+     "decomposition": "⿰木交",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "交",
+      "semantic": "木",
+      "hint": "wood"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你在学校。",
+     "en": "You are at school.",
+     "sourceId": 11514881
+    },
+    {
+     "zh": "你去学校。",
+     "en": "You go to school.",
+     "sourceId": 5551092
+    }
+   ],
+   "example": "你在学校。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000131",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "一",
+   "pinyin": "yī",
+   "meaning": "one; single; a (article); as soon as; entire; whole; all; throughout; \"one\" radical in Chinese characters (Kangxi radical 1); also pr. [yao1] for greater clarity when spelling out numbers digit by digit",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "number"
+   ],
+   "hskLevel": 1,
+   "frequency": 21,
+   "chars": [
+    {
+     "char": "一",
+     "radical": "一",
+     "strokes": 1,
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Represents heaven (天), earth (旦), or the number 1"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "吃一口？",
+     "en": "How about a bite?",
+     "sourceId": 13275226
+    },
+    {
+     "zh": "一好球！",
+     "en": "Strike one!",
+     "sourceId": 13181806
+    }
+   ],
+   "example": "吃一口？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000132",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "一点儿",
+   "pinyin": "yīdiǎnr",
+   "meaning": "erhua variant of 一點|一点[yi1 dian3]",
+   "tone": "1",
+   "tags": [
+    "hsk1"
+   ],
+   "hskLevel": 1,
+   "traditional": "一點兒",
+   "chars": [
+    {
+     "char": "一",
+     "radical": "一",
+     "strokes": 1,
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Represents heaven (天), earth (旦), or the number 1"
+     }
+    },
+    {
+     "char": "点",
+     "radical": "灬",
+     "strokes": 9,
+     "decomposition": "⿱占灬",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "占",
+      "semantic": "灬",
+      "hint": "fire"
+     }
+    },
+    {
+     "char": "儿",
+     "radical": "儿",
+     "strokes": 2,
+     "decomposition": "⿰丿乚",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Simplified form of 兒, a picture of a child; compare 人"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "轻一点儿放！",
+     "en": "Put it down lightly!",
+     "sourceId": 420002
+    },
+    {
+     "zh": "给我一点儿。",
+     "en": "Give me a few.",
+     "sourceId": 869811
+    }
+   ],
+   "example": "轻一点儿放！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000133",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "医生",
+   "pinyin": "yīshēng",
+   "meaning": "doctor; medical practitioner",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "醫生",
+   "frequency": 827,
+   "chars": [
+    {
+     "char": "医",
+     "radical": "匸",
+     "strokes": 7,
+     "decomposition": "⿷匸矢",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "匸",
+      "semantic": "矢",
+      "hint": "arrow"
+     }
+    },
+    {
+     "char": "生",
+     "radical": "生",
+     "strokes": 5,
+     "decomposition": "⿻一土",
+     "etymology": {
+      "type": "ideographic",
+      "hint": " A shoot 屮 growing in the soil 土"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我不是医生",
+     "en": "I'm not a doctor.",
+     "sourceId": 5321363
+    },
+    {
+     "zh": "他是医生吗",
+     "en": "Is he a doctor?",
+     "sourceId": 4713316
+    }
+   ],
+   "example": "我不是医生"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000134",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "医院",
+   "pinyin": "yīyuàn",
+   "meaning": "hospital; CL:所[suo3],家[jia1],座[zuo4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "醫院",
+   "frequency": 608,
+   "chars": [
+    {
+     "char": "医",
+     "radical": "匸",
+     "strokes": 7,
+     "decomposition": "⿷匸矢",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "匸",
+      "semantic": "矢",
+      "hint": "arrow"
+     }
+    },
+    {
+     "char": "院",
+     "radical": "阝",
+     "strokes": 9,
+     "decomposition": "⿰阝完",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "完",
+      "semantic": "阝",
+      "hint": "place"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这是医院。",
+     "en": "This is a hospital.",
+     "sourceId": 5072292
+    },
+    {
+     "zh": "他没去医院",
+     "en": "He didn't go to hospital.",
+     "sourceId": 4713302
+    }
+   ],
+   "example": "这是医院。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000135",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "椅子",
+   "pinyin": "yǐzi",
+   "meaning": "chair; CL:把[ba3],張|张[zhang1]",
+   "tone": "3",
+   "tags": [
+    "hsk2",
+    "noun"
+   ],
+   "hskLevel": 2,
+   "frequency": 4472,
+   "chars": [
+    {
+     "char": "椅",
+     "radical": "木",
+     "strokes": 12,
+     "decomposition": "⿰木奇",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "奇",
+      "semantic": "木",
+      "hint": "wood"
+     }
+    },
+    {
+     "char": "子",
+     "radical": "子",
+     "strokes": 3,
+     "decomposition": "⿻了一",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A child in a wrap, with outstretched arms but bundled legs"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "再拿把椅子！",
+     "en": "Fetch another chair.",
+     "sourceId": 9054579
+    },
+    {
+     "zh": "拿另一把椅子！",
+     "en": "Take the other chair!",
+     "sourceId": 503063
+    }
+   ],
+   "example": "再拿把椅子！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000136",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "有",
+   "pinyin": "yǒu",
+   "meaning": "to have; there is; (bound form) having; with; -ful; -ed; -al (as in 有意[you3 yi4] intentional)",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 9,
+   "chars": [
+    {
+     "char": "有",
+     "radical": "月",
+     "strokes": 6,
+     "decomposition": "⿸？月",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "月"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "有！",
+     "en": "Here!",
+     "sourceId": 13511638
+    },
+    {
+     "zh": "有吗？",
+     "en": "Does it exist?",
+     "sourceId": 5581032
+    }
+   ],
+   "example": "有！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000137",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "月",
+   "pinyin": "yuè",
+   "meaning": "moon; month; monthly; CL:個|个[ge4],輪|轮[lun2]",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 161,
+   "chars": [
+    {
+     "char": "月",
+     "radical": "月",
+     "strokes": 4,
+     "decomposition": "⿵冂二",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A crescent moon"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "看月亮！",
+     "en": "Look at the moon.",
+     "sourceId": 13275123
+    },
+    {
+     "zh": "四月到了。",
+     "en": "It's April.",
+     "sourceId": 13175390
+    }
+   ],
+   "example": "看月亮！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000138",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "再见",
+   "pinyin": "zàijiàn",
+   "meaning": "goodbye; see you again later",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "traditional": "再見",
+   "frequency": 2487,
+   "chars": [
+    {
+     "char": "再",
+     "radical": "冂",
+     "strokes": 6,
+     "decomposition": "⿱一冉",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "Two fish 冉 caught on a line 一"
+     }
+    },
+    {
+     "char": "见",
+     "radical": "见",
+     "strokes": 4,
+     "decomposition": "⿵冂儿",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Simplified form of 見; a man 儿 with the eye 目 emphasized"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "再见！",
+     "en": "See you again.",
+     "sourceId": 336477
+    },
+    {
+     "zh": "再见。",
+     "en": "See you again.",
+     "sourceId": 2030795
+    }
+   ],
+   "example": "再见！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000139",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "在",
+   "pinyin": "zài",
+   "meaning": "to exist; to be alive; (of sb or sth) to be (located) at; (used before a verb to indicate an action in progress)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb",
+    "preposition",
+    "adverb"
+   ],
+   "hskLevel": 1,
+   "frequency": 5,
+   "chars": [
+    {
+     "char": "在",
+     "radical": "土",
+     "strokes": 6,
+     "decomposition": "⿸才土",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "才",
+      "semantic": "土",
+      "hint": "earth"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "在。",
+     "en": "Yes, Sir!",
+     "sourceId": 13111629
+    },
+    {
+     "zh": "现在忙",
+     "en": "Busy right now.",
+     "sourceId": 5321365
+    }
+   ],
+   "example": "在。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000140",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "怎么",
+   "pinyin": "zěnme",
+   "meaning": "how?; what?; why?",
+   "tone": "3",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "traditional": "怎麼",
+   "frequency": 128,
+   "chars": [
+    {
+     "char": "怎",
+     "radical": "心",
+     "strokes": 9,
+     "decomposition": "⿱乍心",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "乍",
+      "semantic": "心",
+      "hint": "heart"
+     }
+    },
+    {
+     "char": "么",
+     "radical": "丿",
+     "strokes": 3,
+     "decomposition": "⿱丿厶"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "怎么样？",
+     "en": "How?",
+     "sourceId": 5214222
+    },
+    {
+     "zh": "怎么了？",
+     "en": "What's going on?",
+     "sourceId": 334413
+    }
+   ],
+   "example": "怎么样？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000141",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "怎么样",
+   "pinyin": "zěnmeyàng",
+   "meaning": "how?; how about?; how was it?; how are things?",
+   "tone": "3",
+   "tags": [
+    "hsk2",
+    "pronoun"
+   ],
+   "hskLevel": 2,
+   "traditional": "怎麼樣",
+   "frequency": 1367,
+   "chars": [
+    {
+     "char": "怎",
+     "radical": "心",
+     "strokes": 9,
+     "decomposition": "⿱乍心",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "乍",
+      "semantic": "心",
+      "hint": "heart"
+     }
+    },
+    {
+     "char": "么",
+     "radical": "丿",
+     "strokes": 3,
+     "decomposition": "⿱丿厶"
+    },
+    {
+     "char": "样",
+     "radical": "木",
+     "strokes": 10,
+     "decomposition": "⿰木羊",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "羊",
+      "semantic": "木",
+      "hint": "tree"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "怎么样？",
+     "en": "How?",
+     "sourceId": 5214222
+    },
+    {
+     "zh": "经济怎么样？",
+     "en": "How is the economy?",
+     "sourceId": 10340656
+    }
+   ],
+   "example": "怎么样？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000142",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "这",
+   "pinyin": "zhè",
+   "meaning": "(pronoun) this; these; (bound form) this; the (followed by a noun); (bound form) this; these (followed by a classifier) (in this sense, commonly pr. [zhei4], esp. in Beijing)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "pronoun"
+   ],
+   "hskLevel": 1,
+   "traditional": "這",
+   "frequency": 11,
+   "chars": [
+    {
+     "char": "这",
+     "radical": "辶",
+     "strokes": 7,
+     "decomposition": "⿺辶文"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这谁？",
+     "en": "Who is this person?",
+     "sourceId": 13881561
+    },
+    {
+     "zh": "这么晚？",
+     "en": "This late?",
+     "sourceId": 9963195
+    }
+   ],
+   "example": "这谁？"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000143",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "中国",
+   "pinyin": "Zhōngguó",
+   "meaning": "China",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "traditional": "中國",
+   "frequency": 729,
+   "chars": [
+    {
+     "char": "中",
+     "radical": "丨",
+     "strokes": 4,
+     "decomposition": "⿻口丨",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A line 丨 through the center of a box 口"
+     }
+    },
+    {
+     "char": "国",
+     "radical": "囗",
+     "strokes": 8,
+     "decomposition": "⿴囗玉",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Treasure 玉 within a country's borders 囗"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "中国欢迎您！",
+     "en": "Welcome to China!",
+     "sourceId": 2691629
+    },
+    {
+     "zh": "中国欢迎你！",
+     "en": "Welcome to China!",
+     "sourceId": 2691624
+    }
+   ],
+   "example": "中国欢迎您！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000144",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "中午",
+   "pinyin": "zhōngwǔ",
+   "meaning": "noon; midday; CL:個|个[ge4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 2600,
+   "chars": [
+    {
+     "char": "中",
+     "radical": "丨",
+     "strokes": 4,
+     "decomposition": "⿻口丨",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A line 丨 through the center of a box 口"
+     }
+    },
+    {
+     "char": "午",
+     "radical": "十",
+     "strokes": 4,
+     "decomposition": "⿻丿干"
+    }
+   ],
+   "examples": [
+    {
+     "zh": "现在才中午。",
+     "en": "It is just noon.",
+     "sourceId": 1964240
+    },
+    {
+     "zh": "汤姆睡到中午。",
+     "en": "Tom slept until noon.",
+     "sourceId": 5574481
+    }
+   ],
+   "example": "现在才中午。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000145",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "住",
+   "pinyin": "zhù",
+   "meaning": "to live; to reside; to stay; to stop; to cease; (result complement indicating firmness or a stable achieved state)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 280,
+   "chars": [
+    {
+     "char": "住",
+     "radical": "亻",
+     "strokes": 7,
+     "decomposition": "⿰亻主",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A person 亻 who hosts 主; 主 also provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "站住！",
+     "en": "Hold it!",
+     "sourceId": 1636170
+    },
+    {
+     "zh": "住手！",
+     "en": "Stop!",
+     "sourceId": 448321
+    }
+   ],
+   "example": "站住！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000146",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "桌子",
+   "pinyin": "zhuōzi",
+   "meaning": "table; desk; CL:張|张[zhang1],套[tao4]",
+   "tone": "1",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 3639,
+   "chars": [
+    {
+     "char": "桌",
+     "radical": "木",
+     "strokes": 10,
+     "decomposition": "⿱卓木"
+    },
+    {
+     "char": "子",
+     "radical": "子",
+     "strokes": 3,
+     "decomposition": "⿻了一",
+     "etymology": {
+      "type": "pictographic",
+      "hint": "A child in a wrap, with outstretched arms but bundled legs"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我擦了桌子。",
+     "en": "I cleared the table.",
+     "sourceId": 9054575
+    },
+    {
+     "zh": "笔在桌子上。",
+     "en": "The pen is on the table.",
+     "sourceId": 3377946
+    }
+   ],
+   "example": "我擦了桌子。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000147",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "字",
+   "pinyin": "zì",
+   "meaning": "letter; symbol; character; word; CL:個|个[ge4]; courtesy or style name traditionally given to males aged 20 in dynastic China",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 913,
+   "chars": [
+    {
+     "char": "字",
+     "radical": "子",
+     "strokes": 6,
+     "decomposition": "⿱宀子",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "A child 子 in a house 宀; 子 also provides the pronunciation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "字、字⋯⋯",
+     "en": "Words, words...",
+     "sourceId": 12278333
+    },
+    {
+     "zh": "我有字典。",
+     "en": "I have the dictionary.",
+     "sourceId": 9462615
+    }
+   ],
+   "example": "字、字⋯⋯"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000148",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "昨天",
+   "pinyin": "zuótiān",
+   "meaning": "yesterday",
+   "tone": "2",
+   "tags": [
+    "hsk1",
+    "noun"
+   ],
+   "hskLevel": 1,
+   "frequency": 557,
+   "chars": [
+    {
+     "char": "昨",
+     "radical": "日",
+     "strokes": 9,
+     "decomposition": "⿰日乍",
+     "etymology": {
+      "type": "pictophonetic",
+      "phonetic": "乍",
+      "semantic": "日",
+      "hint": "day"
+     }
+    },
+    {
+     "char": "天",
+     "radical": "大",
+     "strokes": 4,
+     "decomposition": "⿱一大",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "The heavens 一 above a man 大"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "昨天很冷。",
+     "en": "It was cold yesterday.",
+     "sourceId": 346737
+    },
+    {
+     "zh": "她昨天病了。",
+     "en": "I was ill yesterday.",
+     "sourceId": 10603029
+    }
+   ],
+   "example": "昨天很冷。"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000149",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "坐",
+   "pinyin": "zuò",
+   "meaning": "surname Zuo",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 435,
+   "chars": [
+    {
+     "char": "坐",
+     "radical": "土",
+     "strokes": 7,
+     "decomposition": "⿻从土",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Two people 从 sitting on the ground 土"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "请坐！",
+     "en": "Sit down, please.",
+     "sourceId": 1216136
+    },
+    {
+     "zh": "请坐。",
+     "en": "Sit down, please.",
+     "sourceId": 5780574
+    }
+   ],
+   "example": "请坐！"
+  },
+  {
+   "id": "10000000-0000-4000-8000-000000000150",
+   "deckId": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+   "hanzi": "做",
+   "pinyin": "zuò",
+   "meaning": "to make; to produce; to write; to compose; to do; to engage in; to hold (a party etc); (of a person) to be (an intermediary, a good student etc); to become (husband and wife, friends etc); (of a thing) to serve as; to be used for; to assume (an air or manner)",
+   "tone": "4",
+   "tags": [
+    "hsk1",
+    "verb"
+   ],
+   "hskLevel": 1,
+   "frequency": 53,
+   "chars": [
+    {
+     "char": "做",
+     "radical": "亻",
+     "strokes": 11,
+     "decomposition": "⿰亻故",
+     "etymology": {
+      "type": "ideographic",
+      "hint": "Someone 亻 who causes things to happen 故; 故 also provides the pronuncation"
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "不要做！",
+     "en": "Don't do it!",
+     "sourceId": 13174370
+    },
+    {
+     "zh": "自己做！",
+     "en": "Do it yourself.",
+     "sourceId": 10533274
+    }
+   ],
+   "example": "不要做！"
+  }
+ ]
 }

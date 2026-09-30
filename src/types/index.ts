@@ -4,6 +4,8 @@
 export type {
   Card,
   CardInput,
+  CharMeta,
+  CardExample,
   Deck,
   Progress,
   ReviewLog,
@@ -13,4 +15,13 @@ export type {
   Rating,
 } from '../data/schema'
 
-export { TONES, RATINGS, ToneEnum, RatingEnum, validateCard } from '../data/schema'
+export {
+  TONES,
+  RATINGS,
+  ToneEnum,
+  RatingEnum,
+  validateCard,
+  CardSchema,
+  CharMetaSchema,
+  ExampleSchema,
+} from '../data/schema'

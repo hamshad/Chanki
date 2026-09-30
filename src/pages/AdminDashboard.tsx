@@ -17,6 +17,10 @@ export function AdminDashboard() {
   const [tags, setTags] = useState('')
   const [audioUrl, setAudioUrl] = useState('')
   const [editingCardId, setEditingCardId] = useState<string | null>(null)
+  const [notice, setNotice] = useState<{ kind: 'error' | 'ok'; text: string } | null>(null)
+
+  const fail = (text: string) => setNotice({ kind: 'error', text })
+  const succeed = (text: string) => setNotice({ kind: 'ok', text })
 
   useEffect(() => {
     if (sessionStorage.getItem('admin') !== 'true') {
@@ -62,7 +66,10 @@ export function AdminDashboard() {
 
   async function handleSaveCard(e: React.FormEvent) {
     e.preventDefault()
-    if (!selectedDeckId) return alert('Select a deck first')
+    if (!selectedDeckId) {
+      fail('Select a deck before saving a card.')
+      return
+    }
 
     const cardId = editingCardId || `card_${Date.now()}`
     
@@ -95,9 +102,10 @@ export function AdminDashboard() {
       setTags('')
       setAudioUrl('')
       setEditingCardId(null)
+      succeed(editingCardId ? 'Card updated.' : 'Card added.')
       loadCards(selectedDeckId)
     } catch (err) {
-      alert('Invalid card data: ' + JSON.stringify(err))
+      fail(err instanceof Error ? err.message : 'That card could not be saved.')
     }
   }
 
@@ -143,7 +151,7 @@ export function AdminDashboard() {
       const data = JSON.parse(text)
       const deckParsed = DeckSchema.safeParse(data.deck)
       if (!deckParsed.success) {
-        alert('Invalid deck format')
+        fail('That file is not a valid deck export.')
         return
       }
 
@@ -160,7 +168,9 @@ export function AdminDashboard() {
       }
 
       if (errors.length > 0) {
-        alert(`Import errors:\n\n${errors.join('\n')}`)
+        fail(
+          `${errors.length} ${errors.length === 1 ? 'row' : 'rows'} failed validation. First: ${errors[0]}`,
+        )
         return // Reject whole import on any error
       }
 
@@ -171,115 +181,180 @@ export function AdminDashboard() {
         }
       })
       
-      alert('Import successful!')
+      succeed(`Imported ${validCards.length} cards into ${deckParsed.data.name}.`)
       loadDecks()
-    } catch (err) {
-      alert('Failed to parse JSON file.')
+    } catch {
+      fail('That file could not be read as JSON.')
     }
     e.target.value = ''
   }
 
   return (
-    <div className="card-container w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+    <div className="admin-shell">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Admin Dashboard</h2>
-        <button onClick={() => {
-          sessionStorage.removeItem('admin')
-          setLocation('/')
-        }} className="text-gray-400">Exit Admin</button>
+        <div>
+          <p className="eyebrow">hidden panel</p>
+          <h2 className="display text-3xl">Admin</h2>
+        </div>
+        <button
+          className="btn-quiet"
+          onClick={() => {
+            sessionStorage.removeItem('admin')
+            setLocation('/')
+          }}
+        >
+          Exit admin
+        </button>
       </div>
 
-      <div className="flex gap-4 mb-6">
-        <select 
-          className="bg-gray-800 p-2 rounded text-white flex-1"
-          value={selectedDeckId} 
+      {notice && (
+        <div
+          className={`alert mb-6 ${notice.kind === 'error' ? 'alert--error' : 'alert--ok'}`}
+          role={notice.kind === 'error' ? 'alert' : 'status'}
+        >
+          {notice.text}
+        </div>
+      )}
+
+      <div className="admin-toolbar">
+        <select
+          className="flex-1"
+          value={selectedDeckId}
           onChange={e => {
             setSelectedDeckId(e.target.value)
             loadCards(e.target.value)
           }}
         >
-          <option value="">Select Deck...</option>
+          <option value="">Select deck…</option>
           {decks.map(d => (
             <option key={d.id} value={d.id}>{d.name}</option>
           ))}
         </select>
-        <button onClick={handleCreateDeck} className="bg-blue-600 px-4 py-2 rounded">New Deck</button>
+        <button onClick={handleCreateDeck} className="primary">New deck</button>
       </div>
 
       {selectedDeckId && (
-        <div className="flex gap-4 mb-6">
-          <button onClick={async () => {
-            const currentDeck = decks.find(d => d.id === selectedDeckId)
-            const newName = window.prompt('Rename deck:', currentDeck?.name)
-            if (newName && currentDeck) {
-              await db.decks.update(selectedDeckId, { name: newName, updatedAt: Date.now() })
-              loadDecks()
-            }
-          }} className="bg-gray-700 px-4 py-2 rounded">Rename Deck</button>
-          <button onClick={async () => {
-            if (window.confirm('Delete this deck and ALL its cards?')) {
-              await db.decks.delete(selectedDeckId)
-              const cardsToDelete = await db.cards.where('deckId').equals(selectedDeckId).toArray()
-              for (const c of cardsToDelete) await db.cards.delete(c.id)
-              setSelectedDeckId('')
-              loadDecks()
-            }
-          }} className="bg-red-900 text-red-100 px-4 py-2 rounded">Delete Deck</button>
+        <div className="admin-toolbar">
+          <button
+            className="secondary"
+            onClick={async () => {
+              const currentDeck = decks.find(d => d.id === selectedDeckId)
+              const newName = window.prompt('Rename deck:', currentDeck?.name)
+              if (newName && currentDeck) {
+                await db.decks.update(selectedDeckId, { name: newName, updatedAt: Date.now() })
+                loadDecks()
+              }
+            }}
+          >
+            Rename deck
+          </button>
+          <button
+            className="btn-danger"
+            onClick={async () => {
+              if (window.confirm('Delete this deck and ALL its cards?')) {
+                await db.decks.delete(selectedDeckId)
+                const cardsToDelete = await db.cards.where('deckId').equals(selectedDeckId).toArray()
+                for (const c of cardsToDelete) await db.cards.delete(c.id)
+                setSelectedDeckId('')
+                loadDecks()
+              }
+            }}
+          >
+            Delete deck
+          </button>
         </div>
       )}
 
-      <div className="flex gap-4 mb-6 glass-panel p-4">
-        <button onClick={handleExport} className="bg-gray-700 px-4 py-2 rounded">Export Deck</button>
-        <label className="bg-gray-700 px-4 py-2 rounded cursor-pointer">
+      <div className="admin-toolbar glass-panel p-4">
+        <button className="secondary" disabled={!selectedDeckId} onClick={handleExport}>
+          Export deck
+        </button>
+        <label className="btn-ghost file-label">
           Import JSON
-          <input type="file" accept=".json" className="hidden" onChange={handleImport} />
+          <input
+            type="file"
+            accept=".json"
+            className="hidden"
+            onChange={handleImport}
+            disabled={!selectedDeckId}
+          />
         </label>
       </div>
 
       {selectedDeckId && (
-        <form onSubmit={handleSaveCard} className="glass-panel p-4 mb-6 flex flex-col gap-3">
-          <h3 className="font-bold">{editingCardId ? 'Edit Card' : 'Add Card'}</h3>
-          <input placeholder="Hanzi (e.g. 你好)" required value={hanzi} onChange={e => setHanzi(e.target.value)} className="bg-gray-800 p-2 rounded text-white" />
-          <input placeholder="Pinyin (e.g. nǐ hǎo)" required value={pinyin} onChange={e => setPinyin(e.target.value)} className="bg-gray-800 p-2 rounded text-white" />
-          <input placeholder="Meaning" required value={meaning} onChange={e => setMeaning(e.target.value)} className="bg-gray-800 p-2 rounded text-white" />
-          <select value={tone} onChange={e => setTone(e.target.value as any)} className="bg-gray-800 p-2 rounded text-white">
-            <option value="1">Tone 1</option>
-            <option value="2">Tone 2</option>
-            <option value="3">Tone 3</option>
-            <option value="4">Tone 4</option>
-            <option value="5">Tone 5 (Neutral)</option>
-          </select>
-          <input placeholder="Tags (comma separated)" value={tags} onChange={e => setTags(e.target.value)} className="bg-gray-800 p-2 rounded text-white" />
-          <input placeholder="Audio URL (optional)" value={audioUrl} onChange={e => setAudioUrl(e.target.value)} className="bg-gray-800 p-2 rounded text-white" />
+        <form onSubmit={handleSaveCard} className="glass-panel admin-form">
+          <h3 className="display text-2xl">{editingCardId ? 'Edit card' : 'Add card'}</h3>
+          <label className="field">
+            <span>Hanzi</span>
+            <input placeholder="你好" required value={hanzi} onChange={e => setHanzi(e.target.value)} />
+          </label>
+          <label className="field">
+            <span>Pinyin</span>
+            <input placeholder="nǐ hǎo" required value={pinyin} onChange={e => setPinyin(e.target.value)} />
+          </label>
+          <label className="field">
+            <span>Meaning</span>
+            <input placeholder="hello" required value={meaning} onChange={e => setMeaning(e.target.value)} />
+          </label>
+          <label className="field">
+            <span>Tone</span>
+            <select value={tone} onChange={e => setTone(e.target.value as '1'|'2'|'3'|'4'|'5')}>
+              <option value="1">Tone 1 — high level</option>
+              <option value="2">Tone 2 — rising</option>
+              <option value="3">Tone 3 — dip-rise</option>
+              <option value="4">Tone 4 — falling</option>
+              <option value="5">Tone 5 (neutral)</option>
+            </select>
+          </label>
+          <label className="field">
+            <span>Tags</span>
+            <input placeholder="greeting, hsk1" value={tags} onChange={e => setTags(e.target.value)} />
+          </label>
+          <label className="field">
+            <span>Audio URL</span>
+            <input placeholder="/assets/deck/audio/ni3.mp3" value={audioUrl} onChange={e => setAudioUrl(e.target.value)} />
+          </label>
           <div className="flex gap-2 mt-2">
-            <button type="submit" className="primary py-2 flex-1">{editingCardId ? 'Update Card' : 'Add Card'}</button>
+            <button type="submit" className="primary flex-1">
+              {editingCardId ? 'Update card' : 'Add card'}
+            </button>
             {editingCardId && (
-              <button type="button" onClick={() => {
-                setEditingCardId(null)
-                setHanzi('')
-                setPinyin('')
-                setMeaning('')
-                setTags('')
-                setAudioUrl('')
-              }} className="bg-gray-600 py-2 px-4 rounded">Cancel</button>
+              <button
+                type="button"
+                className="secondary"
+                onClick={() => {
+                  setEditingCardId(null)
+                  setHanzi('')
+                  setPinyin('')
+                  setMeaning('')
+                  setTags('')
+                  setAudioUrl('')
+                  setNotice(null)
+                }}
+              >
+                Cancel
+              </button>
             )}
           </div>
         </form>
       )}
 
       <div>
-        <h3 className="font-bold mb-4">Cards ({cards.length})</h3>
-        <div className="flex flex-col gap-2">
+        <h3 className="display text-2xl mb-4">Cards ({cards.length})</h3>
+        <div className="glass-panel overflow-hidden">
+          {cards.length === 0 && (
+            <p className="p-4 faint text-sm">No cards in this deck yet.</p>
+          )}
           {cards.map(c => (
-            <div key={c.id} className="glass-panel p-3 flex justify-between items-center">
-              <div>
-                <span className="font-bold text-lg mr-2">{c.hanzi}</span>
-                <span className="text-gray-400 mr-2">{c.pinyin}</span>
+            <div key={c.id} className="card-row">
+              <div className="card-row__main">
+                <span className="font-bold text-lg hanzi-text">{c.hanzi}</span>
+                <span className="text-gray-400">{c.pinyin}</span>
                 <span className="text-gray-500 text-sm">{c.meaning}</span>
               </div>
-              <div>
-                <button onClick={() => handleEditClick(c)} className="text-blue-400 hover:text-blue-300 mr-4">Edit</button>
-                <button onClick={() => handleDeleteCard(c.id)} className="text-red-400 hover:text-red-300">Delete</button>
+              <div className="flex gap-2">
+                <button onClick={() => handleEditClick(c)} className="btn-quiet">Edit</button>
+                <button onClick={() => handleDeleteCard(c.id)} className="btn-quiet">Delete</button>
               </div>
             </div>
           ))}

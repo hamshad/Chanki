@@ -31,14 +31,14 @@ export function OfflineStatus() {
 
   if (!online) {
     return (
-      <span role="status" aria-live="polite" data-testid="offline-badge">
+      <span role="status" aria-live="polite" data-testid="offline-badge" className="chip chip--warn">
         Offline
       </span>
     )
   }
   if (showBackOnline) {
     return (
-      <span role="status" aria-live="polite" data-testid="back-online-badge">
+      <span role="status" aria-live="polite" data-testid="back-online-badge" className="chip chip--live">
         Back online
       </span>
     )

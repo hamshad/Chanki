@@ -70,24 +70,22 @@ export function ToneTrainer() {
       className="p-6 text-white w-full max-w-xl mx-auto"
       data-testid="tone-trainer"
     >
-      <h2 className="text-2xl font-bold mb-1">Tone Trainer</h2>
+      <h2 className="display text-3xl mb-1">Tone trainer</h2>
       <p className="text-gray-400 text-sm mb-5">
         Record a syllable and watch your pitch contour against the target shape. Everything stays
         on-device.
       </p>
 
-      <div className="grid grid-cols-5 gap-2 mb-5">
+      <div className="tone-picker">
         {TONE_OPTIONS.map(opt => (
           <button
             key={opt.value}
+            type="button"
             onClick={() => setTargetTone(opt.value)}
             disabled={busy}
             title={opt.pattern}
-            className={`py-2 rounded text-sm font-bold border transition-colors disabled:opacity-40 ${
-              targetTone === opt.value
-                ? 'border-transparent text-gray-950'
-                : 'border-gray-700 text-gray-300 hover:border-gray-500'
-            }`}
+            aria-pressed={targetTone === opt.value}
+            className="tone-option"
             style={
               targetTone === opt.value
                 ? { background: `var(--tone-${opt.value})` }
@@ -111,14 +109,14 @@ export function ToneTrainer() {
       />
 
       {displayState && (
-        <div className="mt-3 p-3 bg-gray-900 rounded text-sm" data-testid="capture-state">
+        <div className="readout mt-3" data-testid="capture-state">
           <span
-            className={`inline-block px-2 py-0.5 rounded text-xs font-bold uppercase ${
+            className={`chip ${
               displayState.state === 'ok'
-                ? 'bg-emerald-700 text-emerald-50'
+                ? 'chip--live'
                 : displayState.state === 'too-short'
-                  ? 'bg-gray-700 text-gray-200'
-                  : 'bg-amber-700 text-amber-50'
+                  ? ''
+                  : 'chip--warn'
             }`}
           >
             {CAPTURE_STATE_LABEL[displayState.state]}
@@ -130,35 +128,38 @@ export function ToneTrainer() {
       )}
 
       {error && (
-        <div className="mt-3 p-3 bg-red-900/60 border border-red-700 rounded text-sm" role="alert">
+        <div className="alert alert--error mt-3" role="alert">
           {error}
         </div>
       )}
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <button
+          type="button"
           onClick={() => start('calibrating')}
           disabled={busy}
-          className="bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 px-4 py-2 rounded font-bold flex items-center gap-2"
+          className="secondary"
         >
-          <Target size={16} />
+          <Target size={16} aria-hidden="true" />
           {baseFreq ? 'Recalibrate' : 'Calibrate mic'}
         </button>
 
         {!busy ? (
           <button
+            type="button"
             onClick={() => start('recording')}
-            className="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded font-bold flex items-center gap-2"
+            className="primary"
           >
-            <Mic size={16} />
+            <Mic size={16} aria-hidden="true" />
             Record attempt
           </button>
         ) : (
           <button
+            type="button"
             onClick={stop}
             className="bg-red-600 hover:bg-red-500 px-5 py-2 rounded font-bold flex items-center gap-2 animate-pulse"
           >
-            <MicOff size={16} />
+            <MicOff size={16} aria-hidden="true" />
             {mode === 'calibrating' ? 'Stop calibration' : 'Stop'}
           </button>
         )}
@@ -171,11 +172,12 @@ export function ToneTrainer() {
       {calibrationMsg && <p className="mt-2 text-xs text-amber-400">{calibrationMsg}</p>}
 
       {score !== null && divergence && analysis && finalContour && (
-        <div className="mt-5 p-4 bg-gray-800 rounded" data-testid="attempt-result">
+        <div className="readout readout--score mt-5" data-testid="attempt-result">
           <div className="flex items-baseline justify-between">
-            <h3 className="text-xl">
+            <h3 className="text-xl font-medium">
               Score:{' '}
-              <span className="font-bold text-green-400">{score} / 100</span>
+              <span className="display text-4xl">{score}</span>
+              <span className="text-xl faint"> / 100</span>
             </h3>
             <span className="text-sm text-gray-400 font-mono">
               avg error {divergence.meanAbsError.toFixed(1)} st

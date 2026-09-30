@@ -15,6 +15,7 @@ export function ReviewSession() {
   const [attemptCounts, setAttemptCounts] = useState<Record<string, number>>({})
   const [showSummary, setShowSummary] = useState(false)
   const [initialCount, setInitialCount] = useState(0)
+  const [loadFailed, setLoadFailed] = useState(false)
 
   useEffect(() => {
     async function loadCards() {
@@ -24,6 +25,7 @@ export function ReviewSession() {
         setInitialCount(allCards.length)
       } catch (err) {
         console.error('Failed to load cards:', err)
+        setLoadFailed(true)
       } finally {
         setLoading(false)
       }
@@ -67,14 +69,38 @@ export function ReviewSession() {
   }
 
   if (loading) {
-    return <div className="text-gray-400 animate-pulse">Loading cards...</div>
+    return (
+      <div className="card-container" aria-busy="true" aria-live="polite">
+        <div className="skeleton skeleton-card">
+          <div className="skeleton-line" style={{ width: '6rem' }} />
+          <div className="skeleton-line" style={{ width: '10rem', height: '3.5rem' }} />
+          <div className="skeleton-line" style={{ width: '7rem' }} />
+        </div>
+        <span className="faint text-sm mt-4">Loading cards…</span>
+      </div>
+    )
+  }
+
+  if (loadFailed) {
+    return (
+      <div className="state-block" role="alert">
+        <h2 className="state-title">Your deck could not be read</h2>
+        <p>Local storage may be blocked or full. Check site permissions, then try again.</p>
+        <button className="primary mt-4" onClick={() => setLocation('/')}>
+          Back to home
+        </button>
+      </div>
+    )
   }
 
   if (queue.length === 0 && !showSummary) {
     return (
-      <div className="card-container text-center flex flex-col items-center">
-        <p className="mb-2">No cards found in the database.</p>
-        <button className="primary mt-4 px-6 py-2 rounded-full font-bold" onClick={() => setLocation('/')}>Go Back</button>
+      <div className="state-block">
+        <h2 className="state-title">No cards in this deck yet</h2>
+        <p>Add cards through the admin panel, or import a deck JSON to start reviewing.</p>
+        <button className="primary mt-4" onClick={() => setLocation('/')}>
+          Back to home
+        </button>
       </div>
     )
   }
@@ -86,23 +112,36 @@ export function ReviewSession() {
   const currentCard = queue[0]
   const attempts = attemptCounts[currentCard.id] || 0
   const uniqueKey = `${currentCard.id}-${attempts}`
+  const answered = stats.totalStudied
+  const progressPct = initialCount > 0 ? Math.round((answered / initialCount) * 100) : 0
 
   return (
     <div style={{ width: '100%' }}>
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        marginBottom: '2rem',
-        opacity: 0.6,
-        fontSize: '0.875rem'
-      }}>
-        <button 
-          onClick={() => setLocation('/')}
-          style={{ background: 'transparent', border: 'none', padding: 0, textDecoration: 'underline' }}
-        >
-          Quit
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '1.1rem',
+        }}
+      >
+        <button className="btn-quiet" onClick={() => setLocation('/')}>
+          ← Quit
         </button>
-        <span>Card {stats.totalStudied + (attempts === 0 ? 1 : 0)} of {initialCount}</span>
+        <span className="faint text-sm tnum">
+          Card {answered + (attempts === 0 ? 1 : 0)} of {initialCount}
+        </span>
+      </div>
+
+      <div
+        className="session-progress"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={initialCount}
+        aria-valuenow={answered}
+        aria-label="Session progress"
+      >
+        <span style={{ width: `${progressPct}%` }} />
       </div>
 
       <AnimatePresence mode="wait">

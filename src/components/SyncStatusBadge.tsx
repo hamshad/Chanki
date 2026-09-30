@@ -27,24 +27,26 @@ export function SyncStatusBadge() {
 
   if (status === 'idle' && !lastSync) return null
 
+  if (status === 'syncing') {
+    return (
+      <span className="chip chip--live">
+        <span className="dot animate-pulse" />
+        Syncing
+      </span>
+    )
+  }
+
+  if (status === 'error') {
+    return (
+      <span className="chip chip--danger" role="status">
+        Sync failed
+      </span>
+    )
+  }
+
   return (
-    <div className="flex items-center text-xs ml-4">
-      {status === 'syncing' && (
-        <span className="text-blue-400 flex items-center gap-1">
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-          Syncing...
-        </span>
-      )}
-      {status === 'idle' && lastSync && (
-        <span className="text-gray-500" title={`Last synced: ${lastSync.toLocaleTimeString()}`}>
-          Synced
-        </span>
-      )}
-      {status === 'error' && (
-        <span className="text-red-400">
-          Sync Error
-        </span>
-      )}
-    </div>
+    <span className="chip" title={`Last synced: ${lastSync?.toLocaleTimeString() ?? ''}`}>
+      Synced
+    </span>
   )
 }

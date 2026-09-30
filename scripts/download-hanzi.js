@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 import https from 'https'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const dataDir = path.join(__dirname, '../public/hanzi-data')
+const dataDir = path.join(__dirname, '../public/assets/deck/hanzi-data')
 const starterDeckPath = path.join(__dirname, '../public/assets/deck/hsk1-starter.json')
 
 if (!fs.existsSync(dataDir)) {

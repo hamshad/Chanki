@@ -12,6 +12,40 @@ export type Rating = z.infer<typeof RatingEnum>
 
 // ─── Card ─────────────────────────────────────────────────────────────────────
 
+/** Per-character linguistic metadata (radical, strokes, decomposition, etymology).
+ *  Sourced from Make Me A Hanzi + hanzi-writer-data by the ETL pipeline. */
+export const CharMetaSchema = z
+  .object({
+    char: z.string().length(1),
+    radical: z.string().optional(),
+    strokes: z.number().int().positive().optional(),
+    decomposition: z.string().optional(), // IDS, e.g. 麻⿸广林
+    etymology: z
+      .object({
+        type: z.enum(['ideographic', 'pictographic', 'pictophonetic']),
+        hint: z.string().optional(),
+        phonetic: z.string().nullish(),
+        semantic: z.string().nullish(),
+      })
+      .strict()
+      .optional(),
+  })
+  .strict()
+
+export type CharMeta = z.infer<typeof CharMetaSchema>
+
+/** Example sentence with translation + optional native audio (Tatoeba). */
+export const ExampleSchema = z
+  .object({
+    zh: z.string().min(1),
+    en: z.string().optional(),
+    sourceId: z.number().int().optional(), // Tatoeba sentence id
+    audioUrl: z.string().optional(),
+  })
+  .strict()
+
+export type CardExample = z.infer<typeof ExampleSchema>
+
 export const CardSchema = z
   .object({
     id: z.string().uuid(),
@@ -22,9 +56,12 @@ export const CardSchema = z
     tone: ToneEnum,
     tags: z.array(z.string()).default([]),
     hskLevel: z.number().int().min(1).max(9).optional(),
-    audioUrl: z.string().optional(), // relative path e.g. /assets/deck/audio/ni3.mp3
+    audioUrl: z.string().optional(), // relative path e.g. /assets/deck/audio/ai4.mp3
     example: z.string().optional(),
     traditional: z.string().optional(),
+    frequency: z.number().int().positive().optional(), // word frequency rank (lower = commoner)
+    chars: z.array(CharMetaSchema).optional(), // per-character metadata
+    examples: z.array(ExampleSchema).optional(), // sourced example sentences
     schemaVersion: z.literal(1),
     createdAt: z.number().int().positive(),
     updatedAt: z.number().int().positive(),

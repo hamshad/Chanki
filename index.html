@@ -3,15 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chanki</title>
-    <meta name="description" content="Chanki — Chinese 4-sided flashcards that work offline." />
-    <meta name="theme-color" content="#1a1a2e" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Chanki — four-sided Chinese flashcards</title>
+    <meta
+      name="description"
+      content="Chanki drills Chinese vocabulary on four sides — character, pinyin, meaning and tone — with spaced repetition that works offline."
+    />
+    <meta name="theme-color" content="#131110" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Chanki" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png" />
+
+    <script>
+      // Capture the install prompt BEFORE the app bundle boots.
+      // Chromium (Chrome/Brave/Edge) can fire `beforeinstallprompt` within
+      // the first seconds after load — our React listener attaches later
+      // (IndexedDB seeding runs first) and would miss it, leaving the
+      // install button with no prompt to trigger.
+      window.__chankiInstall = null;
+      window.addEventListener('beforeinstallprompt', function (event) {
+        event.preventDefault(); // suppress the browser's own mini-infobar; we own the UX
+        window.__chankiInstall = event;
+      });
+      window.addEventListener('appinstalled', function () {
+        window.__chankiInstall = null;
+      });
+    </script>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Chanki — four-sided Chinese flashcards" />
+    <meta
+      property="og:description"
+      content="Character, pinyin, meaning and tone on every card. Spaced repetition that keeps working offline."
+    />
+    <meta property="og:image" content="/icons/pwa-512x512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chanki — four-sided Chinese flashcards" />
+    <meta
+      name="twitter:description"
+      content="Character, pinyin, meaning and tone on every card. Spaced repetition that keeps working offline."
+    />
+    <meta name="twitter:image" content="/icons/pwa-512x512.png" />
   </head>
   <body>
     <div id="root"></div>

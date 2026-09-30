@@ -15,10 +15,10 @@ function isStandalone(): boolean {
 }
 
 /**
- * iOS install guidance. iOS fires no beforeinstallprompt, so this is the
- * install path: Share → Add to Home Screen → Add. Rendered only on iOS
- * outside standalone mode; never when already installed. Copy stays
- * browser-neutral (iOS 16.4+ allows install from any browser).
+ * iOS install guidance. iOS fires no beforeinstallprompt, so the install
+ * path is Share → Add to Home Screen → Add. Rendered only on iOS outside
+ * standalone mode; never when already installed. Copy stays browser-neutral
+ * (iOS 16.4+ allows install from any browser).
  */
 export function IosInstallHint() {
   const [visible, setVisible] = useState(false)
@@ -39,27 +39,15 @@ export function IosInstallHint() {
     try {
       localStorage.setItem(DISMISS_KEY, '1')
     } catch {
-      // Ignore persistence failure; just hide for this session.
+      // Ignore persistence failure — just hide it for this session.
     }
     setVisible(false)
   }
 
   return (
-    <div
-      role="note"
-      style={{
-        padding: '12px 16px',
-        background: '#e9ecef',
-        color: '#1a1a2e',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 12,
-      }}
-    >
-      <p style={{ margin: 0, flex: 1 }}>
-        Install Chanki: Tap Share → Add to Home Screen → Add
-      </p>
-      <button type="button" onClick={dismiss} style={{ padding: '6px 12px' }}>
+    <div role="note" className="notice-bar">
+      <p>Install Chanki: tap Share → Add to Home Screen → Add</p>
+      <button type="button" className="btn-quiet" onClick={dismiss}>
         Dismiss
       </button>
     </div>

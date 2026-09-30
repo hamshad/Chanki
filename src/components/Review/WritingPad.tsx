@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import HanziWriter from 'hanzi-writer'
+import { loadCharData } from '../../data/api/hanziWriter'
 import type { Tone } from '../../types'
 
 interface WritingPadProps {
@@ -27,7 +28,7 @@ export function WritingPad({ text, tone, onComplete, size = 120 }: WritingPadPro
   if (chars.length === 0) return null
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4">
+    <div className="writing-pad">
       {chars.map((char, i) => (
         <SinglePad 
           key={`${char}-${i}`} 
@@ -45,7 +46,12 @@ function SinglePad({ char, tone, size, onComplete }: { char: string, tone: Tone,
   const containerRef = useRef<HTMLDivElement>(null)
   const writerRef = useRef<HanziWriter | null>(null)
   const [error, setError] = useState(false)
-  
+  // Keep latest callback without re-creating the quiz on every parent render
+  const onCompleteRef = useRef(onComplete)
+  useEffect(() => {
+    onCompleteRef.current = onComplete
+  }, [onComplete])
+
   useEffect(() => {
     if (!containerRef.current) return
     
@@ -68,20 +74,17 @@ function SinglePad({ char, tone, size, onComplete }: { char: string, tone: Tone,
         leniency: 1.5,
         showHintAfterMisses: 2,
         charDataLoader: (charToLoad, onLoad, onError) => {
-          fetch(`/assets/deck/hanzi-data/${charToLoad}.json`)
-            .then(res => {
-              if (!res.ok) throw new Error('Not found')
-              return res.json()
-            })
-            .then(onLoad)
-            .catch(onError)
+          loadCharData(charToLoad).then((data) => {
+            if (data) onLoad(data)
+            else onError(new Error(`No stroke data for ${charToLoad}`))
+          })
         }
       })
       
       writerRef.current = writer
 
       writer.quiz({
-        onComplete
+        onComplete: () => onCompleteRef.current(),
       })
     } catch (err) {
       console.error('HanziWriter error:', err)
@@ -93,17 +96,17 @@ function SinglePad({ char, tone, size, onComplete }: { char: string, tone: Tone,
         writerRef.current.cancelQuiz()
       }
     }
-  }, [char, tone, size, onComplete])
+  }, [char, tone, size])
 
   return (
     <div className="flex flex-col items-center">
-      <div 
-        ref={containerRef} 
-        className="bg-gray-800 rounded-lg shadow-inner overflow-hidden flex items-center justify-center cursor-crosshair"
+      <div
+        ref={containerRef}
+        className="writing-canvas"
         style={{ width: size, height: size, touchAction: 'none' }}
         onClick={(e) => e.stopPropagation()}
       />
-      {error && <span className="text-red-400 text-[10px] mt-1">Data missing</span>}
+      {error && <span className="text-red-400 text-xs mt-2">Stroke data unavailable</span>}
     </div>
   )
 }

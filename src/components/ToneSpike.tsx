@@ -35,21 +35,22 @@ export function ToneSpike() {
   }, [lastFrames, baseFreq])
 
   return (
-    <div className="p-8 text-white" data-testid="tone-spike">
-      <h2 className="text-2xl font-bold mb-1">Tone Spike (Phase 10)</h2>
+    <div className="w-full max-w-xl mx-auto" data-testid="tone-spike">
+      <p className="eyebrow">dev harness · phase 10</p>
+      <h2 className="display text-3xl mb-1">Tone spike</h2>
       <p className="text-gray-400 text-sm mb-6">
         Pitch capture runs fully on-device — no audio or pitch data is ever uploaded.
       </p>
 
       <div className="mb-4">
-        <label className="mr-4" htmlFor="target-tone">
+        <label className="field-label mr-4" htmlFor="target-tone">
           Target Tone:
         </label>
         <select
           id="target-tone"
           value={targetTone}
           onChange={e => setTargetTone(e.target.value as Tone)}
-          className="bg-gray-800 p-2 rounded"
+          className="select-inline"
           disabled={busy}
         >
           <option value="1">Tone 1 (5-5)</option>
@@ -60,7 +61,7 @@ export function ToneSpike() {
         </select>
       </div>
 
-      <div className="mb-4 p-4 bg-gray-800 rounded flex items-center justify-between gap-4">
+      <div className="readout mb-4 flex items-center justify-between gap-4">
         <div>
           <div className="text-sm text-gray-400">Speaker base (calibration)</div>
           <div className="text-lg font-mono">
@@ -69,9 +70,10 @@ export function ToneSpike() {
           {calibrationMsg && <div className="text-xs text-amber-400 mt-1">{calibrationMsg}</div>}
         </div>
         <button
+          type="button"
           onClick={() => start('calibrating')}
           disabled={busy}
-          className="bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 px-4 py-2 rounded font-bold"
+          className="secondary"
         >
           Calibrate mic
         </button>
@@ -80,20 +82,21 @@ export function ToneSpike() {
       <div className="mb-8">
         {!busy ? (
           <button
+            type="button"
             onClick={() => start('recording')}
-            className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded font-bold"
+            className="primary"
           >
             Start Recording
           </button>
         ) : (
-          <button onClick={stop} className="bg-red-600 hover:bg-red-500 px-4 py-2 rounded font-bold animate-pulse">
+          <button type="button" onClick={stop} className="bg-red-600 hover:bg-red-500 px-4 py-2 rounded font-bold animate-pulse">
             {mode === 'calibrating' ? 'Stop calibration' : 'Stop Recording'}
           </button>
         )}
       </div>
 
       {displayState && (
-        <div className="mb-6 p-3 bg-gray-900 rounded text-sm" data-testid="capture-state">
+        <div className="readout mb-6" data-testid="capture-state">
           <StateBadge state={displayState.state} />
           <span className="ml-3 text-gray-400 font-mono">
             voiced {(displayState.voicedRatio * 100).toFixed(0)}% · noise{' '}
@@ -109,15 +112,16 @@ export function ToneSpike() {
       )}
 
       {error && (
-        <div className="mb-6 p-3 bg-red-900/60 border border-red-700 rounded text-sm" role="alert">
+        <div className="alert alert--error mb-6" role="alert">
           {error}
         </div>
       )}
 
       {score !== null && analysis && (
-        <div className="mb-8 p-4 bg-gray-800 rounded">
-          <h3 className="text-xl">
-            Score: <span className="font-bold text-green-400">{score} / 100</span>
+        <div className="readout readout--score mb-8">
+          <h3 className="text-xl font-medium">
+            Score: <span className="display text-4xl">{score}</span>
+            <span className="text-xl faint"> / 100</span>
           </h3>
           <div className="mt-2 text-sm text-gray-400">
             <StateBadge state={analysis.state} />
@@ -154,13 +158,9 @@ export function ToneSpike() {
 function StateBadge({ state }: { state: CaptureState }) {
   const tone =
     state === 'ok'
-      ? 'bg-emerald-700 text-emerald-50'
+      ? 'chip chip--live'
       : state === 'too-short'
-        ? 'bg-gray-700 text-gray-200'
-        : 'bg-amber-700 text-amber-50'
-  return (
-    <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold uppercase ${tone}`}>
-      {CAPTURE_STATE_LABEL[state]}
-    </span>
-  )
+        ? 'chip'
+        : 'chip chip--warn'
+  return <span className={tone}>{CAPTURE_STATE_LABEL[state]}</span>
 }
