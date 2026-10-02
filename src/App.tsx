@@ -9,20 +9,37 @@ import { Link, Route, Switch, useLocation } from 'wouter'
 import { Home } from './pages/Home'
 import { ReviewSession } from './pages/ReviewSession'
 import { AdminDashboard } from './pages/AdminDashboard'
-import { ToneSpike } from './components/ToneSpike'
 import { ToneTrainer } from './pages/ToneTrainer'
+import { Resources } from './pages/Resources'
+import { Stats } from './pages/Stats'
 import { Legal } from './pages/Legal'
+import { getAdminCode } from './data/firebase'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 const NAV_ITEMS = [
-  { href: '/', label: 'Home' },
   { href: '/review', label: 'Review' },
+  { href: '/stats', label: 'Stats' },
   { href: '/tone', label: 'Tone trainer' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/home', label: 'Home' },
 ]
 
 const PrivacyPage = () => <Legal kind="privacy" />
 const TermsPage = () => <Legal kind="terms" />
+
+/** App opens on review — Home lives at /home, one nav item away. */
+function RedirectToReview() {
+  const [, setLocation] = useLocation()
+  useEffect(() => {
+    setLocation('/review')
+  }, [setLocation])
+  return (
+    <p className="faint" aria-live="polite">
+      Opening review…
+    </p>
+  )
+}
 
 function NotFound() {
   const [, setLocation] = useLocation()
@@ -34,7 +51,7 @@ function NotFound() {
       </span>
       <h1 className="display text-3xl">This page does not exist</h1>
       <p className="muted">The link may be out of date, or the page moved.</p>
-      <button className="primary mt-4" onClick={() => setLocation('/')}>
+      <button className="primary mt-4" onClick={() => setLocation('/home')}>
         Back to home
       </button>
     </div>
@@ -46,7 +63,7 @@ function App() {
   const lastClickTime = useRef(0)
   const [location, setLocation] = useLocation()
 
-  const handleTitleClick = () => {
+  const handleTitleClick = async () => {
     const now = Date.now()
     if (now - lastClickTime.current > 1000) {
       setClickCount(1)
@@ -55,10 +72,12 @@ function App() {
       setClickCount(newCount)
       if (newCount >= 7) {
         const code = window.prompt('Admin Code:')
-        // Note: In real app use VITE_ADMIN_CODE env var.
-        if (code === (import.meta.env.VITE_ADMIN_CODE || '0000')) {
+        // Gate value: Firebase Remote Config admin_code (dev fallback 5173).
+        if (code && code === (await getAdminCode())) {
           sessionStorage.setItem('admin', 'true')
           setLocation('/admin')
+        } else if (code !== null) {
+          window.alert('Wrong admin code.')
         }
         setClickCount(0)
       }
@@ -105,14 +124,15 @@ function App() {
 
       <main id="main" className={`app-main${location === '/review' ? ' app-main--focus' : ''}`}>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route path="/" component={RedirectToReview} />
+          <Route path="/home" component={Home} />
           <Route path="/review" component={ReviewSession} />
           <Route path="/admin" component={AdminDashboard} />
           <Route path="/tone" component={ToneTrainer} />
+          <Route path="/stats" component={Stats} />
+          <Route path="/resources" component={Resources} />
           <Route path="/privacy" component={PrivacyPage} />
           <Route path="/terms" component={TermsPage} />
-          {/* Phase 10 spike harness — dev-only pitch capture, no audio leaves the device */}
-          <Route path="/tone-spike" component={ToneSpike} />
           <Route component={NotFound} />
         </Switch>
       </main>

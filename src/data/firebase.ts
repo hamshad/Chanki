@@ -1,11 +1,49 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { initializeFirestore, persistentLocalCache, persistentSingleTabManager } from 'firebase/firestore'
+import { getDatabase } from 'firebase/database'
+import { getRemoteConfig, fetchAndActivate, getString } from 'firebase/remote-config'
 
-// Use a placeholder config for now. Real config can be injected during CI/build.
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'demo-api-key',
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'chanki-demo',
+export const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 }
 
 const app = initializeApp(firebaseConfig)
-export const firestore = getFirestore(app)
+
+/**
+ * Cards live in Firestore. Firestore's own IndexedDB persistence keeps them
+ * readable offline — our Dexie DB stores progress only, never card data.
+ */
+export const firestore = initializeFirestore(app, {
+  localCache: persistentLocalCache({ tabManager: persistentSingleTabManager({}) }),
+})
+
+/** Resources (admin-managed links) live in the Realtime Database. */
+export const rtdb = getDatabase(app)
+
+export const remoteConfig = getRemoteConfig(app)
+remoteConfig.settings = {
+  minimumFetchIntervalMillis: import.meta.env.DEV ? 0 : 3600000,
+  fetchTimeoutMillis: 10000,
+}
+// Dev fallback — production value comes from the admin_code Remote Config param.
+remoteConfig.defaultConfig = { admin_code: '5173' }
+
+/**
+ * Admin gate value: Remote Config `admin_code`, dev fallback `5173`.
+ * Client-side gate only — not a security boundary.
+ */
+export async function getAdminCode(): Promise<string> {
+  try {
+    await fetchAndActivate(remoteConfig)
+    return getString(remoteConfig, 'admin_code') || '5173'
+  } catch {
+    return '5173'
+  }
+}

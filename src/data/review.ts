@@ -1,5 +1,27 @@
 import { db } from './db'
 import type { Progress, ReviewLog } from '../types'
+import { localDayStamp } from '../utils/day'
+
+const INTRODUCED_KEY = 'newIntroduced'
+
+/**
+ * Fresh cards introduced (first-reviewed) today, per the Anki deck option
+ * "New cards/day". Stored as { day, count } in meta; stale days count as 0.
+ */
+export async function getIntroducedToday(now = Date.now()): Promise<number> {
+  const row = await db.meta.get(INTRODUCED_KEY)
+  const value = row?.value as { day?: string; count?: number } | undefined
+  if (!value || value.day !== localDayStamp(new Date(now))) return 0
+  return value.count ?? 0
+}
+
+async function bumpIntroducedToday(now: number): Promise<void> {
+  const row = await db.meta.get(INTRODUCED_KEY)
+  const value = row?.value as { day?: string; count?: number } | undefined
+  const day = localDayStamp(new Date(now))
+  const count = value?.day === day ? (value.count ?? 0) + 1 : 1
+  await db.meta.put({ key: INTRODUCED_KEY, value: { day, count } })
+}
 
 /**
  * Persists a graded review atomically:
@@ -21,7 +43,7 @@ export async function saveReview(
   let progressId: string
   let reviewLogId: string
 
-  await db.transaction('rw', db.progress, db.reviewLogs, async () => {
+  await db.transaction('rw', db.progress, db.reviewLogs, db.meta, async () => {
     // ── 1. Upsert Progress ─────────────────────────────────────────────────
     // Find existing record by [cardId+deviceId] compound index.
     const existing = await db.progress
@@ -37,10 +59,12 @@ export async function saveReview(
       })
       progressId = existing.id
     } else {
-      // First review for this card on this device — create new row
+      // First review for this card on this device — create new row and count
+      // it against today's new-cards/day limit (Anki: card "introduced").
       const newId = crypto.randomUUID()
       await db.progress.add({ ...progress, id: newId } as Progress)
       progressId = newId
+      await bumpIntroducedToday(reviewLog.timestamp)
     }
 
     // ── 2. Append ReviewLog ────────────────────────────────────────────────

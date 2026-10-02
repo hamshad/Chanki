@@ -2032,3 +2032,213 @@ label {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Session toolbar + Anki-style queue chips ─────────────────────────── */
+
+.session-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.queue-chips {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.queue-chip {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.22rem 0.55rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.queue-chip i {
+  font-style: normal;
+  font-size: 0.62rem;
+  opacity: 0.75;
+  letter-spacing: 0.04em;
+}
+
+.queue-chip--lrn {
+  color: var(--warn);
+  border-color: rgba(var(--warn-rgb), 0.45);
+  background: rgba(var(--warn-rgb), 0.12);
+}
+
+.queue-chip--due {
+  color: var(--accent-strong);
+  border-color: rgba(var(--accent-rgb), 0.45);
+  background: var(--accent-soft);
+}
+
+.queue-chip--new {
+  color: #8ab4e8;
+  border-color: rgba(138, 180, 232, 0.4);
+  background: rgba(138, 180, 232, 0.12);
+}
+
+/* ── Deck overview (Stats) ────────────────────────────────────────────── */
+
+.stats-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.stats-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--warn);
+  border: 1px solid rgba(var(--warn-rgb), 0.45);
+  background: rgba(var(--warn-rgb), 0.1);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.75rem;
+}
+
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.stat-tile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stat-tile .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(244, 235, 226, 0.6);
+}
+
+.stat-tile .value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.stat-tile--lrn .value {
+  color: var(--warn);
+}
+
+.stat-tile--young .value {
+  color: var(--accent-strong);
+}
+
+.stat-tile--mature .value {
+  color: var(--accent);
+}
+
+.stats-section {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 120px;
+  margin-top: 0.4rem;
+}
+
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.3rem;
+  height: 100%;
+}
+
+.bar {
+  width: 100%;
+  min-height: 2px;
+  border-radius: 3px 3px 0 0;
+  transition: height 0.3s ease;
+}
+
+.bar-chart--accent .bar {
+  background: var(--accent);
+}
+
+.bar-chart--warn .bar {
+  background: rgba(var(--warn-rgb), 0.85);
+}
+
+.bar-label {
+  font-size: 0.6rem;
+  color: rgba(244, 235, 226, 0.55);
+}
+
+.upcoming-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.upcoming-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.upcoming-list li:first-child {
+  border-top: none;
+}
+
+.upcoming-list .hanzi-text {
+  font-size: 1.25rem;
+  min-width: 3ch;
+}
+
+.upcoming-due {
+  margin-left: auto;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.stats-actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.4rem;
+}
+
+@media (min-width: 560px) {
+  .stat-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

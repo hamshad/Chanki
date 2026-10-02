@@ -8,15 +8,14 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-describe('ToneTrainer (Phase 11)', () => {
-  it('renders tone picker, contour graph, and capture controls', () => {
+describe('ToneTrainer', () => {
+  it('renders tone picker, contour graph, and one-tap record control', () => {
     render(<ToneTrainer />)
 
     expect(screen.getByRole('heading', { name: /tone trainer/i })).toBeTruthy()
     expect(screen.getByTestId('tone-contour')).toBeTruthy()
-    expect(screen.getByText(/calibrate mic/i)).toBeTruthy()
     expect(screen.getByText(/record attempt/i)).toBeTruthy()
-    expect(screen.getAllByRole('button')).toHaveLength(7) // 5 tones + calibrate + record
+    expect(screen.getAllByRole('button')).toHaveLength(6) // 5 tones + record
   })
 
   it('defaults to tone 3 (the canonical dip-rise syllable)', () => {

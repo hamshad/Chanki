@@ -72,3 +72,17 @@ export { FsrsScheduler } from './fsrs'
 /** Singleton scheduler instance shared across the app. */
 import { FsrsScheduler } from './fsrs'
 export const scheduler: IScheduler = new FsrsScheduler()
+
+// Daily queue assembly (Anki-style) lives in its own module.
+export {
+  buildDailyQueue,
+  classify,
+  countByKind,
+  NEW_PER_DAY,
+  REVIEWS_PER_DAY,
+  type CardKind,
+  type QueueItem,
+  type QueueCounts,
+  type QueueOptions,
+  type DailyQueue,
+} from './queue'

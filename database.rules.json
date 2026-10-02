@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "resources": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}

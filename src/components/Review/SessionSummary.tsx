@@ -52,9 +52,9 @@ export function SessionSummary({ stats }: SessionSummaryProps) {
 
   return (
     <div className="card-container flex flex-col items-center justify-center min-h-[60vh] text-center w-full">
-      <p className="eyebrow">summary</p>
+      <p className="eyebrow">day complete</p>
       <h2 className="display text-4xl" style={{ margin: '0.35rem 0 2rem' }}>
-        Session complete
+        Done for today
       </h2>
 
       <div className="stat-grid mb-8">
@@ -76,8 +76,11 @@ export function SessionSummary({ stats }: SessionSummaryProps) {
 
       <p className="faint text-sm mb-8 tnum">Next review due {nextDue}</p>
 
-      <button className="primary" onClick={() => setLocation('/')}>
-        Finish
+      <button className="primary" onClick={() => setLocation('/home')}>
+        Go home
+      </button>
+      <button className="btn-quiet mt-2" onClick={() => setLocation('/stats')}>
+        Deck overview
       </button>
     </div>
   )

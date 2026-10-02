@@ -13,6 +13,7 @@
     "data:build": "node scripts/data/build-deck.mjs",
     "data:build:refresh": "node scripts/data/build-deck.mjs --refresh",
     "data:hanzi": "node scripts/download-hanzi.js",
+    "db:seed": "node scripts/firestore-seed.mjs",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage"

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mic, MicOff, Target } from 'lucide-react'
+import { Mic, MicOff } from 'lucide-react'
 import { useToneCapture } from '../hooks/useToneCapture'
 import { ToneContour } from '../components/ToneContour'
 import {
@@ -28,7 +28,7 @@ const TONE_OPTIONS: { value: Tone; label: string; pattern: string }[] = [
 
 export function ToneTrainer() {
   const [targetTone, setTargetTone] = useState<Tone>('3')
-  const { mode, live, lastFrames, baseFreq, calibrationMsg, error, start, stop, framesRef } =
+  const { mode, countdown, live, lastFrames, baseFreq, error, start, stop, cancel, framesRef } =
     useToneCapture()
 
   const busy = mode !== 'idle'
@@ -134,42 +134,41 @@ export function ToneTrainer() {
       )}
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <button
-          type="button"
-          onClick={() => start('calibrating')}
-          disabled={busy}
-          className="secondary"
-        >
-          <Target size={16} aria-hidden="true" />
-          {baseFreq ? 'Recalibrate' : 'Calibrate mic'}
-        </button>
-
-        {!busy ? (
-          <button
-            type="button"
-            onClick={() => start('recording')}
-            className="primary"
-          >
+        {mode === 'idle' && (
+          <button type="button" onClick={() => start()} className="primary">
             <Mic size={16} aria-hidden="true" />
             Record attempt
           </button>
-        ) : (
-          <button
-            type="button"
-            onClick={stop}
-            className="bg-red-600 hover:bg-red-500 px-5 py-2 rounded font-bold flex items-center gap-2 animate-pulse"
-          >
+        )}
+
+        {mode === 'countdown' && (
+          <>
+            <span
+              className="display text-4xl tnum"
+              style={{ color: 'var(--tone-' + targetTone + ')' }}
+              aria-live="polite"
+            >
+              {countdown ?? 3}
+            </span>
+            <button type="button" onClick={cancel} className="secondary">
+              Cancel
+            </button>
+          </>
+        )}
+
+        {mode === 'recording' && (
+          <button type="button" onClick={stop} className="btn-danger animate-pulse">
             <MicOff size={16} aria-hidden="true" />
-            {mode === 'calibrating' ? 'Stop calibration' : 'Stop'}
+            Listening… tap to stop
           </button>
         )}
 
         <span className="text-xs text-gray-500 font-mono">
-          {baseFreq ? `base ${baseFreq.toFixed(0)} Hz` : 'no calibration (base = first frame)'}
+          {baseFreq
+            ? `base ${baseFreq.toFixed(0)} Hz (auto from your last take)`
+            : 'base set automatically from each take'}
         </span>
       </div>
-
-      {calibrationMsg && <p className="mt-2 text-xs text-amber-400">{calibrationMsg}</p>}
 
       {score !== null && divergence && analysis && finalContour && (
         <div className="readout readout--score mt-5" data-testid="attempt-result">

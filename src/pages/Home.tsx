@@ -3,6 +3,7 @@ import { useLocation } from 'wouter'
 import { motion } from 'framer-motion'
 import { AudioLines, ArrowRight } from 'lucide-react'
 import { db } from '../data/db'
+import { fetchRemoteCards } from '../data/remoteCards'
 import { InstallButton } from '../components/InstallButton.tsx'
 
 interface DeckStats {
@@ -26,11 +27,7 @@ const item = {
 }
 
 async function loadDeckStats(): Promise<DeckStats> {
-  const [cards, decks, progress] = await Promise.all([
-    db.cards.toArray(),
-    db.decks.toArray(),
-    db.progress.toArray(),
-  ])
+  const [cards, progress] = await Promise.all([fetchRemoteCards(), db.progress.toArray()])
 
   const latest = new Map<string, number>()
   for (const p of progress) {
@@ -39,13 +36,13 @@ async function loadDeckStats(): Promise<DeckStats> {
   }
 
   const now = Date.now()
-  const due = cards.filter((c) => {
+  const due = cards.filter(c => {
     const dueAt = latest.get(c.id)
     return dueAt === undefined || dueAt <= now
   }).length
 
   return {
-    deckName: decks[0]?.name ?? 'your deck',
+    deckName: 'Chanki deck',
     due,
     total: cards.length,
   }
@@ -95,8 +92,8 @@ export function Home() {
         </motion.h1>
 
         <motion.p variants={item} className="lede">
-          {failed ? 'Could not read your local deck.' : dueCopy} Character, pinyin, meaning and
-          tone — each card prompts all four before you grade it.
+          {failed ? 'Could not load your deck from the cloud.' : dueCopy} Character, pinyin, meaning
+          and tone — each card prompts all four before you grade it.
         </motion.p>
 
         <motion.div variants={item} className="hero-actions">

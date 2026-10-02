@@ -25,3 +25,8 @@ dist-ssr
 
 # ETL cache
 .cache
+
+# Env (secrets)
+.env
+.env.*
+!.env.example

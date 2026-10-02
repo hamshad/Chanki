@@ -15,7 +15,8 @@ import { splitMeasureWords, meaningTextStyle } from '../../utils/meaning'
 
 interface CardViewProps {
   card: Card
-  onNext: (rating: Rating) => void
+  /** rating + the new due timestamp (ms) so the session can requeue sub-day cards. */
+  onNext: (rating: Rating, nextDueMs: number) => void
 }
 
 /**
@@ -175,7 +176,7 @@ export function CardView({ card, onNext }: CardViewProps) {
     if (!deviceId || !preview) return
     const result = scheduler.apply(card.id, deviceId, progress, rating)
     await saveReview(result.progress, result.reviewLog)
-    onNext(rating)
+    onNext(rating, result.progress.due)
   }
 
   const handleWriteComplete = () => {

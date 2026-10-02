@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { getJson, ApiError } from './http'
 import { searchExamples, findWordAudio } from './tatoeba'
+import { stripHtml, containsHanzi, searchWiktionary, fetchWiktionaryDefinitions } from './wiktionary'
 import * as z from 'zod'
 
 afterEach(() => {
@@ -100,5 +101,79 @@ describe('tatoeba API', () => {
       ),
     )
     await expect(findWordAudio('爱')).resolves.toBe('https://api.tatoeba.org/v1/audio/9/file')
+  })
+})
+
+describe('wiktionary API', () => {
+  it('stripHtml removes tags, entities, footnote markers, collapses whitespace', () => {
+    expect(stripHtml('<span class="style">I&nbsp;love&nbsp;you</span>[1]')).toBe('I love you')
+    expect(stripHtml('a &amp; b &lt;c&gt; &quot;d&quot; &#39;e&#39;')).toBe('a & b <c> "d" \'e\'')
+    expect(stripHtml('<style>.x{}</style>kept')).toBe('kept')
+  })
+
+  it('containsHanzi detects CJK ideographs only', () => {
+    expect(containsHanzi('你好')).toBe(true)
+    expect(containsHanzi('nǐ hǎo')).toBe(false)
+    expect(containsHanzi('hello 世界')).toBe(true)
+  })
+
+  it('searchWiktionary maps hits and strips snippet HTML', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        jsonResponse({
+          query: { search: [{ title: '你好', snippet: '<span>hello</span>[2]' }] },
+        }),
+      ),
+    )
+    const hits = await searchWiktionary('你好')
+    expect(hits).toEqual([{ title: '你好', snippet: 'hello' }])
+    expect(vi.mocked(fetch).mock.calls[0][0]).toContain('origin=*')
+  })
+
+  it('searchWiktionary returns [] when query block is missing', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({})))
+    await expect(searchWiktionary('x')).resolves.toEqual([])
+  })
+
+  it('searchWiktionary throws on HTTP error', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({}, 503)))
+    await expect(searchWiktionary('x')).rejects.toThrow(/search failed \(503\)/)
+  })
+
+  it('fetchWiktionaryDefinitions extracts zh senses with cleaned examples', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        jsonResponse({
+          zh: [
+            {
+              partOfSpeech: 'Noun',
+              definitions: [
+                {
+                  definition: 'hello; greetings<sup>[1]</sup>',
+                  parsedExamples: [{ translation: '<i>你好！</i> Hello!' }],
+                },
+                { parsedExamples: [] },
+              ],
+            },
+          ],
+        }),
+      ),
+    )
+    const senses = await fetchWiktionaryDefinitions('你好')
+    expect(senses).toEqual([
+      { pos: 'Noun', definition: 'hello; greetings', example: '你好！ Hello!' },
+    ])
+  })
+
+  it('fetchWiktionaryDefinitions returns [] for non-Chinese pages', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({ en: [{ definitions: [] }] })))
+    await expect(fetchWiktionaryDefinitions('cat')).resolves.toEqual([])
+  })
+
+  it('fetchWiktionaryDefinitions throws on HTTP error', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({}, 404)))
+    await expect(fetchWiktionaryDefinitions('x')).rejects.toThrow(/definition failed \(404\)/)
   })
 })

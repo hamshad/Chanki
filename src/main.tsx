@@ -6,7 +6,6 @@ import { initPwaUpdates } from './pwa/register.ts'
 
 import { assertV1Schema } from './data/migrator'
 import { getOrCreateDeviceId } from './data/device-id'
-import { seedStarterDeckIfNeeded } from './data/seed'
 import { initBackgroundSync } from './data/sync'
 
 // Single registration path: Plan 01 inline wiring moved to src/pwa/register.ts.
@@ -21,9 +20,7 @@ async function bootstrap() {
     // Initialize identity and data contract before any UI renders
     const deviceId = await getOrCreateDeviceId()
     console.log('[Chanki] Device ID:', deviceId)
-    
-    await seedStarterDeckIfNeeded()
-    
+
     // Initialize sync listeners (Phase 6)
     initBackgroundSync()
 

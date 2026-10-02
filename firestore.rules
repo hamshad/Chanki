@@ -2,13 +2,15 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // ─── ADMIN DATA (Decks, Cards, AudioMeta) ────────────────────────────────
-    // Deny by default for now (Phase 6). Phase 7 will add admin claim checks.
+    // ─── CHARACTER DATA (Decks, Cards) ───────────────────────────────────────
+    // Cards are the app's data source for every user (read-only in the UI).
+    // Writes are gated only by the in-app admin code (Remote Config
+    // admin_code) — add Firebase Auth custom claims before public deploy.
     match /decks/{deckId} {
-      allow read, write: if false;
+      allow read, write: if true;
     }
     match /cards/{cardId} {
-      allow read, write: if false;
+      allow read, write: if true;
     }
 
     // ─── USER DATA (Progress) ────────────────────────────────────────────────
@@ -16,7 +18,7 @@ service cloud.firestore {
     // Users can read/write to their own device path.
     match /devices/{deviceId} {
       allow read, write: if true;
-      
+
       match /progress/{progressId} {
         allow read, write: if true;
       }

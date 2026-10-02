@@ -5,7 +5,6 @@ import { resolve } from 'node:path'
 const TONE_CAPTURE_SOURCES = [
   resolve(process.cwd(), 'src/utils/scoring.ts'),
   resolve(process.cwd(), 'src/utils/toneContour.ts'),
-  resolve(process.cwd(), 'src/components/ToneSpike.tsx'),
   resolve(process.cwd(), 'src/components/ToneContour.tsx'),
   resolve(process.cwd(), 'src/hooks/useToneCapture.ts'),
   resolve(process.cwd(), 'src/pages/ToneTrainer.tsx'),
