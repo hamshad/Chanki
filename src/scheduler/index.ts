@@ -53,7 +53,7 @@ export interface IScheduler {
    * Does NOT write to the database — caller persists via saveReview().
    *
    * @param cardId    UUID of the card being reviewed
-   * @param deviceId  Anonymous device UUID from getOrCreateDeviceId()
+   * @param deviceId  Derived device identity from getOrCreateDeviceId()
    * @param existing  Current Progress from Dexie, or null for first review
    * @param rating    User's chosen rating
    */

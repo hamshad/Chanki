@@ -60,4 +60,17 @@ describe('Firestore Rules', () => {
     await assertSucceeds(progressRef.set({ stability: 1.0 }))
     await assertSucceeds(progressRef.get())
   })
+
+  it('allows read/write to devices/{deviceId}/reviewLogs/{logId}', async () => {
+    const unauthed = testEnv.unauthenticatedContext()
+    const db = unauthed.firestore()
+    const logRef = db
+      .collection('devices')
+      .doc('device-uuid-123')
+      .collection('reviewLogs')
+      .doc('log-uuid-123')
+
+    await assertSucceeds(logRef.set({ rating: 'good', timestamp: 123 }))
+    await assertSucceeds(logRef.get())
+  })
 })

@@ -43,18 +43,26 @@ export async function saveReview(
   let progressId: string
   let reviewLogId: string
 
+  // The caller's deviceId may be stale if an identity re-home happened
+  // mid-session — the deviceId in meta is authoritative for new writes.
+  const metaDevice = await db.meta.get('deviceId')
+  const activeDeviceId =
+    typeof metaDevice?.value === 'string' ? metaDevice.value : progress.deviceId
+  const row: Omit<Progress, 'id'> = { ...progress, deviceId: activeDeviceId }
+  const log: Omit<ReviewLog, 'id'> = { ...reviewLog, deviceId: activeDeviceId }
+
   await db.transaction('rw', db.progress, db.reviewLogs, db.meta, async () => {
     // ── 1. Upsert Progress ─────────────────────────────────────────────────
     // Find existing record by [cardId+deviceId] compound index.
     const existing = await db.progress
       .where('[cardId+deviceId]')
-      .equals([progress.cardId, progress.deviceId])
+      .equals([row.cardId, row.deviceId])
       .first()
 
     if (existing) {
       // Update in place — keeps same id
       await db.progress.update(existing.id, {
-        ...progress,
+        ...row,
         id: existing.id, // ensure id is preserved
       })
       progressId = existing.id
@@ -62,17 +70,24 @@ export async function saveReview(
       // First review for this card on this device — create new row and count
       // it against today's new-cards/day limit (Anki: card "introduced").
       const newId = crypto.randomUUID()
-      await db.progress.add({ ...progress, id: newId } as Progress)
+      await db.progress.add({ ...row, id: newId } as Progress)
       progressId = newId
-      await bumpIntroducedToday(reviewLog.timestamp)
+      await bumpIntroducedToday(log.timestamp)
     }
 
     // ── 2. Append ReviewLog ────────────────────────────────────────────────
     // Always insert, never update — immutable audit trail.
     const logId = crypto.randomUUID()
-    await db.reviewLogs.add({ ...reviewLog, id: logId } as ReviewLog)
+    await db.reviewLogs.add({ ...log, id: logId } as ReviewLog)
     reviewLogId = logId
   })
+
+  // Background sync (debounced) — dynamic import keeps the engine (and its
+  // Firestore module) out of unit-test module graphs; offline reviews stay
+  // queued in Dexie until connectivity returns.
+  void import('./sync')
+    .then(m => m.scheduleSync())
+    .catch(() => {})
 
   return { progressId: progressId!, reviewLogId: reviewLogId! }
 }

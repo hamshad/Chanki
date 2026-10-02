@@ -96,7 +96,7 @@ export const ProgressSchema = z
   .object({
     id: z.string().uuid(),
     cardId: z.string().uuid(),
-    deviceId: z.string().uuid(),
+    deviceId: z.string().min(1),
     stability: z.number().nonnegative(),
     difficulty: z.number().min(0).max(10),
     due: z.number().int(), // Unix ms timestamp
@@ -118,11 +118,13 @@ export const ReviewLogSchema = z
   .object({
     id: z.string().uuid(),
     cardId: z.string().uuid(),
-    deviceId: z.string().uuid(),
+    deviceId: z.string().min(1),
     rating: RatingEnum,
     scheduledDays: z.number().nonnegative(),
     elapsedDays: z.number().nonnegative(),
     timestamp: z.number().int().positive(),
+    /** Optional: absent on rows written before the sync engine landed. */
+    syncStatus: z.enum(['pending', 'synced']).optional(),
   })
   .strict()
 

@@ -22,6 +22,10 @@ service cloud.firestore {
       match /progress/{progressId} {
         allow read, write: if true;
       }
+
+      match /reviewLogs/{logId} {
+        allow read, write: if true;
+      }
     }
   }
 }

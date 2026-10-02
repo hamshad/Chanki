@@ -17,7 +17,8 @@ async function bootstrap() {
   try {
     assertV1Schema()
     
-    // Initialize identity and data contract before any UI renders
+    // Identity: local UUID on first run; fingerprint lookup re-adopts a
+    // previous deviceId after reinstall — never prompts the user.
     const deviceId = await getOrCreateDeviceId()
     console.log('[Chanki] Device ID:', deviceId)
 
