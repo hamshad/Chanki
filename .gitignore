@@ -10,7 +10,9 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-*.local
+.vite
+coverage
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
@@ -25,6 +27,9 @@ dist-ssr
 
 # ETL cache
 .cache
+
+# Firebase local state (emulator/deploy caches)
+.firebase
 
 # Env (secrets)
 .env
