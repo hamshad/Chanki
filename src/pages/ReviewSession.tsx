@@ -14,6 +14,7 @@ import {
 } from '../scheduler'
 import { CardView } from '../components/Review/CardView'
 import { SessionSummary, type SessionStats } from '../components/Review/SessionSummary'
+import { LifeLoader } from '../components/LifeLoader'
 import type { Rating } from '../types'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -130,11 +131,7 @@ export function ReviewSession() {
   if (mode === 'loading') {
     return (
       <div className="card-container" aria-busy="true" aria-live="polite">
-        <div className="skeleton skeleton-card">
-          <div className="skeleton-line" style={{ width: '6rem' }} />
-          <div className="skeleton-line" style={{ width: '10rem', height: '3.5rem' }} />
-          <div className="skeleton-line" style={{ width: '7rem' }} />
-        </div>
+        <LifeLoader className="life-loader--card" label="Loading cards" />
         <span className="faint text-sm mt-4">Loading cards…</span>
       </div>
     )

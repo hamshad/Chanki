@@ -933,6 +933,33 @@ label {
   background: rgba(255, 255, 255, 0.07);
 }
 
+/* ── Game of Life loading surface ─────────────────────────────────────── */
+
+.life-loader {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(72, 169, 138, 0.08), transparent 70%),
+    var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+}
+
+.life-loader--card {
+  /* Same footprint the shimmer skeleton used, so nothing shifts on swap. */
+  min-height: 48dvh;
+  display: flex;
+}
+
+.life-loader__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  image-rendering: pixelated;
+}
+
 @keyframes shimmer {
   to {
     transform: translateX(100%);
