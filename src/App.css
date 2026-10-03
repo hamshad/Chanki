@@ -146,32 +146,15 @@
 .app-footer__inner {
   max-width: var(--container);
   margin-inline: auto;
-  padding: 1.5rem clamp(1rem, 4vw, 2rem) 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 1.5rem;
-  font-size: 0.85rem;
+  padding: 1.25rem clamp(1rem, 4vw, 2rem);
+  text-align: center;
+}
+
+.app-footer__motto {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
   color: var(--text-3);
-}
-
-.app-footer p {
-  max-width: 46ch;
-}
-
-.app-footer nav {
-  display: flex;
-  gap: 1.25rem;
-}
-
-.app-footer a {
-  color: var(--text-2);
-  text-decoration: none;
-}
-
-.app-footer a:hover {
-  color: var(--accent-strong);
 }
 
 .not-found {
@@ -197,36 +180,6 @@
   .not-found__code {
     color: var(--text-3);
   }
-}
-
-.legal {
-  max-width: var(--measure);
-}
-
-.legal h1 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.2rem, 7vw, 3rem);
-  margin-bottom: 0.5rem;
-}
-
-.legal h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.5rem;
-  margin: 2rem 0 0.5rem;
-}
-
-.legal p {
-  color: var(--text-2);
-  margin-bottom: 0.85rem;
-}
-
-.legal .back-link {
-  display: inline-block;
-  margin-bottom: 1.75rem;
-  font-weight: 600;
-  text-decoration: none;
 }
 
 

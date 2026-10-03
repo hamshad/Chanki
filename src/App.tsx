@@ -13,7 +13,6 @@ import { AdminDashboard } from './pages/AdminDashboard'
 import { ToneTrainer } from './pages/ToneTrainer'
 import { Resources } from './pages/Resources'
 import { Stats } from './pages/Stats'
-import { Legal } from './pages/Legal'
 import { getAdminCode } from './data/firebase'
 
 import { useState, useRef, useEffect } from 'react'
@@ -25,9 +24,6 @@ const NAV_ITEMS = [
   { href: '/resources', label: 'Resources' },
   { href: '/home', label: 'Home' },
 ]
-
-const PrivacyPage = () => <Legal kind="privacy" />
-const TermsPage = () => <Legal kind="terms" />
 
 /** App opens on review — Home lives at /home, one nav item away. */
 function RedirectToReview() {
@@ -141,23 +137,14 @@ function App() {
           <Route path="/tone" component={ToneTrainer} />
           <Route path="/stats" component={Stats} />
           <Route path="/resources" component={Resources} />
-          <Route path="/privacy" component={PrivacyPage} />
-          <Route path="/terms" component={TermsPage} />
           <Route component={NotFound} />
         </Switch>
       </main>
 
-      {/* Review session owns the whole viewport — legal links live on other pages */}
+      {/* Review session owns the whole viewport — the footer sits below the fold */}
       <footer className={location === '/review' ? 'app-footer app-footer--focus' : 'app-footer'}>
         <div className="app-footer__inner">
-          <p>
-            Chanki keeps your cards and progress on this device. Nothing is uploaded unless you
-            install the app and enable sync.
-          </p>
-          <nav aria-label="Legal">
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/terms">Terms</Link>
-          </nav>
+          <p className="app-footer__motto">Stay hungry, stay foolish.</p>
         </div>
       </footer>
 
