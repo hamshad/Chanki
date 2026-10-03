@@ -28,19 +28,46 @@ function warmVoices(): void {
 
 warmVoices()
 
+/**
+ * Rank Chinese voices for naturalness. Desktop machines usually expose the
+ * robotic local voices (Windows SAPI, macOS Tingting) alongside — or instead
+ * of — network voices, so a plain "first zh voice" pick sounds like the 90s
+ * on PC while phones get Google's neural one. Signals, best first:
+ *
+ *  - name marker (Neural/Natural/Online/Enhanced): the voice vendor labels
+ *    its good engines this way — Edge's local "Xiaoxiao (Natural)" beats a
+ *    network voice even though it is `localService`.
+ *  - `localService === false`: Chrome's online Google voices.
+ *  - exact zh-CN over looser zh-TW/zh-HK matches.
+ */
+export function chooseChineseVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
+  const normalize = (lang: string) => lang.replace('_', '-').toLowerCase()
+  const score = (v: SpeechSynthesisVoice): number => {
+    let s = 0
+    if (/(neural|natural|online|enhanced|premium)/i.test(v.name)) s += 100
+    if (!v.localService) s += 50
+    if (normalize(v.lang) === 'zh-cn') s += 10
+    return s
+  }
+
+  let best: SpeechSynthesisVoice | undefined
+  let bestScore = -1
+  for (const voice of voices) {
+    if (!normalize(voice.lang).startsWith('zh')) continue
+    const s = score(voice)
+    if (s > bestScore) {
+      bestScore = s
+      best = voice
+    }
+  }
+  return best
+}
+
 function pickChineseVoice(): SpeechSynthesisVoice | undefined {
   if (!voiceCache.length && typeof window !== 'undefined' && 'speechSynthesis' in window) {
     voiceCache = window.speechSynthesis.getVoices()
   }
-  const normalize = (lang: string) => lang.replace('_', '-').toLowerCase()
-  const zh = voiceCache.filter((v) => normalize(v.lang).startsWith('zh'))
-  // Network voices (Chrome ships neural Google voices this way) sound far
-  // better than the bundled local ones — prefer them when available.
-  return (
-    zh.find((v) => v.localService === false) ??
-    zh.find((v) => normalize(v.lang) === 'zh-cn') ??
-    zh[0]
-  )
+  return chooseChineseVoice(voiceCache)
 }
 
 function startTts(text: string, settle: () => void): () => void {
