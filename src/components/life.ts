@@ -80,7 +80,7 @@ export function seedGrid(width: number, height: number, seed: number): Uint8Arra
 
   for (let y = Math.floor(height / 3); y < Math.ceil((height * 2) / 3); y++) {
     for (let x = 1; x < width - 1; x++) {
-      if (rand() < 0.32) grid[y * width + x] = 1
+      if (rand() < 0.26) grid[y * width + x] = 1
     }
   }
 

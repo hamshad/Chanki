@@ -939,11 +939,12 @@ label {
   position: relative;
   overflow: hidden;
   width: 100%;
-  background:
-    radial-gradient(120% 80% at 50% 0%, rgba(72, 169, 138, 0.08), transparent 70%),
-    var(--surface-2);
+  background: var(--surface-2);
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
+  /* Corners dissolve into the page — the board exists, it does not perform. */
+  -webkit-mask-image: radial-gradient(closest-corner at 50% 50%, #000 45%, transparent 95%);
+  mask-image: radial-gradient(closest-corner at 50% 50%, #000 45%, transparent 95%);
 }
 
 .life-loader--card {

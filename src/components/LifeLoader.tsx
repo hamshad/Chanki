@@ -10,7 +10,6 @@ import { useEffect, useRef, useState } from 'react'
 import { RULES, population, seedGrid, step, tableFor } from './life'
 
 const CELL = 10
-const GAP = 2
 
 function prefersReducedMotion(): boolean {
   return (
@@ -59,8 +58,6 @@ export function LifeLoader({
     let height = 0
     let cols = 0
     let rows = 0
-    let offsetX = 0
-    let offsetY = 0
     let grid: Uint8Array = new Uint8Array(0)
     let buffer: Uint8Array = new Uint8Array(0)
 
@@ -71,10 +68,10 @@ export function LifeLoader({
       canvas.width = Math.round(width * dpr)
       canvas.height = Math.round(height * dpr)
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      cols = Math.max(8, Math.floor(width / CELL))
-      rows = Math.max(6, Math.floor(height / CELL))
-      offsetX = (width - cols * CELL) / 2
-      offsetY = (height - rows * CELL) / 2
+      // Full-bleed board: the torus seam sits at the container edge, so
+      // patterns visibly wrap instead of stopping in a margin.
+      cols = Math.ceil(width / CELL)
+      rows = Math.ceil(height / CELL)
     }
 
     const reseed = (nextSeed: number) => {
@@ -84,16 +81,12 @@ export function LifeLoader({
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
-      const size = CELL - GAP
+      // One flat opaque fill, no gaps and no glow halo — neighbouring live
+      // cells merge into continuous blobs rather than a bright box grid.
+      ctx.fillStyle = 'rgb(63 146 126)'
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          if (!grid[y * cols + x]) continue
-          const px = offsetX + x * CELL + GAP / 2
-          const py = offsetY + y * CELL + GAP / 2
-          ctx.fillStyle = 'rgba(88, 191, 160, 0.18)'
-          ctx.fillRect(px - 1, py - 1, size + 2, size + 2)
-          ctx.fillStyle = 'rgba(88, 191, 160, 0.92)'
-          ctx.fillRect(px, py, size, size)
+          if (grid[y * cols + x]) ctx.fillRect(x * CELL, y * CELL, CELL, CELL)
         }
       }
     }
