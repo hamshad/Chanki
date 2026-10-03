@@ -141,6 +141,13 @@ body {
   min-width: 320px;
   min-height: 100dvh;
   background: var(--bg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* App-feel: no double-tap zoom delay on controls */
+button,
+a {
+  touch-action: manipulation;
 }
 
 body::before {
@@ -346,7 +353,7 @@ main {
 }
 
 .mw-chip {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 500;
   line-height: 1.35;
   text-align: center;
@@ -359,6 +366,100 @@ main {
   padding: 0.18rem 0.55rem;
 }
 
+/* ── Voice clip (WhatsApp-style waveform player) ─────────────────────── */
+
+.audio-clip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.3rem 0.6rem 0.3rem 0.3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text-3);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.audio-clip:hover {
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.audio-clip.is-playing {
+  border-color: rgb(var(--accent-rgb) / 0.45);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.audio-clip__btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.audio-clip--md .audio-clip__btn {
+  width: 44px;
+  height: 44px;
+}
+
+.audio-clip--sm .audio-clip__btn {
+  width: 32px;
+  height: 32px;
+}
+
+.audio-clip:active .audio-clip__btn {
+  transform: scale(0.9);
+}
+
+.audio-clip__wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 26px;
+}
+
+.audio-clip--sm .audio-clip__wave {
+  gap: 2.5px;
+  height: 17px;
+}
+
+.audio-clip__bar {
+  width: 3px;
+  border-radius: var(--radius-full);
+  background: currentColor;
+  opacity: 0.55;
+  transform-origin: center;
+}
+
+.audio-clip--sm .audio-clip__bar {
+  width: 2.5px;
+}
+
+.audio-clip.is-playing .audio-clip__bar {
+  opacity: 1;
+  animation: audio-wave 0.85s ease-in-out infinite alternate;
+}
+
+@keyframes audio-wave {
+  from {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-clip.is-playing .audio-clip__bar {
+    animation: none;
+  }
+}
+
 .example-list {
   display: flex;
   flex-direction: column;
@@ -367,9 +468,18 @@ main {
 }
 
 .example-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
   border-left: 2px solid rgb(var(--accent-rgb) / 0.35);
   padding-left: 0.55rem;
   text-align: left;
+}
+
+.example-item > div {
+  min-width: 0;
+  flex: 1;
 }
 
 .example-zh {
@@ -380,7 +490,7 @@ main {
 }
 
 .example-en {
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   line-height: 1.4;
   color: var(--text-3);
   overflow-wrap: anywhere;
@@ -553,6 +663,13 @@ button.primary,
   letter-spacing: 0.01em;
   cursor: pointer;
   box-shadow: 0 14px 30px -18px rgb(var(--accent-rgb) / 0.95);
+}
+
+button:active,
+.btn-quiet:active,
+.info-btn:active,
+.nav-link:active {
+  transform: scale(0.97);
 }
 
 button.primary:hover,
@@ -878,7 +995,6 @@ label {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cube-face {
@@ -894,19 +1010,10 @@ label {
   overscroll-behavior: contain;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transform: rotateY(0deg) translateZ(var(--cube-half, 170px));
-}
-
-.cube-face:nth-child(2) {
-  transform: rotateY(90deg) translateZ(var(--cube-half, 170px));
-}
-
-.cube-face:nth-child(3) {
-  transform: rotateY(180deg) translateZ(var(--cube-half, 170px));
-}
-
-.cube-face:nth-child(4) {
-  transform: rotateY(270deg) translateZ(var(--cube-half, 170px));
+  /* Rotation lives on each face (cube stays untransformed): a cube rotated
+     to ±90°/±270° projects a zero-width quad and Chrome then drops the whole
+     subtree from hit-testing — face buttons became untappable. */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cube-face--meaning {
@@ -1028,6 +1135,7 @@ label {
 
 .grade {
   flex: 1;
+  min-height: 46px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1209,7 +1317,7 @@ label {
 .toast-stack {
   position: fixed;
   left: 50%;
-  bottom: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   transform: translateX(-50%);
   z-index: var(--z-toast);
   display: flex;
@@ -1381,7 +1489,7 @@ label {
 }
 
 .tone-option {
-  padding: 0.55rem 0.25rem;
+  padding: 0.72rem 0.25rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--line-strong);
   background: var(--surface-2);
@@ -1401,6 +1509,8 @@ label {
 }
 
 .readout {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--surface-2);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -1428,7 +1538,7 @@ label {
   position: absolute;
   top: 0.5rem;
   left: 0.75rem;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: lowercase;
   color: var(--text-3);
@@ -1456,6 +1566,163 @@ label {
   gap: 0.75rem;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+/* Admin search results — rich ranked rows */
+.search-results__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.search-hit {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.search-hit:last-child {
+  border-bottom: none;
+}
+
+.search-hit:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.search-hit:disabled {
+  opacity: 0.55;
+}
+
+.search-hit__line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.search-hit__hanzi {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.search-hit__pinyin {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.search-hit__chips {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.search-hit__meaning {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.search-hit__tags {
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* Tone trainer page shell */
+.tone-page {
+  width: 100%;
+  max-width: 36rem;
+  margin-inline: auto;
+  padding-bottom: 1.5rem;
+}
+
+/* Tone accents for pinyin (match tone-picker palette) */
+.tone-1 { color: var(--tone-1); }
+.tone-2 { color: var(--tone-2); }
+.tone-3 { color: var(--tone-3); }
+.tone-4 { color: var(--tone-4); }
+.tone-5 { color: var(--tone-5); }
+
+/* Two-up field rows */
+.field-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* Example sentence editor */
+.ex-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.ex-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.ex-row .btn-quiet {
+  flex: none;
+  padding: 0.35rem 0.6rem;
+}
+
+/* Character breakdown preview */
+.chars-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.char-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.char-chip__char {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Details sheet — metadata chips + etymology hints */
+.detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.char-chip__hint {
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--text-3);
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 11rem;
 }
 
 .card-row {
@@ -1974,12 +2241,12 @@ label {
 
 @media (max-width: 420px) {
   .grade {
-    padding: 0.6rem 0.15rem;
-    font-size: 0.82rem;
+    padding: 0.65rem 0.15rem;
+    font-size: 0.84rem;
   }
 
   .grade > span:last-child {
-    font-size: 0.62rem;
+    font-size: 0.66rem;
   }
 
   .hero-actions button {
@@ -2002,8 +2269,8 @@ label {
   }
 
   .cube-map-item {
-    padding: 0.24rem 0.45rem;
-    font-size: 0.6rem;
+    padding: 0.28rem 0.45rem;
+    font-size: 0.66rem;
   }
 }
 
@@ -2046,6 +2313,7 @@ label {
 
 .queue-chips {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.4rem;
 }
 
@@ -2062,7 +2330,7 @@ label {
 
 .queue-chip i {
   font-style: normal;
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   opacity: 0.75;
   letter-spacing: 0.04em;
 }
@@ -2096,9 +2364,10 @@ label {
 
 .stats-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem 1rem;
 }
 
 .streak-badge {
@@ -2196,7 +2465,7 @@ label {
 }
 
 .bar-label {
-  font-size: 0.6rem;
+  font-size: 0.66rem;
   color: rgba(244, 235, 226, 0.55);
 }
 
@@ -2240,5 +2509,20 @@ label {
 @media (min-width: 560px) {
   .stat-tiles {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+/* ── Mobile shell overrides (tab bar clearance, stacked admin fields) ── */
+
+@media (max-width: 719px) {
+  .toast-stack {
+    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 560px) {
+  .field-pair {
+    grid-template-columns: 1fr;
   }
 }

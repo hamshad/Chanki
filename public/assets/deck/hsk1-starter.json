@@ -5,7 +5,7 @@
   "slug": "hsk1-starter",
   "schemaVersion": 1,
   "createdAt": 1726700000000,
-  "updatedAt": 1790763374830
+  "updatedAt": 1790947961653
  },
  "cards": [
   {
@@ -38,15 +38,18 @@
     {
      "zh": "爱听？",
      "en": "Love listening?",
-     "sourceId": 10961051
+     "sourceId": 10961051,
+     "audioUrl": "/assets/deck/audio/ex-004436c7330c46a7.mp3"
     },
     {
      "zh": "可爱~",
      "en": "That's so cute.",
-     "sourceId": 10890920
+     "sourceId": 10890920,
+     "audioUrl": "/assets/deck/audio/ex-f1be3635bb4552e6.mp3"
     }
    ],
-   "example": "爱听？"
+   "example": "爱听？",
+   "audioUrl": "/assets/deck/audio/爱.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000002",
@@ -76,15 +79,18 @@
     {
      "zh": "八十了。",
      "en": "He is eighty years old.",
-     "sourceId": 13519716
+     "sourceId": 13519716,
+     "audioUrl": "/assets/deck/audio/ex-03fb89010ddda6a5.mp3"
     },
     {
      "zh": "八点多了。",
      "en": "It's past eight.",
-     "sourceId": 11077429
+     "sourceId": 11077429,
+     "audioUrl": "/assets/deck/audio/ex-214dcd837883ed45.mp3"
     }
    ],
-   "example": "八十了。"
+   "example": "八十了。",
+   "audioUrl": "/assets/deck/audio/八.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000003",
@@ -117,15 +123,18 @@
     {
      "zh": "爸爸在哪？",
      "en": "Where's Daddy?",
-     "sourceId": 13119020
+     "sourceId": 13119020,
+     "audioUrl": "/assets/deck/audio/ex-f053200e6e2301ee.mp3"
     },
     {
      "zh": "你爸爸在哪？",
      "en": "Where is your dad?",
-     "sourceId": 13189733
+     "sourceId": 13189733,
+     "audioUrl": "/assets/deck/audio/ex-2e582688c7af0f53.mp3"
     }
    ],
-   "example": "爸爸在哪？"
+   "example": "爸爸在哪？",
+   "audioUrl": "/assets/deck/audio/爸爸.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000004",
@@ -168,15 +177,18 @@
     {
      "zh": "杯子易碎。",
      "en": "Glass breaks easily.",
-     "sourceId": 353647
+     "sourceId": 353647,
+     "audioUrl": "/assets/deck/audio/ex-fc723f18e27bee3b.mp3"
     },
     {
      "zh": "杯子里有水。",
      "en": "There is water in the glass.",
-     "sourceId": 10961067
+     "sourceId": 10961067,
+     "audioUrl": "/assets/deck/audio/ex-bcd2cef7f9914ebb.mp3"
     }
    ],
-   "example": "杯子易碎。"
+   "example": "杯子易碎。",
+   "audioUrl": "/assets/deck/audio/杯子.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000005",
@@ -217,15 +229,18 @@
     {
      "zh": "我住北京。",
      "en": "I live in Beijing.",
-     "sourceId": 9314682
+     "sourceId": 9314682,
+     "audioUrl": "/assets/deck/audio/ex-712b4e03622fb134.mp3"
     },
     {
      "zh": "我住在北京",
      "en": "I live in Beijing.",
-     "sourceId": 4713358
+     "sourceId": 4713358,
+     "audioUrl": "/assets/deck/audio/ex-1701b0aee55e1665.mp3"
     }
    ],
-   "example": "我住北京。"
+   "example": "我住北京。",
+   "audioUrl": "/assets/deck/audio/北京.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000006",
@@ -256,15 +271,18 @@
     {
      "zh": "本来嘛!",
      "en": "Of course!",
-     "sourceId": 3349290
+     "sourceId": 3349290,
+     "audioUrl": "/assets/deck/audio/ex-52e0f73a36a6e1ad.mp3"
     },
     {
      "zh": "拿本书读！",
      "en": "Take a book and read it.",
-     "sourceId": 389789
+     "sourceId": 389789,
+     "audioUrl": "/assets/deck/audio/ex-2b19775f582b3a1d.mp3"
     }
    ],
-   "example": "本来嘛!"
+   "example": "本来嘛!",
+   "audioUrl": "/assets/deck/audio/本.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000007",
@@ -315,15 +333,18 @@
     {
      "zh": "不客气",
      "en": "It was nothing.",
-     "sourceId": 1513716
+     "sourceId": 1513716,
+     "audioUrl": "/assets/deck/audio/ex-bbc044d7ea132124.mp3"
     },
     {
      "zh": "不客气。",
      "en": "You go first.",
-     "sourceId": 700670
+     "sourceId": 700670,
+     "audioUrl": "/assets/deck/audio/ex-ef70158e076d75aa.mp3"
     }
    ],
-   "example": "不客气"
+   "example": "不客气",
+   "audioUrl": "/assets/deck/audio/不客气.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000008",
@@ -354,15 +375,18 @@
     {
      "zh": "不！",
      "en": "No.",
-     "sourceId": 4970078
+     "sourceId": 4970078,
+     "audioUrl": "/assets/deck/audio/ex-3951d137cc146a80.mp3"
     },
     {
      "zh": "不。",
      "en": "Wrong.",
-     "sourceId": 5094867
+     "sourceId": 5094867,
+     "audioUrl": "/assets/deck/audio/ex-a0998b634ad07b92.mp3"
     }
    ],
-   "example": "不！"
+   "example": "不！",
+   "audioUrl": "/assets/deck/audio/不.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000009",
@@ -395,15 +419,18 @@
     {
      "zh": "吃菜。",
      "en": "Eat vegetables.",
-     "sourceId": 6092438
+     "sourceId": 6092438,
+     "audioUrl": "/assets/deck/audio/ex-0e4a6bfd9e01c8f7.mp3"
     },
     {
      "zh": "上菜。",
      "en": "Help yourself.",
-     "sourceId": 769661
+     "sourceId": 769661,
+     "audioUrl": "/assets/deck/audio/ex-bf2ff01019ddad07.mp3"
     }
    ],
-   "example": "吃菜。"
+   "example": "吃菜。",
+   "audioUrl": "/assets/deck/audio/菜.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000010",
@@ -435,15 +462,18 @@
     {
      "zh": "奉茶。",
      "en": "Serve tea.",
-     "sourceId": 13112087
+     "sourceId": 13112087,
+     "audioUrl": "/assets/deck/audio/ex-3519aa055e1aafea.mp3"
     },
     {
      "zh": "喝茶。",
      "en": "Drink tea.",
-     "sourceId": 6092434
+     "sourceId": 6092434,
+     "audioUrl": "/assets/deck/audio/ex-d690696aaeb3518e.mp3"
     }
    ],
-   "example": "奉茶。"
+   "example": "奉茶。",
+   "audioUrl": "/assets/deck/audio/茶.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000011",
@@ -476,15 +506,18 @@
     {
      "zh": "吃。",
      "en": "Eat!",
-     "sourceId": 14023870
+     "sourceId": 14023870,
+     "audioUrl": "/assets/deck/audio/ex-c3d15629bb1c6777.mp3"
     },
     {
      "zh": "好吃！",
      "en": "Yummy!",
-     "sourceId": 13274611
+     "sourceId": 13274611,
+     "audioUrl": "/assets/deck/audio/ex-88e5058f37f4feb1.mp3"
     }
    ],
-   "example": "吃。"
+   "example": "吃。",
+   "audioUrl": "/assets/deck/audio/吃.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000012",
@@ -536,15 +569,18 @@
     {
      "zh": "坐出租车吧。",
      "en": "Let's take a taxi.",
-     "sourceId": 9501478
+     "sourceId": 9501478,
+     "audioUrl": "/assets/deck/audio/ex-c6935584d356182d.mp3"
     },
     {
      "zh": "出租车到了。",
      "en": "The taxi has arrived.",
-     "sourceId": 346457
+     "sourceId": 346457,
+     "audioUrl": "/assets/deck/audio/ex-5faa946d2575899c.mp3"
     }
    ],
-   "example": "坐出租车吧。"
+   "example": "坐出租车吧。",
+   "audioUrl": "/assets/deck/audio/出租车.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000013",
@@ -598,15 +634,18 @@
     {
      "zh": "打电话。",
      "en": "Make a call.",
-     "sourceId": 10961146
+     "sourceId": 10961146,
+     "audioUrl": "/assets/deck/audio/ex-73f54268008e35ee.mp3"
     },
     {
      "zh": "打电话给我！",
      "en": "Call me!",
-     "sourceId": 12615456
+     "sourceId": 12615456,
+     "audioUrl": "/assets/deck/audio/ex-cc53a65a98bbcc61.mp3"
     }
    ],
-   "example": "打电话。"
+   "example": "打电话。",
+   "audioUrl": "/assets/deck/audio/打电话.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000014",
@@ -637,15 +676,18 @@
     {
      "zh": "好大！",
      "en": "God, this place is huge!",
-     "sourceId": 13276179
+     "sourceId": 13276179,
+     "audioUrl": "/assets/deck/audio/ex-29a6470e0ad028e9.mp3"
     },
     {
      "zh": "大约。",
      "en": "Probably.",
-     "sourceId": 4372509
+     "sourceId": 4372509,
+     "audioUrl": "/assets/deck/audio/ex-8e935ea506cbe332.mp3"
     }
    ],
-   "example": "好大！"
+   "example": "好大！",
+   "audioUrl": "/assets/deck/audio/大.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000015",
@@ -672,15 +714,18 @@
     {
      "zh": "好的？",
      "en": "OK?",
-     "sourceId": 13174627
+     "sourceId": 13174627,
+     "audioUrl": "/assets/deck/audio/ex-7b7ed1f0402df63d.mp3"
     },
     {
      "zh": "你的？",
      "en": "Yours?",
-     "sourceId": 13111561
+     "sourceId": 13111561,
+     "audioUrl": "/assets/deck/audio/ex-3fcd2177f7991dc2.mp3"
     }
    ],
-   "example": "好的？"
+   "example": "好的？",
+   "audioUrl": "/assets/deck/audio/的.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000016",
@@ -716,15 +761,18 @@
     {
      "zh": "快点！",
      "en": "Hurry up.",
-     "sourceId": 512039
+     "sourceId": 512039,
+     "audioUrl": "/assets/deck/audio/ex-8a2f8bb67ced2ea6.mp3"
     },
     {
      "zh": "慢点吃！",
      "en": "Eat more slowly.",
-     "sourceId": 10260718
+     "sourceId": 10260718,
+     "audioUrl": "/assets/deck/audio/ex-0bc77794aed0814c.mp3"
     }
    ],
-   "example": "快点！"
+   "example": "快点！",
+   "audioUrl": "/assets/deck/audio/点.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000017",
@@ -767,15 +815,18 @@
     {
      "zh": "电脑坏了。",
      "en": "The computer broke down.",
-     "sourceId": 693742
+     "sourceId": 693742,
+     "audioUrl": "/assets/deck/audio/ex-5175160433f094df.mp3"
     },
     {
      "zh": "电脑蓝屏了。",
      "en": "The computer crashed.",
-     "sourceId": 13914972
+     "sourceId": 13914972,
+     "audioUrl": "/assets/deck/audio/ex-4555b16ac644d2c1.mp3"
     }
    ],
-   "example": "电脑坏了。"
+   "example": "电脑坏了。",
+   "audioUrl": "/assets/deck/audio/电脑.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000018",
@@ -819,15 +870,18 @@
     {
      "zh": "开电视。",
      "en": "Turn on the TV.",
-     "sourceId": 472986
+     "sourceId": 472986,
+     "audioUrl": "/assets/deck/audio/ex-9d54c91baf0aa9ef.mp3"
     },
     {
      "zh": "看电视吧。",
      "en": "Let's watch TV.",
-     "sourceId": 1050439
+     "sourceId": 1050439,
+     "audioUrl": "/assets/deck/audio/ex-974c309dce6abf08.mp3"
     }
    ],
-   "example": "开电视。"
+   "example": "开电视。",
+   "audioUrl": "/assets/deck/audio/电视.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000019",
@@ -871,15 +925,18 @@
     {
      "zh": "你看电影吗？",
      "en": "Do you watch movies?",
-     "sourceId": 11845629
+     "sourceId": 11845629,
+     "audioUrl": "/assets/deck/audio/ex-74bf22b8676ebb8f.mp3"
     },
     {
      "zh": "我去看电影。",
      "en": "I'm going to the cinema.",
-     "sourceId": 7771886
+     "sourceId": 7771886,
+     "audioUrl": "/assets/deck/audio/ex-b5a367fe555a0fae.mp3"
     }
    ],
-   "example": "你看电影吗？"
+   "example": "你看电影吗？",
+   "audioUrl": "/assets/deck/audio/电影.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000020",
@@ -921,15 +978,18 @@
     {
      "zh": "吃东西。",
      "en": "Have something to eat.",
-     "sourceId": 10961142
+     "sourceId": 10961142,
+     "audioUrl": "/assets/deck/audio/ex-d6fc0f24686aab96.mp3"
     },
     {
      "zh": "在找东西吗？",
      "en": "Are you looking for something?",
-     "sourceId": 4881583
+     "sourceId": 4881583,
+     "audioUrl": "/assets/deck/audio/ex-58a405bb2a54227a.mp3"
     }
    ],
-   "example": "吃东西。"
+   "example": "吃东西。",
+   "audioUrl": "/assets/deck/audio/东西.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000021",
@@ -962,15 +1022,18 @@
     {
      "zh": "都是。",
      "en": "Both are.",
-     "sourceId": 13111513
+     "sourceId": 13111513,
+     "audioUrl": "/assets/deck/audio/ex-5ab286b19e05f2aa.mp3"
     },
     {
      "zh": "全都是？",
      "en": "All that?",
-     "sourceId": 13138891
+     "sourceId": 13138891,
+     "audioUrl": "/assets/deck/audio/ex-e166d950a3e55fd2.mp3"
     }
    ],
-   "example": "都是。"
+   "example": "都是。",
+   "audioUrl": "/assets/deck/audio/都.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000022",
@@ -1002,15 +1065,18 @@
     {
      "zh": "读书。",
      "en": "Read!",
-     "sourceId": 10961153
+     "sourceId": 10961153,
+     "audioUrl": "/assets/deck/audio/ex-56de202ef8ea18eb.mp3"
     },
     {
      "zh": "读好书。",
      "en": "Read good books.",
-     "sourceId": 10713325
+     "sourceId": 10713325,
+     "audioUrl": "/assets/deck/audio/ex-07df59348de5a181.mp3"
     }
    ],
-   "example": "读书。"
+   "example": "读书。",
+   "audioUrl": "/assets/deck/audio/读.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000023",
@@ -1064,15 +1130,18 @@
     {
      "zh": "对不起！",
      "en": "I'm sorry.",
-     "sourceId": 4977439
+     "sourceId": 4977439,
+     "audioUrl": "/assets/deck/audio/ex-d5b8706ce45091c5.mp3"
     },
     {
      "zh": "对不起。",
      "en": "I'm sorry.",
-     "sourceId": 472304
+     "sourceId": 472304,
+     "audioUrl": "/assets/deck/audio/ex-58c1f4b8a6898c34.mp3"
     }
    ],
-   "example": "对不起！"
+   "example": "对不起！",
+   "audioUrl": "/assets/deck/audio/对不起.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000024",
@@ -1104,15 +1173,18 @@
     {
      "zh": "多!",
      "en": "Very!",
-     "sourceId": 5064977
+     "sourceId": 5064977,
+     "audioUrl": "/assets/deck/audio/ex-800d62656291153c.mp3"
     },
     {
      "zh": "多久？",
      "en": "How long?",
-     "sourceId": 5113393
+     "sourceId": 5113393,
+     "audioUrl": "/assets/deck/audio/ex-06c033bb43a425c7.mp3"
     }
    ],
-   "example": "多!"
+   "example": "多!",
+   "audioUrl": "/assets/deck/audio/多.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000025",
@@ -1153,15 +1225,18 @@
     {
      "zh": "多少人？",
      "en": "How many people?",
-     "sourceId": 10267391
+     "sourceId": 10267391,
+     "audioUrl": "/assets/deck/audio/ex-19a901a63f155921.mp3"
     },
     {
      "zh": "多少钱？",
      "en": "How much?",
-     "sourceId": 3697906
+     "sourceId": 3697906,
+     "audioUrl": "/assets/deck/audio/ex-a84651f52f929724.mp3"
     }
    ],
-   "example": "多少人？"
+   "example": "多少人？",
+   "audioUrl": "/assets/deck/audio/多少.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000026",
@@ -1203,15 +1278,18 @@
     {
      "zh": "你也是，儿子！",
      "en": "You too, my son.",
-     "sourceId": 651219
+     "sourceId": 651219,
+     "audioUrl": "/assets/deck/audio/ex-4995010aaecea261.mp3"
     },
     {
      "zh": "你有几个儿子？",
      "en": "How many sons do you have?",
-     "sourceId": 6055154
+     "sourceId": 6055154,
+     "audioUrl": "/assets/deck/audio/ex-58701198104c9c70.mp3"
     }
    ],
-   "example": "你也是，儿子！"
+   "example": "你也是，儿子！",
+   "audioUrl": "/assets/deck/audio/儿子.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000027",
@@ -1242,15 +1320,18 @@
     {
      "zh": "二百五！",
      "en": "You idiot!",
-     "sourceId": 735332
+     "sourceId": 735332,
+     "audioUrl": "/assets/deck/audio/ex-c7c1957ba37cb78a.mp3"
     },
     {
      "zh": "你二了。",
      "en": "You are stupid.",
-     "sourceId": 1750497
+     "sourceId": 1750497,
+     "audioUrl": "/assets/deck/audio/ex-222d61e7b3d0b3a2.mp3"
     }
    ],
-   "example": "二百五！"
+   "example": "二百五！",
+   "audioUrl": "/assets/deck/audio/二.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000028",
@@ -1295,15 +1376,18 @@
     {
      "zh": "他不在饭店",
      "en": "He is not at the restaurant.",
-     "sourceId": 4713324
+     "sourceId": 4713324,
+     "audioUrl": "/assets/deck/audio/ex-e1138a29ffffcd1f.mp3"
     },
     {
      "zh": "我要去饭店。",
      "en": "I'm going to the restaurant.",
-     "sourceId": 1120765
+     "sourceId": 1120765,
+     "audioUrl": "/assets/deck/audio/ex-499594d5b12286c3.mp3"
     }
    ],
-   "example": "他不在饭店"
+   "example": "他不在饭店",
+   "audioUrl": "/assets/deck/audio/饭店.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000029",
@@ -1345,15 +1429,18 @@
     {
      "zh": "那飞机真大！",
      "en": "How huge that airship is!",
-     "sourceId": 1399602
+     "sourceId": 1399602,
+     "audioUrl": "/assets/deck/audio/ex-8cbe557519744584.mp3"
     },
     {
      "zh": "飞机8点到。",
      "en": "The plane gets in at eight o'clock.",
-     "sourceId": 10926516
+     "sourceId": 10926516,
+     "audioUrl": "/assets/deck/audio/ex-f512b2ff76b57705.mp3"
     }
    ],
-   "example": "那飞机真大！"
+   "example": "那飞机真大！",
+   "audioUrl": "/assets/deck/audio/飞机.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000030",
@@ -1397,15 +1484,18 @@
     {
      "zh": "再等十分钟！",
      "en": "Wait ten more minutes!",
-     "sourceId": 9992081
+     "sourceId": 9992081,
+     "audioUrl": "/assets/deck/audio/ex-afb636e685f29064.mp3"
     },
     {
      "zh": "休息10分钟",
      "en": "Let's take a 10-minute break.",
-     "sourceId": 1948456
+     "sourceId": 1948456,
+     "audioUrl": "/assets/deck/audio/ex-b66a95176a68ce40.mp3"
     }
    ],
-   "example": "再等十分钟！"
+   "example": "再等十分钟！",
+   "audioUrl": "/assets/deck/audio/分钟.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000031",
@@ -1443,15 +1533,18 @@
     {
      "zh": "她很高兴",
      "en": "She is very happy.",
-     "sourceId": 4713298
+     "sourceId": 4713298,
+     "audioUrl": "/assets/deck/audio/ex-a19f5c419765796b.mp3"
     },
     {
      "zh": "我不高兴。",
      "en": "I'm not happy.",
-     "sourceId": 3378133
+     "sourceId": 3378133,
+     "audioUrl": "/assets/deck/audio/ex-94f15c0be9350e5b.mp3"
     }
    ],
-   "example": "她很高兴"
+   "example": "她很高兴",
+   "audioUrl": "/assets/deck/audio/高兴.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000032",
@@ -1483,15 +1576,18 @@
     {
      "zh": "听这个！",
      "en": "Listen to this!",
-     "sourceId": 9932534
+     "sourceId": 9932534,
+     "audioUrl": "/assets/deck/audio/ex-83f57fe8f291d118.mp3"
     },
     {
      "zh": "下个QQ。",
      "en": "Download QQ.",
-     "sourceId": 13949972
+     "sourceId": 13949972,
+     "audioUrl": "/assets/deck/audio/ex-68b5ee5f357a829b.mp3"
     }
    ],
-   "example": "听这个！"
+   "example": "听这个！",
+   "audioUrl": "/assets/deck/audio/个.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000033",
@@ -1533,15 +1629,18 @@
     {
      "zh": "工作！",
      "en": "Action!",
-     "sourceId": 13150942
+     "sourceId": 13150942,
+     "audioUrl": "/assets/deck/audio/ex-8c9d5cd053f4ad94.mp3"
     },
     {
      "zh": "工作。",
      "en": "Work.",
-     "sourceId": 13150943
+     "sourceId": 13150943,
+     "audioUrl": "/assets/deck/audio/ex-dd2664d5836fe4c6.mp3"
     }
    ],
-   "example": "工作！"
+   "example": "工作！",
+   "audioUrl": "/assets/deck/audio/工作.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000034",
@@ -1574,15 +1673,18 @@
     {
      "zh": "狗屁！",
      "en": "Darn!",
-     "sourceId": 849658
+     "sourceId": 849658,
+     "audioUrl": "/assets/deck/audio/ex-555426b87ce78783.mp3"
     },
     {
      "zh": "小心狗！",
      "en": "Beware of the dog!",
-     "sourceId": 772362
+     "sourceId": 772362,
+     "audioUrl": "/assets/deck/audio/ex-5a72082083649bab.mp3"
     }
    ],
-   "example": "狗屁！"
+   "example": "狗屁！",
+   "audioUrl": "/assets/deck/audio/狗.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000035",
@@ -1626,15 +1728,18 @@
     {
      "zh": "我学过汉语。",
      "en": "I studied Chinese before.",
-     "sourceId": 11837758
+     "sourceId": 11837758,
+     "audioUrl": "/assets/deck/audio/ex-3ddd18dd8fe5a09b.mp3"
     },
     {
      "zh": "我学习汉语。",
      "en": "I am learning Chinese.",
-     "sourceId": 2321655
+     "sourceId": 2321655,
+     "audioUrl": "/assets/deck/audio/ex-b6ba2441c65ca07b.mp3"
     }
    ],
-   "example": "我学过汉语。"
+   "example": "我学过汉语。",
+   "audioUrl": "/assets/deck/audio/汉语.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000036",
@@ -1665,15 +1770,18 @@
     {
      "zh": "好！",
      "en": "Good!",
-     "sourceId": 13111592
+     "sourceId": 13111592,
+     "audioUrl": "/assets/deck/audio/ex-819e0344d88fccbb.mp3"
     },
     {
      "zh": "走好！",
      "en": "See you again.",
-     "sourceId": 13504449
+     "sourceId": 13504449,
+     "audioUrl": "/assets/deck/audio/ex-117c11787fe1e2eb.mp3"
     }
    ],
-   "example": "好！"
+   "example": "好！",
+   "audioUrl": "/assets/deck/audio/好.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000037",
@@ -1708,15 +1816,18 @@
     {
      "zh": "今天是几号？",
      "en": "What is the date today?",
-     "sourceId": 408909
+     "sourceId": 408909,
+     "audioUrl": "/assets/deck/audio/ex-e0db7c0bca4ad813.mp3"
     },
     {
      "zh": "星期天几号?",
      "en": "What is the date on Sunday?",
-     "sourceId": 9272998
+     "sourceId": 9272998,
+     "audioUrl": "/assets/deck/audio/ex-c622f556d002183a.mp3"
     }
    ],
-   "example": "今天是几号？"
+   "example": "今天是几号？",
+   "audioUrl": "/assets/deck/audio/号.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000038",
@@ -1749,15 +1860,18 @@
     {
      "zh": "喝吧。",
      "en": "Drink.",
-     "sourceId": 8857231
+     "sourceId": 8857231,
+     "audioUrl": "/assets/deck/audio/ex-3b291c963fd29eff.mp3"
     },
     {
      "zh": "喝茶。",
      "en": "Drink tea.",
-     "sourceId": 6092434
+     "sourceId": 6092434,
+     "audioUrl": "/assets/deck/audio/ex-d690696aaeb3518e.mp3"
     }
    ],
-   "example": "喝吧。"
+   "example": "喝吧。",
+   "audioUrl": "/assets/deck/audio/喝.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000039",
@@ -1791,15 +1905,18 @@
     {
      "zh": "和气点。",
      "en": "Be nice.",
-     "sourceId": 5092659
+     "sourceId": 5092659,
+     "audioUrl": "/assets/deck/audio/ex-f8b69041f2d93d28.mp3"
     },
     {
      "zh": "和你无关。",
      "en": "That has nothing to do with you.",
-     "sourceId": 10649048
+     "sourceId": 10649048,
+     "audioUrl": "/assets/deck/audio/ex-ea9b349aa127a168.mp3"
     }
    ],
-   "example": "和气点。"
+   "example": "和气点。",
+   "audioUrl": "/assets/deck/audio/和.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000040",
@@ -1832,15 +1949,18 @@
     {
      "zh": "很棒！",
      "en": "Terrific!",
-     "sourceId": 5092136
+     "sourceId": 5092136,
+     "audioUrl": "/assets/deck/audio/ex-b4ab88832d9e68b4.mp3"
     },
     {
      "zh": "很多!",
      "en": "That's a lot!",
-     "sourceId": 5064976
+     "sourceId": 5064976,
+     "audioUrl": "/assets/deck/audio/ex-4f4990cc07497052.mp3"
     }
    ],
-   "example": "很棒！"
+   "example": "很棒！",
+   "audioUrl": "/assets/deck/audio/很.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000041",
@@ -1878,15 +1998,18 @@
     {
      "zh": "我就在你后面。",
      "en": "I was right behind you.",
-     "sourceId": 8860204
+     "sourceId": 8860204,
+     "audioUrl": "/assets/deck/audio/ex-698f5393102f3daa.mp3"
     },
     {
      "zh": "谁躲在窗帘后面？",
      "en": "Who is hiding behind the curtain?",
-     "sourceId": 9496150
+     "sourceId": 9496150,
+     "audioUrl": "/assets/deck/audio/ex-4525ab0bd77e6545.mp3"
     }
    ],
-   "example": "我就在你后面。"
+   "example": "我就在你后面。",
+   "audioUrl": "/assets/deck/audio/后面.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000042",
@@ -1917,15 +2040,18 @@
     {
      "zh": "回家！",
      "en": "Go home.",
-     "sourceId": 5151658
+     "sourceId": 5151658,
+     "audioUrl": "/assets/deck/audio/ex-6ea94ff323f68cc9.mp3"
     },
     {
      "zh": "回首。",
      "en": "He looked back.",
-     "sourceId": 13111714
+     "sourceId": 13111714,
+     "audioUrl": "/assets/deck/audio/ex-61381b9f35da356f.mp3"
     }
    ],
-   "example": "回家！"
+   "example": "回家！",
+   "audioUrl": "/assets/deck/audio/回.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000043",
@@ -1957,15 +2083,18 @@
     {
      "zh": "幸会。",
      "en": "It is a privilege to meet you.",
-     "sourceId": 9541552
+     "sourceId": 9541552,
+     "audioUrl": "/assets/deck/audio/ex-f8c2c2e7611380d2.mp3"
     },
     {
      "zh": "等会见！",
      "en": "Talk to you later.",
-     "sourceId": 10696089
+     "sourceId": 10696089,
+     "audioUrl": "/assets/deck/audio/ex-01eeff56617a2033.mp3"
     }
    ],
-   "example": "幸会。"
+   "example": "幸会。",
+   "audioUrl": "/assets/deck/audio/会.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000044",
@@ -1998,15 +2127,18 @@
     {
      "zh": "几乎。",
      "en": "Almost.",
-     "sourceId": 6401429
+     "sourceId": 6401429,
+     "audioUrl": "/assets/deck/audio/ex-413411d5f840b7f9.mp3"
     },
     {
      "zh": "几点了？",
      "en": "What time?",
-     "sourceId": 501536
+     "sourceId": 501536,
+     "audioUrl": "/assets/deck/audio/ex-2cdf46a797786c27.mp3"
     }
    ],
-   "example": "几乎。"
+   "example": "几乎。",
+   "audioUrl": "/assets/deck/audio/几.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000045",
@@ -2040,15 +2172,18 @@
     {
      "zh": "家！",
      "en": "Home!",
-     "sourceId": 13138833
+     "sourceId": 13138833,
+     "audioUrl": "/assets/deck/audio/ex-086656ae09494ef7.mp3"
     },
     {
      "zh": "回家！",
      "en": "Go home.",
-     "sourceId": 5151658
+     "sourceId": 5151658,
+     "audioUrl": "/assets/deck/audio/ex-6ea94ff323f68cc9.mp3"
     }
    ],
-   "example": "家！"
+   "example": "家！",
+   "audioUrl": "/assets/deck/audio/家.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000046",
@@ -2081,15 +2216,18 @@
     {
      "zh": "尖叫。",
      "en": "Scream.",
-     "sourceId": 10695941
+     "sourceId": 10695941,
+     "audioUrl": "/assets/deck/audio/ex-8ba10e326d335666.mp3"
     },
     {
      "zh": "叫警察！",
      "en": "Call the police!",
-     "sourceId": 1205903
+     "sourceId": 1205903,
+     "audioUrl": "/assets/deck/audio/ex-1b65333fa1a4af79.mp3"
     }
    ],
-   "example": "尖叫。"
+   "example": "尖叫。",
+   "audioUrl": "/assets/deck/audio/叫.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000047",
@@ -2130,15 +2268,18 @@
     {
      "zh": "今天热吗？",
      "en": "Is it hot today?",
-     "sourceId": 10961174
+     "sourceId": 10961174,
+     "audioUrl": "/assets/deck/audio/ex-8a64cb5b3d95c3eb.mp3"
     },
     {
      "zh": "今天不热。",
      "en": "It isn't hot today.",
-     "sourceId": 10961172
+     "sourceId": 10961172,
+     "audioUrl": "/assets/deck/audio/ex-37efec2fa4a8fc97.mp3"
     }
    ],
-   "example": "今天热吗？"
+   "example": "今天热吗？",
+   "audioUrl": "/assets/deck/audio/今天.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000048",
@@ -2169,15 +2310,18 @@
     {
      "zh": "猫有九命。",
      "en": "A cat has nine lives.",
-     "sourceId": 340498
+     "sourceId": 340498,
+     "audioUrl": "/assets/deck/audio/ex-346857fdf1355302.mp3"
     },
     {
      "zh": "你九点上班。",
      "en": "You work at nine o'clock.",
-     "sourceId": 5575448
+     "sourceId": 5575448,
+     "audioUrl": "/assets/deck/audio/ex-4f3101ffadd3bd59.mp3"
     }
    ],
-   "example": "猫有九命。"
+   "example": "猫有九命。",
+   "audioUrl": "/assets/deck/audio/九.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000049",
@@ -2209,15 +2353,18 @@
     {
      "zh": "开始！",
      "en": "Action!",
-     "sourceId": 5094852
+     "sourceId": 5094852,
+     "audioUrl": "/assets/deck/audio/ex-b0797d4562785fd7.mp3"
     },
     {
      "zh": "开火！",
      "en": "Open fire!",
-     "sourceId": 5092433
+     "sourceId": 5092433,
+     "audioUrl": "/assets/deck/audio/ex-e6e770b4956f7d4a.mp3"
     }
    ],
-   "example": "开始！"
+   "example": "开始！",
+   "audioUrl": "/assets/deck/audio/开.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000050",
@@ -2248,15 +2395,18 @@
     {
      "zh": "看！",
      "en": "Read!",
-     "sourceId": 13274588
+     "sourceId": 13274588,
+     "audioUrl": "/assets/deck/audio/ex-23422ada79881e45.mp3"
     },
     {
      "zh": "你看！",
      "en": "Look!",
-     "sourceId": 12278379
+     "sourceId": 12278379,
+     "audioUrl": "/assets/deck/audio/ex-6de30fe82e286d01.mp3"
     }
    ],
-   "example": "看！"
+   "example": "看！",
+   "audioUrl": "/assets/deck/audio/看.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000051",
@@ -2298,15 +2448,18 @@
     {
      "zh": "你看见了吗？",
      "en": "Did you see it?",
-     "sourceId": 1324003
+     "sourceId": 1324003,
+     "audioUrl": "/assets/deck/audio/ex-d67f308c11bf00c0.mp3"
     },
     {
      "zh": "我们没看见。",
      "en": "We didn't see it.",
-     "sourceId": 11502931
+     "sourceId": 11502931,
+     "audioUrl": "/assets/deck/audio/ex-6215e0c24c34fae0.mp3"
     }
    ],
-   "example": "你看见了吗？"
+   "example": "你看见了吗？",
+   "audioUrl": "/assets/deck/audio/看见.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000052",
@@ -2341,15 +2494,18 @@
     {
      "zh": "这个几块？",
      "en": "How much is it?",
-     "sourceId": 10052320
+     "sourceId": 10052320,
+     "audioUrl": "/assets/deck/audio/ex-4952876196c09ff4.mp3"
     },
     {
      "zh": "谁想来一块派？",
      "en": "Who wants a slice of pie?",
-     "sourceId": 8511067
+     "sourceId": 8511067,
+     "audioUrl": "/assets/deck/audio/ex-5edb1cbb3d0d8aac.mp3"
     }
    ],
-   "example": "这个几块？"
+   "example": "这个几块？",
+   "audioUrl": "/assets/deck/audio/块.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000053",
@@ -2381,15 +2537,18 @@
     {
      "zh": "进来",
      "en": "Come on in!",
-     "sourceId": 13410532
+     "sourceId": 13410532,
+     "audioUrl": "/assets/deck/audio/ex-f9980e7c4502d30c.mp3"
     },
     {
      "zh": "来了!",
      "en": "I'm coming!",
-     "sourceId": 11508919
+     "sourceId": 11508919,
+     "audioUrl": "/assets/deck/audio/ex-11219065204acbbb.mp3"
     }
    ],
-   "example": "进来"
+   "example": "进来",
+   "audioUrl": "/assets/deck/audio/来.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000054",
@@ -2431,15 +2590,18 @@
     {
      "zh": "关老师！",
      "en": "Teacher Guan!",
-     "sourceId": 13111438
+     "sourceId": 13111438,
+     "audioUrl": "/assets/deck/audio/ex-abbab42441720d63.mp3"
     },
     {
      "zh": "他是老师。",
      "en": "He is a teacher.",
-     "sourceId": 7768345
+     "sourceId": 7768345,
+     "audioUrl": "/assets/deck/audio/ex-70e661e6e9e1b0f5.mp3"
     }
    ],
-   "example": "关老师！"
+   "example": "关老师！",
+   "audioUrl": "/assets/deck/audio/老师.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000055",
@@ -2470,15 +2632,18 @@
     {
      "zh": "来了!",
      "en": "I'm coming!",
-     "sourceId": 11508919
+     "sourceId": 11508919,
+     "audioUrl": "/assets/deck/audio/ex-11219065204acbbb.mp3"
     },
     {
      "zh": "够了！",
      "en": "Cut it out!",
-     "sourceId": 1415895
+     "sourceId": 1415895,
+     "audioUrl": "/assets/deck/audio/ex-910f43278c5a2084.mp3"
     }
    ],
-   "example": "来了!"
+   "example": "来了!",
+   "audioUrl": "/assets/deck/audio/了.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000056",
@@ -2511,15 +2676,18 @@
     {
      "zh": "好冷！",
      "en": "How cold it is!",
-     "sourceId": 10478496
+     "sourceId": 10478496,
+     "audioUrl": "/assets/deck/audio/ex-c5905ac2b8a06e76.mp3"
     },
     {
      "zh": "很冷。",
      "en": "It's cold.",
-     "sourceId": 12278472
+     "sourceId": 12278472,
+     "audioUrl": "/assets/deck/audio/ex-167bc70bdca5d311.mp3"
     }
    ],
-   "example": "好冷！"
+   "example": "好冷！",
+   "audioUrl": "/assets/deck/audio/冷.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000057",
@@ -2551,15 +2719,18 @@
     {
      "zh": "哪里？",
      "en": "Where?",
-     "sourceId": 5214237
+     "sourceId": 5214237,
+     "audioUrl": "/assets/deck/audio/ex-0e8438ed3a9408e3.mp3"
     },
     {
      "zh": "去店里！",
      "en": "Go to the store!",
-     "sourceId": 6183617
+     "sourceId": 6183617,
+     "audioUrl": "/assets/deck/audio/ex-d685a2df367541b5.mp3"
     }
    ],
-   "example": "哪里？"
+   "example": "哪里？",
+   "audioUrl": "/assets/deck/audio/里.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000058",
@@ -2586,15 +2757,18 @@
     {
      "zh": "是星期六。",
      "en": "It is Saturday.",
-     "sourceId": 3715251
+     "sourceId": 3715251,
+     "audioUrl": "/assets/deck/audio/ex-0d4e20541b67a13b.mp3"
     },
     {
      "zh": "我住六楼。",
      "en": "I live on the fifth floor.",
-     "sourceId": 1444139
+     "sourceId": 1444139,
+     "audioUrl": "/assets/deck/audio/ex-8d99120f6b9428d1.mp3"
     }
    ],
-   "example": "是星期六。"
+   "example": "是星期六。",
+   "audioUrl": "/assets/deck/audio/六.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000059",
@@ -2628,15 +2802,18 @@
     {
      "zh": "你妈妈呢？",
      "en": "Where's your mom?",
-     "sourceId": 10966817
+     "sourceId": 10966817,
+     "audioUrl": "/assets/deck/audio/ex-a8e8d8dd6a116363.mp3"
     },
     {
      "zh": "妈妈哭了。",
      "en": "Mummy cried.",
-     "sourceId": 349505
+     "sourceId": 349505,
+     "audioUrl": "/assets/deck/audio/ex-84e396ba38ce1d76.mp3"
     }
    ],
-   "example": "你妈妈呢？"
+   "example": "你妈妈呢？",
+   "audioUrl": "/assets/deck/audio/妈妈.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000060",
@@ -2670,10 +2847,12 @@
     {
      "zh": "对吗？",
      "en": "Is that right?",
-     "sourceId": 10981494
+     "sourceId": 10981494,
+     "audioUrl": "/assets/deck/audio/ex-65141fcc5accfbda.mp3"
     }
    ],
-   "example": "对吗？"
+   "example": "对吗？",
+   "audioUrl": "/assets/deck/audio/吗.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000061",
@@ -2701,15 +2880,18 @@
     {
      "zh": "买单！",
      "en": "May I have the check, please?",
-     "sourceId": 1170550
+     "sourceId": 1170550,
+     "audioUrl": "/assets/deck/audio/ex-af9927735acd0166.mp3"
     },
     {
      "zh": "买单。",
      "en": "The check, please.",
-     "sourceId": 338786
+     "sourceId": 338786,
+     "audioUrl": "/assets/deck/audio/ex-4c5a2d138d34eb7d.mp3"
     }
    ],
-   "example": "买单！"
+   "example": "买单！",
+   "audioUrl": "/assets/deck/audio/买.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000062",
@@ -2743,15 +2925,18 @@
     {
      "zh": "是猫！",
      "en": "Cats!",
-     "sourceId": 13904606
+     "sourceId": 13904606,
+     "audioUrl": "/assets/deck/audio/ex-63f9030b45493a8a.mp3"
     },
     {
      "zh": "猫老了。",
      "en": "The cat is old.",
-     "sourceId": 2508849
+     "sourceId": 2508849,
+     "audioUrl": "/assets/deck/audio/ex-19d1746c10995bbf.mp3"
     }
    ],
-   "example": "是猫！"
+   "example": "是猫！",
+   "audioUrl": "/assets/deck/audio/猫.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000063",
@@ -2802,15 +2987,18 @@
     {
      "zh": "没关系！",
      "en": "Never mind!",
-     "sourceId": 374844
+     "sourceId": 374844,
+     "audioUrl": "/assets/deck/audio/ex-ef436016b49a504d.mp3"
     },
     {
      "zh": "没关系。",
      "en": "It's not important.",
-     "sourceId": 333730
+     "sourceId": 333730,
+     "audioUrl": "/assets/deck/audio/ex-4b9b3cbbd963a6c3.mp3"
     }
    ],
-   "example": "没关系！"
+   "example": "没关系！",
+   "audioUrl": "/assets/deck/audio/没关系.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000064",
@@ -2854,15 +3042,18 @@
     {
      "zh": "没有糖。",
      "en": "There is no sugar here.",
-     "sourceId": 6020855
+     "sourceId": 6020855,
+     "audioUrl": "/assets/deck/audio/ex-72ce1f684f7d7a52.mp3"
     },
     {
      "zh": "还没有。",
      "en": "Not yet.",
-     "sourceId": 945672
+     "sourceId": 945672,
+     "audioUrl": "/assets/deck/audio/ex-fa4d5823beca3923.mp3"
     }
    ],
-   "example": "没有糖。"
+   "example": "没有糖。",
+   "audioUrl": "/assets/deck/audio/没有.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000065",
@@ -2906,15 +3097,18 @@
     {
      "zh": "吃米饭。",
      "en": "Eat rice.",
-     "sourceId": 10961144
+     "sourceId": 10961144,
+     "audioUrl": "/assets/deck/audio/ex-21c48970352d0959.mp3"
     },
     {
      "zh": "我在吃米饭。",
      "en": "I am eating rice.",
-     "sourceId": 334506
+     "sourceId": 334506,
+     "audioUrl": "/assets/deck/audio/ex-db7e6d1424b3755e.mp3"
     }
    ],
-   "example": "吃米饭。"
+   "example": "吃米饭。",
+   "audioUrl": "/assets/deck/audio/米饭.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000066",
@@ -2955,15 +3149,18 @@
     {
      "zh": "明天见！",
      "en": "See you again tomorrow.",
-     "sourceId": 10966735
+     "sourceId": 10966735,
+     "audioUrl": "/assets/deck/audio/ex-858213e3dcc4513c.mp3"
     },
     {
      "zh": "明天见。",
      "en": "See you again tomorrow.",
-     "sourceId": 4879134
+     "sourceId": 4879134,
+     "audioUrl": "/assets/deck/audio/ex-d6a88117c5a6ec7e.mp3"
     }
    ],
-   "example": "明天见！"
+   "example": "明天见！",
+   "audioUrl": "/assets/deck/audio/明天.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000067",
@@ -3004,15 +3201,18 @@
     {
      "zh": "我没有名字。",
      "en": "I have no name.",
-     "sourceId": 11046616
+     "sourceId": 11046616,
+     "audioUrl": "/assets/deck/audio/ex-08a493bb48a5d07e.mp3"
     },
     {
      "zh": "那名字是肯。",
      "en": "That name is Ken.",
-     "sourceId": 5555549
+     "sourceId": 5555549,
+     "audioUrl": "/assets/deck/audio/ex-976103cae1d2dc20.mp3"
     }
    ],
-   "example": "我没有名字。"
+   "example": "我没有名字。",
+   "audioUrl": "/assets/deck/audio/名字.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000068",
@@ -3045,15 +3245,18 @@
     {
      "zh": "哪位？",
      "en": "Who is it?",
-     "sourceId": 13276169
+     "sourceId": 13276169,
+     "audioUrl": "/assets/deck/audio/ex-28b2f7243e9ffbbd.mp3"
     },
     {
      "zh": "天哪！",
      "en": "Gosh!",
-     "sourceId": 10981492
+     "sourceId": 10981492,
+     "audioUrl": "/assets/deck/audio/ex-eb18a79972920b88.mp3"
     }
    ],
-   "example": "哪位？"
+   "example": "哪位？",
+   "audioUrl": "/assets/deck/audio/哪.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000069",
@@ -3096,15 +3299,18 @@
     {
      "zh": "住哪儿？",
      "en": "Where are you staying?",
-     "sourceId": 1875213
+     "sourceId": 1875213,
+     "audioUrl": "/assets/deck/audio/ex-7752df0b17cd2f31.mp3"
     },
     {
      "zh": "书在哪儿？",
      "en": "Where is the book?",
-     "sourceId": 5403285
+     "sourceId": 5403285,
+     "audioUrl": "/assets/deck/audio/ex-802140ca618acb16.mp3"
     }
    ],
-   "example": "住哪儿？"
+   "example": "住哪儿？",
+   "audioUrl": "/assets/deck/audio/哪儿.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000070",
@@ -3131,15 +3337,18 @@
     {
      "zh": "那……",
      "en": "Err...",
-     "sourceId": 13185332
+     "sourceId": 13185332,
+     "audioUrl": "/assets/deck/audio/ex-033d73bd66e0aed1.mp3"
     },
     {
      "zh": "那是谁？",
      "en": "Who's there?",
-     "sourceId": 4789686
+     "sourceId": 4789686,
+     "audioUrl": "/assets/deck/audio/ex-7d95ed9e2ffbcb30.mp3"
     }
    ],
-   "example": "那……"
+   "example": "那……",
+   "audioUrl": "/assets/deck/audio/那.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000071",
@@ -3172,15 +3381,18 @@
     {
      "zh": "人呢？",
      "en": "Where did he go?",
-     "sourceId": 2321307
+     "sourceId": 2321307,
+     "audioUrl": "/assets/deck/audio/ex-702e089df63c8e96.mp3"
     },
     {
      "zh": "您呢？",
      "en": "How about you?",
-     "sourceId": 1623188
+     "sourceId": 1623188,
+     "audioUrl": "/assets/deck/audio/ex-bd5e16f7ea62a9b0.mp3"
     }
    ],
-   "example": "人呢？"
+   "example": "人呢？",
+   "audioUrl": "/assets/deck/audio/呢.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000072",
@@ -3211,15 +3423,18 @@
     {
      "zh": "能理解？",
      "en": "Understand?",
-     "sourceId": 13138818
+     "sourceId": 13138818,
+     "audioUrl": "/assets/deck/audio/ex-8e8afefec7832053.mp3"
     },
     {
      "zh": "我能吗？",
      "en": "May I?",
-     "sourceId": 10194943
+     "sourceId": 10194943,
+     "audioUrl": "/assets/deck/audio/ex-19e4c6f9123359c9.mp3"
     }
    ],
-   "example": "能理解？"
+   "example": "能理解？",
+   "audioUrl": "/assets/deck/audio/能.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000073",
@@ -3250,15 +3465,18 @@
     {
      "zh": "你的？",
      "en": "Yours?",
-     "sourceId": 13111561
+     "sourceId": 13111561,
+     "audioUrl": "/assets/deck/audio/ex-3fcd2177f7991dc2.mp3"
     },
     {
      "zh": "你看！",
      "en": "Look!",
-     "sourceId": 12278379
+     "sourceId": 12278379,
+     "audioUrl": "/assets/deck/audio/ex-6de30fe82e286d01.mp3"
     }
    ],
-   "example": "你的？"
+   "example": "你的？",
+   "audioUrl": "/assets/deck/audio/你.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000074",
@@ -3289,15 +3507,18 @@
     {
      "zh": "您好！",
      "en": "Hello!",
-     "sourceId": 13174770
+     "sourceId": 13174770,
+     "audioUrl": "/assets/deck/audio/ex-9a7bd6ed5e59d46c.mp3"
     },
     {
      "zh": "您赢！",
      "en": "You've won!",
-     "sourceId": 2884098
+     "sourceId": 2884098,
+     "audioUrl": "/assets/deck/audio/ex-f67757b8f6e0b41e.mp3"
     }
    ],
-   "example": "您好！"
+   "example": "您好！",
+   "audioUrl": "/assets/deck/audio/您.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000075",
@@ -3338,15 +3559,18 @@
     {
      "zh": "她是我女儿。",
      "en": "She's my daughter.",
-     "sourceId": 1428124
+     "sourceId": 1428124,
+     "audioUrl": "/assets/deck/audio/ex-52c7988db70cf9f0.mp3"
     },
     {
      "zh": "你女儿怎么了？",
      "en": "How is your daughter?",
-     "sourceId": 10966848
+     "sourceId": 10966848,
+     "audioUrl": "/assets/deck/audio/ex-5fdc2e3815a7a1d7.mp3"
     }
    ],
-   "example": "她是我女儿。"
+   "example": "她是我女儿。",
+   "audioUrl": "/assets/deck/audio/女儿.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000076",
@@ -3387,15 +3611,18 @@
     {
      "zh": "我是朋友。",
      "en": "I'm a friend.",
-     "sourceId": 13825930
+     "sourceId": 13825930,
+     "audioUrl": "/assets/deck/audio/ex-854d2b78c7bdddc8.mp3"
     },
     {
      "zh": "你好，朋友。",
      "en": "Hail, friend.",
-     "sourceId": 13117790
+     "sourceId": 13117790,
+     "audioUrl": "/assets/deck/audio/ex-5c67dc4f19d63fbc.mp3"
     }
    ],
-   "example": "我是朋友。"
+   "example": "我是朋友。",
+   "audioUrl": "/assets/deck/audio/朋友.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000077",
@@ -3438,15 +3665,18 @@
     {
      "zh": "你很漂亮.",
      "en": "You are beautiful.",
-     "sourceId": 1928569
+     "sourceId": 1928569,
+     "audioUrl": "/assets/deck/audio/ex-63298560a4075fb3.mp3"
     },
     {
      "zh": "你真漂亮！",
      "en": "How beautiful you are!",
-     "sourceId": 1891626
+     "sourceId": 1891626,
+     "audioUrl": "/assets/deck/audio/ex-093475f898fa49df.mp3"
     }
    ],
-   "example": "你很漂亮."
+   "example": "你很漂亮.",
+   "audioUrl": "/assets/deck/audio/漂亮.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000078",
@@ -3490,15 +3720,18 @@
     {
      "zh": "多少苹果？",
      "en": "How many apples are there?",
-     "sourceId": 755840
+     "sourceId": 755840,
+     "audioUrl": "/assets/deck/audio/ex-3fa2e382295fdc98.mp3"
     },
     {
      "zh": "几只苹果？",
      "en": "How many apples are there?",
-     "sourceId": 755839
+     "sourceId": 755839,
+     "audioUrl": "/assets/deck/audio/ex-2ecee6e7dbfd5043.mp3"
     }
    ],
-   "example": "多少苹果？"
+   "example": "多少苹果？",
+   "audioUrl": "/assets/deck/audio/苹果.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000079",
@@ -3525,15 +3758,18 @@
     {
      "zh": "七夕节快乐！",
      "en": "Happy Qixi Festival!",
-     "sourceId": 4462612
+     "sourceId": 4462612,
+     "audioUrl": "/assets/deck/audio/ex-7b4ba36270c3732c.mp3"
     },
     {
      "zh": "七减二是五。",
      "en": "Seven minus two is five.",
-     "sourceId": 10002489
+     "sourceId": 10002489,
+     "audioUrl": "/assets/deck/audio/ex-628f65ed4e5a5897.mp3"
     }
    ],
-   "example": "七夕节快乐！"
+   "example": "七夕节快乐！",
+   "audioUrl": "/assets/deck/audio/七.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000080",
@@ -3570,15 +3806,18 @@
     {
      "zh": "零在一前面。",
      "en": "Zero comes before one.",
-     "sourceId": 816566
+     "sourceId": 816566,
+     "audioUrl": "/assets/deck/audio/ex-95e1bc6256b7047d.mp3"
     },
     {
      "zh": "在我前面走。",
      "en": "Walk ahead of me.",
-     "sourceId": 517553
+     "sourceId": 517553,
+     "audioUrl": "/assets/deck/audio/ex-a5dc860a0f77b01a.mp3"
     }
    ],
-   "example": "零在一前面。"
+   "example": "零在一前面。",
+   "audioUrl": "/assets/deck/audio/前面.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000081",
@@ -3612,15 +3851,18 @@
     {
      "zh": "偷钱。",
      "en": "Steal the money.",
-     "sourceId": 512070
+     "sourceId": 512070,
+     "audioUrl": "/assets/deck/audio/ex-7c35abf9a08f3fa5.mp3"
     },
     {
      "zh": "多少钱？",
      "en": "How much?",
-     "sourceId": 3697906
+     "sourceId": 3697906,
+     "audioUrl": "/assets/deck/audio/ex-a84651f52f929724.mp3"
     }
    ],
-   "example": "偷钱。"
+   "example": "偷钱。",
+   "audioUrl": "/assets/deck/audio/钱.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000082",
@@ -3654,15 +3896,18 @@
     {
      "zh": "请！",
      "en": "Come in.",
-     "sourceId": 4970110
+     "sourceId": 4970110,
+     "audioUrl": "/assets/deck/audio/ex-1d7f5f1bccf25971.mp3"
     },
     {
      "zh": "请听！",
      "en": "Hark!",
-     "sourceId": 7781469
+     "sourceId": 7781469,
+     "audioUrl": "/assets/deck/audio/ex-87ef23acf3ce8e7b.mp3"
     }
    ],
-   "example": "请！"
+   "example": "请！",
+   "audioUrl": "/assets/deck/audio/请.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000083",
@@ -3689,15 +3934,18 @@
     {
      "zh": "出去！",
      "en": "Get out.",
-     "sourceId": 7768017
+     "sourceId": 7768017,
+     "audioUrl": "/assets/deck/audio/ex-13311ab4c5b7a58c.mp3"
     },
     {
      "zh": "去找它",
      "en": "Find it.",
-     "sourceId": 13361692
+     "sourceId": 13361692,
+     "audioUrl": "/assets/deck/audio/ex-e26ce67028dffe73.mp3"
     }
    ],
-   "example": "出去！"
+   "example": "出去！",
+   "audioUrl": "/assets/deck/audio/去.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000084",
@@ -3732,15 +3980,18 @@
     {
      "zh": "热死了！",
      "en": "How hot it is!",
-     "sourceId": 4515027
+     "sourceId": 4515027,
+     "audioUrl": "/assets/deck/audio/ex-bace78e61c8388e1.mp3"
     },
     {
      "zh": "今天热吗？",
      "en": "Is it hot today?",
-     "sourceId": 10961174
+     "sourceId": 10961174,
+     "audioUrl": "/assets/deck/audio/ex-8a64cb5b3d95c3eb.mp3"
     }
    ],
-   "example": "热死了！"
+   "example": "热死了！",
+   "audioUrl": "/assets/deck/audio/热.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000085",
@@ -3770,15 +4021,18 @@
     {
      "zh": "敝人",
      "en": "Yours truly.",
-     "sourceId": 884673
+     "sourceId": 884673,
+     "audioUrl": "/assets/deck/audio/ex-5f4a1e383acc8d95.mp3"
     },
     {
      "zh": "怪人！",
      "en": "What a strange guy!",
-     "sourceId": 13274663
+     "sourceId": 13274663,
+     "audioUrl": "/assets/deck/audio/ex-23fb7ea6ea40b2f1.mp3"
     }
    ],
-   "example": "敝人"
+   "example": "敝人",
+   "audioUrl": "/assets/deck/audio/人.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000086",
@@ -3825,15 +4079,18 @@
     {
      "zh": "我认识他。",
      "en": "I know him.",
-     "sourceId": 11837643
+     "sourceId": 11837643,
+     "audioUrl": "/assets/deck/audio/ex-5d30b24e5f547f54.mp3"
     },
     {
      "zh": "她认识我。",
      "en": "She knows me.",
-     "sourceId": 4970146
+     "sourceId": 4970146,
+     "audioUrl": "/assets/deck/audio/ex-d62f98df52becfdc.mp3"
     }
    ],
-   "example": "我认识他。"
+   "example": "我认识他。",
+   "audioUrl": "/assets/deck/audio/认识.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000087",
@@ -3864,15 +4121,18 @@
     {
      "zh": "谁的生日？",
      "en": "Whose birthday is it?",
-     "sourceId": 12686968
+     "sourceId": 12686968,
+     "audioUrl": "/assets/deck/audio/ex-12ac6b2037698faa.mp3"
     },
     {
      "zh": "生日同乐！",
      "en": "Let's have a good birthday celebration!",
-     "sourceId": 2384335
+     "sourceId": 2384335,
+     "audioUrl": "/assets/deck/audio/ex-ceb4e149221d5875.mp3"
     }
    ],
-   "example": "谁的生日？"
+   "example": "谁的生日？",
+   "audioUrl": "/assets/deck/audio/日.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000088",
@@ -3903,15 +4163,18 @@
     {
      "zh": "三振出局！",
      "en": "Strike three!",
-     "sourceId": 13181799
+     "sourceId": 13181799,
+     "audioUrl": "/assets/deck/audio/ex-256bbbc9dc081581.mp3"
     },
     {
      "zh": "他三岁了。",
      "en": "He's three years old.",
-     "sourceId": 10895471
+     "sourceId": 10895471,
+     "audioUrl": "/assets/deck/audio/ex-2cedc3b79e60f0d3.mp3"
     }
    ],
-   "example": "三振出局！"
+   "example": "三振出局！",
+   "audioUrl": "/assets/deck/audio/三.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000089",
@@ -3956,15 +4219,18 @@
     {
      "zh": "我去商店。",
      "en": "I am going to the shop.",
-     "sourceId": 1504028
+     "sourceId": 1504028,
+     "audioUrl": "/assets/deck/audio/ex-9cbf85c97b333fd5.mp3"
     },
     {
      "zh": "我要去商店。",
      "en": "I'm going to the shop.",
-     "sourceId": 13519659
+     "sourceId": 13519659,
+     "audioUrl": "/assets/deck/audio/ex-eefe8789a20fc5f0.mp3"
     }
    ],
-   "example": "我去商店。"
+   "example": "我去商店。",
+   "audioUrl": "/assets/deck/audio/商店.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000090",
@@ -3996,15 +4262,18 @@
     {
      "zh": "加上！",
      "en": "Add!",
-     "sourceId": 13112126
+     "sourceId": 13112126,
+     "audioUrl": "/assets/deck/audio/ex-51c582694b6eea7a.mp3"
     },
     {
      "zh": "向上！",
      "en": "Ascend!",
-     "sourceId": 13112124
+     "sourceId": 13112124,
+     "audioUrl": "/assets/deck/audio/ex-ee54688eb916de39.mp3"
     }
    ],
-   "example": "加上！"
+   "example": "加上！",
+   "audioUrl": "/assets/deck/audio/上.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000091",
@@ -4041,15 +4310,18 @@
     {
      "zh": "我上午慢跑。",
      "en": "I jog in the morning.",
-     "sourceId": 3695646
+     "sourceId": 3695646,
+     "audioUrl": "/assets/deck/audio/ex-b6883b7aefd43bc5.mp3"
     },
     {
      "zh": "今天上午下雨。",
      "en": "It will rain this morning.",
-     "sourceId": 6092453
+     "sourceId": 6092453,
+     "audioUrl": "/assets/deck/audio/ex-04453bc2f0cf9b78.mp3"
     }
    ],
-   "example": "我上午慢跑。"
+   "example": "我上午慢跑。",
+   "audioUrl": "/assets/deck/audio/上午.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000092",
@@ -4081,15 +4353,18 @@
     {
      "zh": "多少人？",
      "en": "How many people?",
-     "sourceId": 10267391
+     "sourceId": 10267391,
+     "audioUrl": "/assets/deck/audio/ex-19a901a63f155921.mp3"
     },
     {
      "zh": "多少钱？",
      "en": "How much?",
-     "sourceId": 3697906
+     "sourceId": 3697906,
+     "audioUrl": "/assets/deck/audio/ex-a84651f52f929724.mp3"
     }
    ],
-   "example": "多少人？"
+   "example": "多少人？",
+   "audioUrl": "/assets/deck/audio/少.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000093",
@@ -4123,15 +4398,18 @@
     {
      "zh": "谁！",
      "en": "Who!",
-     "sourceId": 13142068
+     "sourceId": 13142068,
+     "audioUrl": "/assets/deck/audio/ex-dd44db8cd35cbdbf.mp3"
     },
     {
      "zh": "谁？",
      "en": "Who?",
-     "sourceId": 5214214
+     "sourceId": 5214214,
+     "audioUrl": "/assets/deck/audio/ex-e63f088e0a15cf98.mp3"
     }
    ],
-   "example": "谁！"
+   "example": "谁！",
+   "audioUrl": "/assets/deck/audio/谁.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000094",
@@ -4169,15 +4447,18 @@
     {
      "zh": "什么？",
      "en": "What do you mean?",
-     "sourceId": 338275
+     "sourceId": 338275,
+     "audioUrl": "/assets/deck/audio/ex-f983d40eeff2ee7c.mp3"
     },
     {
      "zh": "搞什么",
      "en": "What's up?",
-     "sourceId": 1067336
+     "sourceId": 1067336,
+     "audioUrl": "/assets/deck/audio/ex-440d22ecb1f4def6.mp3"
     }
    ],
-   "example": "什么？"
+   "example": "什么？",
+   "audioUrl": "/assets/deck/audio/什么.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000095",
@@ -4222,15 +4503,18 @@
     {
      "zh": "什么时候？",
      "en": "When?",
-     "sourceId": 5214215
+     "sourceId": 5214215,
+     "audioUrl": "/assets/deck/audio/ex-04c8aa97248f2ab5.mp3"
     },
     {
      "zh": "你什么时候来？",
      "en": "When will you come?",
-     "sourceId": 11502926
+     "sourceId": 11502926,
+     "audioUrl": "/assets/deck/audio/ex-3464c85231d2efb5.mp3"
     }
    ],
-   "example": "什么时候？"
+   "example": "什么时候？",
+   "audioUrl": "/assets/deck/audio/时候.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000096",
@@ -4261,15 +4545,18 @@
     {
      "zh": "是？",
      "en": "Come again?",
-     "sourceId": 13274583
+     "sourceId": 13274583,
+     "audioUrl": "/assets/deck/audio/ex-100876a79deb3037.mp3"
     },
     {
      "zh": "是！",
      "en": "Yes.",
-     "sourceId": 13111625
+     "sourceId": 13111625,
+     "audioUrl": "/assets/deck/audio/ex-a8168003cc79a536.mp3"
     }
    ],
-   "example": "是？"
+   "example": "是？",
+   "audioUrl": "/assets/deck/audio/是.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000097",
@@ -4301,15 +4588,18 @@
     {
      "zh": "读书。",
      "en": "Read!",
-     "sourceId": 10961153
+     "sourceId": 10961153,
+     "audioUrl": "/assets/deck/audio/ex-56de202ef8ea18eb.mp3"
     },
     {
      "zh": "用脸书。",
      "en": "Use Facebook.",
-     "sourceId": 13949071
+     "sourceId": 13949071,
+     "audioUrl": "/assets/deck/audio/ex-c8b062bc676ca690.mp3"
     }
    ],
-   "example": "读书。"
+   "example": "读书。",
+   "audioUrl": "/assets/deck/audio/书.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000098",
@@ -4340,15 +4630,18 @@
     {
      "zh": "喝水。",
      "en": "Drink water.",
-     "sourceId": 6092433
+     "sourceId": 6092433,
+     "audioUrl": "/assets/deck/audio/ex-582b5c071e135eaa.mp3"
     },
     {
      "zh": "要喝水",
      "en": "I drink water.",
-     "sourceId": 5464704
+     "sourceId": 5464704,
+     "audioUrl": "/assets/deck/audio/ex-a9f5e4d89042836e.mp3"
     }
    ],
-   "example": "喝水。"
+   "example": "喝水。",
+   "audioUrl": "/assets/deck/audio/水.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000099",
@@ -4389,15 +4682,18 @@
     {
      "zh": "吃水果。",
      "en": "Eat fruit.",
-     "sourceId": 6092436
+     "sourceId": 6092436,
+     "audioUrl": "/assets/deck/audio/ex-29790a9e52465207.mp3"
     },
     {
      "zh": "他卖水果。",
      "en": "He sells fruit.",
-     "sourceId": 7768273
+     "sourceId": 7768273,
+     "audioUrl": "/assets/deck/audio/ex-370d45b388407341.mp3"
     }
    ],
-   "example": "吃水果。"
+   "example": "吃水果。",
+   "audioUrl": "/assets/deck/audio/水果.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000100",
@@ -4443,15 +4739,18 @@
     {
      "zh": "快去睡觉！",
      "en": "Hurry up and go to bed!",
-     "sourceId": 9991960
+     "sourceId": 9991960,
+     "audioUrl": "/assets/deck/audio/ex-62b9ba1a12dd6ea0.mp3"
     },
     {
      "zh": "你睡觉吗？",
      "en": "Are you asleep?",
-     "sourceId": 2357582
+     "sourceId": 2357582,
+     "audioUrl": "/assets/deck/audio/ex-ba4a83ea557ebf0c.mp3"
     }
    ],
-   "example": "快去睡觉！"
+   "example": "快去睡觉！",
+   "audioUrl": "/assets/deck/audio/睡觉.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000101",
@@ -4484,15 +4783,18 @@
     {
      "zh": "说！",
      "en": "Say it.",
-     "sourceId": 4267407
+     "sourceId": 4267407,
+     "audioUrl": "/assets/deck/audio/ex-527cc35ce5ea70e0.mp3"
     },
     {
      "zh": "说啊！",
      "en": "Talk to me!",
-     "sourceId": 7767996
+     "sourceId": 7767996,
+     "audioUrl": "/assets/deck/audio/ex-3c93ae6ca19d6b94.mp3"
     }
    ],
-   "example": "说！"
+   "example": "说！",
+   "audioUrl": "/assets/deck/audio/说.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000102",
@@ -4523,15 +4825,18 @@
     {
      "zh": "四月到了。",
      "en": "It's April.",
-     "sourceId": 13175390
+     "sourceId": 13175390,
+     "audioUrl": "/assets/deck/audio/ex-31ee085996376bfa.mp3"
     },
     {
      "zh": "爆四瓣蒜。",
      "en": "Fry four cloves of garlic.",
-     "sourceId": 6959616
+     "sourceId": 6959616,
+     "audioUrl": "/assets/deck/audio/ex-b88889b07fbe03b7.mp3"
     }
    ],
-   "example": "四月到了。"
+   "example": "四月到了。",
+   "audioUrl": "/assets/deck/audio/四.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000103",
@@ -4559,10 +4864,12 @@
     {
      "zh": "他几岁了？",
      "en": "How old is he?",
-     "sourceId": 13882474
+     "sourceId": 13882474,
+     "audioUrl": "/assets/deck/audio/ex-f6ab5cd810ee8f93.mp3"
     }
    ],
-   "example": "他几岁了？"
+   "example": "他几岁了？",
+   "audioUrl": "/assets/deck/audio/岁.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000104",
@@ -4593,15 +4900,18 @@
     {
      "zh": "他走。",
      "en": "He leaves.",
-     "sourceId": 13150961
+     "sourceId": 13150961,
+     "audioUrl": "/assets/deck/audio/ex-5668e1c77a236a41.mp3"
     },
     {
      "zh": "看他。",
      "en": "Just look at him.",
-     "sourceId": 10350401
+     "sourceId": 10350401,
+     "audioUrl": "/assets/deck/audio/ex-c25e9f3b027eff2e.mp3"
     }
    ],
-   "example": "他走。"
+   "example": "他走。",
+   "audioUrl": "/assets/deck/audio/他.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000105",
@@ -4632,15 +4942,18 @@
     {
      "zh": "她走。",
      "en": "She leaves.",
-     "sourceId": 13150959
+     "sourceId": 13150959,
+     "audioUrl": "/assets/deck/audio/ex-ea2195349bae8e48.mp3"
     },
     {
      "zh": "吻她。",
      "en": "Kiss her.",
-     "sourceId": 10362507
+     "sourceId": 10362507,
+     "audioUrl": "/assets/deck/audio/ex-127901df83c127c9.mp3"
     }
    ],
-   "example": "她走。"
+   "example": "她走。",
+   "audioUrl": "/assets/deck/audio/她.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000106",
@@ -4671,15 +4984,18 @@
     {
      "zh": "太忙！",
      "en": "Busy!",
-     "sourceId": 13111707
+     "sourceId": 13111707,
+     "audioUrl": "/assets/deck/audio/ex-612118fe463e4bde.mp3"
     },
     {
      "zh": "太棒了",
      "en": "Awesome.",
-     "sourceId": 13142057
+     "sourceId": 13142057,
+     "audioUrl": "/assets/deck/audio/ex-c3b16eb2cdaeec94.mp3"
     }
    ],
-   "example": "太忙！"
+   "example": "太忙！",
+   "audioUrl": "/assets/deck/audio/太.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000107",
@@ -4721,15 +5037,18 @@
     {
      "zh": "天气如何？",
      "en": "How's the weather?",
-     "sourceId": 1783778
+     "sourceId": 1783778,
+     "audioUrl": "/assets/deck/audio/ex-9772e6aa5b9aefcc.mp3"
     },
     {
      "zh": "天气很好。",
      "en": "The weather is nice.",
-     "sourceId": 11837650
+     "sourceId": 11837650,
+     "audioUrl": "/assets/deck/audio/ex-c4d8920fddb2ecd6.mp3"
     }
    ],
-   "example": "天气如何？"
+   "example": "天气如何？",
+   "audioUrl": "/assets/deck/audio/天气.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000108",
@@ -4761,15 +5080,18 @@
     {
      "zh": "听！",
      "en": "Hark!",
-     "sourceId": 5095002
+     "sourceId": 5095002,
+     "audioUrl": "/assets/deck/audio/ex-343b8e9bfa50d56e.mp3"
     },
     {
      "zh": "爱听？",
      "en": "Love listening?",
-     "sourceId": 10961051
+     "sourceId": 10961051,
+     "audioUrl": "/assets/deck/audio/ex-004436c7330c46a7.mp3"
     }
    ],
-   "example": "听！"
+   "example": "听！",
+   "audioUrl": "/assets/deck/audio/听.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000109",
@@ -4811,15 +5133,18 @@
     {
      "zh": "我们是同学。",
      "en": "We're classmates.",
-     "sourceId": 333784
+     "sourceId": 333784,
+     "audioUrl": "/assets/deck/audio/ex-8e3ae2bbfeccfeec.mp3"
     },
     {
      "zh": "他是我的同学。",
      "en": "He is my classmate.",
-     "sourceId": 11837695
+     "sourceId": 11837695,
+     "audioUrl": "/assets/deck/audio/ex-9b5c551df0d7cdd7.mp3"
     }
    ],
-   "example": "我们是同学。"
+   "example": "我们是同学。",
+   "audioUrl": "/assets/deck/audio/同学.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000110",
@@ -4852,15 +5177,18 @@
     {
      "zh": "喂！",
      "en": "Speaking.",
-     "sourceId": 13175461
+     "sourceId": 13175461,
+     "audioUrl": "/assets/deck/audio/ex-4abc4e2c901cdb40.mp3"
     },
     {
      "zh": "喂。",
      "en": "Speaking.",
-     "sourceId": 6401432
+     "sourceId": 6401432,
+     "audioUrl": "/assets/deck/audio/ex-e45ee2b6395113c1.mp3"
     }
    ],
-   "example": "喂！"
+   "example": "喂！",
+   "audioUrl": "/assets/deck/audio/喂.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000111",
@@ -4891,15 +5219,18 @@
     {
      "zh": "我！",
      "en": "It's me!",
-     "sourceId": 10194940
+     "sourceId": 10194940,
+     "audioUrl": "/assets/deck/audio/ex-1789d30d5ab60f87.mp3"
     },
     {
      "zh": "我是",
      "en": "I am.",
-     "sourceId": 9222719
+     "sourceId": 9222719,
+     "audioUrl": "/assets/deck/audio/ex-6144f88f92c1ed60.mp3"
     }
    ],
-   "example": "我！"
+   "example": "我！",
+   "audioUrl": "/assets/deck/audio/我.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000112",
@@ -4943,15 +5274,18 @@
     {
      "zh": "帮我们做.",
      "en": "Help us do it.",
-     "sourceId": 6850364
+     "sourceId": 6850364,
+     "audioUrl": "/assets/deck/audio/ex-d54e2537c122ebe9.mp3"
     },
     {
      "zh": "给我们买.",
      "en": "Buy us it.",
-     "sourceId": 6850358
+     "sourceId": 6850358,
+     "audioUrl": "/assets/deck/audio/ex-991043684b8216a2.mp3"
     }
    ],
-   "example": "帮我们做."
+   "example": "帮我们做.",
+   "audioUrl": "/assets/deck/audio/我们.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000113",
@@ -4982,15 +5316,18 @@
     {
      "zh": "星期五！",
      "en": "Thank God it's Friday!",
-     "sourceId": 13274650
+     "sourceId": 13274650,
+     "audioUrl": "/assets/deck/audio/ex-4720c14f4d4411f8.mp3"
     },
     {
      "zh": "二百五！",
      "en": "You idiot!",
-     "sourceId": 735332
+     "sourceId": 735332,
+     "audioUrl": "/assets/deck/audio/ex-c7c1957ba37cb78a.mp3"
     }
    ],
-   "example": "星期五！"
+   "example": "星期五！",
+   "audioUrl": "/assets/deck/audio/五.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000114",
@@ -5031,15 +5368,18 @@
     {
      "zh": "我在吃西瓜。",
      "en": "I am eating a watermelon.",
-     "sourceId": 10613902
+     "sourceId": 10613902,
+     "audioUrl": "/assets/deck/audio/ex-04efa73d086774ef.mp3"
     },
     {
      "zh": "我吃一片西瓜。",
      "en": "I am eating a slice of watermelon.",
-     "sourceId": 2521504
+     "sourceId": 2521504,
+     "audioUrl": "/assets/deck/audio/ex-eaa1a0d82e68aabf.mp3"
     }
    ],
-   "example": "我在吃西瓜。"
+   "example": "我在吃西瓜。",
+   "audioUrl": "/assets/deck/audio/西瓜.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000115",
@@ -5077,15 +5417,18 @@
     {
      "zh": "我喜欢你",
      "en": "I like you.",
-     "sourceId": 5403272
+     "sourceId": 5403272,
+     "audioUrl": "/assets/deck/audio/ex-d2014f4004b48e18.mp3"
     },
     {
      "zh": "我喜欢你！",
      "en": "I love you.",
-     "sourceId": 9992041
+     "sourceId": 9992041,
+     "audioUrl": "/assets/deck/audio/ex-f2c4a5000bb05e57.mp3"
     }
    ],
-   "example": "我喜欢你"
+   "example": "我喜欢你",
+   "audioUrl": "/assets/deck/audio/喜欢.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000116",
@@ -5117,15 +5460,18 @@
     {
      "zh": "放下！",
      "en": "Leave it!",
-     "sourceId": 8962851
+     "sourceId": 8962851,
+     "audioUrl": "/assets/deck/audio/ex-27c2cf1b670844a1.mp3"
     },
     {
      "zh": "趴下！",
      "en": "Get down!",
-     "sourceId": 5102178
+     "sourceId": 5102178,
+     "audioUrl": "/assets/deck/audio/ex-788f68d4f3f09a3f.mp3"
     }
    ],
-   "example": "放下！"
+   "example": "放下！",
+   "audioUrl": "/assets/deck/audio/下.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000117",
@@ -5162,15 +5508,18 @@
     {
      "zh": "下午好。",
      "en": "Hello!",
-     "sourceId": 812493
+     "sourceId": 812493,
+     "audioUrl": "/assets/deck/audio/ex-0fb1adf1616579fd.mp3"
     },
     {
      "zh": "您下午做啥呢？",
      "en": "What are you doing this evening?",
-     "sourceId": 2254408
+     "sourceId": 2254408,
+     "audioUrl": "/assets/deck/audio/ex-97fc567924f0f9aa.mp3"
     }
    ],
-   "example": "下午好。"
+   "example": "下午好。",
+   "audioUrl": "/assets/deck/audio/下午.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000118",
@@ -5211,15 +5560,18 @@
     {
      "zh": "下雨吗？",
      "en": "Is it raining?",
-     "sourceId": 1289086
+     "sourceId": 1289086,
+     "audioUrl": "/assets/deck/audio/ex-996b21c728e101d9.mp3"
     },
     {
      "zh": "在下雨。",
      "en": "It is raining.",
-     "sourceId": 409681
+     "sourceId": 409681,
+     "audioUrl": "/assets/deck/audio/ex-8e03429e99ca51b4.mp3"
     }
    ],
-   "example": "下雨吗？"
+   "example": "下雨吗？",
+   "audioUrl": "/assets/deck/audio/下雨.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000119",
@@ -5260,15 +5612,18 @@
     {
      "zh": "谢谢您，先生。",
      "en": "Thank you, sir.",
-     "sourceId": 710691
+     "sourceId": 710691,
+     "audioUrl": "/assets/deck/audio/ex-32735c1a8efef2f7.mp3"
     },
     {
      "zh": "你认识钱先生吗？",
      "en": "Do you know Mr Qian?",
-     "sourceId": 10966854
+     "sourceId": 10966854,
+     "audioUrl": "/assets/deck/audio/ex-4402df23f49bd90b.mp3"
     }
    ],
-   "example": "谢谢您，先生。"
+   "example": "谢谢您，先生。",
+   "audioUrl": "/assets/deck/audio/先生.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000120",
@@ -5312,15 +5667,18 @@
     {
      "zh": "现在忙",
      "en": "Busy right now.",
-     "sourceId": 5321365
+     "sourceId": 5321365,
+     "audioUrl": "/assets/deck/audio/ex-d5b846290c48d96a.mp3"
     },
     {
      "zh": "现在呢？",
      "en": "And now?",
-     "sourceId": 397575
+     "sourceId": 397575,
+     "audioUrl": "/assets/deck/audio/ex-fc9382f2ba7285c6.mp3"
     }
    ],
-   "example": "现在忙"
+   "example": "现在忙",
+   "audioUrl": "/assets/deck/audio/现在.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000121",
@@ -5353,15 +5711,18 @@
     {
      "zh": "快想！",
      "en": "Think!",
-     "sourceId": 13111602
+     "sourceId": 13111602,
+     "audioUrl": "/assets/deck/audio/ex-e17de5c435f781bc.mp3"
     },
     {
      "zh": "我想死",
      "en": "I want to die.",
-     "sourceId": 6388809
+     "sourceId": 6388809,
+     "audioUrl": "/assets/deck/audio/ex-54eaff6edd2d1eae.mp3"
     }
    ],
-   "example": "快想！"
+   "example": "快想！",
+   "audioUrl": "/assets/deck/audio/想.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000122",
@@ -5392,15 +5753,18 @@
     {
      "zh": "好小！",
      "en": "So small!",
-     "sourceId": 13275130
+     "sourceId": 13275130,
+     "audioUrl": "/assets/deck/audio/ex-c4460c1ca2a4ecbe.mp3"
     },
     {
      "zh": "小偷！",
      "en": "Stop thief!",
-     "sourceId": 13185326
+     "sourceId": 13185326,
+     "audioUrl": "/assets/deck/audio/ex-60f91b721afdca8f.mp3"
     }
    ],
-   "example": "好小！"
+   "example": "好小！",
+   "audioUrl": "/assets/deck/audio/小.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000123",
@@ -5443,15 +5807,18 @@
     {
      "zh": "请问小姐芳龄？",
      "en": "May I ask how old you are?",
-     "sourceId": 4887651
+     "sourceId": 4887651,
+     "audioUrl": "/assets/deck/audio/ex-90fe417d17e0c510.mp3"
     },
     {
      "zh": "小姐！我觉得不舒服。",
      "en": "Miss! I feel sick.",
-     "sourceId": 472315
+     "sourceId": 472315,
+     "audioUrl": "/assets/deck/audio/ex-51eaa632f45e6953.mp3"
     }
    ],
-   "example": "请问小姐芳龄？"
+   "example": "请问小姐芳龄？",
+   "audioUrl": "/assets/deck/audio/小姐.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000124",
@@ -5484,15 +5851,18 @@
     {
      "zh": "大声些。",
      "en": "Louder.",
-     "sourceId": 7768007
+     "sourceId": 7768007,
+     "audioUrl": "/assets/deck/audio/ex-d99d5dbca811dd91.mp3"
     },
     {
      "zh": "多学些。",
      "en": "Learn a bit more.",
-     "sourceId": 4757712
+     "sourceId": 4757712,
+     "audioUrl": "/assets/deck/audio/ex-6efc0d5b59157040.mp3"
     }
    ],
-   "example": "大声些。"
+   "example": "大声些。",
+   "audioUrl": "/assets/deck/audio/些.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000125",
@@ -5520,15 +5890,18 @@
     {
      "zh": "写吧。",
      "en": "Write.",
-     "sourceId": 13904602
+     "sourceId": 13904602,
+     "audioUrl": "/assets/deck/audio/ex-f876e1c5a2f10d10.mp3"
     },
     {
      "zh": "我写诗。",
      "en": "I write poems.",
-     "sourceId": 8928648
+     "sourceId": 8928648,
+     "audioUrl": "/assets/deck/audio/ex-b64b311ea81eebda.mp3"
     }
    ],
-   "example": "写吧。"
+   "example": "写吧。",
+   "audioUrl": "/assets/deck/audio/写.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000126",
@@ -5562,15 +5935,18 @@
     {
      "zh": "谢谢？",
      "en": "Thanks?",
-     "sourceId": 13142066
+     "sourceId": 13142066,
+     "audioUrl": "/assets/deck/audio/ex-20a605157fabffb9.mp3"
     },
     {
      "zh": "谢谢！",
      "en": "I thank you.",
-     "sourceId": 4878949
+     "sourceId": 4878949,
+     "audioUrl": "/assets/deck/audio/ex-a940fdbe080bf3b4.mp3"
     }
    ],
-   "example": "谢谢？"
+   "example": "谢谢？",
+   "audioUrl": "/assets/deck/audio/谢谢.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000127",
@@ -5615,15 +5991,18 @@
     {
      "zh": "星期五！",
      "en": "Thank God it's Friday!",
-     "sourceId": 13274650
+     "sourceId": 13274650,
+     "audioUrl": "/assets/deck/audio/ex-4720c14f4d4411f8.mp3"
     },
     {
      "zh": "下星期见.",
      "en": "See you next week!",
-     "sourceId": 1476736
+     "sourceId": 1476736,
+     "audioUrl": "/assets/deck/audio/ex-5fe2bb5a77809894.mp3"
     }
    ],
-   "example": "星期五！"
+   "example": "星期五！",
+   "audioUrl": "/assets/deck/audio/星期.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000128",
@@ -5665,15 +6044,18 @@
     {
      "zh": "我不是学生",
      "en": "I'm not a student.",
-     "sourceId": 4713362
+     "sourceId": 4713362,
+     "audioUrl": "/assets/deck/audio/ex-7dbf2c0a9916de2d.mp3"
     },
     {
      "zh": "你是学生。",
      "en": "You are a student.",
-     "sourceId": 1163561
+     "sourceId": 1163561,
+     "audioUrl": "/assets/deck/audio/ex-2d4e33ba8dc73ce7.mp3"
     }
    ],
-   "example": "我不是学生"
+   "example": "我不是学生",
+   "audioUrl": "/assets/deck/audio/学生.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000129",
@@ -5711,15 +6093,18 @@
     {
      "zh": "学习吧。",
      "en": "Learn.",
-     "sourceId": 13904096
+     "sourceId": 13904096,
+     "audioUrl": "/assets/deck/audio/ex-79e0e809b81f77de.mp3"
     },
     {
      "zh": "我学习。",
      "en": "I am a student.",
-     "sourceId": 750344
+     "sourceId": 750344,
+     "audioUrl": "/assets/deck/audio/ex-3a84ac938598619c.mp3"
     }
    ],
-   "example": "学习吧。"
+   "example": "学习吧。",
+   "audioUrl": "/assets/deck/audio/学习.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000130",
@@ -5763,15 +6148,18 @@
     {
      "zh": "你在学校。",
      "en": "You are at school.",
-     "sourceId": 11514881
+     "sourceId": 11514881,
+     "audioUrl": "/assets/deck/audio/ex-3be49b22f977746a.mp3"
     },
     {
      "zh": "你去学校。",
      "en": "You go to school.",
-     "sourceId": 5551092
+     "sourceId": 5551092,
+     "audioUrl": "/assets/deck/audio/ex-0f2512959b3cdf2f.mp3"
     }
    ],
-   "example": "你在学校。"
+   "example": "你在学校。",
+   "audioUrl": "/assets/deck/audio/学校.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000131",
@@ -5801,15 +6189,18 @@
     {
      "zh": "吃一口？",
      "en": "How about a bite?",
-     "sourceId": 13275226
+     "sourceId": 13275226,
+     "audioUrl": "/assets/deck/audio/ex-5a43314044967552.mp3"
     },
     {
      "zh": "一好球！",
      "en": "Strike one!",
-     "sourceId": 13181806
+     "sourceId": 13181806,
+     "audioUrl": "/assets/deck/audio/ex-ab35bb8a8047d411.mp3"
     }
    ],
-   "example": "吃一口？"
+   "example": "吃一口？",
+   "audioUrl": "/assets/deck/audio/一.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000132",
@@ -5860,15 +6251,18 @@
     {
      "zh": "轻一点儿放！",
      "en": "Put it down lightly!",
-     "sourceId": 420002
+     "sourceId": 420002,
+     "audioUrl": "/assets/deck/audio/ex-a9c17cf610660ca6.mp3"
     },
     {
      "zh": "给我一点儿。",
      "en": "Give me a few.",
-     "sourceId": 869811
+     "sourceId": 869811,
+     "audioUrl": "/assets/deck/audio/ex-77c8182fa450b5d8.mp3"
     }
    ],
-   "example": "轻一点儿放！"
+   "example": "轻一点儿放！",
+   "audioUrl": "/assets/deck/audio/一点儿.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000133",
@@ -5912,15 +6306,18 @@
     {
      "zh": "我不是医生",
      "en": "I'm not a doctor.",
-     "sourceId": 5321363
+     "sourceId": 5321363,
+     "audioUrl": "/assets/deck/audio/ex-47dfc48ab622427b.mp3"
     },
     {
      "zh": "他是医生吗",
      "en": "Is he a doctor?",
-     "sourceId": 4713316
+     "sourceId": 4713316,
+     "audioUrl": "/assets/deck/audio/ex-81ff67c78c492e87.mp3"
     }
    ],
-   "example": "我不是医生"
+   "example": "我不是医生",
+   "audioUrl": "/assets/deck/audio/医生.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000134",
@@ -5966,15 +6363,18 @@
     {
      "zh": "这是医院。",
      "en": "This is a hospital.",
-     "sourceId": 5072292
+     "sourceId": 5072292,
+     "audioUrl": "/assets/deck/audio/ex-cd71cb542bc6779b.mp3"
     },
     {
      "zh": "他没去医院",
      "en": "He didn't go to hospital.",
-     "sourceId": 4713302
+     "sourceId": 4713302,
+     "audioUrl": "/assets/deck/audio/ex-4182c7c9b6e93b65.mp3"
     }
    ],
-   "example": "这是医院。"
+   "example": "这是医院。",
+   "audioUrl": "/assets/deck/audio/医院.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000135",
@@ -6017,15 +6417,18 @@
     {
      "zh": "再拿把椅子！",
      "en": "Fetch another chair.",
-     "sourceId": 9054579
+     "sourceId": 9054579,
+     "audioUrl": "/assets/deck/audio/ex-b8c8259c4938d303.mp3"
     },
     {
      "zh": "拿另一把椅子！",
      "en": "Take the other chair!",
-     "sourceId": 503063
+     "sourceId": 503063,
+     "audioUrl": "/assets/deck/audio/ex-9b2c4ec94a3c6c08.mp3"
     }
    ],
-   "example": "再拿把椅子！"
+   "example": "再拿把椅子！",
+   "audioUrl": "/assets/deck/audio/椅子.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000136",
@@ -6056,15 +6459,18 @@
     {
      "zh": "有！",
      "en": "Here!",
-     "sourceId": 13511638
+     "sourceId": 13511638,
+     "audioUrl": "/assets/deck/audio/ex-52ea15b2e161698f.mp3"
     },
     {
      "zh": "有吗？",
      "en": "Does it exist?",
-     "sourceId": 5581032
+     "sourceId": 5581032,
+     "audioUrl": "/assets/deck/audio/ex-15e30f0880f55582.mp3"
     }
    ],
-   "example": "有！"
+   "example": "有！",
+   "audioUrl": "/assets/deck/audio/有.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000137",
@@ -6095,15 +6501,18 @@
     {
      "zh": "看月亮！",
      "en": "Look at the moon.",
-     "sourceId": 13275123
+     "sourceId": 13275123,
+     "audioUrl": "/assets/deck/audio/ex-3e6648daed0a38c2.mp3"
     },
     {
      "zh": "四月到了。",
      "en": "It's April.",
-     "sourceId": 13175390
+     "sourceId": 13175390,
+     "audioUrl": "/assets/deck/audio/ex-31ee085996376bfa.mp3"
     }
    ],
-   "example": "看月亮！"
+   "example": "看月亮！",
+   "audioUrl": "/assets/deck/audio/月.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000138",
@@ -6145,15 +6554,18 @@
     {
      "zh": "再见！",
      "en": "See you again.",
-     "sourceId": 336477
+     "sourceId": 336477,
+     "audioUrl": "/assets/deck/audio/ex-de1edbfd42a72b31.mp3"
     },
     {
      "zh": "再见。",
      "en": "See you again.",
-     "sourceId": 2030795
+     "sourceId": 2030795,
+     "audioUrl": "/assets/deck/audio/ex-8e896e47a3f2b66d.mp3"
     }
    ],
-   "example": "再见！"
+   "example": "再见！",
+   "audioUrl": "/assets/deck/audio/再见.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000139",
@@ -6188,15 +6600,18 @@
     {
      "zh": "在。",
      "en": "Yes, Sir!",
-     "sourceId": 13111629
+     "sourceId": 13111629,
+     "audioUrl": "/assets/deck/audio/ex-80fd0d634d627b50.mp3"
     },
     {
      "zh": "现在忙",
      "en": "Busy right now.",
-     "sourceId": 5321365
+     "sourceId": 5321365,
+     "audioUrl": "/assets/deck/audio/ex-d5b846290c48d96a.mp3"
     }
    ],
-   "example": "在。"
+   "example": "在。",
+   "audioUrl": "/assets/deck/audio/在.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000140",
@@ -6236,15 +6651,18 @@
     {
      "zh": "怎么样？",
      "en": "How?",
-     "sourceId": 5214222
+     "sourceId": 5214222,
+     "audioUrl": "/assets/deck/audio/ex-b407a930392603cf.mp3"
     },
     {
      "zh": "怎么了？",
      "en": "What's going on?",
-     "sourceId": 334413
+     "sourceId": 334413,
+     "audioUrl": "/assets/deck/audio/ex-95a909a29547de0e.mp3"
     }
    ],
-   "example": "怎么样？"
+   "example": "怎么样？",
+   "audioUrl": "/assets/deck/audio/怎么.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000141",
@@ -6296,15 +6714,18 @@
     {
      "zh": "怎么样？",
      "en": "How?",
-     "sourceId": 5214222
+     "sourceId": 5214222,
+     "audioUrl": "/assets/deck/audio/ex-b407a930392603cf.mp3"
     },
     {
      "zh": "经济怎么样？",
      "en": "How is the economy?",
-     "sourceId": 10340656
+     "sourceId": 10340656,
+     "audioUrl": "/assets/deck/audio/ex-103a5700577c6fb0.mp3"
     }
    ],
-   "example": "怎么样？"
+   "example": "怎么样？",
+   "audioUrl": "/assets/deck/audio/怎么样.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000142",
@@ -6332,15 +6753,18 @@
     {
      "zh": "这谁？",
      "en": "Who is this person?",
-     "sourceId": 13881561
+     "sourceId": 13881561,
+     "audioUrl": "/assets/deck/audio/ex-0bbbf56ae0481e45.mp3"
     },
     {
      "zh": "这么晚？",
      "en": "This late?",
-     "sourceId": 9963195
+     "sourceId": 9963195,
+     "audioUrl": "/assets/deck/audio/ex-ae74a874dddb8e77.mp3"
     }
    ],
-   "example": "这谁？"
+   "example": "这谁？",
+   "audioUrl": "/assets/deck/audio/这.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000143",
@@ -6382,15 +6806,18 @@
     {
      "zh": "中国欢迎您！",
      "en": "Welcome to China!",
-     "sourceId": 2691629
+     "sourceId": 2691629,
+     "audioUrl": "/assets/deck/audio/ex-77ece02fad968882.mp3"
     },
     {
      "zh": "中国欢迎你！",
      "en": "Welcome to China!",
-     "sourceId": 2691624
+     "sourceId": 2691624,
+     "audioUrl": "/assets/deck/audio/ex-fd9a29546062acb8.mp3"
     }
    ],
-   "example": "中国欢迎您！"
+   "example": "中国欢迎您！",
+   "audioUrl": "/assets/deck/audio/中国.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000144",
@@ -6427,15 +6854,18 @@
     {
      "zh": "现在才中午。",
      "en": "It is just noon.",
-     "sourceId": 1964240
+     "sourceId": 1964240,
+     "audioUrl": "/assets/deck/audio/ex-68f411aba7b4bc81.mp3"
     },
     {
      "zh": "汤姆睡到中午。",
      "en": "Tom slept until noon.",
-     "sourceId": 5574481
+     "sourceId": 5574481,
+     "audioUrl": "/assets/deck/audio/ex-0311a804ecc5a4f4.mp3"
     }
    ],
-   "example": "现在才中午。"
+   "example": "现在才中午。",
+   "audioUrl": "/assets/deck/audio/中午.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000145",
@@ -6466,15 +6896,18 @@
     {
      "zh": "站住！",
      "en": "Hold it!",
-     "sourceId": 1636170
+     "sourceId": 1636170,
+     "audioUrl": "/assets/deck/audio/ex-4cef117df3a51a8d.mp3"
     },
     {
      "zh": "住手！",
      "en": "Stop!",
-     "sourceId": 448321
+     "sourceId": 448321,
+     "audioUrl": "/assets/deck/audio/ex-488dbe22c0e04111.mp3"
     }
    ],
-   "example": "站住！"
+   "example": "站住！",
+   "audioUrl": "/assets/deck/audio/住.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000146",
@@ -6511,15 +6944,18 @@
     {
      "zh": "我擦了桌子。",
      "en": "I cleared the table.",
-     "sourceId": 9054575
+     "sourceId": 9054575,
+     "audioUrl": "/assets/deck/audio/ex-c24a22d97bfdb254.mp3"
     },
     {
      "zh": "笔在桌子上。",
      "en": "The pen is on the table.",
-     "sourceId": 3377946
+     "sourceId": 3377946,
+     "audioUrl": "/assets/deck/audio/ex-bca40ba7182e1a70.mp3"
     }
    ],
-   "example": "我擦了桌子。"
+   "example": "我擦了桌子。",
+   "audioUrl": "/assets/deck/audio/桌子.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000147",
@@ -6550,15 +6986,18 @@
     {
      "zh": "字、字⋯⋯",
      "en": "Words, words...",
-     "sourceId": 12278333
+     "sourceId": 12278333,
+     "audioUrl": "/assets/deck/audio/ex-ad5243a962d7b8cc.mp3"
     },
     {
      "zh": "我有字典。",
      "en": "I have the dictionary.",
-     "sourceId": 9462615
+     "sourceId": 9462615,
+     "audioUrl": "/assets/deck/audio/ex-d56c9aa5788c06d9.mp3"
     }
    ],
-   "example": "字、字⋯⋯"
+   "example": "字、字⋯⋯",
+   "audioUrl": "/assets/deck/audio/字.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000148",
@@ -6601,15 +7040,18 @@
     {
      "zh": "昨天很冷。",
      "en": "It was cold yesterday.",
-     "sourceId": 346737
+     "sourceId": 346737,
+     "audioUrl": "/assets/deck/audio/ex-38ac76e0dec68815.mp3"
     },
     {
      "zh": "她昨天病了。",
      "en": "I was ill yesterday.",
-     "sourceId": 10603029
+     "sourceId": 10603029,
+     "audioUrl": "/assets/deck/audio/ex-735870e99430c9cb.mp3"
     }
    ],
-   "example": "昨天很冷。"
+   "example": "昨天很冷。",
+   "audioUrl": "/assets/deck/audio/昨天.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000149",
@@ -6640,15 +7082,18 @@
     {
      "zh": "请坐！",
      "en": "Sit down, please.",
-     "sourceId": 1216136
+     "sourceId": 1216136,
+     "audioUrl": "/assets/deck/audio/ex-af4a2f71715db305.mp3"
     },
     {
      "zh": "请坐。",
      "en": "Sit down, please.",
-     "sourceId": 5780574
+     "sourceId": 5780574,
+     "audioUrl": "/assets/deck/audio/ex-94987681bb0c0303.mp3"
     }
    ],
-   "example": "请坐！"
+   "example": "请坐！",
+   "audioUrl": "/assets/deck/audio/坐.mp3"
   },
   {
    "id": "10000000-0000-4000-8000-000000000150",
@@ -6679,15 +7124,18 @@
     {
      "zh": "不要做！",
      "en": "Don't do it!",
-     "sourceId": 13174370
+     "sourceId": 13174370,
+     "audioUrl": "/assets/deck/audio/ex-408a8967234b6df8.mp3"
     },
     {
      "zh": "自己做！",
      "en": "Do it yourself.",
-     "sourceId": 10533274
+     "sourceId": 10533274,
+     "audioUrl": "/assets/deck/audio/ex-bd9bc45539627750.mp3"
     }
    ],
-   "example": "不要做！"
+   "example": "不要做！",
+   "audioUrl": "/assets/deck/audio/做.mp3"
   }
  ]
 }

@@ -16,14 +16,35 @@ export default defineConfig({
       // Silent background reload would destroy in-progress reviews.
       registerType: 'prompt',
       strategies: 'generateSW',
-      includeAssets: ['assets/deck/**/*'],
+      // Explicit globs — index/ (admin dict, ~2.3 MB) must stay out of the
+      // install precache; it is runtime-cached on first admin search instead.
+      // Only .md files live here: JSON (deck, hanzi-data) and word clips are
+      // covered by workbox globPatterns below, whose globIgnores correctly
+      // drops ex-*.mp3 — listing them here too would bypass globIgnores and
+      // duplicate manifest entries.
+      includeAssets: ['assets/deck/*.md'],
       devOptions: {
         enabled: false,
       },
       workbox: {
+        // Word clips (1.8 MB) precache for offline review; example clips
+        // (3.4 MB) load on tap via the starter-deck-audio runtime cache.
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2,mp3,json}', 'offline.html'],
+        // Admin dictionary indexes (~2.3 MB) are admin-only — never precache
+        // them for every install; runtime NetworkFirst serves the admin UI.
+        globIgnores: ['**/assets/deck/index/**', '**/assets/deck/audio/ex-*.mp3'],
         maximumFileSizeToCacheInBytes: 50 * 1024 * 1024,
         runtimeCaching: [
+          {
+            urlPattern: /\/assets\/deck\/index\/.*\.json$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'admin-dict-index',
+              networkTimeoutSeconds: 5,
+              expiration: { maxEntries: 4, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             urlPattern: /\/assets\/deck\/audio\/.*\.mp3$/,
             handler: 'CacheFirst',

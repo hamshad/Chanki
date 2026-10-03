@@ -12,6 +12,7 @@
     "tone:bench": "node scripts/tone-bench.mjs",
     "data:build": "node scripts/data/build-deck.mjs",
     "data:build:refresh": "node scripts/data/build-deck.mjs --refresh",
+    "data:audio": "node scripts/data/generate-audio.mjs",
     "data:hanzi": "node scripts/download-hanzi.js",
     "db:seed": "node scripts/firestore-seed.mjs",
     "test": "vitest",

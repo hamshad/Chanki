@@ -4,6 +4,7 @@ import { OfflineReady } from './components/OfflineReady.tsx'
 import { OfflineStatus } from './components/OfflineStatus.tsx'
 import { UpdateBanner } from './components/UpdateBanner.tsx'
 import { SyncStatusBadge } from './components/SyncStatusBadge.tsx'
+import { TabBar } from './components/TabBar.tsx'
 
 import { Link, Route, Switch, useLocation } from 'wouter'
 import { Home } from './pages/Home'
@@ -80,10 +81,19 @@ function App() {
           window.alert('Wrong admin code.')
         }
         setClickCount(0)
+        lastClickTime.current = now
+        return
       }
     }
+    // Plain tap: the brand is the escape hatch back home (review hides the tab bar).
+    if (location !== '/home') setLocation('/home')
     lastClickTime.current = now
   }
+
+  // SPA route changes start at the top, like native screen transitions.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location])
 
   return (
     <>
@@ -151,7 +161,7 @@ function App() {
         </div>
       </footer>
 
-      <IosInstallHint />
+      {location !== '/review' && <TabBar />}
 
       <div className="toast-stack">
         <UpdateBanner />

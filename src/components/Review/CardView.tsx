@@ -3,15 +3,16 @@ import { ToneText } from '../ui/ToneText'
 import { GradingButtons } from './GradingButtons'
 import { WritingDialog } from './WritingDialog'
 import { InfoSheet } from './InfoSheet'
-import { playAudio } from '../../utils/audio'
 import { searchExamples, type ExampleSentence } from '../../data/api/tatoeba'
-import { Volume2 } from 'lucide-react'
+import { AudioClip } from '../AudioClip'
 import { scheduler, type SchedulerPreview } from '../../scheduler'
 import { getProgress, saveReview } from '../../data/review'
 import { getOrCreateDeviceId } from '../../data/device-id'
 import type { Card } from '../../data/schema'
 import type { Tone, Rating, Progress } from '../../types'
 import { splitMeasureWords, meaningTextStyle } from '../../utils/meaning'
+import { charsForWord } from '../../data/api/search'
+import type { CharMeta } from '../../data/schema'
 
 interface CardViewProps {
   card: Card
@@ -42,7 +43,8 @@ export function CardView({ card, onNext }: CardViewProps) {
   const [isWriting, setIsWriting] = useState(false)
   const [hasWritten, setHasWritten] = useState(false)
   const [live, setLive] = useState<{ cardId: string; list: ExampleSentence[] } | null>(null)
-  const [sheet, setSheet] = useState<'examples' | 'measureWords' | null>(null)
+  const [sheet, setSheet] = useState<'examples' | 'measureWords' | 'details' | null>(null)
+  const [extraChars, setExtraChars] = useState<CharMeta[]>([])
 
   const stageRef = useRef<HTMLDivElement>(null)
   const lastWheelAt = useRef(0)
@@ -65,6 +67,15 @@ export function CardView({ card, onNext }: CardViewProps) {
     setSheet(null)
     setSideIndex(0)
     setVisited([true, false, false, false])
+
+    // Cards saved before the chars index existed come without breakdowns —
+    // pull radicals/strokes/etymology from the local index on demand.
+    setExtraChars([])
+    if (!card.chars?.length) {
+      charsForWord(card.hanzi)
+        .then((list) => setExtraChars(list))
+        .catch(() => {})
+    }
 
     // Sourced examples ride on the card; fall back to a live Tatoeba lookup
     // for cards created without them (e.g. admin-entered words).
@@ -104,13 +115,21 @@ export function CardView({ card, onNext }: CardViewProps) {
 
   const rotateBy = (delta: number) => rotateTo(sideIndex + delta)
 
-  const handleStageClick = () => {
+  // Taps/clicks on controls inside the card (audio clip, writing, pills,
+  // cube map) must never drive the cube — checked at the source AND at the
+  // stage handlers so no propagation quirk can rotate the card.
+  const isControl = (target: EventTarget | null): boolean =>
+    target instanceof Element && target.closest('button, a, input, textarea, select') !== null
+
+  const handleStageClick = (e: React.MouseEvent) => {
+    if (isControl(e.target)) return
     if (suppressClickRef.current || sheet) return
     if (isWriting) return // Don't rotate while writing
     rotateBy(1)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (isControl(e.target)) return // Space/Enter on an inner button = the button's action
     if (sheet) return // Popup owns the keyboard while open
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
@@ -149,6 +168,7 @@ export function CardView({ card, onNext }: CardViewProps) {
 
   const handlePointerDown = (e: React.PointerEvent) => {
     if (isWriting || e.pointerType === 'mouse') return // drawing/click handle their own input
+    if (isControl(e.target)) return // pressing a control never starts a swipe
     dragRef.current = { x: e.clientX, y: e.clientY, swiped: false }
   }
 
@@ -184,26 +204,34 @@ export function CardView({ card, onNext }: CardViewProps) {
     setHasWritten(true)
   }
 
-  const handlePlayAudio = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    playAudio(card.audioUrl, card.hanzi)
-  }
-
   // Helper to safely cast tone string to Tone enum type since Card.tone is a string union
   const tone = card.tone as Tone
 
   // Sourced examples first, live Tatoeba only for cards created without them.
   const { main: mainMeaning, measureWords } = splitMeasureWords(card.meaning)
-  const examples: { zh: string; en?: string }[] = (card.examples ?? []).map((e) => ({
+
+  // Extra metadata (Details sheet): card fields first, local index fallback.
+  const chars = card.chars?.length ? card.chars : extraChars
+  const hskTag = card.tags.find((t) => /^hsk\d+$/i.test(t))
+  const hsk = card.hskLevel ?? (hskTag ? Number(hskTag.slice(3)) : undefined)
+  const posTags = card.tags.filter((t) => !/^hsk\d+$/i.test(t))
+  const hasDetails = Boolean(hsk || card.frequency || posTags.length || card.traditional || chars.length)
+  const examples: { zh: string; en?: string; audioUrl?: string }[] = (
+    card.examples ?? []
+  ).map((e) => ({
     zh: e.zh,
     en: e.en,
+    audioUrl: e.audioUrl,
   }))
   if (!examples.length && card.example) examples.push({ zh: card.example })
   if (!examples.length && live?.cardId === card.id) {
     examples.push(
-      ...live.list.slice(0, 2).map((e) => ({ zh: e.zh, en: e.en })),
+      ...live.list.slice(0, 2).map((e) => ({ zh: e.zh, en: e.en, audioUrl: e.audioUrl })),
     )
   }
+
+  const faceTransform = (i: number) =>
+    `rotateY(${90 * (i - sideIndex)}deg) translateZ(var(--cube-half, 170px))`
 
   return (
     <div className="card-container flex flex-col items-center w-full">
@@ -221,12 +249,12 @@ export function CardView({ card, onNext }: CardViewProps) {
         aria-label="Flashcard cube — tap, swipe or scroll to rotate sides"
       >
         <div className="cube-stage" ref={stageRef}>
-          <div
-            className="cube"
-            style={{ transform: `rotateY(${-90 * sideIndex}deg)` }}
-          >
+          {/* Face rotation carries the animation (cube itself never rotates —
+              a cube at ±90°/±270° has a zero-width projected quad and Chrome
+              then excludes its whole subtree from hit-testing). */}
+          <div className="cube">
             {/* Face 0 — character */}
-            <div className="cube-face">
+            <div className="cube-face" style={{ transform: faceTransform(0) }}>
               <span className="face-label">Character</span>
               <div className="face-stack">
                 <ToneText
@@ -266,35 +294,32 @@ export function CardView({ card, onNext }: CardViewProps) {
             </div>
 
             {/* Face 1 — pinyin */}
-            <div className="cube-face">
+            <div className="cube-face" style={{ transform: faceTransform(1) }}>
               <span className="face-label">Pinyin</span>
               <ToneText text={card.pinyin} tone={tone} className="pinyin-display" />
             </div>
 
             {/* Face 2 — meaning (extras behind popup pills) */}
-            <div className="cube-face cube-face--meaning">
+            <div
+              className="cube-face cube-face--meaning"
+              style={{ transform: faceTransform(2) }}
+            >
               <span className="face-label">Meaning</span>
               <MeaningBody
                 main={mainMeaning}
                 measureWords={measureWords}
                 exampleCount={examples.length}
+                hasDetails={hasDetails}
                 onOpen={setSheet}
               />
             </div>
 
             {/* Face 3 — tone quiz */}
-            <div className="cube-face">
+            <div className="cube-face" style={{ transform: faceTransform(3) }}>
               <span className="face-label">Tone</span>
               <div className="face-stack">
                 <ToneText text={`Tone ${tone}`} tone={tone} className="text-xl font-bold" />
-                <button
-                  type="button"
-                  onClick={handlePlayAudio}
-                  className="p-3 rounded-full bg-gray-800 text-blue-400 border hover:bg-gray-700 hover:text-blue-300 transition-colors"
-                  aria-label="Play Audio"
-                >
-                  <Volume2 size={24} />
-                </button>
+                <AudioClip text={card.hanzi} url={card.audioUrl} label="audio" />
               </div>
             </div>
           </div>
@@ -338,19 +363,29 @@ export function CardView({ card, onNext }: CardViewProps) {
 
       {sheet && (
         <InfoSheet
-          title={sheet === 'examples' ? 'Examples' : 'Measure words'}
+          title={
+            sheet === 'examples'
+              ? 'Examples'
+              : sheet === 'measureWords'
+                ? 'Measure words'
+                : 'Details'
+          }
           onClose={() => setSheet(null)}
         >
-          {sheet === 'examples' ? (
+          {sheet === 'examples' && (
             <ul className="example-list">
               {examples.map((ex) => (
                 <li key={ex.zh} className="example-item">
-                  <div className="example-zh">{ex.zh}</div>
-                  {ex.en && <div className="example-en">{ex.en}</div>}
+                  <div>
+                    <div className="example-zh">{ex.zh}</div>
+                    {ex.en && <div className="example-en">{ex.en}</div>}
+                  </div>
+                  <AudioClip size="sm" text={ex.zh} url={ex.audioUrl} label="sentence" />
                 </li>
               ))}
             </ul>
-          ) : (
+          )}
+          {sheet === 'measureWords' && (
             <div className="mw-list">
               {measureWords.map((mw) => (
                 <span key={mw} className="mw-chip">
@@ -358,6 +393,15 @@ export function CardView({ card, onNext }: CardViewProps) {
                 </span>
               ))}
             </div>
+          )}
+          {sheet === 'details' && (
+            <DetailsBody
+              hsk={hsk}
+              frequency={card.frequency}
+              posTags={posTags}
+              traditional={card.traditional}
+              chars={chars}
+            />
           )}
         </InfoSheet>
       )}
@@ -383,12 +427,14 @@ function MeaningBody({
   main,
   measureWords,
   exampleCount,
+  hasDetails,
   onOpen,
 }: {
   main: string
   measureWords: string[]
   exampleCount: number
-  onOpen: (kind: 'examples' | 'measureWords') => void
+  hasDetails: boolean
+  onOpen: (kind: 'examples' | 'measureWords' | 'details') => void
 }) {
   const style = meaningTextStyle(main.length)
 
@@ -398,7 +444,7 @@ function MeaningBody({
         {main}
       </span>
 
-      {(exampleCount > 0 || measureWords.length > 0) && (
+      {(exampleCount > 0 || measureWords.length > 0 || hasDetails) && (
         <div className="meaning-actions">
           {exampleCount > 0 && (
             <button
@@ -424,7 +470,87 @@ function MeaningBody({
               Measure words · {measureWords.length}
             </button>
           )}
+          {hasDetails && (
+            <button
+              type="button"
+              className="info-btn"
+              onClick={(e) => {
+                e.stopPropagation()
+                onOpen('details')
+              }}
+            >
+              Details
+            </button>
+          )}
         </div>
+      )}
+    </div>
+  )
+}
+
+/** Plain-language frequency buckets — rank numbers mean little alone. */
+function freqLabel(rank: number): string {
+  if (rank <= 1000) return 'very common'
+  if (rank <= 5000) return 'common'
+  if (rank <= 15000) return 'uncommon'
+  return 'rare'
+}
+
+/**
+ * Details sheet: HSK level, frequency, parts of speech, traditional form and
+ * the per-character breakdown (radical, strokes, decomposition, etymology).
+ */
+function DetailsBody({
+  hsk,
+  frequency,
+  posTags,
+  traditional,
+  chars,
+}: {
+  hsk?: number
+  frequency?: number
+  posTags: string[]
+  traditional?: string
+  chars: CharMeta[]
+}) {
+  return (
+    <div>
+      <div className="detail-meta">
+        {hsk != null && <span className="chip chip--live">HSK {hsk}</span>}
+        {frequency != null && (
+          <span className="chip">
+            freq #{frequency} · {freqLabel(frequency)}
+          </span>
+        )}
+        {posTags.map((tag) => (
+          <span key={tag} className="chip">
+            {tag}
+          </span>
+        ))}
+        {traditional && <span className="chip">繁體 {traditional}</span>}
+      </div>
+      {chars.length > 0 ? (
+        <div className="chars-preview">
+          {chars.map((c) => (
+            <div key={c.char} className="char-chip">
+              <span className="hanzi-text char-chip__char">{c.char}</span>
+              <span className="faint text-xs">
+                {c.radical}
+                {c.strokes != null && ` · ${c.strokes} strokes`}
+              </span>
+              {c.decomposition && (
+                <span className="text-xs text-gray-500">{c.decomposition}</span>
+              )}
+              {c.etymology?.hint && (
+                <span className="char-chip__hint">{c.etymology.hint}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="faint text-sm text-center">
+          No character breakdown on this card.
+        </p>
       )}
     </div>
   )

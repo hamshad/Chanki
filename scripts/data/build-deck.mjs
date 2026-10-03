@@ -25,8 +25,8 @@ import {
   detUuid, toneFromNumeric, toneFromMarked, numericToMarked, mapPosTags, mapLimit,
 } from './lib.mjs'
 import {
-  loadHsk30, loadHskWords, loadCedict, loadMakemeahanzi,
-  loadStrokeData, tatoebaExamples, tatoebaWordAudio, downloadAudio,
+  loadHsk30, loadHskWords, loadCedict, loadMakemeahanzi, loadWordfreq,
+  loadStrokeData, loadStrokeCount, tatoebaExamples, tatoebaWordAudio, downloadAudio,
 } from './sources.mjs'
 
 const CJK = /[\u4e00-\u9fa5]/
@@ -36,13 +36,14 @@ async function main() {
   const spec = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/data/deck-spec.json'), 'utf8'))
 
   console.log('ETL ▸ loading sources …')
-  const [hsk30, hskWords, cedict, mamh] = await Promise.all([
+  const [hsk30, hskWords, cedict, mamh, wordfreq] = await Promise.all([
     loadHsk30({ refresh }),
     loadHskWords({ refresh }),
     loadCedict({ refresh }),
     loadMakemeahanzi({ refresh }),
+    loadWordfreq({ refresh }),
   ])
-  console.log(`  hsk30: ${hsk30.size} words | hsk2.0: ${hskWords.byWord.size} words`)
+  console.log(`  hsk30: ${hsk30.size} words | hsk2.0: ${hskWords.byWord.size} words | zh-50k: ${wordfreq.size}`)
   console.log(`  cedict: ${cedict.size} entries | makemeahanzi: ${mamh.size} chars`)
 
   // ── Resolve word list: explicit (spec.words) or top-frequency selection ──
@@ -147,33 +148,87 @@ async function main() {
   }
 
   // ── Runtime dictionary index (all HSK 1–6 words + CEDICT definitions) ──
+  // Fields: t=traditional p=pinyin m=meanings l=HSK level f=frequency g=POS tags
   console.log('ETL ▸ runtime dictionary index …')
   ensureDir(INDEX_DIR)
+  // Word set: HSK 1–6 lists ∪ deck words ∪ zh-50k top 20k (frequency).
+  // The HSK lists alone miss everyday words like 你好 — the frequency
+  // corpus closes that gap; cedict join decides final membership.
+  const ZH50K_TOP = 20_000
+  const wordSet = new Set([...hsk30.keys(), ...hskWords.byWord.keys(), ...wordList.map((w) => w.hanzi)])
+  let taken = 0
+  for (const [word] of wordfreq) {
+    if (taken >= ZH50K_TOP) break
+    wordSet.add(word)
+    taken++
+  }
   const index = {}
-  for (const word of hskWords.byWord.keys()) {
+  for (const word of wordSet) {
     const entries = cedict.get(word)
     if (!entries?.length) continue
     const primary = entries[0]
     const meanings = entries.flatMap((e) => e.definitions)
+    const h = hsk30.get(word)
+    const d = hskWords.byWord.get(word)
+    const level = h?.level ?? hskWords.levelByWord.get(word) ?? undefined
+    const posCodes = h?.posCodes?.length ? h.posCodes : d?.pos || []
+    const freq = d?.frequency ?? wordfreq.get(word)?.rank
     index[word] = {
       t: primary.traditional,
       p: primary.pinyin.match(/[1-5]\s*$/) ? numericToMarked(primary.pinyin) : primary.pinyin,
-      m: [...new Set(meanings)],
+      m: [...new Set(meanings)].slice(0, 8),
+      ...(level != null ? { l: level } : {}),
+      ...(freq ? { f: freq } : {}),
+      ...(mapPosTags(posCodes).length ? { g: mapPosTags(posCodes) } : {}),
     }
   }
   fs.writeFileSync(path.join(INDEX_DIR, 'cedict-hsk.json'), JSON.stringify(index))
   console.log(`  index: ${Object.keys(index).length} entries (${(fs.statSync(path.join(INDEX_DIR, 'cedict-hsk.json')).size / 1024).toFixed(0)} KB)`)
+
+  // ── Per-character enrichment index (admin pick → Card.chars[]) ──
+  // Radical / strokes / decomposition / etymology for every char across HSK
+  // vocabulary. Lazy-fetched by the admin UI — never blocks deck builds.
+  console.log('ETL ▸ chars index (radical/strokes/etymology) …')
+  const hskChars = new Set()
+  for (const word of hskWords.byWord.keys()) for (const ch of word) if (CJK.test(ch)) hskChars.add(ch)
+  const charsIndex = {}
+  let strokeFetches = 0
+  await mapLimit([...hskChars], 8, async (ch) => {
+    const dict = mamh.get(ch)
+    const meta = {}
+    if (dict?.radical) meta.r = dict.radical
+    if (dict?.decomposition && !dict.decomposition.startsWith('？')) meta.d = dict.decomposition
+    if (dict?.etymology) meta.e = dict.etymology
+    const strokes = await loadStrokeCount(ch, { refresh })
+    if (strokes) {
+      meta.s = strokes
+      strokeFetches++
+    }
+    if (Object.keys(meta).length) charsIndex[ch] = meta
+  })
+  fs.writeFileSync(path.join(INDEX_DIR, 'chars.json'), JSON.stringify(charsIndex))
+  console.log(`  chars: ${Object.keys(charsIndex).length} (${strokeFetches} stroke lookups, ${(fs.statSync(path.join(INDEX_DIR, 'chars.json')).size / 1024).toFixed(0)} KB)`)
 
   // ── Write deck (seed contract: {deck, cards}) ──
   const out = path.join(DECK_DIR, 'hsk1-starter.json')
   fs.writeFileSync(out, JSON.stringify({ deck, cards: cleanCards }, null, 1))
   console.log(`ETL ▸ wrote ${out}`)
 
+  // ── Neural audio (edge-tts): fills every gap Tatoeba left; skipped when the CLI is absent ──
+  try {
+    const { ensureDeckAudio } = await import('./audio.mjs')
+    const { generated, failed } = await ensureDeckAudio({ deckFile: out })
+    if (generated) console.log(`ETL ▸ synthesized ${generated} audio clips${failed ? ` (${failed} failed)` : ''}`)
+  } catch (err) {
+    console.warn(`ETL ▸ audio skipped: ${err.message}`)
+  }
+  const cardsForReport = JSON.parse(fs.readFileSync(out, 'utf8')).cards
+
   writeSourcesMarkdown(now)
 
   // ── Coverage report ──
-  const n = cleanCards.length
-  const cov = (pred) => `${cleanCards.filter(pred).length}/${n} (${Math.round((cleanCards.filter(pred).length / n) * 100)}%)`
+  const n = cardsForReport.length
+  const cov = (pred) => `${cardsForReport.filter(pred).length}/${n} (${Math.round((cardsForReport.filter(pred).length / n) * 100)}%)`
   const report = {
     generatedAt: new Date(now).toISOString(),
     words: n,
@@ -266,13 +321,15 @@ the open sources below.
 | \`frequency\`, learner gloss fallback, POS fallback | [drkameleon/complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) | per repository |
 | \`chars[].radical\`, \`chars[].decomposition\`, \`chars[].etymology\` | [skishore/makemeahanzi](https://github.com/skishore/makemeahanzi) (Unihan + CJKlib derived) | CC BY-SA 3.0 |
 | \`chars[].strokes\`, stroke animation data | [hanzi-writer-data](https://github.com/hanzi-writer/data) (Make Me A Hanzi graphics; Arphic PL fonts derived) | see \`hanzi-data/LICENSE\` |
-| \`examples[]\`, \`audioUrl\`, example audio | [Tatoeba](https://tatoeba.org) | CC BY 2.0 FR |
+| \`examples[]\` | [Tatoeba](https://tatoeba.org) | CC BY 2.0 FR |
+| \`audioUrl\` clips (word + sentence) | [edge-tts](https://github.com/rany2/edge-tts) over Microsoft Edge neural voices (zh-CN-XiaoxiaoNeural) | tool MIT; generated speech |
 
 ## Attribution
 
 - CC-CEDICT: © MDBG and contributors, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - Make Me A Hanzi: © Skishore et al., [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
 - Tatoeba sentence recordings: © respective contributors, [CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/)
+- Deck audio clips generated with edge-tts (Microsoft Edge read-aloud neural voices)
 - HSK word lists: Hanban / Confucius Institute, published via open repositories
 - Tone contours and pitch templates are original pedagogical content in \`src/utils/toneContour.ts\`
 `

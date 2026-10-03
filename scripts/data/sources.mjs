@@ -70,6 +70,32 @@ export async function loadHskWords({ levels = [1, 2, 3, 4, 5, 6], type = 'old', 
   return { byWord, levelByWord }
 }
 
+// ─── zh-50K word frequency (wordfreq-derived; zaum mirror) ────────────────────
+
+const ZH50K_URL =
+  'https://raw.githubusercontent.com/zacharydenton/zaum/master/public/data/wordfreq/zh/zh_50K.txt'
+
+/**
+ * Top 50k Mandarin words by frequency, `{ rank, count }` (1 = commonest).
+ * Disk-cached; used to widen the runtime dictionary index beyond HSK lists
+ * (they miss common words like 你好) and to give every entry a frequency.
+ */
+export async function loadWordfreq({ refresh = false } = {}) {
+  const text = await fetchText(ZH50K_URL, { cacheName: 'zh-50k.txt', refresh })
+  const map = new Map()
+  let rank = 0
+  for (const line of text.split('\n')) {
+    const i = line.lastIndexOf(' ')
+    if (i < 1) continue
+    const word = line.slice(0, i).trim()
+    const count = Number(line.slice(i + 1))
+    if (!word || !Number.isFinite(count)) continue
+    rank++
+    if (!map.has(word)) map.set(word, { rank, count })
+  }
+  return map
+}
+
 // ─── CC-CEDICT (MDBG) ───────────────────────────────────────────────────────────
 
 const CEDICT_URL = 'https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz'
@@ -124,6 +150,23 @@ export async function loadStrokeData(char, { refresh = false } = {}) {
   } catch (err) {
     console.warn(`  stroke data missing for ${char}: ${err.message}`)
     return null
+  }
+}
+
+/**
+ * Stroke count only (hanzi-writer-data) — cached under .cache/data/, does NOT
+ * write into public/. Used by the admin chars index.
+ */
+export async function loadStrokeCount(char, { refresh = false } = {}) {
+  try {
+    const text = await fetchText(HANZI_WRITER_DATA(char), {
+      cacheName: `hanzi-writer/${char}.json`,
+      refresh,
+    })
+    const data = JSON.parse(text)
+    return Array.isArray(data.strokes) ? data.strokes.length : undefined
+  } catch {
+    return undefined
   }
 }
 

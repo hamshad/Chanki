@@ -1,12 +1,18 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation } from 'wouter'
-import { CardSchema, type Card } from '../data/schema'
+import { CardSchema, type Card, type CardExample, type CharMeta } from '../data/schema'
 import { fetchRemoteCards, saveRemoteCard, deleteRemoteCard } from '../data/remoteCards'
+import { fetchWiktionaryDefinitions } from '../data/api/wiktionary'
 import {
-  searchWiktionary,
-  fetchWiktionaryDefinitions,
+  searchDict,
+  loadDict,
+  charsForWord,
+  pickExamples,
   containsHanzi,
-} from '../data/api/wiktionary'
+  type WordHit,
+  type MatchKind,
+} from '../data/api/search'
+import { searchExamples } from '../data/api/tatoeba'
 import { toneFromMarked, toneFromNumeric } from '../utils/pinyin'
 import {
   subscribeResources,
@@ -20,23 +26,24 @@ const DECK_ID = 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d'
 
 type ToneValue = '1' | '2' | '3' | '4' | '5'
 
-interface CedictEntry {
-  t?: string
-  p: string
-  m: string[]
+const MATCH_LABEL: Record<MatchKind, string> = {
+  hanzi: 'exact',
+  traditional: 'traditional',
+  pinyin: 'pinyin',
+  prefix: 'starts with',
+  contains: 'contains',
+  meaning: 'meaning',
 }
 
-type CedictIndex = Record<string, CedictEntry>
-
-interface SearchResult {
-  id: string
-  kind: 'cedict' | 'wiktionary'
-  title: string
-  pinyin?: string
-  meaning?: string
+interface BaseDraft {
+  hanzi: string
+  pinyin: string
+  meaning: string
+  tone: ToneValue
   traditional?: string
-  tone?: ToneValue
-  snippet?: string
+  tags?: string
+  hsk?: number | ''
+  freq?: number | ''
 }
 
 export function AdminDashboard() {
@@ -47,16 +54,20 @@ export function AdminDashboard() {
   // Search
   const [query, setQuery] = useState('')
   const [searching, setSearching] = useState(false)
-  const [results, setResults] = useState<SearchResult[]>([])
+  const [results, setResults] = useState<WordHit[]>([])
+  const [enriching, setEnriching] = useState(false)
 
-  // Draft card
+  // Draft card — full template (matches seeded Firestore docs)
   const [hanzi, setHanzi] = useState('')
   const [pinyin, setPinyin] = useState('')
   const [meaning, setMeaning] = useState('')
   const [tone, setTone] = useState<ToneValue>('1')
   const [traditional, setTraditional] = useState('')
   const [tags, setTags] = useState('')
-  const [example, setExample] = useState('')
+  const [hsk, setHsk] = useState<number | ''>('')
+  const [freq, setFreq] = useState<number | ''>('')
+  const [examples, setExamples] = useState<CardExample[]>([])
+  const [chars, setChars] = useState<CharMeta[]>([])
   const [saving, setSaving] = useState(false)
 
   // Resources (Firebase RTDB)
@@ -67,8 +78,6 @@ export function AdminDashboard() {
 
   const fail = (text: string) => setNotice({ kind: 'error', text })
   const succeed = (text: string) => setNotice({ kind: 'ok', text })
-
-  const cedictRef = useRef<CedictIndex | null>(null)
 
   useEffect(() => {
     if (sessionStorage.getItem('admin') !== 'true') {
@@ -89,30 +98,23 @@ export function AdminDashboard() {
     }
   }
 
-  async function ensureCedict(): Promise<CedictIndex> {
-    if (cedictRef.current) return cedictRef.current
-    const res = await fetch('/assets/deck/index/cedict-hsk.json')
-    cedictRef.current = (await res.json()) as CedictIndex
-    return cedictRef.current
+  function fillDraft(base: BaseDraft) {
+    setHanzi(base.hanzi)
+    setPinyin(base.pinyin)
+    setMeaning(base.meaning)
+    setTone(base.tone)
+    setTraditional(base.traditional ?? '')
+    setTags(base.tags ?? '')
+    setHsk(base.hsk ?? '')
+    setFreq(base.freq ?? '')
+    setExamples([])
+    setChars([])
+    setNotice(null)
   }
 
-  function fillDraft(fields: {
-    hanzi: string
-    pinyin: string
-    meaning: string
-    tone: ToneValue
-    traditional?: string
-    example?: string
-    tags?: string
-  }) {
-    setHanzi(fields.hanzi)
-    setPinyin(fields.pinyin)
-    setMeaning(fields.meaning)
-    setTone(fields.tone)
-    setTraditional(fields.traditional ?? '')
-    setExample(fields.example ?? '')
-    setTags(fields.tags ?? '')
-    setNotice(null)
+  function draftTags(hit: WordHit): string {
+    const parts = [...hit.tags, ...(hit.hsk ? [`hsk${hit.hsk}`] : [])]
+    return [...new Set(parts)].join(', ')
   }
 
   async function handleSearch(e: React.FormEvent) {
@@ -122,126 +124,136 @@ export function AdminDashboard() {
     setSearching(true)
     setResults([])
     setNotice(null)
-
     try {
-      const matches: SearchResult[] = []
-      try {
-        const cedict = await ensureCedict()
-        const qLow = q.toLowerCase()
-        const qNorm = qLow.replace(/\s+/g, '')
-        for (const [key, entry] of Object.entries(cedict)) {
-          const pLow = entry.p.toLowerCase()
-          const pNorm = pLow.replace(/\s+/g, '')
-          const exact = key === q
-          const prefix = key.startsWith(q)
-          const pinyinHit = pLow.startsWith(qLow) || pNorm.startsWith(qNorm)
-          if (exact || prefix || pinyinHit) {
-            matches.push({
-              id: `c:${key}`,
-              kind: 'cedict',
-              title: key,
-              pinyin: entry.p,
-              meaning: entry.m.join('; '),
-              traditional: entry.t,
-              tone: toneFromMarked(entry.p),
-            })
-          }
-          if (matches.length >= 12) break
-        }
-        matches.sort((a, b) => {
-          const rank = (r: SearchResult) =>
-            r.title === q ? 0 : r.title.startsWith(q) ? 1 : 2
-          return rank(a) - rank(b)
-        })
-      } catch (err) {
-        console.warn('CEDICT index unavailable', err)
-      }
+      const index = await loadDict()
+      const hits = searchDict(index, q, 20)
+      setResults(hits)
+      if (hits.length) return
 
-      // Wiktionary fills gaps — works when CEDICT misses or query is English.
-      if (matches.length < 6) {
-        try {
-          const wiki = await searchWiktionary(q)
-          for (const hit of wiki) {
-            if (matches.some(m => m.title === hit.title)) continue
-            matches.push({
-              id: `w:${hit.title}`,
-              kind: 'wiktionary',
-              title: hit.title,
-              snippet: hit.snippet,
-            })
-          }
-        } catch (err) {
-          console.warn('Wiktionary search unavailable', err)
-        }
+      // Zero local hits + hanzi query → exact-title Wiktionary (never the
+      // noisy full-text English-title search).
+      if (containsHanzi(q)) {
+        await fillFromWiktionary(q)
+        return
       }
-
-      setResults(matches.slice(0, 12))
-      if (matches.length === 0) fail(`Nothing found for “${q}”.`)
+      fail(`Nothing found for “${q}”.`)
+    } catch (err) {
+      console.error(err)
+      fail('Dictionary index unavailable — check your connection and retry.')
     } finally {
       setSearching(false)
     }
   }
 
-  async function handlePick(result: SearchResult) {
-    if (result.kind === 'cedict' && result.pinyin && result.meaning) {
-      fillDraft({
-        hanzi: result.title,
-        pinyin: result.pinyin,
-        meaning: result.meaning,
-        tone: result.tone ?? '5',
-        traditional: result.traditional,
-      })
-      return
-    }
+  async function handlePick(hit: WordHit) {
+    fillDraft({
+      hanzi: hit.hanzi,
+      pinyin: hit.pinyin,
+      meaning: hit.meaning,
+      tone: hit.tone,
+      traditional: hit.traditional,
+      tags: draftTags(hit),
+      hsk: hit.hsk ?? '',
+      freq: hit.freq ?? '',
+    })
+    await enrichDraft(hit.hanzi)
+  }
 
-    // Wiktionary result → pull definitions for the hanzi title (or snippet).
-    let word = containsHanzi(result.title) ? result.title : ''
-    if (!word && result.snippet) {
-      word = result.snippet.match(/[一-鿿]+/)?.[0] ?? ''
-    }
-    if (!word) {
-      fail('Pick a result that contains Chinese characters, or fill the form manually.')
-      return
-    }
-
-    setSearching(true)
+  /** Exact-title Wiktionary fill for words missing from the local index. */
+  async function fillFromWiktionary(word: string) {
+    setEnriching(true)
     try {
       const senses = await fetchWiktionaryDefinitions(word)
       const meaning = senses.map(s => s.definition).join('; ')
-      if (!meaning) fail(`No definitions found for ${word}.`)
+      if (!meaning) {
+        fail(`Nothing found for “${word}”.`)
+        return
+      }
       const exampleText = senses.find(s => s.example)?.example
       const posTags = [...new Set(senses.map(s => s.pos).filter(Boolean))].join(', ')
 
-      // Pinyin from CEDICT when we have it, else admin fills it in.
+      // Pinyin / level / frequency still come from the local index when it has
+      // the word (it usually lacks only exotic entries).
       let pinyin = ''
-      let traditionalText = ''
       let toneValue: ToneValue = '5'
+      let traditionalText = ''
+      let hskValue: number | '' = ''
+      let freqValue: number | '' = ''
+      let tagsText = posTags
       try {
-        const cedict = await ensureCedict()
-        const entry = cedict[word]
+        const entry = (await loadDict())[word]
         if (entry) {
           pinyin = entry.p
-          traditionalText = entry.t ?? ''
           toneValue = toneFromMarked(entry.p)
+          traditionalText = entry.t && entry.t !== word ? entry.t : ''
+          hskValue = entry.l ?? ''
+          freqValue = entry.f ?? ''
+          const dictTags = [...(entry.g ?? []), ...(entry.l ? [`hsk${entry.l}`] : [])]
+          if (dictTags.length) tagsText = [...new Set(dictTags)].join(', ')
         }
       } catch {
-        /* offline or index missing — manual pinyin */
+        /* index offline — admin fills pinyin manually */
       }
 
       fillDraft({
         hanzi: word,
         pinyin,
-        meaning: meaning || result.snippet || '',
+        meaning,
         tone: toneValue,
         traditional: traditionalText,
-        example: exampleText,
-        tags: posTags,
+        tags: tagsText,
+        hsk: hskValue,
+        freq: freqValue,
       })
-      if (!meaning) fail('Definition came up empty — edit the fields before saving.')
+      if (!pinyin) {
+        fail('Filled from Wiktionary — pinyin missing from the index, type it in.')
+      }
+      await enrichDraft(word, exampleText)
     } catch (err) {
       fail(err instanceof Error ? err.message : 'Wiktionary lookup failed.')
     } finally {
-      setSearching(false)
+      setEnriching(false)
+    }
+  }
+
+  /**
+   * Fill the template's enrichment fields: character breakdown from the local
+   * chars index, example sentences from Tatoeba (live, keyless).
+   */
+  async function enrichDraft(word: string, fallbackExample?: string) {
+    setEnriching(true)
+    try {
+      const [charMeta, raw] = await Promise.all([
+        charsForWord(word).catch(() => []),
+        searchExamples(word, 6).catch(() => []),
+      ])
+      const picked = pickExamples(word, raw, 3)
+      const cardExamples: CardExample[] = picked
+        .filter(e => e.zh.trim())
+        .map(e => ({
+          zh: e.zh.trim(),
+          ...(e.en?.trim() ? { en: e.en.trim() } : {}),
+          ...(e.id ? { sourceId: e.id } : {}),
+          ...(e.audioUrl ? { audioUrl: e.audioUrl } : {}),
+        }))
+      if (!cardExamples.length && fallbackExample?.trim()) {
+        if (fallbackExample.includes(word)) cardExamples.push({ zh: fallbackExample.trim() })
+      }
+
+      setChars(charMeta)
+      setExamples(cardExamples)
+
+      const parts = [
+        charMeta.length ? `${charMeta.length} char breakdown` : null,
+        cardExamples.length ? `${cardExamples.length} example${cardExamples.length > 1 ? 's' : ''}` : null,
+      ].filter(Boolean)
+      if (parts.length) succeed(`Enriched: ${parts.join(' + ')}.`)
+      else succeed('No extra data found — fill the remaining fields by hand.')
+    } catch (err) {
+      console.error(err)
+      succeed('Enrichment skipped (offline?) — base fields are filled.')
+    } finally {
+      setEnriching(false)
     }
   }
 
@@ -251,11 +263,30 @@ export function AdminDashboard() {
     setTone(hasMark ? toneFromMarked(value) : toneFromNumeric(value))
   }
 
+  function updateExample(index: number, patch: Partial<CardExample>) {
+    setExamples(prev => prev.map((ex, i) => (i === index ? { ...ex, ...patch } : ex)))
+  }
+
+  function removeExample(index: number) {
+    setExamples(prev => prev.filter((_, i) => i !== index))
+  }
+
+  function addExample() {
+    setExamples(prev => [...prev, { zh: '', en: '' }])
+  }
+
   async function handleSaveCard(e: React.FormEvent) {
     e.preventDefault()
     setSaving(true)
     try {
       const now = Date.now()
+      const cleanExamples = examples
+        .map(ex => ({
+          ...ex,
+          zh: ex.zh.trim(),
+          ...(ex.en ? { en: ex.en.trim() } : {}),
+        }))
+        .filter(ex => ex.zh)
       const card: Card = {
         id: crypto.randomUUID(),
         deckId: DECK_ID,
@@ -265,7 +296,12 @@ export function AdminDashboard() {
         tone,
         tags: tags.split(',').map(t => t.trim()).filter(Boolean),
         ...(traditional.trim() ? { traditional: traditional.trim() } : {}),
-        ...(example.trim() ? { example: example.trim() } : {}),
+        ...(hsk !== '' ? { hskLevel: hsk } : {}),
+        ...(freq !== '' && freq > 0 ? { frequency: freq } : {}),
+        ...(cleanExamples.length
+          ? { examples: cleanExamples, example: cleanExamples[0].zh }
+          : {}),
+        ...(chars.length ? { chars } : {}),
         schemaVersion: 1,
         createdAt: now,
         updatedAt: now,
@@ -316,6 +352,7 @@ export function AdminDashboard() {
     if (!window.confirm('Remove this resource?')) return
     try {
       await deleteResource(id)
+      succeed('Resource removed.')
     } catch (err) {
       fail(err instanceof Error ? err.message : 'Could not remove resource.')
     }
@@ -352,36 +389,44 @@ export function AdminDashboard() {
       <form onSubmit={handleSearch} className="admin-toolbar glass-panel p-4">
         <input
           className="flex-1"
-          placeholder="Search character / pinyin / English…"
+          placeholder="Search hanzi / pinyin / English…"
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        <button type="submit" className="primary" disabled={searching}>
+        <button type="submit" className="primary" disabled={searching || enriching}>
           {searching ? 'Searching…' : 'Search'}
         </button>
+        {enriching && <span className="chip chip--live">Fetching…</span>}
       </form>
 
       {results.length > 0 && (
-        <div className="glass-panel overflow-hidden mb-6">
+        <div className="search-results glass-panel overflow-hidden mb-6">
+          <div className="search-results__head">
+            <span className="eyebrow">{results.length} results</span>
+            <span className="faint text-xs">tap to fill the full card</span>
+          </div>
           {results.map(r => (
             <button
-              key={r.id}
+              key={r.hanzi}
               type="button"
-              className="card-row w-full text-left"
+              className="search-hit"
               onClick={() => handlePick(r)}
-              disabled={searching}
+              disabled={searching || enriching}
             >
-              <div className="card-row__main">
-                <span className="font-bold text-lg hanzi-text">{r.title}</span>
-                {r.pinyin && <span className="text-gray-400">{r.pinyin}</span>}
-                {r.meaning && <span className="text-gray-500 text-sm">{r.meaning}</span>}
-                {!r.meaning && r.snippet && (
-                  <span className="text-gray-500 text-sm">{r.snippet}</span>
-                )}
-              </div>
-              <span className="faint text-xs">
-                {r.kind === 'cedict' ? 'CC-CEDICT' : 'Wiktionary'}
+              <span className="search-hit__line">
+                <span className="search-hit__hanzi hanzi-text">{r.hanzi}</span>
+                <span className={`search-hit__pinyin tone-${r.tone}`}>{r.pinyin}</span>
+                <span className="search-hit__chips">
+                  {r.hsk && <span className="chip chip--live">HSK {r.hsk}</span>}
+                  <span className="chip">{MATCH_LABEL[r.match]}</span>
+                  {r.freq && <span className="chip">freq {r.freq}</span>}
+                  {r.traditional && <span className="chip">{r.traditional}</span>}
+                </span>
               </span>
+              <span className="search-hit__meaning">{r.meaning}</span>
+              {r.tags.length > 0 && (
+                <span className="search-hit__tags faint text-xs">{r.tags.join(' · ')}</span>
+              )}
             </button>
           ))}
         </div>
@@ -425,18 +470,94 @@ export function AdminDashboard() {
           <span>Traditional (optional)</span>
           <input placeholder="你好" value={traditional} onChange={e => setTraditional(e.target.value)} />
         </label>
-        <label className="field">
-          <span>Example sentence (optional)</span>
-          <input placeholder="你好吗？" value={example} onChange={e => setExample(e.target.value)} />
-        </label>
+        <div className="field-pair">
+          <label className="field">
+            <span>HSK level (optional)</span>
+            <select value={hsk} onChange={e => setHsk(e.target.value === '' ? '' : Number(e.target.value))}>
+              <option value="">—</option>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(l => (
+                <option key={l} value={l}>
+                  {l}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="field">
+            <span>Frequency rank (optional)</span>
+            <input
+              type="number"
+              min={1}
+              placeholder="130"
+              value={freq}
+              onChange={e => setFreq(e.target.value === '' ? '' : Number(e.target.value))}
+            />
+          </label>
+        </div>
+
+        <div className="field">
+          <span>
+            Examples {enriching && <em className="faint">(fetching…)</em>}
+          </span>
+          {examples.map((ex, i) => (
+            <div className="ex-row" key={i}>
+              <input
+                placeholder="你好吗？"
+                value={ex.zh}
+                onChange={e => updateExample(i, { zh: e.target.value })}
+              />
+              <input
+                placeholder="How are you?"
+                value={ex.en ?? ''}
+                onChange={e => updateExample(i, { en: e.target.value })}
+              />
+              <button
+                type="button"
+                className="btn-quiet"
+                onClick={() => removeExample(i)}
+                aria-label="Remove example"
+              >
+                ×
+              </button>
+            </div>
+          ))}
+          <button type="button" className="btn-quiet" onClick={addExample}>
+            + Add example
+          </button>
+        </div>
+
+        {chars.length > 0 && (
+          <div className="field">
+            <span>Characters ({chars.length})</span>
+            <div className="chars-preview">
+              {chars.map(c => (
+                <div className="char-chip" key={c.char}>
+                  <span className="hanzi-text char-chip__char">{c.char}</span>
+                  <span className="faint text-xs">
+                    {c.radical}
+                    {c.strokes ? ` · ${c.strokes} strokes` : ''}
+                  </span>
+                  {c.decomposition && (
+                    <span className="text-xs text-gray-500">{c.decomposition}</span>
+                  )}
+                  {c.etymology?.hint && (
+                    <span className="char-chip__hint">{c.etymology.hint}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <label className="field">
           <span>Tags (comma separated)</span>
           <input placeholder="greeting, hsk1" value={tags} onChange={e => setTags(e.target.value)} />
         </label>
         <p className="faint text-xs">
-          Audio plays via the device voice engine — no audio URL needed.
+          Saved cards play through the device voice engine until you run{' '}
+          <code>npm run data:audio</code> — it synthesizes neural clips and links them
+          automatically (then <code>firebase deploy --only hosting</code>).
         </p>
-        <button type="submit" className="primary flex-1" disabled={saving}>
+        <button type="submit" className="primary flex-1" disabled={saving || enriching}>
           {saving ? 'Saving…' : 'Save to Firestore'}
         </button>
       </form>
@@ -457,6 +578,10 @@ export function AdminDashboard() {
                 <span className="font-bold text-lg hanzi-text">{c.hanzi}</span>
                 <span className="text-gray-400">{c.pinyin}</span>
                 <span className="text-gray-500 text-sm">{c.meaning}</span>
+                {c.hskLevel && <span className="chip chip--live">HSK {c.hskLevel}</span>}
+                {c.examples && c.examples.length > 0 && (
+                  <span className="chip">{c.examples.length} ex</span>
+                )}
               </div>
               <button onClick={() => handleDeleteCard(c)} className="btn-quiet">
                 Delete

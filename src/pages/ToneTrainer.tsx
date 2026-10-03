@@ -67,7 +67,7 @@ export function ToneTrainer() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="p-6 text-white w-full max-w-xl mx-auto"
+      className="tone-page"
       data-testid="tone-trainer"
     >
       <h2 className="display text-3xl mb-1">Tone trainer</h2>

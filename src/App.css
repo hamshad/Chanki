@@ -146,8 +146,7 @@
 .app-footer__inner {
   max-width: var(--container);
   margin-inline: auto;
-  padding: 1.5rem clamp(1rem, 4vw, 2rem)
-    calc(5.25rem + env(safe-area-inset-bottom, 0px));
+  padding: 1.5rem clamp(1rem, 4vw, 2rem) 1.5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -228,4 +227,75 @@
   margin-bottom: 1.75rem;
   font-weight: 600;
   text-decoration: none;
+}
+
+
+/* ── Mobile shell: bottom tab bar (hidden on review — grades own the bottom) ── */
+
+.tab-bar {
+  display: none;
+}
+
+@media (max-width: 719px) {
+  .site-nav {
+    display: none;
+  }
+
+  .tab-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-sticky);
+    display: flex;
+    background: rgb(var(--bg-rgb) / 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .tab {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 0.55rem 0.1rem 0.5rem;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text-3);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s ease;
+  }
+
+  .tab span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tab.is-active {
+    color: var(--accent-strong);
+  }
+
+  .tab:active {
+    opacity: 0.65;
+  }
+
+  /* Footer padding handles tab-bar clearance; review (no tab bar) still
+     needs to clear the home indicator. */
+  .app-main--focus {
+    padding-bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .app-footer__inner {
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+  }
 }
