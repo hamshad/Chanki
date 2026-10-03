@@ -103,7 +103,25 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-09-29
-Stopped at: Phase 11 complete — all v1 phases done
-Resume file: none pending (v1 roadmap closed)
-Next: manual device matrix for /tone + /tone-spike, then v2 requirements or release
+Last session: 2026-10-03
+Stopped at: live on https://chanki-hanzi.vercel.app (Vercel), MIT licensed, full stack verified end-to-end
+Resume file: none pending
+Next: awaiting user-directed edge-case work only
+
+### 2026-10-03 — post-v1 state
+
+**Working agreement (see AGENTS.md): everything works; changes are EDGE-CASES ONLY and must not regress working behaviour unless the user names the change explicitly.** Gates on every change: `npm run lint` ≤12 warnings, `npm run test:run` 198 tests green, `npm run build` clean.
+
+Delivered this session:
+- Card metadata display (Details sheet): HSK badge, frequency bucket, POS chips, 繁體, per-char radical/strokes/IDS/etymology
+- Mobile-first shell: `TabBar.tsx` (5 tabs, <720px, safe-area, re-tap scrolls top), `.site-nav` hidden, brand easter egg preserved
+- Neural audio: `edge-tts` deck clips (150 word + 298 sentence mp3s), `AudioClip` voice-clip visualizer, `startAudio` URL→TTS controller, runtime voice preference for network voices
+- **Cube hit-test fix**: rotation moved from `.cube` to `.cube-face`. A cube at ±90°/±270° projects a zero-width quad, so Chrome removed the whole subtree from hit-testing — face buttons were untappable. Diagnosed with headless Chrome hit-test probes (no React wiring issue). Load-bearing invariant, never revert.
+- Audio backfill for admin-added cards: `scripts/data/remote-audio.mjs` (phase 2 of `npm run data:audio`) scans Firestore for missing `audioUrl`, synthesizes, patches docs
+- PWA precache fix: `includeAssets` mp3/json globs bypassed workbox `globIgnores` → all 285 ex clips + duplicate JSON entries were precached. Now 349 entries (was 960)
+- Vercel migration + `vercel.json` fix (`/**/*.html` invalid in path-to-regexp; blanket `immutable` on all paths removed)
+- Docs: README, MIT LICENSE, `.gitignore` polish
+
+Key invariants recorded in AGENTS.md: face-level cube rotation, vercel.json header ordering, Firestore-only cards, precache policy, admin gate is UX-only, `isControl()` guards.
+
+Outstanding: Firestore `cards` has only 3 docs (`真`, `水`, `你好`); the 150-card seed was deleted while testing admin. Re-seed with `npm run db:seed` (per-id setDoc, manual cards survive) if wanted. `真` and `水` have no neural clips yet — `npm run data:audio` covers them.
