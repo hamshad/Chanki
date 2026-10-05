@@ -21,7 +21,7 @@ function flat(...nums: number[]): number[] {
 }
 
 describe('normalizeStrokes', () => {
-  it('moves the bbox to the origin and scales the larger side to 1', () => {
+  it('fits the bbox into the unit square', () => {
     const [n] = normalizeStrokes([line(10, 20, 110, 20)])
     expect(n[0].x).toBeCloseTo(0)
     expect(n[0].y).toBeCloseTo(0)
@@ -29,11 +29,15 @@ describe('normalizeStrokes', () => {
     expect(n[n.length - 1].y).toBeCloseTo(0)
   })
 
-  it('keeps relative stroke positions (aspect ratio preserved)', () => {
-    // A vertical stroke crossing the middle of a 100-wide box stays at x=.5.
-    const [, vertical] = normalizeStrokes([line(0, 0, 100, 0), line(50, 0, 50, 80)])
-    expect(vertical[0].x).toBeCloseTo(0.5)
-    expect(vertical[vertical.length - 1].y).toBeCloseTo(0.8)
+  it('scales each axis independently — proportion drift cancels out', () => {
+    // A box drawn 25% taller than canonical still maps to the same square,
+    // keeping relative stroke positions inside the cell.
+    const short = normalizeStrokes([line(0, 0, 100, 0), line(50, 0, 50, 80)])
+    const tall = normalizeStrokes([line(0, 0, 100, 0), line(50, 0, 50, 100)])
+    expect(short[1][0].x).toBeCloseTo(0.5)
+    expect(tall[1][0].x).toBeCloseTo(0.5)
+    expect(short[1][short[1].length - 1].y).toBeCloseTo(1)
+    expect(tall[1][tall[1].length - 1].y).toBeCloseTo(1)
   })
 
   it('survives a zero-size drawing', () => {
@@ -62,8 +66,10 @@ describe('resample', () => {
 describe('recognizeHandwriting', () => {
   // A cross (2 strokes) and a box (3 strokes), in index coordinates.
   const index: HandwritingIndex = {
-    '十': [flat(0, 500, 1000, 500), flat(500, 0, 500, 1000)],
-    '口': [flat(0, 0, 0, 1000), flat(0, 0, 1000, 0), flat(0, 1000, 1000, 1000)],
+    '十': { s: [flat(0, 500, 1000, 500), flat(500, 0, 500, 1000)] },
+    '口': {
+      s: [flat(0, 0, 0, 1000), flat(0, 0, 1000, 0), flat(0, 1000, 1000, 1000)],
+    },
   }
 
   it('returns nothing for an empty drawing', () => {
@@ -72,10 +78,7 @@ describe('recognizeHandwriting', () => {
 
   it('matches the drawn shape, indifferent to scale and offset', () => {
     // Same cross, drawn small in the corner of a phone-sized pad.
-    const drawn: Stroke[] = [
-      line(100, 150, 180, 150),
-      line(140, 110, 140, 190),
-    ]
+    const drawn: Stroke[] = [line(100, 150, 180, 150), line(140, 110, 140, 190)]
     const hits = recognizeHandwriting(drawn, index)
     expect(hits[0].char).toBe('十')
     expect(hits[0].score).toBeLessThan(0.1)
@@ -90,16 +93,38 @@ describe('recognizeHandwriting', () => {
     expect(hits[0].char).toBe('十')
   })
 
-  it('never suggests characters whose stroke count differs', () => {
-    const drawn: Stroke[] = [line(10, 10, 90, 10), line(50, 10, 50, 90)]
+  it('tolerates non-canonical stroke order', () => {
+    // Writer draws the vertical before the horizontal — canonical order
+    // flipped. Greedy pairing must not care.
+    const drawn: Stroke[] = [line(140, 110, 140, 190), line(100, 150, 180, 150)]
     const hits = recognizeHandwriting(drawn, index)
-    expect(hits.map((h) => h.char)).not.toContain('口')
-    expect(hits.every((h) => h.char === '十')).toBe(true)
+    expect(hits[0].char).toBe('十')
+  })
+
+  it('suggests merged-stroke (running script) drawings despite count drift', () => {
+    // 口 drawn with two strokes instead of three: two canonical strokes
+    // dragged together as one polyline. Strict count matching would show
+    // nothing — tolerance must keep 口 on the board.
+    const merged: Stroke[] = [
+      [P(0, 0), P(0, 500), P(0, 1000), P(500, 1000), P(1000, 1000)], // left + bottom
+      line(0, 0, 1000, 0), // top
+    ]
+    const hits = recognizeHandwriting(merged, index, 8)
+    expect(hits.map((h) => h.char)).toContain('口')
+  })
+
+  it('breaks shape ties toward common characters', () => {
+    const tied: HandwritingIndex = {
+      rare: { s: [flat(0, 500, 1000, 500)], f: 0.05 },
+      common: { s: [flat(0, 500, 1000, 500)], f: 0.95 },
+    }
+    const hits = recognizeHandwriting([line(10, 50, 90, 50)], tied)
+    expect(hits[0].char).toBe('common')
   })
 
   it('respects the result limit', () => {
     const many: HandwritingIndex = {}
-    for (let i = 0; i < 20; i++) many[`c${i}`] = [flat(0, 0, 1000, 1000)]
+    for (let i = 0; i < 20; i++) many[`c${i}`] = { s: [flat(0, 0, 1000, 1000)], f: 0.5 }
     const hits = recognizeHandwriting([line(0, 0, 100, 100)], many, 5)
     expect(hits).toHaveLength(5)
     // Sorted ascending by distance.

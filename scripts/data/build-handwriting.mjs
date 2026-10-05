@@ -5,6 +5,9 @@
  * char set (chars.json, ~2.6k) into ONE fetchable file:
  * `public/assets/deck/index/handwriting.json`.
  *
+ * Each entry is `{s: strokes, f: frequency0to1}` — frequency is the tie
+ * breaker that surfaces common characters when shapes score alike.
+ *
  * Rationale: the draw pad needs thousands of candidates to suggest from
  * while the user writes, but fetching per-character JSONs at runtime would
  * be thousands of requests. One ~1 MB file, lazily loaded and runtime-cached
@@ -21,6 +24,7 @@ import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '../..')
 const CHARS_JSON = join(root, 'public/assets/deck/index/chars.json')
+const CEDICT_JSON = join(root, 'public/assets/deck/index/cedict-hsk.json')
 const DECK_HANZI_DIR = join(root, 'public/assets/deck/hanzi-data') // already local for deck chars
 const CACHE_DIR = join(root, '.cache/hanzi-writer')
 const OUT = join(root, 'public/assets/deck/index/handwriting.json')
@@ -62,12 +66,37 @@ function compact(medians) {
   })
 }
 
+/**
+ * Per-character frequency in 0..1 (1 = commonest), aggregated from the
+ * word-frequency ranks in the CEDICT index. Recognition uses it as a tie
+ * breaker: when two shapes score alike, surface the char people actually write.
+ */
+function charFrequency(chars) {
+  const cedict = JSON.parse(fs.readFileSync(CEDICT_JSON, 'utf8'))
+  const score = new Map()
+  for (const [word, entry] of Object.entries(cedict)) {
+    const rank = typeof entry?.f === 'number' ? entry.f : 60000
+    const weight = 1 / (rank + 100)
+    for (const ch of new Set(word)) {
+      if (!/^[一-鿿]$/.test(ch)) continue
+      score.set(ch, (score.get(ch) ?? 0) + weight)
+    }
+  }
+  const ranked = chars.filter((c) => score.has(c)).sort((a, b) => score.get(b) - score.get(a))
+  const norm = new Map()
+  ranked.forEach((c, i) => {
+    norm.set(c, ranked.length > 1 ? 1 - i / (ranked.length - 1) : 1)
+  })
+  return norm
+}
+
 async function run() {
   const chars = Object.keys(JSON.parse(fs.readFileSync(CHARS_JSON, 'utf8'))).filter((c) =>
     /^[一-鿿]$/.test(c),
   )
   console.log(`handwriting index: ${chars.length} characters`)
 
+  const freq = charFrequency(chars)
   const index = {}
   let ok = 0
   let skip = 0
@@ -85,7 +114,10 @@ async function run() {
         skip++
         continue
       }
-      index[char] = compact(medians)
+      index[char] = {
+        s: compact(medians),
+        f: Math.round((freq.get(char) ?? 0) * 1000) / 1000,
+      }
       ok++
     }
     if ((i + CONCURRENCY) % 400 < CONCURRENCY) {

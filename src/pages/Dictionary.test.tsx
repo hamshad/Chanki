@@ -10,7 +10,7 @@ const dictFixture = {
 
 const hwFixture = {
   // One horizontal stroke — what a first stroke usually looks like.
-  '一': [[100, 500, 900, 500]],
+  '一': { s: [[100, 500, 900, 500]] },
 }
 
 beforeEach(() => {
