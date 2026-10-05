@@ -2965,3 +2965,36 @@ label {
   color: var(--text-2);
   font-size: 0.95rem;
 }
+
+.dict-history__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dict-history__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.dict-history__chip {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
+  color: var(--text-2);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.dict-history__chip:hover,
+.dict-history__chip:focus-visible {
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  color: var(--text);
+}

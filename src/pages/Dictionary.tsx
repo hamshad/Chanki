@@ -22,6 +22,12 @@ import {
   type HandwritingIndex,
   type Stroke,
 } from '../data/api/handwriting'
+import {
+  clearHistory,
+  loadHistory,
+  pushHistory,
+  HISTORY_DEBOUNCE_MS,
+} from '../utils/dictHistory'
 import { DrawPad } from '../components/DrawPad'
 
 export function Dictionary() {
@@ -32,6 +38,16 @@ export function Dictionary() {
   const [handwriting, setHandwriting] = useState<HandwritingIndex | null>(null)
   const [strokes, setStrokes] = useState<Stroke[]>([])
   const [expanded, setExpanded] = useState<string | null>(null)
+  const [history, setHistory] = useState<string[]>(loadHistory)
+
+  // Record only settled queries — keystroke fragments would flood history.
+  // Device-local by design (localStorage, never synced).
+  useEffect(() => {
+    const settled = query.trim()
+    if (!settled) return
+    const timer = setTimeout(() => setHistory(pushHistory(settled)), HISTORY_DEBOUNCE_MS)
+    return () => clearTimeout(timer)
+  }, [query])
 
   const needsDict = query.trim().length > 0 || mode === 'draw'
   useEffect(() => {
@@ -166,7 +182,37 @@ export function Dictionary() {
       )}
 
       {!query.trim() && mode === 'text' && (
-        <div className="state-block">
+        <div className="state-block dict-history">
+          {history.length > 0 && (
+            <>
+              <div className="dict-history__head">
+                <span className="eyebrow">recent</span>
+                <button
+                  type="button"
+                  className="btn-quiet"
+                  aria-label="Clear search history"
+                  onClick={() => {
+                    clearHistory()
+                    setHistory([])
+                  }}
+                >
+                  Clear
+                </button>
+              </div>
+              <div className="dict-history__chips">
+                {history.map((entry) => (
+                  <button
+                    key={entry}
+                    type="button"
+                    className="dict-history__chip"
+                    onClick={() => setQuery(entry)}
+                  >
+                    {entry}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
           <p className="faint">
             Search by character (你), pinyin (ni3 / nǐ) or meaning (hello) — or
             draw it with the pen.

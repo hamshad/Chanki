@@ -51,6 +51,7 @@ Admin card workflow: add card → `npm run data:audio` → `git push` (Vercel re
 ## Data model
 
 - Firestore `cards` / `decks` = source of truth. `devices/{fingerprint}/progress` + `reviewLogs` = per-device state, last-write-wins by `updatedAt`.
+- Dictionary search history: `localStorage` key `chanki.dict.history` — device-local, never synced (deliberate).
 - zod schemas in `src/data/schema.ts` — validate before any write.
 - Starter deck: 150 HSK1 cards, 298 examples, built by `scripts/data/build-deck.mjs` from OSS sources (attribution in `public/assets/deck/SOURCES.md`).
 

@@ -14,6 +14,7 @@ const hwFixture = {
 }
 
 beforeEach(() => {
+  localStorage.clear()
   vi.stubGlobal(
     'fetch',
     vi.fn((input: RequestInfo | URL) => {
@@ -62,6 +63,32 @@ describe('Dictionary', () => {
     fireEvent.click(row)
     expect(screen.getByRole('button', { expanded: true })).toBeTruthy()
     expect(screen.getByText('hi')).toBeTruthy()
+  })
+
+  it('keeps search history in localStorage only, device-local', async () => {
+    render(<Dictionary />)
+    fireEvent.change(screen.getByLabelText('Search the dictionary'), {
+      target: { value: 'hello' },
+    })
+    // Past the debounce, the settled query lands in localStorage — nowhere else.
+    await new Promise((r) => setTimeout(r, 1100))
+    expect(localStorage.getItem('chanki.dict.history')).toContain('hello')
+
+    fireEvent.change(screen.getByLabelText('Search the dictionary'), {
+      target: { value: '' },
+    })
+    const chip = await screen.findByRole('button', { name: 'hello' })
+    fireEvent.click(chip)
+    expect(
+      (screen.getByLabelText('Search the dictionary') as HTMLInputElement).value,
+    ).toBe('hello')
+
+    fireEvent.change(screen.getByLabelText('Search the dictionary'), {
+      target: { value: '' },
+    })
+    fireEvent.click(screen.getByRole('button', { name: 'Clear search history' }))
+    expect(localStorage.getItem('chanki.dict.history')).toBeNull()
+    expect(screen.queryByRole('button', { name: 'hello' })).toBeNull()
   })
 
   it('draw mode removes the text input — that is what kills the keyboard', async () => {
