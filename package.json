@@ -13,6 +13,7 @@
     "data:build": "node scripts/data/build-deck.mjs",
     "data:build:refresh": "node scripts/data/build-deck.mjs --refresh",
     "data:audio": "node scripts/data/generate-audio.mjs",
+    "data:handwriting": "node scripts/data/build-handwriting.mjs",
     "data:hanzi": "node scripts/download-hanzi.js",
     "db:seed": "node scripts/firestore-seed.mjs",
     "test": "vitest",

@@ -63,6 +63,7 @@ npm run test:run       # vitest once
 npm run lint           # oxlint
 npm run data:build     # rebuild deck JSON from sources (--refresh re-downloads)
 npm run data:audio     # synthesize missing clips (deck + Firestore)
+npm run data:handwriting  # rebuild dictionary draw-pad stroke index
 npm run db:seed        # push starter deck to Firestore
 npm run pwa:audit      # lighthouse
 ```

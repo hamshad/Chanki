@@ -13,12 +13,14 @@ import { AdminDashboard } from './pages/AdminDashboard'
 import { ToneTrainer } from './pages/ToneTrainer'
 import { Resources } from './pages/Resources'
 import { Stats } from './pages/Stats'
+import { Dictionary } from './pages/Dictionary'
 import { getAdminCode } from './data/firebase'
 
 import { useState, useRef, useEffect } from 'react'
 
 const NAV_ITEMS = [
   { href: '/review', label: 'Review' },
+  { href: '/dict', label: 'Dictionary' },
   { href: '/stats', label: 'Stats' },
   { href: '/tone', label: 'Tone trainer' },
   { href: '/resources', label: 'Resources' },
@@ -137,6 +139,7 @@ function App() {
           <Route path="/tone" component={ToneTrainer} />
           <Route path="/stats" component={Stats} />
           <Route path="/resources" component={Resources} />
+          <Route path="/dict" component={Dictionary} />
           <Route component={NotFound} />
         </Switch>
       </main>
