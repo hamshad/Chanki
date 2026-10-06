@@ -1,9 +1,8 @@
 import { Link, useLocation } from 'wouter'
-import { House, Layers, ChartNoAxesColumn, Mic, Library, BookOpen } from 'lucide-react'
+import { House, Layers, ChartNoAxesColumn, Mic, Library } from 'lucide-react'
 
 const TABS = [
   { href: '/review', label: 'Review', Icon: Layers },
-  { href: '/dict', label: 'Dict', Icon: BookOpen },
   { href: '/stats', label: 'Stats', Icon: ChartNoAxesColumn },
   { href: '/tone', label: 'Tone', Icon: Mic },
   { href: '/resources', label: 'Resources', Icon: Library },

@@ -214,6 +214,58 @@ describe('Dictionary', () => {
     ).toBe('一')
   })
 
+  it('stars results into device-local favourites', async () => {
+    render(<Dictionary />)
+    fireEvent.change(screen.getByLabelText('Search the dictionary'), {
+      target: { value: 'nihao' },
+    })
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'Save 你好 to favourites' }),
+    )
+    expect(localStorage.getItem('chanki.dict.favorites')).toContain('你好')
+    expect(
+      screen.getByRole('button', { name: 'Remove 你好 from favourites' }),
+    ).toBeTruthy()
+
+    // Favourites stay behind their toggle — the main screen shows recents.
+    fireEvent.change(screen.getByLabelText('Search the dictionary'), {
+      target: { value: '' },
+    })
+    expect(screen.queryByRole('button', { name: 'Search favourite 你好' })).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Show favourites' }))
+
+    // The star surfaces there and searches on tap…
+    const card = await screen.findByRole('button', { name: 'Search favourite 你好' })
+    fireEvent.click(card)
+    expect(
+      (screen.getByLabelText('Search the dictionary') as HTMLInputElement).value,
+    ).toBe('你好')
+
+    // …and unstarring removes it again.
+    fireEvent.click(
+      await screen.findByRole('button', { name: 'Remove 你好 from favourites' }),
+    )
+    fireEvent.change(screen.getByLabelText('Search the dictionary'), {
+      target: { value: '' },
+    })
+    expect(screen.queryByRole('button', { name: 'Search favourite 你好' })).toBeNull()
+    expect(localStorage.getItem('chanki.dict.favorites')).toBe('[]')
+  })
+
+  it('system back clears the search back to the main screen', async () => {
+    render(<Dictionary />)
+    const input = screen.getByLabelText('Search the dictionary') as HTMLInputElement
+    fireEvent.change(input, { target: { value: 'nihao' } })
+    await screen.findByText('hello; hi')
+
+    window.dispatchEvent(new PopStateEvent('popstate'))
+    // The pop arrives outside React's event system — flush the batch.
+    await waitFor(() => expect(input.value).toBe(''))
+    // Recents empty state, not results.
+    expect(screen.queryByText('hello; hi')).toBeNull()
+    expect(screen.getByRole('button', { name: 'Show favourites' })).toBeTruthy()
+  })
+
   it('backspace deletes the last character and seals the pending segment', async () => {
     render(<Dictionary />)
     fireEvent.click(screen.getByRole('button', { name: 'Draw the character instead' }))

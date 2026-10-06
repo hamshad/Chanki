@@ -121,6 +121,25 @@
   gap: 0.5rem;
 }
 
+/* Dictionary lives here now that it left the tab bar — one tap from anywhere. */
+.header-search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border-radius: var(--radius-full);
+  color: var(--text-2);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header-search:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
 .app-main {
   flex: 1;
   width: 100%;

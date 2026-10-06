@@ -12,7 +12,7 @@
  * auto-fades after a short idle, exactly like Gboard.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Keyboard, PenLine, ChevronDown } from 'lucide-react'
+import { Keyboard, PenLine, ChevronDown, Star } from 'lucide-react'
 import {
   loadDict,
   searchDict,
@@ -32,6 +32,7 @@ import {
   pushHistory,
   HISTORY_DEBOUNCE_MS,
 } from '../utils/dictHistory'
+import { loadFavorites, toggleFavorite } from '../utils/dictFavorites'
 import { DrawPad, type PadSize } from '../components/DrawPad'
 import { ToneText } from '../components/ui/ToneText'
 import { toneFromMarked } from '../utils/pinyin'
@@ -50,6 +51,11 @@ export function Dictionary() {
   const [candidates, setCandidates] = useState<string[]>([])
   const [expanded, setExpanded] = useState<string | null>(null)
   const [history, setHistory] = useState<string[]>(loadHistory)
+  // Starred entries — device-local like history, resolved through the
+  // same search at render time.
+  const [favorites, setFavorites] = useState<string[]>(loadFavorites)
+  // Empty state shows recents; favourites open on demand via the toggle.
+  const [showFavs, setShowFavs] = useState(false)
   // A Google IME request is running — the fade must wait for its answer.
   const [recognizing, setRecognizing] = useState(false)
   // The online engine answered this ink, so there is committed text to
@@ -73,8 +79,49 @@ export function Dictionary() {
     return () => clearTimeout(timer)
   }, [query])
 
+  // System back while searching clears back to the main screen (recents)
+  // instead of leaving the dictionary: the first search traps one history
+  // entry, and popping it resets the search.
+  const queryRef = useRef(query)
+  useEffect(() => {
+    queryRef.current = query
+  })
+  const searchTrappedRef = useRef(false)
+  useEffect(() => {
+    if (query.trim()) {
+      if (!searchTrappedRef.current) {
+        searchTrappedRef.current = true
+        window.history.pushState({ chanki: 'dict-search' }, '')
+      }
+    } else if (searchTrappedRef.current) {
+      // Cleared by hand, not by backing out — unwind the trap entry so one
+      // system-back still leaves the dictionary. (Popping via back is a
+      // no-op: the query is already empty.) Runs before any later keystroke
+      // can push a new trap, so it never eats a fresh search.
+      searchTrappedRef.current = false
+      window.history.back()
+    }
+  }, [query])
+
+  useEffect(() => {
+    const onPop = () => {
+      if (!queryRef.current.trim()) return
+      searchTrappedRef.current = false
+      pendingRef.current = ''
+      abortRef.current?.abort()
+      setQuery('')
+      setStrokes([])
+      setCandidates([])
+      setMode('text')
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
   const needsDict =
-    query.trim().length > 0 || mode === 'draw' || (mode === 'text' && history.length > 0)
+    query.trim().length > 0 ||
+    mode === 'draw' ||
+    (mode === 'text' && (history.length > 0 || favorites.length > 0))
   useEffect(() => {
     if (!needsDict || dict) return
     loadDict()
@@ -308,6 +355,8 @@ export function Dictionary() {
                 entry={dict?.[hit.hanzi]}
                 expanded={expanded === hit.hanzi}
                 onToggle={() => setExpanded(expanded === hit.hanzi ? null : hit.hanzi)}
+                isFav={favorites.includes(hit.hanzi)}
+                onToggleFav={() => setFavorites(toggleFavorite(hit.hanzi))}
               />
             </li>
           ))}
@@ -322,10 +371,19 @@ export function Dictionary() {
 
       {!query.trim() && mode === 'text' && (
         <div className="state-block dict-history">
-          {history.length > 0 && (
-            <>
-              <div className="dict-history__head">
-                <span className="eyebrow">recent</span>
+          <div className="dict-history__head">
+            <span className="eyebrow">{showFavs ? 'favourites' : 'recent'}</span>
+            <div className="dict-history__toggles">
+              <button
+                type="button"
+                className="btn-quiet"
+                aria-pressed={showFavs}
+                aria-label={showFavs ? 'Show recent searches' : 'Show favourites'}
+                onClick={() => setShowFavs((v) => !v)}
+              >
+                {showFavs ? 'Recents' : 'Favourites'}
+              </button>
+              {!showFavs && history.length > 0 && (
                 <button
                   type="button"
                   className="btn-quiet"
@@ -337,7 +395,42 @@ export function Dictionary() {
                 >
                   Clear
                 </button>
+              )}
+            </div>
+          </div>
+          {showFavs ? (
+            favorites.length > 0 ? (
+              <div className="dict-history__grid">
+                {favorites.map((hanzi) => {
+                  const hit = dict ? searchDict(dict, hanzi, 1)[0] : undefined
+                  return (
+                    <button
+                      key={hanzi}
+                      type="button"
+                      className="dict-history__card"
+                      aria-label={`Search favourite ${hanzi}`}
+                      onClick={() => setQuery(hanzi)}
+                    >
+                      <span className="dict-history__card-hanzi">
+                        {hit?.hanzi ?? hanzi}
+                      </span>
+                      {hit && (
+                        <span className="dict-history__card-pinyin">{hit.pinyin}</span>
+                      )}
+                      {hit && (
+                        <span className="dict-history__card-meaning">{hit.meaning}</span>
+                      )}
+                    </button>
+                  )
+                })}
               </div>
+            ) : (
+              <p className="faint">
+                No favourites yet — tap the star on any result to keep it here.
+              </p>
+            )
+          ) : (
+            history.length > 0 && (
               <div className="dict-history__grid">
                 {history.map((entry) => {
                   // Resolve through the same search the list runs: cards
@@ -365,7 +458,7 @@ export function Dictionary() {
                   )
                 })}
               </div>
-            </>
+            )
           )}
           <p className="faint">
             Search by character (你), pinyin (ni3 / nǐ) or meaning (hello) — or
@@ -382,37 +475,52 @@ function DictRow({
   entry,
   expanded,
   onToggle,
+  isFav,
+  onToggleFav,
 }: {
   hit: WordHit
   entry?: DictEntry
   expanded: boolean
   onToggle: () => void
+  isFav: boolean
+  onToggleFav: () => void
 }) {
   return (
     <div className="dict-result">
-      <button
-        type="button"
-        className="dict-result__main"
-        aria-expanded={expanded}
-        onClick={onToggle}
-      >
-        <span className="dict-result__charwrap">
-          <span className="dict-result__char">{hit.hanzi}</span>
-          {hit.traditional && (
-            <span className="dict-result__trad">{hit.traditional}</span>
-          )}
-        </span>
-        <span className="dict-result__body">
-          <span className="dict-result__pinyin">
-            {hit.pinyin.split(/\s+/).map((syl, i) => (
-              <ToneText key={`${syl}-${i}`} text={syl} tone={toneFromMarked(syl)} />
-            ))}
+      <div className="dict-result__top">
+        <button
+          type="button"
+          className="dict-result__main"
+          aria-expanded={expanded}
+          onClick={onToggle}
+        >
+          <span className="dict-result__charwrap">
+            <span className="dict-result__char">{hit.hanzi}</span>
+            {hit.traditional && (
+              <span className="dict-result__trad">{hit.traditional}</span>
+            )}
           </span>
-          <span className="dict-result__meaning">{hit.meaning}</span>
-        </span>
-        {hit.hsk && <span className="dict-result__hsk">HSK {hit.hsk}</span>}
-        <ChevronDown size={18} className="dict-result__chev" aria-hidden="true" />
-      </button>
+          <span className="dict-result__body">
+            <span className="dict-result__pinyin">
+              {hit.pinyin.split(/\s+/).map((syl, i) => (
+                <ToneText key={`${syl}-${i}`} text={syl} tone={toneFromMarked(syl)} />
+              ))}
+            </span>
+            <span className="dict-result__meaning">{hit.meaning}</span>
+          </span>
+          {hit.hsk && <span className="dict-result__hsk">HSK {hit.hsk}</span>}
+          <ChevronDown size={18} className="dict-result__chev" aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          className="dict-result__fav"
+          aria-pressed={isFav}
+          aria-label={isFav ? `Remove ${hit.hanzi} from favourites` : `Save ${hit.hanzi} to favourites`}
+          onClick={onToggleFav}
+        >
+          <Star size={18} aria-hidden="true" fill={isFav ? 'currentColor' : 'none'} />
+        </button>
+      </div>
       {expanded && entry && (
         <div className="dict-result__detail">
           <ol className="dict-result__senses">

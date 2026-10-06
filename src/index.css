@@ -2989,6 +2989,43 @@ label {
   transform: rotate(180deg);
 }
 
+.dict-result__top {
+  display: flex;
+  align-items: stretch;
+}
+
+.dict-result__top .dict-result__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.dict-result__fav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  align-self: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: 0.4rem;
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--text-3);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.dict-result__fav:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dict-result__fav[aria-pressed='true'] {
+  color: var(--accent-strong);
+}
+
 .dict-result__detail {
   border-top: 1px solid var(--line);
   padding: 0.75rem 1rem;
@@ -3009,6 +3046,12 @@ label {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.dict-history__toggles {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .dict-history__grid {

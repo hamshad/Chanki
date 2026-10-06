@@ -7,6 +7,7 @@ import { SyncStatusBadge } from './components/SyncStatusBadge.tsx'
 import { TabBar } from './components/TabBar.tsx'
 
 import { Link, Route, Switch, useLocation } from 'wouter'
+import { Search } from 'lucide-react'
 import { Home } from './pages/Home'
 import { ReviewSession } from './pages/ReviewSession'
 import { AdminDashboard } from './pages/AdminDashboard'
@@ -20,7 +21,6 @@ import { useState, useRef, useEffect } from 'react'
 
 const NAV_ITEMS = [
   { href: '/review', label: 'Review' },
-  { href: '/dict', label: 'Dictionary' },
   { href: '/stats', label: 'Stats' },
   { href: '/tone', label: 'Tone trainer' },
   { href: '/resources', label: 'Resources' },
@@ -125,6 +125,16 @@ function App() {
                 </Link>
               ))}
             </nav>
+            {/* Already there — a search button on the search page is noise. */}
+            {location !== '/dict' && (
+              <Link
+                href="/dict"
+                className="header-search"
+                aria-label="Search the dictionary"
+              >
+                <Search size={19} aria-hidden="true" />
+              </Link>
+            )}
             <OfflineStatus />
           </div>
         </div>
