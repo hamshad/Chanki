@@ -3146,3 +3146,244 @@ label {
     animation: none;
   }
 }
+
+/* ── Assistant chat ─────────────────────────────────────────────────────── */
+
+.dict-ai-btn {
+  color: rgb(var(--accent-rgb));
+  border-color: rgb(var(--accent-rgb) / 0.4);
+}
+
+.dict-ai-btn:hover {
+  background: var(--accent-soft);
+}
+
+.chat-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.chat-head__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-msgs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-msgs .state-block {
+  padding: 2rem 1.5rem;
+}
+
+.chat-msg {
+  max-width: min(85%, 42rem);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.97rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.chat-msg--user {
+  align-self: flex-end;
+  background: var(--accent-soft);
+  border: 1px solid rgb(var(--accent-rgb) / 0.35);
+  border-radius: var(--radius-md) var(--radius-md) 3px var(--radius-md);
+}
+
+.chat-msg--ai {
+  align-self: flex-start;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 3px;
+}
+
+/* One exchange = one unit. Actions whisper — there if looked for. */
+.chat-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.chat-pair__actions {
+  align-self: flex-end;
+  display: flex;
+  gap: 0.1rem;
+}
+
+.chat-pair__action {
+  background: none;
+  border: none;
+  padding: 0.2rem;
+  line-height: 0;
+  color: var(--text-3);
+  opacity: 0.4;
+  cursor: pointer;
+  border-radius: var(--radius-xs);
+}
+
+.chat-pair__action:hover:not(:disabled) {
+  opacity: 1;
+  color: var(--text-2);
+}
+
+.chat-pair__action:disabled {
+  cursor: default;
+}
+
+/* Reply in flight: the Life board at message scale, dimmed — present, not loud. */
+.chat-pending {
+  align-self: flex-start;
+}
+
+.chat-life {
+  width: 7rem;
+  min-height: 2.6rem;
+  opacity: 0.5;
+}
+
+.chat-error {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border: 1px solid rgb(var(--danger-rgb) / 0.5);
+  background: rgb(var(--danger-rgb) / 0.1);
+  border-radius: var(--radius-md);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.chat-error__retry {
+  align-self: flex-start;
+  padding-left: 0;
+}
+
+/* Editing mode marker above the composer. */
+.chat-editing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  padding: 0.35rem 0;
+  border-top: 1px solid rgb(var(--accent-rgb) / 0.35);
+}
+
+/* Pinned to the viewport bottom (footer + tab bar hidden on this screen). */
+.chat-composer {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+  padding: 0.8rem 0 calc(0.9rem + env(safe-area-inset-bottom, 0px));
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.chat-input {
+  flex: 1;
+  min-width: 0;
+  resize: none;
+  max-height: 160px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: rgb(var(--accent-rgb) / 0.6);
+}
+
+.chat-input:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.chat-send {
+  color: rgb(var(--accent-rgb));
+}
+
+.chat-keyhint {
+  margin: 0 0 0.5rem;
+}
+
+.chat-quota {
+  margin: 0.15rem 0 0;
+}
+
+.chat-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Whisper-quiet switch — visible, never loud. */
+.chat-lang button {
+  background: none;
+  border: none;
+  padding: 0.15rem 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  opacity: 0.7;
+  cursor: pointer;
+  border-radius: var(--radius-xs);
+}
+
+.chat-lang button:hover {
+  opacity: 1;
+  color: var(--text-2);
+}
+
+.chat-lang [aria-pressed='true'] {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.chat-lang__sep {
+  font-size: 0.72rem;
+  color: var(--text-3);
+  opacity: 0.5;
+}
+
+/* Drawing pad docked above the composer, IME-style. */
+.chat-draw {
+  margin-top: 0.85rem;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.chat-draw .draw-pad__canvas {
+  height: clamp(170px, 30dvh, 240px);
+}
+
+.chat-draw__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.chat-draw__close {
+  width: 2rem;
+  height: 2rem;
+}

@@ -4,6 +4,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // OPENROUTER_KEY is deliberately client-side (personal build, see chat.ts).
+  // Vite only exposes VITE_* by default, so allowlist this one name exactly.
+  envPrefix: ['VITE_', 'OPENROUTER_KEY'],
   server: {
     // Cloudflare quick tunnels hand out a random *.trycloudflare.com host
     // per tunnel, so match the suffix instead of pinning one hostname.

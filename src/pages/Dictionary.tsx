@@ -12,7 +12,8 @@
  * auto-fades after a short idle, exactly like Gboard.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Keyboard, PenLine, ChevronDown, Star } from 'lucide-react'
+import { Keyboard, PenLine, ChevronDown, Star, Sparkles } from 'lucide-react'
+import { Link } from 'wouter'
 import {
   loadDict,
   searchDict,
@@ -287,6 +288,10 @@ export function Dictionary() {
         >
           {mode === 'text' ? <PenLine size={18} /> : <Keyboard size={18} />}
         </button>
+        {/* Sparkle → assistant screen: things you hear need explaining, not a lookup. */}
+        <Link href="/chat" className="icon-btn dict-ai-btn" aria-label="Ask the assistant">
+          <Sparkles size={18} aria-hidden="true" />
+        </Link>
       </div>
 
       {mode === 'draw' && (

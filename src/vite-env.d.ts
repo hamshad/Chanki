@@ -10,6 +10,9 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_MESSAGING_SENDER_ID: string
   readonly VITE_FIREBASE_APP_ID: string
   readonly VITE_FIREBASE_MEASUREMENT_ID: string
+  // Optional: assistant screen soft-fails to a setup hint when absent.
+  // Exposed via envPrefix in vite.config.ts (no VITE_ prefix on purpose).
+  readonly OPENROUTER_KEY?: string
 }
 
 interface ImportMeta {

@@ -15,6 +15,7 @@ import { ToneTrainer } from './pages/ToneTrainer'
 import { Resources } from './pages/Resources'
 import { Stats } from './pages/Stats'
 import { Dictionary } from './pages/Dictionary'
+import { Chat } from './pages/Chat'
 import { getAdminCode } from './data/firebase'
 
 import { useState, useRef, useEffect } from 'react'
@@ -93,6 +94,10 @@ function App() {
     window.scrollTo(0, 0)
   }, [location])
 
+  // Review grades and chat typing own the whole viewport — footer/tab bar
+  // would sit under the card or the composer.
+  const focusMode = location === '/review' || location === '/chat'
+
   return (
     <>
       <a className="skip-link" href="#main">
@@ -140,7 +145,7 @@ function App() {
         </div>
       </header>
 
-      <main id="main" className={`app-main${location === '/review' ? ' app-main--focus' : ''}`}>
+      <main id="main" className={`app-main${focusMode ? ' app-main--focus' : ''}`}>
         <Switch>
           <Route path="/" component={RedirectToReview} />
           <Route path="/home" component={Home} />
@@ -150,18 +155,19 @@ function App() {
           <Route path="/stats" component={Stats} />
           <Route path="/resources" component={Resources} />
           <Route path="/dict" component={Dictionary} />
+          <Route path="/chat" component={Chat} />
           <Route component={NotFound} />
         </Switch>
       </main>
 
-      {/* Review session owns the whole viewport — the footer sits below the fold */}
-      <footer className={location === '/review' ? 'app-footer app-footer--focus' : 'app-footer'}>
+      {/* Review session and chat own the whole viewport — the footer sits below the fold */}
+      <footer className={focusMode ? 'app-footer app-footer--focus' : 'app-footer'}>
         <div className="app-footer__inner">
           <p className="app-footer__motto">Stay hungry, stay foolish.</p>
         </div>
       </footer>
 
-      {location !== '/review' && <TabBar />}
+      {!focusMode && <TabBar />}
 
       <div className="toast-stack">
         <UpdateBanner />
