@@ -54,6 +54,7 @@ describe('chat API', () => {
     expect((init.headers as Record<string, string>).authorization).toBe('Bearer test-key')
     const body = JSON.parse(init.body as string)
     expect(body.model).toBe(CHAT_MODEL)
+    expect(body.temperature).toBe(0.3)
     expect(body.messages[0]).toEqual({ role: 'system', content: buildSystemPrompt('en') })
     expect(body.messages[0].content).toMatch(/explain in english/i)
     expect(body.messages.slice(1)).toEqual([
@@ -89,7 +90,7 @@ describe('chat API', () => {
 
   it('throws the status on HTTP errors', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({}, 429)))
-    await expect(askChat([{ role: 'user', text: 'hi' }])).rejects.toThrow(/429/)
+    await expect(askChat([{ role: 'user', text: 'hi' }])).rejects.toThrow(/free limit hit \(429\)/)
   })
 
   it('throws a connection error on network failure', async () => {
@@ -116,6 +117,13 @@ describe('chat system prompt', () => {
     expect(CHAT_SYSTEM_PROMPT).toMatch(/japanese/i)
     expect(CHAT_SYSTEM_PROMPT).toMatch(/out of scope/)
     expect(CHAT_SYSTEM_PROMPT).toMatch(/no small talk|no filler/i)
+  })
+
+  it('forces the hanzi + pinyin + meaning term format', () => {
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/format it exactly as/)
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/pīnyīn · meaning/)
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/```chinese/)
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/one sentence per block/i)
   })
 
   it('buildSystemPrompt defaults to English, switches to Roman Hindi', () => {
@@ -157,6 +165,7 @@ describe('chat system prompt', () => {
     expect(sent[1]).toEqual({ role: 'assistant', content: 'pehla' })
     expect(sent[2].role).toBe('user')
     expect(sent[2].content).toMatch(/^second\n\n\[Reply ENTIRELY in Roman Hindi/)
+    expect(sent[2].content).toMatch(/overrides the language of previous replies/)
   })
 
   it('askChat leaves English requests untouched', async () => {

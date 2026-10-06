@@ -3387,3 +3387,60 @@ label {
   width: 2rem;
   height: 2rem;
 }
+
+/* Structured term chip: hanzi + toned pinyin + meaning, one inline unit. */
+.chat-term {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.45rem;
+  margin: 0.1rem 0.1rem 0.1rem 0;
+  padding: 0.2rem 0.55rem;
+  background: rgb(var(--accent-rgb) / 0.1);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
+  border-radius: var(--radius-md);
+}
+
+.chat-term__hanzi {
+  font-weight: 700;
+}
+
+.chat-term__pinyin {
+  font-size: 0.85em;
+}
+
+.chat-term__meaning {
+  font-size: 0.85em;
+  color: var(--text-2);
+}
+
+/* Curated sentence card for ```chinese blocks. */
+.chat-chinese {
+  margin: 0.45rem 0;
+  padding: 0.65rem 0.85rem 0.6rem;
+  background: rgb(0 0 0 / 0.22);
+  border-left: 2px solid rgb(var(--accent-rgb) / 0.55);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.chat-chinese p {
+  margin: 0;
+}
+
+.chat-chinese__hanzi {
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.chat-chinese__pinyin {
+  font-size: 0.92rem;
+}
+
+.chat-chinese__meaning {
+  font-size: 0.9rem;
+  color: var(--text-2);
+}

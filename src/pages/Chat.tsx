@@ -16,6 +16,9 @@ import {
   type ChatMessage,
 } from '../data/chatThread'
 import { loadChatLang, saveChatLang, type ChatLang } from '../utils/chatLang'
+import { parseChatText, splitFences } from '../utils/chatFormat'
+import { ToneText } from '../components/ui/ToneText'
+import { toneFromMarked } from '../utils/pinyin'
 import { DrawPad, type PadSize } from '../components/DrawPad'
 import { LifeLoader } from '../components/LifeLoader'
 import {
@@ -27,6 +30,66 @@ import {
 import { recognizeGoogleIme } from '../data/api/googleIme'
 
 const MAX_INPUT = 4000
+
+/** Pinyin with per-syllable tone colors. */
+function TonedPinyin({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/\s+/).map((syl, j) => (
+        <span key={j}>
+          {j > 0 && ' '}
+          <ToneText text={syl} tone={toneFromMarked(syl)} />
+        </span>
+      ))}
+    </>
+  )
+}
+
+/** One ```chinese block: big hanzi, toned pinyin, muted meaning. */
+function ChineseBlock({ body }: { body: string }) {
+  const [hanzi, pinyin, ...rest] = body.split('\n')
+  const meaning = rest.join(' ')
+  return (
+    <div className="chat-chinese">
+      {hanzi?.trim() && <p className="chat-chinese__hanzi">{hanzi.trim()}</p>}
+      {pinyin?.trim() && (
+        <p className="chat-chinese__pinyin">
+          <TonedPinyin text={pinyin.trim()} />
+        </p>
+      )}
+      {meaning.trim() && <p className="chat-chinese__meaning">{meaning.trim()}</p>}
+    </div>
+  )
+}
+
+/** One bubble: prose runs keep inline chips, fences become curated cards. */
+function ChatBubble({ text }: { text: string }) {
+  return (
+    <>
+      {splitFences(text).map((block, i) =>
+        block.kind === 'text' ? (
+          <span key={i}>
+            {parseChatText(block.text).map((seg, j) =>
+              seg.kind === 'text' ? (
+                <span key={j}>{seg.text}</span>
+              ) : (
+                <span key={j} className="chat-term">
+                  <span className="chat-term__hanzi">{seg.hanzi}</span>
+                  <span className="chat-term__pinyin">
+                    <TonedPinyin text={seg.pinyin} />
+                  </span>
+                  <span className="chat-term__meaning">{seg.meaning}</span>
+                </span>
+              ),
+            )}
+          </span>
+        ) : (
+          <ChineseBlock key={i} body={block.body} />
+        ),
+      )}
+    </>
+  )
+}
 
 export function Chat() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -155,6 +218,10 @@ export function Chat() {
     formEvent.preventDefault()
     const text = input.trim()
     if (!text || pending) return
+    if ((quota?.remaining ?? 1) <= 0) {
+      setError('Daily free limit reached — back at midnight UTC')
+      return
+    }
     setError(null)
     setInput('')
     // Editing an earlier question cuts the thread there — everything after
@@ -308,7 +375,7 @@ export function Chat() {
                 key={j}
                 className={`chat-msg chat-msg--${m.role === 'user' ? 'user' : 'ai'}`}
               >
-                {m.text}
+                <ChatBubble text={m.text} />
               </div>
             ))}
             <div className="chat-pair__actions">
@@ -439,7 +506,13 @@ export function Chat() {
           rows={1}
           value={input}
           maxLength={MAX_INPUT}
-          placeholder={keyMissing ? 'Set OPENROUTER_KEY to use the assistant' : 'Ask anything…'}
+          placeholder={
+            keyMissing
+              ? 'Set OPENROUTER_KEY to use the assistant'
+              : quota && quota.remaining <= 0
+                ? 'Daily free limit reached — back at midnight UTC'
+                : 'Ask anything…'
+          }
           aria-label="Message the assistant"
           disabled={keyMissing}
           onChange={(e) => setInput(e.target.value)}
@@ -458,7 +531,7 @@ export function Chat() {
           type="submit"
           className="icon-btn chat-send"
           aria-label="Send message"
-          disabled={keyMissing || pending || !input.trim()}
+          disabled={keyMissing || pending || !input.trim() || (quota?.remaining ?? 1) <= 0}
         >
           <Send size={18} aria-hidden="true" />
         </button>

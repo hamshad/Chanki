@@ -18,6 +18,8 @@ const TIMEOUT_MS = 30_000
 export const MAX_CONTEXT_MESSAGES = 30
 /** Belt-and-braces brevity limit on top of the prompt. */
 const MAX_TOKENS = 1024
+/** Low temperature: factual answers, steady instruction following. */
+const TEMPERATURE = 0.3
 
 export const CHAT_SYSTEM_PROMPT = [
   'You are a precise answer engine for Chinese language and China culture inside a flashcard app.',
@@ -26,6 +28,9 @@ export const CHAT_SYSTEM_PROMPT = [
   '- If the same word also exists in Japanese or another language, ignore that — answer the Chinese meaning only.',
   '- History, customs and culture questions: China only.',
   '- Anything outside Chinese language and China culture: reply exactly: out of scope.',
+  'Format:',
+  '- Whenever a Chinese word appears, format it exactly as: 汉字 (pīnyīn · meaning) — e.g. 谢谢 (xièxie · thank you). Hanzi, space, parenthesis, pinyin, space·space, meaning, close parenthesis. Never skip the pinyin or the meaning.',
+  'Example sentences go in their own ```chinese block, exactly 3 lines: hanzi, then pinyin, then meaning. One sentence per block, never two. Example: ```chinese\n谢谢。\nxièxie.\nThank you.\n```',
   'Style:',
   '- Be brief and dense: at most 5 sentences or 5 bullet points. Pack in the facts, then stop.',
   '- Reply like a machine returning a result: direct, neutral, no personality.',
@@ -101,7 +106,8 @@ export function buildSystemPrompt(lang: ChatLang = 'en'): string {
  */
 const ENFORCE_SUFFIX: Record<ChatLang, string> = {
   en: '',
-  'hi-Latn': '\n\n[Reply ENTIRELY in Roman Hindi (Latin script). No English sentences.]',
+  'hi-Latn':
+    '\n\n[Reply ENTIRELY in Roman Hindi (Latin script). No English sentences — this overrides the language of previous replies.]',
 }
 
 export function enforceSuffix(lang: ChatLang): string {
@@ -165,7 +171,7 @@ export async function askChat(
         authorization: `Bearer ${key}`,
         'x-title': 'Chanki',
       },
-      body: JSON.stringify({ model: CHAT_MODEL, messages, max_tokens: MAX_TOKENS }),
+      body: JSON.stringify({ model: CHAT_MODEL, messages, max_tokens: MAX_TOKENS, temperature: TEMPERATURE }),
     })
     if (!res.ok) throw new ApiError(ENDPOINT, res.status)
     const parsed = ReplySchema.safeParse(await res.json())
@@ -174,7 +180,14 @@ export async function askChat(
     if (!text) throw new Error('assistant returned an empty reply')
     return text
   } catch (err) {
-    if (err instanceof ApiError) throw new Error(`assistant request failed (${err.status})`)
+    if (err instanceof ApiError) {
+      // 429 is the free tier talking: daily cap spent, too many too fast,
+      // or the free provider is congested. Quota line says which.
+      if (err.status === 429) {
+        throw new Error('free limit hit (429) — check the counter above, wait a bit, then Retry')
+      }
+      throw new Error(`assistant request failed (${err.status})`)
+    }
     if (err instanceof DOMException && err.name === 'AbortError') {
       throw new Error(signal?.aborted ? 'assistant request cancelled' : 'assistant request timed out')
     }

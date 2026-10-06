@@ -90,6 +90,39 @@ describe('Chat screen', () => {
     ])
   })
 
+  it('renders formatted terms as chips with toned pinyin', async () => {
+    loadThreadMock.mockResolvedValueOnce([
+      { role: 'user', text: 'thanks?' },
+      { role: 'assistant', text: 'Say 谢谢 (xièxie · thank you) politely' },
+    ])
+    const { container } = render(<Chat />)
+    await screen.findByText('politely')
+
+    const chip = container.querySelector('.chat-term')
+    expect(chip?.textContent).toContain('谢谢')
+    expect(chip?.textContent).toContain('xièxie')
+    expect(chip?.textContent).toContain('thank you')
+    // Pinyin carries tone-color markup.
+    expect(chip?.querySelector('[data-tone]')).toBeTruthy()
+  })
+
+  it('renders chinese fences as curated sentence cards', async () => {
+    loadThreadMock.mockResolvedValueOnce([
+      { role: 'user', text: 'examples?' },
+      {
+        role: 'assistant',
+        text: 'Here:\n```chinese\n谢谢。\nxièxie.\nThank you.\n```\nBye',
+      },
+    ])
+    const { container } = render(<Chat />)
+    await screen.findByText('Bye')
+
+    const card = container.querySelector('.chat-chinese')
+    expect(card?.querySelector('.chat-chinese__hanzi')?.textContent).toBe('谢谢。')
+    expect(card?.querySelector('.chat-chinese__pinyin')?.textContent).toContain('xièxie.')
+    expect(card?.querySelector('.chat-chinese__meaning')?.textContent).toBe('Thank you.')
+  })
+
   it('shows a pending status while the reply is in flight', async () => {
     let resolve!: (v: string) => void
     askChatMock.mockImplementationOnce(
@@ -177,6 +210,22 @@ describe('Chat screen', () => {
     expect(await screen.findByText(/daily free limit reached/i)).toBeTruthy()
   })
 
+  it('locks sending when the free quota is spent', async () => {
+    fetchQuotaMock.mockResolvedValue({ used: 50, limit: 50, remaining: 0 })
+    render(<Chat />)
+    await screen.findByText(/daily free limit reached/i)
+
+    const box = screen.getByLabelText('Message the assistant')
+    expect(box.getAttribute('placeholder')).toMatch(/midnight UTC/)
+    expect(screen.getByLabelText('Send message')).toHaveProperty('disabled', true)
+
+    // The Enter path is guarded too — no request fires.
+    fireEvent.change(box, { target: { value: 'hi' } })
+    fireEvent.keyDown(box, { key: 'Enter' })
+    expect(askChatMock).not.toHaveBeenCalled()
+    expect(await screen.findByRole('alert')).toBeTruthy()
+  })
+
   it('counts the send instantly even while the server counter lags', async () => {
     // Server keeps reporting the pre-send count — the line must still move.
     fetchQuotaMock.mockResolvedValue({ used: 8, limit: 50, remaining: 42 })
@@ -217,6 +266,31 @@ describe('Chat screen', () => {
 
     expect(screen.getByRole('button', { name: 'Roman Hindi' }).getAttribute('aria-pressed')).toBe(
       'true',
+    )
+  })
+
+  it('switching language mid-thread keeps the full context', async () => {
+    loadThreadMock.mockResolvedValueOnce([
+      { role: 'user', text: 'q1' },
+      { role: 'assistant', text: 'a1 in english' },
+    ])
+    askChatMock.mockResolvedValue('a2')
+    render(<Chat />)
+    await screen.findByText('a1 in english')
+
+    // Switch to Roman Hindi, then continue the same thread.
+    fireEvent.click(screen.getByRole('button', { name: 'Roman Hindi' }))
+    typeAndSend('q2')
+
+    expect(await screen.findByText('a2')).toBeTruthy()
+    // Old turns ride along — context persists across the switch.
+    expect(askChatMock).toHaveBeenCalledWith(
+      [
+        { role: 'user', text: 'q1' },
+        { role: 'assistant', text: 'a1 in english' },
+        { role: 'user', text: 'q2' },
+      ],
+      { lang: 'hi-Latn' },
     )
   })
 
