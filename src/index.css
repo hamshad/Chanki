@@ -2799,14 +2799,8 @@ label {
 }
 
 .dict-hint {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  min-width: 0;
-  background: var(--surface-2);
-  border: 1px dashed var(--line);
-  border-radius: var(--radius-md);
-  padding: 0.7rem 1rem;
+  margin: -0.4rem 0 1rem;
+  font-size: 0.9rem;
 }
 
 .dict-draw {
@@ -2815,12 +2809,17 @@ label {
   flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 1rem;
+  /* Stroking at the tray edge must never chain-scroll the page. */
+  overscroll-behavior: contain;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .draw-pad {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .draw-pad__canvas {
@@ -2852,8 +2851,11 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.05rem;
+  flex: none;
   min-width: 3.4rem;
+  min-height: 2.75rem;
   padding: 0.45rem 0.6rem;
   background: var(--surface-2);
   border: 1px solid var(--line);
@@ -2881,9 +2883,10 @@ label {
 .dict-results {
   list-style: none;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .dict-result {
@@ -2898,43 +2901,66 @@ label {
   gap: 0.9rem;
   align-items: center;
   width: 100%;
+  min-height: 4.25rem;
   text-align: left;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 0.9rem 0.8rem 1rem;
   background: none;
   border: none;
   color: inherit;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .dict-result__main:hover {
   background: rgba(255, 255, 255, 0.03);
 }
 
+.dict-result__main:active {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dict-result__charwrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  min-width: 3.4rem;
+  flex: none;
+}
+
 .dict-result__char {
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 600;
+  line-height: 1.1;
+}
+
+.dict-result__trad {
+  font-size: 0.72rem;
+  color: var(--text-3);
   line-height: 1;
-  min-width: 2.6rem;
-  text-align: center;
 }
 
 .dict-result__body {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.25rem;
   flex: 1;
   min-width: 0;
 }
 
 .dict-result__pinyin {
-  color: var(--accent);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.35rem;
   font-size: 0.95rem;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .dict-result__meaning {
   color: var(--text-2);
   font-size: 0.92rem;
+  line-height: 1.45;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -2944,11 +2970,23 @@ label {
 
 .dict-result__hsk {
   font-size: 0.68rem;
-  color: var(--text-3);
-  border: 1px solid var(--line);
+  font-weight: 600;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border: 1px solid rgb(var(--accent-rgb) / 0.25);
   padding: 0.15rem 0.45rem;
   border-radius: var(--radius-full);
   flex: none;
+}
+
+.dict-result__chev {
+  flex: none;
+  color: var(--text-3);
+  transition: transform 0.18s ease;
+}
+
+.dict-result__main[aria-expanded='true'] .dict-result__chev {
+  transform: rotate(180deg);
 }
 
 .dict-result__detail {
@@ -2973,28 +3011,95 @@ label {
   width: 100%;
 }
 
-.dict-history__chips {
-  display: flex;
-  flex-wrap: wrap;
+.dict-history__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
-  justify-content: center;
+  width: 100%;
 }
 
-.dict-history__chip {
+@media (min-width: 640px) {
+  .dict-history__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.dict-history__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  text-align: left;
+  padding: 0.65rem 0.8rem;
   background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: var(--radius-full);
-  color: var(--text-2);
-  padding: 0.4rem 0.85rem;
-  font-size: 0.9rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition:
-    border-color 0.18s ease,
-    color 0.18s ease;
+  transition: border-color 0.18s ease;
+  min-width: 0;
 }
 
-.dict-history__chip:hover,
-.dict-history__chip:focus-visible {
+.dict-history__card:hover,
+.dict-history__card:focus-visible {
   border-color: rgb(var(--accent-rgb) / 0.5);
-  color: var(--text);
+}
+
+.dict-history__card-hanzi {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.dict-history__card-pinyin {
+  font-size: 0.78rem;
+  color: var(--text-3);
+}
+
+.dict-history__card-meaning {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Mobile: the pad docks like the IME panel — fixed to the bottom over the
+   tab bar (keyboards cover app nav too), sliding up under the thumb, while
+   the field and results stay scrollable above it. Desktop keeps the pad in
+   the page flow. */
+@media (max-width: 719px) {
+  .dict-draw--tray {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-overlay);
+    margin: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    border-bottom: 0;
+    padding: 0.75rem 0.75rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    animation: dict-tray-in 0.18s ease-out;
+  }
+
+  .dict-draw--tray .draw-pad__canvas {
+    height: clamp(170px, 34dvh, 260px);
+  }
+
+  /* Page keeps room so results scroll clear of the fixed tray. */
+  .dict-page--draw {
+    padding-bottom: calc(34dvh + 9.5rem);
+  }
+}
+
+@keyframes dict-tray-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dict-draw--tray {
+    animation: none;
+  }
 }

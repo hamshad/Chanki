@@ -80,6 +80,11 @@ export function loadHandwriting(): Promise<HandwritingIndex> {
  * the drawing and the candidate into the same square cancels proportion
  * differences — a writer who runs tall or wide still lands on the target.
  * Relative stroke positions inside the cell are preserved.
+ *
+ * Near-one-dimensional shapes are the exception: a straight 一's axis has
+ * almost no span, so scaling by it would amplify the median's hand-wobble
+ * to full cell height (and vice versa for a lone vertical). Flat axes
+ * scale by the long axis instead.
  */
 export function normalizeStrokes(strokes: Stroke[]): Stroke[] {
   let minX = Infinity
@@ -94,9 +99,12 @@ export function normalizeStrokes(strokes: Stroke[]): Stroke[] {
       if (p.y > maxY) maxY = p.y
     }
   }
-  const spanX = maxX - minX || maxY - minY || 1
-  const spanY = maxY - minY || maxX - minX || 1
-  return strokes.map((s) => s.map((p) => ({ x: (p.x - minX) / spanX, y: (p.y - minY) / spanY })))
+  const spanX = maxX - minX
+  const spanY = maxY - minY
+  const FLAT = 0.15
+  const effX = spanX < FLAT * spanY ? spanY || 1 : spanX || spanY || 1
+  const effY = spanY < FLAT * spanX ? spanX || 1 : spanY || spanX || 1
+  return strokes.map((s) => s.map((p) => ({ x: (p.x - minX) / effX, y: (p.y - minY) / effY })))
 }
 
 /** Resample a stroke to exactly `k` points, evenly spaced along its length. */

@@ -135,6 +135,38 @@ describe('recognizeHandwriting', () => {
   })
 })
 
+describe('stroke order invariance', () => {
+  const index: HandwritingIndex = {
+    '口': {
+      s: [flat(0, 0, 0, 1000), flat(0, 0, 1000, 0), flat(0, 1000, 1000, 1000)],
+    },
+    '十': { s: [flat(0, 500, 1000, 500), flat(500, 0, 500, 1000)] },
+  }
+
+  it('every permutation of the drawn strokes scores identically', () => {
+    // Greedy pairing considers all stroke pairs regardless of input order,
+    // so the whole ranking must be permutation-invariant — a writer who
+    // starts with any stroke gets the same suggestions.
+    const drawn: Stroke[] = [
+      line(100, 110, 100, 190), // left
+      line(100, 110, 180, 110), // top
+      line(100, 190, 180, 190), // bottom
+    ]
+    const base = recognizeHandwriting(drawn, index, 8)
+    const perms: number[][] = []
+    for (const a of [0, 1, 2])
+      for (const b of [0, 1, 2])
+        for (const c of [0, 1, 2]) {
+          const p = [a, b, c]
+          if (new Set(p).size === 3) perms.push(p)
+        }
+    expect(perms).toHaveLength(6)
+    for (const p of perms) {
+      expect(recognizeHandwriting(p.map((i) => drawn[i]), index, 8)).toEqual(base)
+    }
+  })
+})
+
 describe('index orientation', () => {
   it('medians are y-down like canvas input — not the raw y-up source', () => {
     // hanzi-writer-data is stored y-up (the library flips it when drawing).
