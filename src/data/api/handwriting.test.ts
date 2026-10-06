@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest'
+import fs from 'node:fs'
 import {
   normalizeStrokes,
+  rasterize,
   resample,
   recognizeHandwriting,
   type HandwritingIndex,
@@ -130,5 +132,32 @@ describe('recognizeHandwriting', () => {
     // Sorted ascending by distance.
     const scores = hits.map((h) => h.score)
     expect([...scores].sort((a, b) => a - b)).toEqual(scores)
+  })
+})
+
+describe('index orientation', () => {
+  it('medians are y-down like canvas input — not the raw y-up source', () => {
+    // hanzi-writer-data is stored y-up (the library flips it when drawing).
+    // If the build ever stops flipping, every template matches upside down
+    // and real drawings fall out of the top 8. 人 is the canary: its apex
+    // must sit at the TOP centre, legs at the BOTTOM corners.
+    const index: HandwritingIndex = JSON.parse(
+      fs.readFileSync('public/assets/deck/index/handwriting.json', 'utf8'),
+    )
+    const strokes: Stroke[] = index['人'].s.map((nums) => {
+      const stroke: Stroke = []
+      for (let i = 0; i + 1 < nums.length; i += 2) stroke.push({ x: nums[i], y: nums[i + 1] })
+      return stroke
+    })
+    const grid = rasterize(normalizeStrokes(strokes))
+    const cell = (row: number, col: number) => grid[row * 16 + col] === 1
+    const band = (r0: number, r1: number, c0: number, c1: number) => {
+      for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) if (cell(r, c)) return true
+      return false
+    }
+    expect(band(0, 2, 6, 9)).toBe(true) // apex, top centre
+    expect(band(13, 15, 0, 2)).toBe(true) // 丿 leg, bottom left
+    expect(band(13, 15, 13, 15)).toBe(true) // ㇏ leg, bottom right
+    expect(band(0, 2, 0, 1)).toBe(false) // top corners empty when upright
   })
 })

@@ -55,12 +55,19 @@ async function fetchChar(char) {
   }
 }
 
-/** Medians → flat integer point lists: strokes of [x,y,x,y,…] in 0–1024 space. */
+/**
+ * Medians → flat integer point lists: strokes of [x,y,x,y,…] in 0–1024 space.
+ *
+ * hanzi-writer-data is stored y-UP (the library renders with scale(1,-1)),
+ * but drawings arrive y-DOWN from the canvas. Flip here so the index lives
+ * in the same orientation as user input — otherwise every template is
+ * matched upside down.
+ */
 function compact(medians) {
   return medians.map((stroke) => {
     const flat = []
     for (const [x, y] of stroke) {
-      flat.push(Math.round(x), Math.round(y))
+      flat.push(Math.round(x), Math.round(1024 - y))
     }
     return flat
   })

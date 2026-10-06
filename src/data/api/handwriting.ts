@@ -51,7 +51,7 @@ const UNMATCHED_STROKE = 0.15
 /** Flat toll per extra/missing stroke on top of the pairing toll. */
 const COUNT_PENALTY = 0.017
 const W_STROKE = 0.45
-const FREQ_WEIGHT = 0.02
+const FREQ_WEIGHT = 0.04
 
 const SAMPLE_WEIGHTS = (() => {
   const w = new Array<number>(SAMPLES).fill(1)
