@@ -3766,3 +3766,18 @@ label {
 .chat-page--draw-open {
   padding-bottom: calc(34dvh + 7rem);
 }
+
+/* On mobile, pin the composer above the tray: the tray is fixed at bottom:0
+   with max height 34dvh + 7rem (head + canvas + candidate + padding). The
+   composer is fixed at the tray's top edge so it never gets covered. */
+@media (max-width: 719px) {
+  .chat-page--draw-open .chat-composer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: calc(34dvh + 7rem + env(safe-area-inset-bottom, 0px));
+    z-index: calc(var(--z-overlay) + 1);
+    margin: 0;
+    box-shadow: 0 16px 32px -24px rgb(0 0 0 / 0.8);
+  }
+}
