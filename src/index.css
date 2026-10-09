@@ -3766,3 +3766,13 @@ label {
 .chat-page--draw-open {
   padding-bottom: calc(170px + 34dvh + 2.5rem); /* tray height + head + candidate strip + composer gap */
 }
+
+/* When the draw tray is open on mobile, the fixed tray covers the composer.
+   Lift the composer above the tray so it stays visible. */
+@media (max-width: 719px) {
+  .chat-page--draw-open .chat-composer {
+    position: sticky;
+    bottom: calc(170px + 34dvh + 2.5rem + env(safe-area-inset-bottom, 0px));
+    z-index: calc(var(--z-overlay) + 1);
+  }
+}

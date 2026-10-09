@@ -144,8 +144,9 @@ export function Chat() {
       closeDraw()
       return
     }
-    // Blur on the way in: the phone keyboard must not cover the pad.
+    // Blur aggressively: immediate + next tick to ensure keyboard dismisses.
     inputRef.current?.blur()
+    setTimeout(() => inputRef.current?.blur(), 0)
     setDrawOpen(true)
   }
 
@@ -493,6 +494,8 @@ export function Chat() {
           }
           aria-label="Message the assistant"
           disabled={keyMissing}
+          readOnly={drawOpen}
+          inputMode={drawOpen ? 'none' : undefined}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             // Enter sends, Shift+Enter breaks the line, Esc exits editing.
