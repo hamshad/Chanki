@@ -1,7 +1,12 @@
 import { initializeApp } from 'firebase/app'
 import { initializeFirestore, persistentLocalCache, persistentSingleTabManager } from 'firebase/firestore'
 import { getDatabase } from 'firebase/database'
-import { getRemoteConfig, fetchAndActivate, getString } from 'firebase/remote-config'
+import {
+  getRemoteConfig,
+  fetchAndActivate,
+  getString,
+  getValue,
+} from 'firebase/remote-config'
 
 export const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -33,6 +38,7 @@ remoteConfig.settings = {
   fetchTimeoutMillis: 10000,
 }
 // Dev fallback — production value comes from the admin_code Remote Config param.
+// chat_models is a comma-separated fallback chain used when the param is unset.
 remoteConfig.defaultConfig = { admin_code: '5173' }
 
 /**
@@ -45,5 +51,26 @@ export async function getAdminCode(): Promise<string> {
     return getString(remoteConfig, 'admin_code') || '5173'
   } catch {
     return '5173'
+  }
+}
+
+/**
+ * Assistant model chain from Remote Config `chat_models` — a comma-separated
+ * list, e.g. `google/gemma-4-26b-a4b-it:free,nvidia/nemotron-3-ultra-550b-a55b:free`.
+ * First entry is preferred; the rest are fallbacks. Returns `fallback`
+ * untouched when the param is empty or the fetch fails, so an offline device
+ * or a half-written config never breaks chat.
+ */
+export async function getChatModels(fallback: readonly string[]): Promise<string[]> {
+  try {
+    await fetchAndActivate(remoteConfig)
+    const raw = getValue(remoteConfig, 'chat_models').asString()
+    const models = raw
+      .split(',')
+      .map((m) => m.trim())
+      .filter(Boolean)
+    return models.length ? models : [...fallback]
+  } catch {
+    return [...fallback]
   }
 }

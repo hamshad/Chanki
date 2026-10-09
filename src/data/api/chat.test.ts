@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
 import {
   CHAT_MODEL,
+  CHAT_MODELS,
   CHAT_SYSTEM_PROMPT,
   MAX_CONTEXT_MESSAGES,
   askChat,
@@ -9,6 +10,13 @@ import {
   fetchQuota,
   mergeQuota,
 } from './chat'
+import { getChatModels } from '../firebase'
+
+vi.mock('../firebase', () => ({
+  getChatModels: vi.fn(async (fallback: readonly string[]) => [...fallback]),
+}))
+
+const getChatModelsMock = vi.mocked(getChatModels)
 
 function jsonResponse(body: unknown, status = 200): Response {
   return {
@@ -24,6 +32,7 @@ function assistantPayload(content: string): unknown {
 
 beforeEach(() => {
   vi.stubEnv('OPENROUTER_KEY', 'test-key')
+  getChatModelsMock.mockImplementation(async (fallback) => [...fallback])
 })
 
 afterEach(() => {
@@ -56,7 +65,7 @@ describe('chat API', () => {
     expect(body.model).toBe(CHAT_MODEL)
     expect(body.temperature).toBe(0.3)
     expect(body.messages[0]).toEqual({ role: 'system', content: buildSystemPrompt('en') })
-    expect(body.messages[0].content).toMatch(/explain in english/i)
+    expect(body.messages[0].content).toMatch(/except the hanzi and pinyin lines/i)
     expect(body.messages.slice(1)).toEqual([
       { role: 'user', content: '你好?' },
       { role: 'assistant', content: 'hello' },
@@ -88,9 +97,66 @@ describe('chat API', () => {
     )
   })
 
-  it('throws the status on HTTP errors', async () => {
+  it('throws the status on non-429 HTTP errors', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({}, 500)))
+    await expect(askChat([{ role: 'user', text: 'hi' }])).rejects.toThrow(/500/)
+  })
+
+  it('ends the chain at the permanent openrouter/free router', () => {
+    expect(CHAT_MODELS[CHAT_MODELS.length - 1]).toBe('openrouter/free')
+    expect(CHAT_MODEL).toBe('google/gemma-4-26b-a4b-it:free')
+  })
+
+  it('walks the Remote Config chain in order, stopping at the first reply', async () => {
+    getChatModelsMock.mockResolvedValueOnce(['custom/one:free', 'custom/two:free'])
+    const fetchMock = vi.fn().mockResolvedValue(jsonResponse(assistantPayload('from one')))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await expect(askChat([{ role: 'user', text: 'hi' }])).resolves.toBe('from one')
+
+    expect(getChatModelsMock).toHaveBeenCalledWith(CHAT_MODELS)
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body as string).model).toBe('custom/one:free')
+  })
+
+  it('falls through the free list when a model 404s or comes back empty', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(jsonResponse({}, 404))
+      .mockResolvedValueOnce(jsonResponse({ choices: [{ message: { content: null } }] }))
+      .mockResolvedValueOnce(jsonResponse(assistantPayload('third model wins')))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await expect(askChat([{ role: 'user', text: 'hi' }])).resolves.toBe('third model wins')
+    expect(fetchMock).toHaveBeenCalledTimes(3)
+    const models = fetchMock.mock.calls.map(
+      (c) => JSON.parse(c[1].body as string).model,
+    )
+    expect(models).toEqual([...CHAT_MODELS].slice(0, 3))
+  })
+
+  it('asks for no reasoning and a long timeout free models can meet', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(jsonResponse(assistantPayload('ok')))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await askChat([{ role: 'user', text: 'hi' }])
+
+    const body = JSON.parse(fetchMock.mock.calls[0][1].body as string)
+    // Scratchpad leaking into `content` was the "Here's a thinking process" bug.
+    expect(body.reasoning).toEqual({ effort: 'none' })
+  })
+
+  it('does not fall through on account-level failures', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(jsonResponse({}, 402))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await expect(askChat([{ role: 'user', text: 'hi' }])).rejects.toThrow(/402/)
+    // One attempt only — no point trying other models with a broken account.
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('reports congestion when the whole free pool is 429', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({}, 429)))
-    await expect(askChat([{ role: 'user', text: 'hi' }])).rejects.toThrow(/free limit hit \(429\)/)
+    await expect(askChat([{ role: 'user', text: 'hi' }])).rejects.toThrow(/busy \(429\)/)
   })
 
   it('throws a connection error on network failure', async () => {
@@ -119,16 +185,19 @@ describe('chat system prompt', () => {
     expect(CHAT_SYSTEM_PROMPT).toMatch(/no small talk|no filler/i)
   })
 
-  it('forces the hanzi + pinyin + meaning term format', () => {
-    expect(CHAT_SYSTEM_PROMPT).toMatch(/format it exactly as/)
-    expect(CHAT_SYSTEM_PROMPT).toMatch(/pīnyīn · meaning/)
+  it('forces the lesson structure: hero block, word by word, tips', () => {
     expect(CHAT_SYSTEM_PROMPT).toMatch(/```chinese/)
-    expect(CHAT_SYSTEM_PROMPT).toMatch(/one sentence per block/i)
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/Word by word:/)
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/A more casual way to say it:/)
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/Tip:/)
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/exactly 3 lines — hanzi, pinyin, meaning/i)
+    // No stray sections — extra prose is the failure mode being fixed.
+    expect(CHAT_SYSTEM_PROMPT).toMatch(/Never write any other section/i)
   })
 
   it('buildSystemPrompt defaults to English, switches to Roman Hindi', () => {
-    expect(buildSystemPrompt()).toMatch(/explain in english/i)
-    expect(buildSystemPrompt('en')).toMatch(/explain in english/i)
+    expect(buildSystemPrompt()).toMatch(/except the hanzi and pinyin lines/i)
+    expect(buildSystemPrompt('en')).toMatch(/except the hanzi and pinyin lines/i)
     const roman = buildSystemPrompt('hi-Latn')
     expect(roman).toMatch(/roman hindi/i)
     expect(roman).toMatch(/latin.*script|roman script/i)

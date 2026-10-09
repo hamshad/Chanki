@@ -22,6 +22,11 @@ vi.mock('../data/api/chat', async (importOriginal) => {
   }
 })
 
+vi.mock('../data/firebase', () => ({
+  // Chat model chain comes from Remote Config; tests use the bundled default.
+  getChatModels: vi.fn(async (fallback: string[]) => fallback),
+}))
+
 vi.mock('../data/api/googleIme', () => ({
   recognizeGoogleIme: vi.fn(),
 }))
@@ -90,37 +95,24 @@ describe('Chat screen', () => {
     ])
   })
 
-  it('renders formatted terms as chips with toned pinyin', async () => {
+  it('renders replies in the lesson typography', async () => {
     loadThreadMock.mockResolvedValueOnce([
-      { role: 'user', text: 'thanks?' },
-      { role: 'assistant', text: 'Say 谢谢 (xièxie · thank you) politely' },
-    ])
-    const { container } = render(<Chat />)
-    await screen.findByText('politely')
-
-    const chip = container.querySelector('.chat-term')
-    expect(chip?.textContent).toContain('谢谢')
-    expect(chip?.textContent).toContain('xièxie')
-    expect(chip?.textContent).toContain('thank you')
-    // Pinyin carries tone-color markup.
-    expect(chip?.querySelector('[data-tone]')).toBeTruthy()
-  })
-
-  it('renders chinese fences as curated sentence cards', async () => {
-    loadThreadMock.mockResolvedValueOnce([
-      { role: 'user', text: 'examples?' },
+      { role: 'user', text: 'what is this?' },
       {
         role: 'assistant',
-        text: 'Here:\n```chinese\n谢谢。\nxièxie.\nThank you.\n```\nBye',
+        text:
+          'In Mandarin Chinese, "I am eating" is:\n\n```chinese\n我在吃饭。\nWǒ zài chīfàn.\nI am eating.\n```\n\n### Word by word:\n\n- 我 (wǒ) = I\n- 吃饭 (chīfàn) = to eat',
       },
     ])
     const { container } = render(<Chat />)
-    await screen.findByText('Bye')
+    await screen.findByText(/to eat/)
 
-    const card = container.querySelector('.chat-chinese')
-    expect(card?.querySelector('.chat-chinese__hanzi')?.textContent).toBe('谢谢。')
-    expect(card?.querySelector('.chat-chinese__pinyin')?.textContent).toContain('xièxie.')
-    expect(card?.querySelector('.chat-chinese__meaning')?.textContent).toBe('Thank you.')
+    expect(container.querySelector('.chat-hanzi__hanzi')?.textContent).toBe('我在吃饭。')
+    expect(container.querySelector('.chat-hanzi__pinyin')?.textContent).toContain('Wǒ zài chīfàn.')
+    expect(container.querySelector('.chat-md__heading')?.textContent).toBe('Word by word:')
+    expect(
+      [...container.querySelectorAll('.chat-gloss__hanzi')].map((n) => n.textContent),
+    ).toEqual(['我', '吃饭'])
   })
 
   it('shows a pending status while the reply is in flight', async () => {
