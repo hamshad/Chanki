@@ -155,6 +155,13 @@ export function Chat() {
     inputRef.current?.focus()
   }
 
+  const handleBackspace = () => {
+    setInput((prev) => {
+      if (prev.length === 0) return prev
+      return prev.slice(0, -1)
+    })
+  }
+
   // Keep the latest turn and the composer in view.
   useEffect(() => {
     endRef.current?.scrollIntoView?.({ block: 'end' })
@@ -439,6 +446,8 @@ export function Chat() {
             onChange={handleDrawChange}
             onCleanSlate={clearInk}
             fadeAfterMs={null}
+            onBackspace={handleBackspace}
+            canBackspace={input.length > 0}
           />
         </div>
       )}

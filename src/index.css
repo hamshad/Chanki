@@ -3764,5 +3764,5 @@ label {
 /* When the draw tray is open, reserve space at the bottom so the composer
    and last messages stay visible above the tray. */
 .chat-page--draw-open {
-  padding-bottom: calc(170px + 34dvh + 4rem); /* tray height + head + candidate strip + composer */
+  padding-bottom: calc(170px + 34dvh + 2.5rem); /* tray height + head + candidate strip + composer gap */
 }
