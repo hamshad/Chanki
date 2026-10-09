@@ -275,7 +275,7 @@ export function Chat() {
   }
 
   return (
-    <div className="admin-shell chat-page">
+    <div className={`admin-shell chat-page${drawOpen ? ' chat-page--draw-open' : ''}`}>
       <div className="chat-head">
         <Link href="/dict" className="icon-btn chat-head__back" aria-label="Back to the dictionary">
           <ArrowLeft size={18} aria-hidden="true" />
