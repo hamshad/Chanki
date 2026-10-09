@@ -94,9 +94,13 @@ function App() {
     window.scrollTo(0, 0)
   }, [location])
 
+  // Compare on the path only — '/chat/', '/chat?x=1' and '/chat#y' are the
+  // same screen, and an exact match would silently drop focus mode.
+  const path = location.split(/[?#]/)[0].replace(/\/+$/, '') || '/'
+
   // Review grades and chat typing own the whole viewport — footer/tab bar
   // would sit under the card or the composer.
-  const focusMode = location === '/review' || location === '/chat'
+  const focusMode = path === '/review' || path === '/chat'
 
   return (
     <>
@@ -145,7 +149,10 @@ function App() {
         </div>
       </header>
 
-      <main id="main" className={`app-main${focusMode ? ' app-main--focus' : ''}`}>
+      <main
+        id="main"
+        className={`app-main${focusMode ? ' app-main--focus' : ''}${path === '/chat' ? ' app-main--chat' : ''}`}
+      >
         <Switch>
           <Route path="/" component={RedirectToReview} />
           <Route path="/home" component={Home} />

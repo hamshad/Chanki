@@ -70,6 +70,25 @@ export function Chat() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // The sticky app header's height is not knowable in CSS (it wraps, and adds
+  // the safe-area inset). Measure it so the column below fills exactly the
+  // rest of the viewport — no dead space, no clipped composer.
+  useEffect(() => {
+    const header = document.querySelector('.app-header')
+    const apply = () => {
+      const h = header?.getBoundingClientRect().height ?? 0
+      if (h > 0) {
+        document.documentElement.style.setProperty('--app-header-h', `${h}px`)
+      }
+    }
+    apply()
+    window.addEventListener('resize', apply)
+    return () => {
+      window.removeEventListener('resize', apply)
+      document.documentElement.style.removeProperty('--app-header-h')
+    }
+  }, [])
+
   // Offline index for when Google IME is unreachable — lazy like the dictionary.
   useEffect(() => {
     if (!drawOpen || handwriting) return
@@ -116,6 +135,18 @@ export function Chat() {
   const closeDraw = () => {
     clearInk()
     setDrawOpen(false)
+    // Back to typing — refocus so the keyboard returns.
+    inputRef.current?.focus()
+  }
+
+  const toggleDraw = () => {
+    if (drawOpen) {
+      closeDraw()
+      return
+    }
+    // Blur on the way in: the phone keyboard must not cover the pad.
+    inputRef.current?.blur()
+    setDrawOpen(true)
   }
 
   const insertDrawn = (chars: string) => {
@@ -246,19 +277,41 @@ export function Chat() {
   return (
     <div className="admin-shell chat-page">
       <div className="chat-head">
-        <Link href="/dict" className="icon-btn" aria-label="Back to the dictionary">
+        <Link href="/dict" className="icon-btn chat-head__back" aria-label="Back to the dictionary">
           <ArrowLeft size={18} aria-hidden="true" />
         </Link>
         <div className="chat-head__title">
-          <p className="eyebrow">assistant</p>
-          <h2 className="display text-3xl">Ask</h2>
+          <h2 className="display chat-head__name">Ask</h2>
           {quota && (
-            <p className="faint text-sm chat-quota">
+            <p className="faint chat-quota">
               {quota.remaining > 0
-                ? `${quota.remaining} of ${quota.limit} free left today`
-                : 'daily free limit reached · back at midnight UTC'}
+                ? `${quota.remaining}/${quota.limit} free left today`
+                : 'free limit reached · midnight UTC'}
             </p>
           )}
+        </div>
+        <div className="chat-lang" role="group" aria-label="Answer language">
+          <button
+            type="button"
+            aria-label="English"
+            title="English"
+            aria-pressed={lang === 'en'}
+            onClick={() => switchLang('en')}
+          >
+            EN
+          </button>
+          <span className="chat-lang__sep" aria-hidden="true">
+            /
+          </span>
+          <button
+            type="button"
+            aria-label="Roman Hindi"
+            title="Roman Hindi"
+            aria-pressed={lang === 'hi-Latn'}
+            onClick={() => switchLang('hi-Latn')}
+          >
+            HI
+          </button>
         </div>
         <button
           type="button"
@@ -271,37 +324,13 @@ export function Chat() {
         </button>
       </div>
 
-      <div className="chat-lang" role="group" aria-label="Answer language">
-        <button
-          type="button"
-          aria-label="English"
-          title="English"
-          aria-pressed={lang === 'en'}
-          onClick={() => switchLang('en')}
-        >
-          EN
-        </button>
-        <span className="chat-lang__sep" aria-hidden="true">
-          /
-        </span>
-        <button
-          type="button"
-          aria-label="Roman Hindi"
-          title="Roman Hindi"
-          aria-pressed={lang === 'hi-Latn'}
-          onClick={() => switchLang('hi-Latn')}
-        >
-          HI
-        </button>
-      </div>
-
       <div className="chat-msgs">
         {messages.length === 0 && !pending && !error && (
-          <div className="state-block">
-            <Sparkles size={22} aria-hidden="true" />
-            <p className="faint">
-              Hear something you don&rsquo;t get? Paste or type it here —
-              Chinese words and China culture, short answers, no small talk.
+          <div className="chat-empty">
+            <Sparkles size={18} aria-hidden="true" />
+            <p>
+              Paste or type something you heard. Chinese words and China culture —
+              short answers, no small talk.
             </p>
           </div>
         )}
@@ -374,7 +403,9 @@ export function Chat() {
       )}
 
       {drawOpen && (
-        <div className="chat-draw glass-panel">
+        // Same tray the dictionary docks — fixed to the bottom like an IME
+        // panel, so drawing feels identical on both screens.
+        <div className="dict-draw dict-draw--tray glass-panel">
           <div className="chat-draw__head">
             <span className="faint text-sm" aria-hidden="true">
               {recognizing ? 'Reading…' : 'Draw — tap a character to insert it'}
@@ -434,7 +465,7 @@ export function Chat() {
           className="icon-btn"
           aria-label="Draw a character instead of typing"
           aria-pressed={drawOpen}
-          onClick={() => (drawOpen ? closeDraw() : setDrawOpen(true))}
+          onClick={toggleDraw}
         >
           <PenLine size={18} aria-hidden="true" />
         </button>

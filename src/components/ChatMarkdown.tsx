@@ -1,20 +1,18 @@
 /**
  * Assistant reply typography.
  *
- * The model writes plain markdown — `### headings`, ```chinese fences```,
- * `- bullets`, `**bold**`. This turns that into the lesson layout: hanzi as
- * the hero line, pinyin and meaning beneath it, word-by-word and tips as
- * clean sections. Anything unrecognised falls through as prose, so a reply
- * the model formats differently still renders — just less nicely.
+ * The model writes markdown-ish text: ```chinese fences```, `### headings`,
+ * `- bullets`, `**bold**`. This renders the lesson layout: hanzi as the hero
+ * line, pinyin and meaning beneath it, word-by-word and tips as sections.
+ *
+ * Parsing is LINE-based, not blank-line-block-based: free models drop the
+ * blank line before a heading more often than not, and a block parser then
+ * swallows the whole reply into one paragraph. Anything unrecognised renders
+ * as prose, so a differently formatted reply still reads fine.
  */
-
-// ── inline: bold, code, italic ───────────────────────────────────────────────
-
 import type React from 'react'
 import { ToneText } from './ui/ToneText'
 import { toneFromMarked } from '../utils/pinyin'
-
-// ── inline: bold, code, italic ───────────────────────────────────────────────
 
 /** Pinyin split into syllables, each colored by its tone — app convention. */
 function TonedPinyin({ text }: { text: string }) {
@@ -30,9 +28,11 @@ function TonedPinyin({ text }: { text: string }) {
   )
 }
 
-// `code`, **bold**, *italic* — bold before italic so ** wins.
+// ── inline: bold, code, italic ───────────────────────────────────────────────
+
 function renderInline(text: string): React.ReactNode[] {
   const nodes: React.ReactNode[] = []
+  // `code`, **bold**, *italic* — bold before italic so ** wins.
   const re = /`([^`\n]+)`|\*\*([^*\n]+)\*\*|\*([^*\n]+)\*/g
   let last = 0
   let key = 0
@@ -67,7 +67,8 @@ function renderInline(text: string): React.ReactNode[] {
 
 // ── chinese block: hanzi / pinyin / meaning ─────────────────────────────────
 
-const HANZI_LINE = /[\u4E00-\u9FFF\u3400-\u4DBF]/
+const HANZI = '\\u4E00-\\u9FFF\\u3400-\\u4DBF'
+const HAS_HANZI = new RegExp(`[${HANZI}]`)
 
 /**
  * A fence body is hanzi lines, then a pinyin line, then the meaning. A model
@@ -75,15 +76,13 @@ const HANZI_LINE = /[\u4E00-\u9FFF\u3400-\u4DBF]/
  * hanzi line after the meaning — split on that boundary.
  */
 function splitChineseSentences(body: string): string[] {
-  const lines = body.split('\n')
   const groups: string[][] = []
   let current: string[] = []
   let phase: 'hanzi' | 'pinyin' | 'meaning' = 'hanzi'
 
-  for (const line of lines) {
+  for (const line of body.split('\n')) {
     if (!line.trim()) continue
-    const isHanzi = HANZI_LINE.test(line)
-    // A hanzi line arriving after the meaning started a new sentence.
+    const isHanzi = HAS_HANZI.test(line)
     if (isHanzi && phase === 'meaning') {
       groups.push(current)
       current = []
@@ -145,70 +144,114 @@ function GlossBullet({ text }: { text: string }) {
   )
 }
 
+// ── line classification ─────────────────────────────────────────────────────
+
+const FENCE_OPEN = /^```\s*chinese\s*$/i
+const FENCE_CLOSE = /^```\s*$/
+const BULLET = /^\s*[-*•]\s+(.*)$/
+const HASH_HEADING = /^\s*#{1,6}\s+(.*)$/
+/** A bare section label: short, ends with a colon, no sentence punctuation. */
+const BARE_HEADING = /^[A-Z][\w' ]{2,44}:\s*$/
+/** `Tip: …` / `Note: …` — the label is the heading, the rest rides with it. */
+const LABEL_HEADING = /^\s*(Tip|Note|Remember|Heads up|Warning)\s*:\s*(.+)$/i
+
+function isHeading(line: string): string | null {
+  const hash = HASH_HEADING.exec(line)
+  if (hash) return hash[1]
+  if (BARE_HEADING.test(line.trim())) return line.trim().slice(0, -1)
+  const labelled = LABEL_HEADING.exec(line)
+  if (labelled) return `${labelled[1]}: ${labelled[2]}`
+  return null
+}
+
 // ── block renderer ──────────────────────────────────────────────────────────
 
 /**
- * Render one reply. Blocks are split on blank lines; inside each block the
- * fence, heading, bullet and paragraph forms are handled in priority order.
+ * Render one reply. Walks the text line by line: fences become hanzi blocks,
+ * headings and bullets become sections, everything else is prose. Runs of
+ * prose lines join into one paragraph with soft breaks preserved.
  */
 export function ChatMarkdown({ text }: { text: string }) {
-  const blocks = text.split(/\n{2,}/)
-  return (
-    <>
-      {blocks.map((block, bi) => {
-        const raw = block.trim()
-        if (!raw) return null
+  const lines = text.replace(/\r\n?/g, '\n').split('\n')
+  const out: React.ReactNode[] = []
+  let key = 0
+  let prose: string[] = []
 
-        // ```chinese … ``` — hanzi / pinyin / meaning lines, possibly several
-        // sentences in one fence.
-        const fence = /^```chinese[ \t]*\n([\s\S]*?)(?:```|$)/.exec(raw)
-        if (fence) {
-          const sentences = splitChineseSentences(fence[1])
-          return (
-            <div key={bi} className="chat-hanzi-stack">
-              {sentences.map((s, si) => (
-                <ChineseFence key={si} body={s} />
-              ))}
-            </div>
-          )
-        }
+  const flushProse = () => {
+    if (!prose.length) return
+    const body = prose.join('\n')
+    prose = []
+    out.push(
+      <p key={key++} className="chat-md__p">
+        {renderInline(body)}
+      </p>,
+    )
+  }
 
-        // Heading: ### Word by word:  (or ##, or a bare `Heading:` line)
-        const heading = /^#{1,6}\s+(.*)$/.exec(raw)
-        if (heading) {
-          return (
-            <h4 key={bi} className="chat-md__heading">
-              {renderInline(heading[1])}
-            </h4>
-          )
-        }
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
 
-        // Bullets (one or more consecutive `-` lines).
-        const lines = raw.split('\n')
-        if (lines.every((l) => /^\s*[-*]\s+/.test(l))) {
-          return (
-            <ul key={bi} className="chat-md__list">
-              {lines.map((line, li) => (
-                <li key={li} className="chat-md__item">
-                  <GlossBullet text={line.replace(/^\s*[-*]\s+/, '')} />
-                </li>
-              ))}
-            </ul>
-          )
-        }
+    // ```chinese … ``` — one or several sentences.
+    if (FENCE_OPEN.test(line)) {
+      flushProse()
+      const body: string[] = []
+      i++
+      while (i < lines.length && !FENCE_CLOSE.test(lines[i])) {
+        body.push(lines[i])
+        i++
+      }
+      // i now sits on the closing fence (or past the end) — the loop's i++
+      // moves past it.
+      out.push(
+        <div key={key++} className="chat-hanzi-stack">
+          {splitChineseSentences(body.join('\n')).map((s, si) => (
+            <ChineseFence key={si} body={s} />
+          ))}
+        </div>,
+      )
+      continue
+    }
+    if (FENCE_CLOSE.test(line)) continue
 
-        // Plain paragraph — render inline markup.
-        return (
-          <p key={bi} className="chat-md__p">
-            {lines.map((line, li) => (
-              <span key={li}>
-                {li > 0 && <br />}
-                {renderInline(line)}
-              </span>
-            ))}
-          </p>
-        )
-      })}
-    </>
-  )
+    const heading = isHeading(line)
+    if (heading) {
+      flushProse()
+      out.push(
+        <h4 key={key++} className="chat-md__heading">
+          {renderInline(heading)}
+        </h4>,
+      )
+      continue
+    }
+
+    // Bullets: consume the whole run so lists stay lists.
+    const bullet = BULLET.exec(line)
+    if (bullet) {
+      flushProse()
+      const items = [bullet[1]]
+      while (i + 1 < lines.length) {
+        const next = BULLET.exec(lines[i + 1])
+        if (!next) break
+        items.push(next[1])
+        i++
+      }
+      out.push(
+        <ul key={key++} className="chat-md__list">
+          {items.map((item, li) => (
+            <li key={li} className="chat-md__item">
+              <GlossBullet text={item} />
+            </li>
+          ))}
+        </ul>,
+      )
+      continue
+    }
+
+    if (line.trim()) prose.push(line)
+    // Blank lines just end a paragraph.
+    else flushProse()
+  }
+  flushProse()
+
+  return <>{out}</>
 }

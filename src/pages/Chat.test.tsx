@@ -192,20 +192,20 @@ describe('Chat screen', () => {
     fetchQuotaMock.mockResolvedValue({ used: 8, limit: 50, remaining: 42 })
     render(<Chat />)
 
-    expect(await screen.findByText('42 of 50 free left today')).toBeTruthy()
+    expect(await screen.findByText('42/50 free left today')).toBeTruthy()
   })
 
   it('shows the exhausted state instead of a count at zero', async () => {
     fetchQuotaMock.mockResolvedValue({ used: 50, limit: 50, remaining: 0 })
     render(<Chat />)
 
-    expect(await screen.findByText(/daily free limit reached/i)).toBeTruthy()
+    expect(await screen.findByText(/free limit reached/i)).toBeTruthy()
   })
 
   it('locks sending when the free quota is spent', async () => {
     fetchQuotaMock.mockResolvedValue({ used: 50, limit: 50, remaining: 0 })
     render(<Chat />)
-    await screen.findByText(/daily free limit reached/i)
+    await screen.findByText(/free limit reached/i)
 
     const box = screen.getByLabelText('Message the assistant')
     expect(box.getAttribute('placeholder')).toMatch(/midnight UTC/)
@@ -223,12 +223,12 @@ describe('Chat screen', () => {
     fetchQuotaMock.mockResolvedValue({ used: 8, limit: 50, remaining: 42 })
     askChatMock.mockResolvedValue('ok')
     render(<Chat />)
-    expect(await screen.findByText('42 of 50 free left today')).toBeTruthy()
+    expect(await screen.findByText('42/50 free left today')).toBeTruthy()
 
     typeAndSend('hi')
 
     expect(await screen.findByText('ok')).toBeTruthy()
-    expect(await screen.findByText('41 of 50 free left today')).toBeTruthy()
+    expect(await screen.findByText('41/50 free left today')).toBeTruthy()
   })
 
   it('defaults to English, switches to Roman Hindi and persists it', async () => {

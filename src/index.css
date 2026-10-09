@@ -3158,13 +3158,6 @@ label {
   background: var(--accent-soft);
 }
 
-.chat-head {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
 .chat-head__title {
   flex: 1;
   min-width: 0;
@@ -3176,31 +3169,31 @@ label {
   gap: 1rem;
 }
 
-.chat-msgs .state-block {
-  padding: 2rem 1.5rem;
-}
-
 .chat-msg {
-  max-width: min(85%, 42rem);
   padding: 0.55rem 0.85rem;
   font-size: 0.97rem;
   line-height: 1.55;
-  white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
 .chat-msg--user {
   align-self: flex-end;
+  max-width: min(85%, 42rem);
+  /* Only user text needs newline preservation — markdown handles the rest. */
+  white-space: pre-wrap;
   background: var(--accent-soft);
   border: 1px solid rgb(var(--accent-rgb) / 0.35);
   border-radius: var(--radius-md) var(--radius-md) 3px var(--radius-md);
 }
 
+/* The assistant's lesson layout needs the full column: hanzi hero, gloss
+   bullets and pinyin lines all die at 85% of a phone. No bubble — the
+   typography is the container. */
 .chat-msg--ai {
-  align-self: flex-start;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 3px;
+  align-self: stretch;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /* One exchange = one unit. Actions whisper — there if looked for. */
@@ -3217,14 +3210,25 @@ label {
 }
 
 .chat-pair__action {
+  position: relative;
   background: none;
   border: none;
-  padding: 0.2rem;
+  /* Quiet on screen, comfortable to hit: the glyph stays tiny while the tap
+     target reaches a comfortable size via the pseudo-element below. */
+  padding: 0.35rem 0.45rem;
   line-height: 0;
   color: var(--text-3);
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: pointer;
   border-radius: var(--radius-xs);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.chat-pair__action::after {
+  content: '';
+  position: absolute;
+  inset: -0.5rem;
 }
 
 .chat-pair__action:hover:not(:disabled) {
@@ -3278,14 +3282,12 @@ label {
 
 /* Pinned to the viewport bottom (footer + tab bar hidden on this screen). */
 .chat-composer {
-  position: sticky;
-  bottom: 0;
-  z-index: 5;
+  flex: none;
   display: flex;
   align-items: flex-end;
   gap: 0.6rem;
-  margin-top: 0.85rem;
-  padding: 0.8rem 0 calc(0.9rem + env(safe-area-inset-bottom, 0px));
+  margin-top: 0;
+  padding: 0.7rem 0 calc(0.75rem + env(safe-area-inset-bottom, 0px));
   background: var(--bg);
   border-top: 1px solid var(--line);
 }
@@ -3330,7 +3332,6 @@ label {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  margin-bottom: 0.6rem;
 }
 
 /* Whisper-quiet switch — visible, never loud. */
@@ -3363,30 +3364,6 @@ label {
   opacity: 0.5;
 }
 
-/* Drawing pad docked above the composer, IME-style. */
-.chat-draw {
-  margin-top: 0.85rem;
-  padding: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.chat-draw .draw-pad__canvas {
-  height: clamp(170px, 30dvh, 240px);
-}
-
-.chat-draw__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.chat-draw__close {
-  width: 2rem;
-  height: 2rem;
-}
 
 /* Structured term chip: hanzi + toned pinyin + meaning, one inline unit. */
 .chat-term {
@@ -3451,6 +3428,8 @@ label {
 .chat-md__p {
   margin: 0 0 0.7rem;
   line-height: 1.65;
+  /* Soft breaks inside a prose run (the casual-version block relies on it). */
+  white-space: pre-wrap;
 }
 
 .chat-md__heading {
@@ -3545,4 +3524,172 @@ label {
 .chat-msg--ai .chat-md__list:last-child,
 .chat-msg--ai .chat-hanzi-stack:last-child {
   margin-bottom: 0;
+}
+
+/* ── Chat on phones ─────────────────────────────────────────────────────── */
+
+@media (max-width: 719px) {
+  /* Hanzi is the lesson's anchor — give it room, but never let one long
+     sentence push the layout sideways. */
+  .chat-hanzi__hanzi {
+    font-size: clamp(1.45rem, 7.4vw, 1.9rem);
+  }
+
+  .chat-hanzi__pinyin,
+  .chat-hanzi__meaning {
+    font-size: 0.98rem;
+  }
+
+  /* Gloss bullets: the leading bullet marker crowds a narrow column. */
+  .chat-md__list {
+    padding-left: 1.15rem;
+    gap: 0.4rem;
+  }
+
+  .chat-md__item {
+    font-size: 0.98rem;
+  }
+
+  .chat-md__p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .chat-md__heading {
+    font-size: 1rem;
+  }
+
+  /* Composer rides above the keyboard: sticky bottom already pins it, this
+     keeps the field from being flush against the home indicator. */
+  .chat-composer {
+    padding-top: 0.7rem;
+    padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .chat-input {
+    /* 16px stops iOS Safari zooming the page on focus. */
+    font-size: 1rem;
+  }
+
+  /* EN/HI stays whisper-quiet visually, reachable by thumb. */
+  .chat-lang button {
+    padding: 0.4rem 0.5rem;
+  }
+
+  /* Actions sit clear of the bubble text when tapped. */
+  .chat-pair__actions {
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  .chat-msg--user {
+    max-width: 88%;
+  }
+}
+
+/* ── Chat layout: a fixed-height column, not a scrolling page ────────────── */
+
+/* The page behind chat owns the viewport: header + thread + composer, no
+   page scroll, no dead space under the composer. dvh tracks the mobile
+   keyboard, so the field rides above it. */
+.app-main--chat {
+  padding: 0.75rem clamp(0.85rem, 3.5vw, 1.25rem) 0;
+}
+
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  /* --app-header-h is measured at runtime (Chat.tsx); the 0.75rem is this
+     page's top padding. Fallback covers the pre-measure first paint. */
+  height: calc(100dvh - var(--app-header-h, 3.5rem) - 0.75rem);
+  min-height: 55dvh;
+}
+
+/* Header: one tight row — back, name + quota, EN/HI, clear. */
+.chat-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  flex: none;
+}
+
+.chat-head__back {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+}
+
+.chat-head__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-head__name {
+  font-size: 1.4rem;
+  line-height: 1.1;
+}
+
+.chat-quota {
+  margin: 0.05rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-head .chat-lang {
+  flex: none;
+  margin: 0;
+}
+
+.chat-head .chat-lang button {
+  padding: 0.3rem 0.35rem;
+  font-size: 0.68rem;
+}
+
+/* Thread scrolls inside the column; the composer never leaves the screen. */
+.chat-msgs {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+  /* Room for the draw pad's candidate strip to breathe. */
+  scroll-padding-bottom: 1rem;
+}
+
+.chat-empty {
+  margin-top: auto;
+  padding: 1.25rem 0.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--text-3);
+}
+
+.chat-empty p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 34ch;
+}
+
+.chat-empty svg {
+  flex: none;
+  margin-top: 0.15rem;
+}
+
+/* Draw-pad head strip inside the reused dictionary tray. */
+.chat-draw__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.chat-draw__close {
+  width: 2rem;
+  height: 2rem;
 }

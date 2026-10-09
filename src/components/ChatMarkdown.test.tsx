@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest'
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import { ChatMarkdown } from './ChatMarkdown'
 
 afterEach(cleanup)
@@ -16,8 +16,8 @@ Right now, I am eating.
 
 - 我 (wǒ) = I
 - 现在 (xiànzài) = right now
-- 正在 (zhèngzài) = currently / in the middle of doing something
-- 吃饭 (chīfàn) = to eat / have a meal
+- 正在 (zhèngzài) = currently
+- 吃饭 (chīfàn) = to eat
 
 ### A more casual way to say it:
 
@@ -26,7 +26,7 @@ Wǒ zài chīfàn.
 
 This means "I'm eating."
 
-Tip: In Mandarin, **正在 (zhèngzài)** emphasizes that the action is happening right now.`
+Tip: In Mandarin, **正在 (zhèngzài)** emphasizes right now.`
 
 describe('ChatMarkdown', () => {
   it('renders the hanzi hero, pinyin and meaning lines', () => {
@@ -55,30 +55,61 @@ describe('ChatMarkdown', () => {
     const glosses = [...container.querySelectorAll('.chat-gloss__hanzi')].map((n) => n.textContent)
     expect(glosses).toEqual(['我', '现在', '正在', '吃饭'])
     expect(container.querySelector('.chat-gloss__meaning')?.textContent).toBe('I')
-    // Bold survives inline rendering.
     const strong = [...container.querySelectorAll('.chat-md__strong')].map((n) => n.textContent)
     expect(strong).toContain('正在 (zhèngzài)')
   })
 
-  it('keeps the opening line as prose and splits several fenced sentences', () => {
+  // The mobile failure: no blank line before the heading or fence.
+  it('keeps the layout when the model drops blank lines', () => {
+    const tight = `In Mandarin Chinese, "I am eating" is:
+\`\`\`chinese
+我在吃饭。
+Wǒ zài chīfàn.
+I am eating.
+\`\`\`
+Word by word:
+- 我 (wǒ) = I
+- 吃饭 (chīfàn) = to eat
+Tip: casual tone.`
+    const { container } = render(<ChatMarkdown text={tight} />)
+
+    expect(container.querySelector('.chat-hanzi__hanzi')?.textContent).toBe('我在吃饭。')
+    expect(
+      [...container.querySelectorAll('.chat-md__heading')].map((h) => h.textContent),
+    ).toEqual(['Word by word', 'Tip: casual tone.'])
+    expect(container.querySelectorAll('.chat-md__item')).toHaveLength(2)
+    // Prose stays prose — not swallowed into the hanzi block.
+    expect(container.querySelector('.chat-md__p')?.textContent).toContain(
+      'In Mandarin Chinese',
+    )
+  })
+
+  it('splits several fenced sentences in one block', () => {
     const { container } = render(
       <ChatMarkdown
-        text={'Hi:\n\n```chinese\n你好。\nNǐ hǎo.\nHello.\n```\n\nSecond:\n\n```chinese\n谢谢。\nXièxie.\nThanks.\n```'}
+        text={'```chinese\n你好。\nNǐ hǎo.\nHello.\n```\n\n```chinese\n谢谢。\nXièxie.\nThanks.\n```'}
       />,
     )
+    const heroes = [...container.querySelectorAll('.chat-hanzi__hanzi')].map((n) => n.textContent)
+    expect(heroes).toEqual(['你好。', '谢谢。'])
+  })
 
-    expect(container.querySelector('.chat-md__p')?.textContent).toBe('Hi:')
+  it('keeps a two-sentence fence together when the meaning follows', () => {
+    const two = '```chinese\n你好。\nNǐ hǎo.\nHello.\n谢谢。\nXièxie.\nThanks.\n```'
+    const { container } = render(<ChatMarkdown text={two} />)
     const heroes = [...container.querySelectorAll('.chat-hanzi__hanzi')].map((n) => n.textContent)
     expect(heroes).toEqual(['你好。', '谢谢。'])
   })
 
   it('falls back to prose for unformatted text and lone bullets', () => {
-    const { container } = render(<ChatMarkdown text={'Just a line\nand another'} />)
-    expect(container.querySelector('.chat-md__p')?.textContent).toBe('Just a lineand another')
+    const first = render(<ChatMarkdown text={'Just a line\nand another'} />)
+    expect(first.container.querySelector('.chat-md__p')?.textContent).toBe(
+      'Just a line\nand another',
+    )
+    cleanup()
 
-    // Bullet without the gloss shape still renders as a list item.
-    render(<ChatMarkdown text={'- plain item\n- second item'} />)
-    expect(screen.getAllByText(/plain item|second item/).length).toBe(2)
+    const { container } = render(<ChatMarkdown text={'- plain item\n- second item'} />)
+    expect(container.querySelectorAll('.chat-md__item')).toHaveLength(2)
   })
 
   it('renders an unclosed fence rather than losing the text', () => {
@@ -86,5 +117,12 @@ describe('ChatMarkdown', () => {
       <ChatMarkdown text={'```chinese\n你好。\nNǐ hǎo.\nHello.'} />,
     )
     expect(container.querySelector('.chat-hanzi__hanzi')?.textContent).toBe('你好。')
+  })
+
+  it('ignores the fence markers themselves', () => {
+    const { container } = render(<ChatMarkdown text={'before\n```chinese\n吃。\nChī.\nEat.\n```\nafter'} />)
+    expect(container.textContent).not.toContain('chinese')
+    expect(container.textContent).toContain('before')
+    expect(container.textContent).toContain('after')
   })
 })
