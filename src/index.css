@@ -3761,22 +3761,8 @@ label {
   height: 2rem;
 }
 
-/* When the draw tray is open, reserve space at the bottom so the composer
-   and last messages stay visible above the tray. Tray height on mobile:
-   head (~2.5rem) + canvas (34dvh) + padding (1.5rem) + candidate (0-3rem). */
+/* When the draw tray is open, reserve the tray's full height at the bottom of
+   the page so the composer sits above the tray — no overlap, ever. */
 .chat-page--draw-open {
-  /* Base tray height without candidate strip; page padding ensures last
-     message scrolls above the tray. */
-  padding-bottom: calc(34dvh + 4.5rem);
-}
-
-/* When the draw tray is open on mobile, the fixed tray covers the composer.
-   Lift the composer to sit right on top of the tray's head bar.
-   Tray top = head (2.5rem) + canvas (34dvh) + padding (1.5rem) = 34dvh + 4rem. */
-@media (max-width: 719px) {
-  .chat-page--draw-open .chat-composer {
-    position: sticky;
-    bottom: calc(34dvh + 4rem + env(safe-area-inset-bottom, 0px));
-    z-index: calc(var(--z-overlay) + 1);
-  }
+  padding-bottom: calc(34dvh + 7rem);
 }
