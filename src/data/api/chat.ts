@@ -230,6 +230,8 @@ export async function askChat(
       }
       if (!res.ok) {
         lastError = `model ${model} failed (${res.status})`
+        // 404 means the slug is gone or malformed — note it and move on.
+        if (res.status === 404) lastError = `model ${model} not found (404)`
         continue
       }
       const parsed = ReplySchema.safeParse(await res.json())

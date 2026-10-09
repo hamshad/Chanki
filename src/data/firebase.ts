@@ -54,23 +54,33 @@ export async function getAdminCode(): Promise<string> {
   }
 }
 
+/** `vendor/model` or `vendor/model:tag` — anything else is a typo, not a model. */
+const MODEL_SLUG = /^[A-Za-z0-9._-]+\/[A-Za-z0-9._:@-]+$/
+
 /**
  * Assistant model chain from Remote Config `chat_models` — a comma-separated
  * list, e.g. `google/gemma-4-26b-a4b-it:free,nvidia/nemotron-3-ultra-550b-a55b:free`.
- * First entry is preferred; the rest are fallbacks. Returns `fallback`
- * untouched when the param is empty or the fetch fails, so an offline device
- * or a half-written config never breaks chat.
+ * First entry is preferred; the rest are fallbacks.
+ *
+ * `openrouter/free` is always appended: it is OpenRouter's own router, it is
+ * never withdrawn, so a chain of stale or mistyped slugs can never leave the
+ * assistant dead. Entries that are not model slugs (a JSON array pasted into
+ * the console, a stray quote) are dropped — they would only ever 404.
  */
 export async function getChatModels(fallback: readonly string[]): Promise<string[]> {
+  const ALWAYS_LAST = 'openrouter/free'
+  let models: string[] = []
   try {
     await fetchAndActivate(remoteConfig)
-    const raw = getValue(remoteConfig, 'chat_models').asString()
-    const models = raw
+    models = getValue(remoteConfig, 'chat_models')
+      .asString()
       .split(',')
-      .map((m) => m.trim())
-      .filter(Boolean)
-    return models.length ? models : [...fallback]
+      .map((m) => m.trim().replace(/^["'\s]+|["'\s]+$/g, ''))
+      .filter((m) => m && MODEL_SLUG.test(m))
   } catch {
-    return [...fallback]
+    models = []
   }
+  if (!models.length) models = [...fallback]
+  if (!models.includes(ALWAYS_LAST)) models.push(ALWAYS_LAST)
+  return models
 }

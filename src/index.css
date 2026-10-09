@@ -3173,7 +3173,12 @@ label {
   padding: 0.55rem 0.85rem;
   font-size: 0.97rem;
   line-height: 1.55;
+  /* anywhere, not break-word: a long hanzi run or URL must wrap, never widen
+     the column into a horizontal scroll. */
   overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .chat-msg--user {
@@ -3201,6 +3206,8 @@ label {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .chat-pair__actions {
@@ -3281,15 +3288,31 @@ label {
 }
 
 /* Pinned to the viewport bottom (footer + tab bar hidden on this screen). */
+/* Composer: a floating rounded bar, not a strip welded to the screen edge.
+   The fade above it keeps scrolled text from colliding with the field. */
 .chat-composer {
+  position: relative;
   flex: none;
   display: flex;
   align-items: flex-end;
-  gap: 0.6rem;
-  margin-top: 0;
-  padding: 0.7rem 0 calc(0.75rem + env(safe-area-inset-bottom, 0px));
-  background: var(--bg);
-  border-top: 1px solid var(--line);
+  gap: 0.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0.4rem 0.4rem calc(0.4rem + env(safe-area-inset-bottom, 0px));
+  background: rgb(var(--bg-rgb) / 0.92);
+  border: 1px solid var(--line);
+  border-radius: 1.35rem;
+  box-shadow: 0 12px 28px -20px rgb(0 0 0 / 0.7);
+}
+
+.chat-composer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 1.75rem;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--bg), transparent);
 }
 
 .chat-input {
@@ -3298,17 +3321,27 @@ label {
   resize: none;
   max-height: 160px;
   background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  border-radius: 1rem;
   color: var(--text);
-  padding: 0.7rem 0.9rem;
+  padding: 0.65rem 0.9rem;
   font: inherit;
   line-height: 1.45;
+  scrollbar-width: none;
+}
+
+.chat-input::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-input::placeholder {
+  color: var(--text-3);
 }
 
 .chat-input:focus {
   outline: none;
-  border-color: rgb(var(--accent-rgb) / 0.6);
+  border-color: rgb(var(--accent-rgb) / 0.45);
+  background: var(--surface-1, var(--surface-2));
 }
 
 .chat-input:disabled {
@@ -3316,8 +3349,17 @@ label {
   cursor: default;
 }
 
+/* Send reads as a filled action when armed, quiet when there is nothing to send. */
 .chat-send {
-  color: rgb(var(--accent-rgb));
+  color: var(--text-3);
+  background: var(--surface-2);
+  border-color: transparent;
+}
+
+.chat-send:not(:disabled) {
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: transparent;
 }
 
 .chat-keyhint {
@@ -3428,6 +3470,8 @@ label {
 .chat-md__p {
   margin: 0 0 0.7rem;
   line-height: 1.65;
+  overflow-wrap: anywhere;
+  min-width: 0;
   /* Soft breaks inside a prose run (the casual-version block relies on it). */
   white-space: pre-wrap;
 }
@@ -3462,6 +3506,7 @@ label {
 .chat-md__list {
   margin: 0 0 0.7rem;
   padding-left: 1.35rem;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -3470,6 +3515,7 @@ label {
 .chat-md__item {
   line-height: 1.6;
   color: var(--text-2);
+  overflow-wrap: anywhere;
 }
 
 /* Word-by-word gloss: hanzi reads as the unit, pinyin recedes, meaning is the payload. */
@@ -3496,6 +3542,7 @@ label {
 
 .chat-hanzi__hanzi {
   margin: 0 0 0.35rem;
+  overflow-wrap: anywhere;
   font-size: clamp(1.6rem, 6vw, 2.05rem);
   font-weight: 700;
   line-height: 1.35;
@@ -3591,7 +3638,10 @@ label {
 /* The page behind chat owns the viewport: header + thread + composer, no
    page scroll, no dead space under the composer. dvh tracks the mobile
    keyboard, so the field rides above it. */
-.app-main--chat {
+/* Two classes, deliberately: index.css loads before App.css, so a single-class
+   rule loses the tie to `.app-main--focus` and its bottom padding would push
+   the composer below the viewport. */
+.app-main.app-main--chat {
   padding: 0.75rem clamp(0.85rem, 3.5vw, 1.25rem) 0;
 }
 
@@ -3602,6 +3652,10 @@ label {
      page's top padding. Fallback covers the pre-measure first paint. */
   height: calc(100dvh - var(--app-header-h, 3.5rem) - 0.75rem);
   min-height: 55dvh;
+  /* A long unbroken token must never widen the column into a horizontal
+     scroll. */
+  min-width: 0;
+  overflow-x: clip;
 }
 
 /* Header: one tight row — back, name + quota, EN/HI, clear. */
@@ -3611,6 +3665,7 @@ label {
   gap: 0.6rem;
   margin-bottom: 0.6rem;
   flex: none;
+  min-width: 0;
 }
 
 .chat-head__back {
@@ -3641,6 +3696,7 @@ label {
 .chat-head .chat-lang {
   flex: none;
   margin: 0;
+  white-space: nowrap;
 }
 
 .chat-head .chat-lang button {
@@ -3652,12 +3708,23 @@ label {
 .chat-msgs {
   flex: 1 1 auto;
   min-height: 0;
+  min-width: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 0.5rem;
   /* Room for the draw pad's candidate strip to breathe. */
   scroll-padding-bottom: 1rem;
+  /* Scroll is for the thumb, not for a bar across the thread. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chat-msgs::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .chat-empty {
